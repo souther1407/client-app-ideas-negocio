@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./slider.module.css";
 import {
   Slider as ChakraSlider,
@@ -8,8 +8,11 @@ import {
   SliderMark,
 } from "@chakra-ui/react";
 
-const Slider = ({ label = "" }) => {
+const Slider = ({ label = "", id, onChange = () => {} }) => {
   const [value, setValue] = useState(20);
+  useEffect(() => {
+    onChange(id, value);
+  }, [value]);
   return (
     <div className={styles.slider}>
       <label className={styles.label}>{label}</label>
