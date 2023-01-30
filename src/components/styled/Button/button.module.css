@@ -1,0 +1,40 @@
+.button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    border: none;
+}
+.button:disabled {
+    background-color: gainsboro !important;
+    cursor: auto;
+}
+
+.primary.light {
+    background-color: var(--primary-dark);
+    color: var(--bg-light);
+
+}
+
+.primary.light:hover {
+    background-color: var(--primary-dark-hover);
+}
+
+.secondary.light {
+    background-color: var(--secondary-dark);
+    color: var(--bg-light);
+}
+
+.secondary.light:hover {
+    background-color: var(--secondary-dark-hover);
+}
+
+.primary.dark {
+    background-color: var(--primary-light);
+    color: var(--bg-light);
+}
+
+.secondary.dark {
+    background-color: var(--secondary-light);
+    color: var(--bg-light);
+}

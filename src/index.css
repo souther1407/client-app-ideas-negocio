@@ -6,6 +6,10 @@
 
 :root {
   --primary-light:#589B88;
+  --primary-dark:#3d6b5e;
+  --secondary-light:orange;
+  --secondary-dark:rgb(255, 201, 102);
   --text-light:white;
+  --text-dark:black;
   --bg-dark:#000000;
 }
