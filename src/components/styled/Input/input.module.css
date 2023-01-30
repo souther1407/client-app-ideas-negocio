@@ -1,5 +1,22 @@
-.input {
+.cont {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
+.label {
+    margin-bottom: 8px;
+}
+
+.input {
+    border-radius: 16px;
+    background-color: #1E1C24;
+    padding: 8px;
+    
+}
+
+.input.dark {
+    border: 4px solid var(--primary-light);
 }
 
 .textarea {

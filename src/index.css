@@ -5,11 +5,12 @@
 }
 
 body {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 :root {
   --primary-light:#589B88;
+  --btn-primary-border-color:#53AE94;
   --primary-dark:#3d6b5e;
   --secondary-light:orange;
   --secondary-dark:rgb(255, 201, 102);
@@ -18,6 +19,16 @@ body {
   --bg-dark:#000000;
 }
 
+h1 {
+  font-size: 2.5rem !important;
+}
 p {
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
+}
+
+input {
+  background: none;
+}
+input:focus {
+  outline: none;
 }
