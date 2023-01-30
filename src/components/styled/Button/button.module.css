@@ -1,6 +1,6 @@
 .button {
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 16px;
     cursor: pointer;
     transition: all 0.2s ease-in;
     border: none;
@@ -12,29 +12,21 @@
 
 .primary.light {
     background-color: var(--primary-dark);
-    color: var(--bg-light);
+    color: var(--text-dark);
 
-}
-
-.primary.light:hover {
-    background-color: var(--primary-dark-hover);
 }
 
 .secondary.light {
     background-color: var(--secondary-dark);
-    color: var(--bg-light);
-}
-
-.secondary.light:hover {
-    background-color: var(--secondary-dark-hover);
+    color: var(--text-light);
 }
 
 .primary.dark {
     background-color: var(--primary-light);
-    color: var(--bg-light);
+    color: var(--text-dark);
 }
 
 .secondary.dark {
     background-color: var(--secondary-light);
-    color: var(--bg-light);
+    color: var(--text-light);
 }

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 20px;
+}
+
 :root {
   --primary-light:#589B88;
   --primary-dark:#3d6b5e;
@@ -12,4 +16,8 @@
   --text-light:white;
   --text-dark:black;
   --bg-dark:#000000;
+}
+
+p {
+  font-size: 1.2rem;
 }
