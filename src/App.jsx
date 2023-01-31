@@ -7,6 +7,8 @@ import Slider from "./components/styled/Slider/Slider";
 import Input from "./components/styled/Input/Input";
 import { parseData } from "./utils/parse/parseData";
 import { createText } from "./services/createText/createText";
+import Loading from "./components/compounds/Loading/Loading";
+
 function App() {
   const { theme } = useContext(context);
   const [input, setInput] = useState({
@@ -14,15 +16,18 @@ function App() {
     habilidad: "",
     ubicacion: "",
   });
+  const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
   const handlerChange = (id, value) => {
     setInput((prev) => ({ ...prev, [id]: value }));
   };
   const handlerSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const parsedData = parseData(input);
     const responseData = await createText(parsedData);
     setResponse(responseData);
+    setLoading(false);
   };
   return (
     <div className={`App ${theme}`}>
@@ -31,10 +36,11 @@ function App() {
         <Slider label="Edad" id={"edad"} onChange={handlerChange} />
         <Input label="Habilidad" id={"habilidad"} onChange={handlerChange} />
         <Input label="Ubicación" id={"ubicacion"} onChange={handlerChange} />
-        <Button>
+        <Button disabled={loading}>
           <Text>Generar idea de negocio</Text>
         </Button>
       </form>
+      {loading && <Loading />}
       <Text>{response}</Text>
     </div>
   );
