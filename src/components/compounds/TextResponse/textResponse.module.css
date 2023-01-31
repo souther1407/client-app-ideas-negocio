@@ -1,0 +1,13 @@
+.textResponse {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.textContent {
+    margin-top: 16px;
+    background-color: var(--primary-light);
+    border-radius: 12px;
+    padding: 8px;
+    color: var(--text-dark);
+}

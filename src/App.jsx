@@ -8,6 +8,7 @@ import Input from "./components/styled/Input/Input";
 import { parseData } from "./utils/parse/parseData";
 import { createText } from "./services/createText/createText";
 import Loading from "./components/compounds/Loading/Loading";
+import TextResponse from "./components/compounds/TextResponse/TextResponse";
 
 function App() {
   const { theme } = useContext(context);
@@ -18,17 +19,25 @@ function App() {
   });
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
+
   const handlerChange = (id, value) => {
     setInput((prev) => ({ ...prev, [id]: value }));
   };
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const parsedData = parseData(input);
-    const responseData = await createText(parsedData);
-    setResponse(responseData);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const parsedData = parseData(input);
+      const responseData = await createText(parsedData);
+      setResponse(responseData);
+    } catch (error) {
+      alert("ocurrio un error :c", error.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <div className={`App ${theme}`}>
       <form className="Form" onSubmit={handlerSubmit}>
@@ -41,7 +50,8 @@ function App() {
         </Button>
       </form>
       {loading && <Loading />}
-      <Text>{response}</Text>
+      {response.length > 0 && <TextResponse response={response} />}
+      {/* <TextResponse response={"esto es una respuesta harcodeada"} /> */}
     </div>
   );
 }
