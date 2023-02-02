@@ -13,12 +13,14 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "country-flag-icons": "^1.5.5",
+    "firebase": "^9.16.0",
     "framer-motion": "^8.5.5",
     "i18next": "^22.4.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "react-router-dom": "^6.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

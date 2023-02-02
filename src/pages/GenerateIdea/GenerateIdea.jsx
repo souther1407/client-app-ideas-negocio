@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../components/styled/Button/Button";
 import Text from "../../components/styled/Text/Text";
-
 import Slider from "../../components/styled/Slider/Slider";
 import Input from "../../components/styled/Input/Input";
 import { parseData } from "../../utils/parse/parseData";
@@ -11,13 +10,17 @@ import TextResponse from "../../components/compounds/TextResponse/TextResponse";
 import styles from "./generateIdea.module.css";
 import { useTranslation } from "react-i18next";
 import ChangeLanguage from "../../components/compounds/ChangeLanguage/ChangeLanguage";
+import { useNavigate } from "react-router-dom";
 
+import { auth } from "../../firebase.js";
 const GenerateIdea = () => {
   const [input, setInput] = useState({
     edad: "1",
     habilidad: "",
     ubicacion: "",
   });
+
+  const navigate = useNavigate();
   const [t] = useTranslation();
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
@@ -28,6 +31,9 @@ const GenerateIdea = () => {
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
+    if (!auth.currentUser) {
+      return navigate("/login");
+    }
     try {
       setResponse("");
       setLoading(true);

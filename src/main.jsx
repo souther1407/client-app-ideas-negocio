@@ -5,6 +5,7 @@ import "./index.css";
 import { ColorModeContext } from "./Context/ColorModeContext/ColorModeContext";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "./i18n.js";
+import { BrowserRouter } from "react-router-dom";
 
 const theme = extendTheme({
   colors: {
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <ColorModeContext>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ColorModeContext>
     </ChakraProvider>
   </React.StrictMode>
