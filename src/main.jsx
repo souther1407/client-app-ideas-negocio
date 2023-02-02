@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { ColorModeContext } from "./Context/ColorModeContext/ColorModeContext";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import "./i18n.js";
 
 const theme = extendTheme({
   colors: {
