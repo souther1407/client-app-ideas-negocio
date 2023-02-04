@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 const theme = extendTheme({
   colors: {
     primaryDark: {
-      base: "#589B88;",
+      base: "#2D4356;",
     },
   },
 });

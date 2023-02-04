@@ -1,0 +1,5 @@
+.select {
+  background: none;
+  border: 1px solid var(--text-light);
+  padding: 8px;
+}

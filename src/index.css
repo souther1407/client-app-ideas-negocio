@@ -10,14 +10,14 @@ body {
 }
 
 :root {
-  --primary-light:#589B88;
-  --btn-primary-border-color:#53AE94;
-  --primary-dark:#3d6b5e;
-  --secondary-light:orange;
-  --secondary-dark:rgb(255, 201, 102);
-  --text-light:white;
-  --text-dark:black;
-  --bg-dark:#000000;
+  --primary-light: #2d4356;
+  --btn-primary-border-color: #8d8c90;
+  --primary-dark: #2d4356;
+  --secondary-light: #21252f;
+  --secondary-dark: #21252f;
+  --text-light: white;
+  --text-dark: black;
+  --bg-dark: #1e1c24;
 }
 
 h1 {

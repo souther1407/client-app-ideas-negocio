@@ -7,16 +7,18 @@ import { context } from "../../../Context/ColorModeContext/ColorModeContext";
 const Input = ({
   type = "text",
   textarea,
+  color = "primary",
   id,
   onChange = (id, value) => {},
   onErrors = (id, error) => {},
   validators = [],
   label = "",
+  icon,
   ...otherProps
 }) => {
   const { theme } = useContext(context);
   const { error, validate } = useValidate(validators);
-
+  const [labelEffect, setLabelEffect] = useState(false);
   const handlerChange = (e) => {
     onChange(e.target.id, e.target.value);
     validate(e.target.value);
@@ -28,22 +30,31 @@ const Input = ({
 
   return (
     <div className={styles.cont}>
-      <label className={styles.label}>{label}</label>
+      <label className={`${styles.label} ${labelEffect && styles.effect}`}>
+        {label}
+      </label>
       {textarea ? (
         <textarea
           {...otherProps}
           id={id}
           onChange={handlerChange}
-          className={`${styles.textarea} ${styles[theme]}`}
+          className={`${styles.textarea} ${styles[theme]} ${styles[color]}`}
         />
       ) : (
-        <input
-          {...otherProps}
-          id={id}
-          type={type}
-          onChange={handlerChange}
-          className={`${styles.input} ${styles[theme]}`}
-        />
+        <div className={styles.inputCont}>
+          <input
+            {...otherProps}
+            id={id}
+            onFocus={() => setLabelEffect(true)}
+            onBlur={(e) => {
+              if (e.target.value.length === 0) setLabelEffect(false);
+            }}
+            type={type}
+            onChange={handlerChange}
+            className={`${styles.input} ${styles[theme]} ${styles[color]}`}
+          />
+          <i className={styles.icon}>{icon && icon()}</i>
+        </div>
       )}
     </div>
   );

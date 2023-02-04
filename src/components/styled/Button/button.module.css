@@ -26,7 +26,7 @@
 .primary.dark {
     background-color: var(--primary-light);
     border: 4px solid var(--btn-primary-border-color);
-    color: var(--text-dark);
+    color: var(--text-light);
 }
 
 .secondary.dark {
