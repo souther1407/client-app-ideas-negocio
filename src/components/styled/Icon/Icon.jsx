@@ -1,6 +1,10 @@
 import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
+import {
+  BsFillSunFill,
+  BsFillMoonFill,
+  BsFillBriefcaseFill,
+} from "react-icons/bs";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { BiBrain } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
@@ -22,6 +26,7 @@ const Icon = ({ type }) => {
     location: <ImLocation {...props} />,
     budget: <FaMoneyBillWave {...props} />,
     user: <FaUserCircle {...props} />,
+    case: <BsFillBriefcaseFill {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

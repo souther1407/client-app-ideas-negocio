@@ -13,7 +13,7 @@ const Select = ({ options, ...otherProps }) => {
         }),
         menu: (baseStyles, state) => ({
           ...baseStyles,
-          background: "none",
+          backgroundColor: "#1E1C24",
           border: "1px solid white",
         }),
         singleValue: (baseStyles, state) => ({

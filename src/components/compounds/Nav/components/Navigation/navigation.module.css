@@ -1,0 +1,10 @@
+.navigation {
+  display: flex;
+  margin: 4px;
+}
+
+.element {
+  display: block;
+  width: 40px;
+  margin: 0 8px;
+}
