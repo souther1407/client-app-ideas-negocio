@@ -2,13 +2,17 @@
   background-color: var(--text-light);
   display: flex;
   color: var(--text-dark);
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 16px;
 }
 
 .loginIcon {
   position: relative;
   top: 2px;
-  width: 24px;
+  width: 20px;
   margin-right: 8px;
+}
+
+.loginButton > :last-child {
+  font-size: 16px !important;
 }

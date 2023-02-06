@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./login.module.css";
-import Link from "../../styled/Link/Link";
+
 import Text from "../../styled/Text/Text";
 import Icon from "../../styled/Icon/Icon";
+import { auth } from "../../../firebase.js";
+import { useNavigate } from "react-router-dom";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { LOGIN } from "../../../utils/constants/routes";
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setLogged(!!auth.currentUser);
+    });
+  }, []);
+
+  const handleClick = async (e) => {
+    if (!auth.currentUser) return navigate(LOGIN);
+    else return await signOut(auth);
+  };
   return (
-    <Link to={"/login"}>
-      <button className={styles.loginButton}>
-        <i className={styles.loginIcon}>
-          <Icon type={"user"} />
-        </i>
-        <Text>Login</Text>
-      </button>
-    </Link>
+    <button className={styles.loginButton} onClick={handleClick}>
+      <i className={styles.loginIcon}>
+        <Icon type={"user"} />
+      </i>
+      <Text>{logged ? "logout" : "login"}</Text>
+    </button>
   );
 };
 

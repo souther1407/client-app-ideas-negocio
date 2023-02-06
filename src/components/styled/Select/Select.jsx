@@ -11,6 +11,13 @@ const Select = ({ options, ...otherProps }) => {
           background: "none",
           color: "white",
         }),
+        container: (baseStyles, state) => ({
+          ...baseStyles,
+          background: "none",
+          color: "white",
+          width: "80px",
+          height: "30px",
+        }),
         menu: (baseStyles, state) => ({
           ...baseStyles,
           backgroundColor: "#1E1C24",
@@ -19,6 +26,7 @@ const Select = ({ options, ...otherProps }) => {
         singleValue: (baseStyles, state) => ({
           ...baseStyles,
           color: "white",
+          fontSize: "14px",
         }),
       }}
       options={options}

@@ -1,10 +1,17 @@
 .navigation {
   display: flex;
   margin: 4px;
+  position: relative;
+  top: 4px;
 }
 
 .element {
   display: block;
-  width: 40px;
-  margin: 0 8px;
+  width: 35px;
+  margin: 0 12px;
+  padding-bottom: 8px;
+}
+
+.element.selected {
+  border-bottom: 2px solid var(--text-light);
 }

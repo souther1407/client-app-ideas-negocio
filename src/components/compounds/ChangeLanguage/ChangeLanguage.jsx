@@ -17,13 +17,15 @@ const ChangeLanguage = () => {
     }
   };
   return (
-    <Select
-      options={[
-        { value: "en", label: "EN" },
-        { value: "es-ES", label: "ESP" },
-      ]}
-      onChange={handlerChangeLanguage}
-    />
+    <div className={styles.changeLanguage}>
+      <Select
+        options={[
+          { value: "en", label: "EN" },
+          { value: "es-ES", label: "ESP" },
+        ]}
+        onChange={handlerChangeLanguage}
+      />
+    </div>
   );
   /* <Button onClick={handlerChangeLanguage}>
       <Text>{t("change language")}</Text>

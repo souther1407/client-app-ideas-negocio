@@ -5,6 +5,7 @@ import Text from "../../styled/Text/Text";
 import Icon from "../../styled/Icon/Icon";
 import { parserResponse } from "../../../utils/format/formatResponse";
 import { useTranslation } from "react-i18next";
+
 const TextResponse = ({ response }) => {
   const [show, setShow] = useState(false);
   const [steps] = useState(parserResponse(response));

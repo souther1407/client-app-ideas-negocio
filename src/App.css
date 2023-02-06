@@ -7,7 +7,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .App.dark {
@@ -16,13 +15,4 @@
 
 .App.light {
   color: var(--text-dark);
-}
-
-.Form {
-  display: flex;
-  flex-direction: column;
-}
-
-.Form > * {
-  margin-bottom: 32px;
 }

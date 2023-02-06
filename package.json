@@ -12,6 +12,8 @@
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@stripe/react-stripe-js": "^1.16.4",
+    "@stripe/stripe-js": "^1.46.0",
     "country-flag-icons": "^1.5.5",
     "firebase": "^9.16.0",
     "framer-motion": "^8.5.5",
