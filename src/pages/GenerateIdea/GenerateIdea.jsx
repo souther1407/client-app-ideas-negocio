@@ -21,6 +21,7 @@ const GenerateIdea = () => {
     habilidad: "",
     ubicacion: "",
   });
+  console.log(auth.currentUser);
   const { data, updateData } = useContext(context);
 
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./input.module.css";
 import { useContext } from "react";
 import { useValidate } from "../../../hooks/useValidate";
@@ -19,6 +19,7 @@ const Input = ({
   const { theme } = useContext(context);
   const { error, validate } = useValidate(validators);
   const [labelEffect, setLabelEffect] = useState(false);
+  const inputRef = useRef(null);
   const handlerChange = (e) => {
     onChange(e.target.id, e.target.value);
     validate(e.target.value);
@@ -30,7 +31,10 @@ const Input = ({
 
   return (
     <div className={styles.cont}>
-      <label className={`${styles.label} ${labelEffect && styles.effect}`}>
+      <label
+        className={`${styles.label} ${labelEffect && styles.effect}`}
+        onClick={() => inputRef.current.focus()}
+      >
         {label}
       </label>
       {textarea ? (
@@ -44,6 +48,7 @@ const Input = ({
         <div className={styles.inputCont}>
           <input
             {...otherProps}
+            ref={inputRef}
             id={id}
             onFocus={() => setLabelEffect(true)}
             onBlur={(e) => {
