@@ -1,0 +1,20 @@
+.textResponse {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.textContent {
+  margin: 16px;
+  margin-top: 16px;
+  background-color: var(--secondary-light);
+  border-radius: 12px;
+  padding: 8px;
+  color: var(--text-light);
+}
+
+.arrowIcon {
+  margin-left: 24px;
+  width: 30px;
+  height: 30px;
+}
