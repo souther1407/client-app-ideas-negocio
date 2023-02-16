@@ -23,12 +23,13 @@ const SubscribeForm = () => {
 
     if (error) return alert(error.message);
     try {
-      const response = await createSubscription({
+      const body = await createSubscription({
         user: auth.currentUser,
         paymentMethod: paymentMethod.id,
         productId,
       });
-      console.log(response);
+
+      const confirmation = await stripe.confirmCardPayment(body.clientSecret);
       alert("exito :D");
     } catch (error) {
       alert(error.message);

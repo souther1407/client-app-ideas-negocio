@@ -8,20 +8,22 @@ import Register from "./pages/Register/Register";
 import Nav from "./components/compounds/Nav/Nav";
 import Response from "./pages/Response/Response";
 import Subscribe from "./pages/Subscribe/Subscribe";
+import LandingPage from "./pages/LandingPage/LandingPage";
 import {
   LOGIN,
   MAIN,
   REGISTER,
   RESPONSE,
   SUBSCRIBE,
+  LANDING_PAGE,
 } from "./utils/constants/routes";
 function App() {
   const { theme } = useContext(context);
 
   return (
     <div className={`App ${theme}`}>
-      <Nav />
       <Routes>
+        <Route path={LANDING_PAGE} element={<LandingPage />} />
         <Route path={MAIN} element={<GenerateIdea />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={REGISTER} element={<Register />} />

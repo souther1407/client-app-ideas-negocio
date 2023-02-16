@@ -15,8 +15,8 @@ const Select = ({ options, ...otherProps }) => {
           ...baseStyles,
           background: "none",
           color: "white",
-          width: "80px",
-          height: "30px",
+          width: "120px",
+          height: "50px",
         }),
         menu: (baseStyles, state) => ({
           ...baseStyles,
@@ -26,7 +26,7 @@ const Select = ({ options, ...otherProps }) => {
         singleValue: (baseStyles, state) => ({
           ...baseStyles,
           color: "white",
-          fontSize: "14px",
+          fontSize: "30px",
         }),
       }}
       options={options}

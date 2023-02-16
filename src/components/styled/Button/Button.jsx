@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./button.module.css";
 import { context } from "../../../Context/ColorModeContext/ColorModeContext";
 import { useContext } from "react";
+
 const Button = ({ children, color = "primary", onClick, ...otherProps }) => {
   const { theme } = useContext(context);
   return (

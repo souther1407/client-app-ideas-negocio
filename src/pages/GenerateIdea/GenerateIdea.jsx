@@ -6,15 +6,17 @@ import Input from "../../components/styled/Input/Input";
 import { parseData } from "../../utils/parse/parseData";
 import { createText } from "../../services/createText/createText";
 import Loading from "../../components/compounds/Loading/Loading";
-import TextResponse from "../../components/compounds/TextResponse/TextResponse";
+
 import styles from "./generateIdea.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.js";
-import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import Icon from "../../components/styled/Icon/Icon";
 import { context } from "../../Context/GenerateDataContext/GenerateDataContext";
 import { LOGIN, RESPONSE } from "../../utils/constants/routes";
+import Nav from "../../components/compounds/Nav/Nav";
+
 const GenerateIdea = () => {
   const [input, setInput] = useState({
     edad: "1",
@@ -60,6 +62,7 @@ const GenerateIdea = () => {
   };
   return (
     <div className={styles.generateIdea}>
+      <Nav />
       <form className={styles.form} onSubmit={handlerSubmit}>
         <Slider label={t("age label")} id={"edad"} onChange={handlerChange} />
         <Input
