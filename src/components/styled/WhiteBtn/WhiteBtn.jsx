@@ -1,9 +1,15 @@
 import React from "react";
 import styles from "./whiteBtn.module.css";
-const WhiteBtn = ({ children, type = "fulled", onClick, ...otherProps }) => {
+const WhiteBtn = ({
+  children,
+  type = "fulled",
+  onClick,
+  classes,
+  ...otherProps
+}) => {
   return (
     <button
-      className={`${styles.button} ${styles[type]} `}
+      className={`${styles.button} ${styles[type]} ${classes}`}
       onClick={onClick}
       {...otherProps}
     >

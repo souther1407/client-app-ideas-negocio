@@ -6,11 +6,21 @@
   top: 0;
   left: 0;
   width: 100%;
+  transition: all 0.3s ease-in;
+  transform: translateY(-100%);
+}
+
+.show {
+  transform: translateY(0%);
 }
 
 .links,
 .buttons {
   display: flex;
+}
+
+.buttons {
+  align-items: center;
 }
 
 .links {
@@ -31,4 +41,13 @@
   margin-right: 4px;
   position: relative;
   top: 1px;
+}
+
+.loginBtn,
+.startBusinessBtn {
+  font-size: 16px;
+}
+
+.loginBtn {
+  padding: 12px 40px !important;
 }

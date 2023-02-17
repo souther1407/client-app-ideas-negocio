@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "./aa.css";
+import styles from "./carouselMultiline.module.css";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -21,8 +21,36 @@ const responsive = {
     items: 1,
   },
 };
-const CarouselMultiline = ({ children }) => {
-  return <Carousel responsive={responsive}>{children}</Carousel>;
+
+const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+  const {
+    carouselState: { currentSlide },
+  } = rest;
+  return (
+    <div className={styles.customButtons}>
+      {" "}
+      <button className={styles.leftBtn} onClick={() => next()}>
+        {"<"}
+      </button>
+      <button className={styles.rightBtn} onClick={() => previous()}>
+        {">"}
+      </button>
+    </div>
+  );
+};
+const CarouselMultiline = ({ children, onChange }) => {
+  return (
+    <Carousel
+      beforeChange={onChange}
+      className={styles.carousel}
+      responsive={responsive}
+      infinite={true}
+      arrows={false}
+      customButtonGroup={<ButtonGroup />}
+    >
+      {children}
+    </Carousel>
+  );
 };
 
 export default CarouselMultiline;

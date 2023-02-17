@@ -17,15 +17,13 @@ const theme = extendTheme({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <ColorModeContext>
-        <GenerateDataContext>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </GenerateDataContext>
-      </ColorModeContext>
-    </ChakraProvider>
-  </React.StrictMode>
+  <ChakraProvider theme={theme}>
+    <ColorModeContext>
+      <GenerateDataContext>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </GenerateDataContext>
+    </ColorModeContext>
+  </ChakraProvider>
 );
