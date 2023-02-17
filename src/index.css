@@ -19,6 +19,8 @@ body {
   --text-dark: black;
   --bg-dark: #1e1c24;
   --gradien-blue: rgb(7, 7, 129);
+  --bg-blue-dark: #061e32;
+  --color-shining: #0282b5;
 }
 
 h1 {

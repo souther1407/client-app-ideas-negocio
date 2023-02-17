@@ -1,0 +1,44 @@
+.planDetail {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-top: 80px;
+  background-color: var(--bg-blue-dark);
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  width: 50%;
+}
+
+.info > :first-child {
+  margin-bottom: 32px;
+}
+.info > :last-child {
+  font-size: 1.1rem;
+}
+
+.img {
+  width: 300px;
+}
+
+.cardsDetail {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  right: 16px;
+}
+
+.cardsDetail > * {
+  margin: 32px;
+}

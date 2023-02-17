@@ -1,3 +1,14 @@
+.containerShadow {
+  display: flex;
+  width: fit-content;
+  border-radius: 50%;
+}
+
+.containerShadow.shadow {
+  padding: 8px 16px;
+  background-color: #0282b578;
+  box-shadow: 0 0 40px var(--color-shining);
+}
 .card {
   background-color: whitesmoke;
   color: var(--text-dark);
@@ -10,10 +21,10 @@
   transition: all 0.1s ease-in;
 }
 .card.show {
-  position: absolute;
   z-index: 4;
   transform: scale(120%);
-  box-shadow: 0 0 50px #0282b5;
+  position: relative;
+  bottom: 8px;
 }
 
 .title {

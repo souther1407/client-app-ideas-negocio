@@ -9,6 +9,8 @@ import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { BiBrain } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import { FaMoneyBillWave, FaUserCircle, FaHeadSideVirus } from "react-icons/fa";
+import { GiGears } from "react-icons/gi";
+import { TfiArrowsCorner } from "react-icons/tfi";
 import styles from "./icon.module.css";
 
 const Icon = ({ type }) => {
@@ -28,6 +30,8 @@ const Icon = ({ type }) => {
     user: <FaUserCircle {...props} />,
     case: <BsFillBriefcaseFill {...props} />,
     aiHead: <FaHeadSideVirus {...props} />,
+    gears: <GiGears {...props} />,
+    arrows: <TfiArrowsCorner {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

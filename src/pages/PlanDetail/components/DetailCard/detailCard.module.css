@@ -1,0 +1,24 @@
+.detailCard {
+  display: flex;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid aliceblue;
+  align-items: center;
+}
+.detailCard > :not(:last-child) {
+  margin-right: 32px;
+}
+
+.icon {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.37);
+  box-shadow: 0 0 25px blue;
+  width: 40px;
+}
+.btn {
+  margin-left: 32px;
+  position: relative;
+  width: 24px;
+  bottom: 2px;
+  transform: rotateY(180deg);
+}

@@ -4,3 +4,4 @@ export const LOGIN = "/login";
 export const REGISTER = "/register";
 export const SUBSCRIBE = "/subscribe";
 export const LANDING_PAGE = "/";
+export const PLAN_DETAIL = "/plans/detail";

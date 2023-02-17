@@ -9,6 +9,7 @@ import Nav from "./components/compounds/Nav/Nav";
 import Response from "./pages/Response/Response";
 import Subscribe from "./pages/Subscribe/Subscribe";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import PlanDetail from "./pages/PlanDetail/PlanDetail";
 import {
   LOGIN,
   MAIN,
@@ -16,6 +17,7 @@ import {
   RESPONSE,
   SUBSCRIBE,
   LANDING_PAGE,
+  PLAN_DETAIL,
 } from "./utils/constants/routes";
 function App() {
   const { theme } = useContext(context);
@@ -28,6 +30,7 @@ function App() {
         <Route path={LOGIN} element={<Login />} />
         <Route path={REGISTER} element={<Register />} />
         <Route path={RESPONSE} element={<Response />} />
+        <Route path={PLAN_DETAIL} element={<PlanDetail />} />
         <Route path={SUBSCRIBE} element={<Subscribe />} />
         <Route path="*" element={<h1>404 not found :C</h1>} />
       </Routes>
