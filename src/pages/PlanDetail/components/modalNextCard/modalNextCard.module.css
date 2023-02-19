@@ -1,0 +1,17 @@
+.modalNextCard {
+  border: 1px solid aliceblue;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  width: 100%;
+}
+
+.info {
+  font-size: 16px;
+}
+
+.info > :nth-child(1) {
+  color: rgba(240, 248, 255, 0.664);
+  font-size: 12px;
+  margin-bottom: 4px;
+}

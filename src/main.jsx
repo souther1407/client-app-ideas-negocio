@@ -13,6 +13,9 @@ const theme = extendTheme({
     primaryDark: {
       base: "#2D4356;",
     },
+    bgBlueDark: {
+      base: "#061e32",
+    },
   },
 });
 

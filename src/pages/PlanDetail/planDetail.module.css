@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 16px;
-  padding-top: 80px;
+  padding-top: 60px;
   background-color: var(--bg-blue-dark);
 }
 
@@ -24,11 +24,11 @@
   margin-bottom: 32px;
 }
 .info > :last-child {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .img {
-  width: 300px;
+  width: 280px;
 }
 
 .cardsDetail {
@@ -36,9 +36,13 @@
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
-  right: 16px;
+  right: 32px;
 }
 
 .cardsDetail > * {
-  margin: 32px;
+  margin: 14px 24px;
+}
+
+.details {
+  font-size: 16px;
 }
