@@ -1,7 +1,8 @@
 .planDetail {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 8px;
+  min-height: 100vh;
   padding-top: 60px;
   background-color: var(--bg-blue-dark);
 }
@@ -9,14 +10,13 @@
 .description {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .info {
   display: flex;
   flex-direction: column;
   position: relative;
-
   width: 50%;
 }
 
@@ -24,7 +24,7 @@
   margin-bottom: 32px;
 }
 .info > :last-child {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 .img {
@@ -33,14 +33,16 @@
 
 .cardsDetail {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   position: relative;
-  right: 32px;
+  align-self: center;
+  padding: 8px;
+  margin: 0 64px;
+  margin-top: 12px;
 }
-
 .cardsDetail > * {
-  margin: 14px 24px;
+  margin: 32px;
 }
 
 .details {

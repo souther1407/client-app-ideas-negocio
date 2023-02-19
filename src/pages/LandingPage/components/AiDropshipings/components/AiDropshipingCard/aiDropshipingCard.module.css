@@ -22,7 +22,7 @@
 }
 .card.show {
   z-index: 4;
-  transform: scale(120%);
+  transform: scale(130%);
   position: relative;
   bottom: 8px;
 }

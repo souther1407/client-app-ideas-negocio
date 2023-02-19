@@ -22,6 +22,7 @@ const Modal = ({ title = "MVP", children, isOpen, onClose, renderFooter }) => {
       onClose={handlerClose}
       isOpen={isOpen}
       scrollBehavior={"inside"}
+      size={"lg"}
     >
       <ModalOverlay />
       <ModalContent

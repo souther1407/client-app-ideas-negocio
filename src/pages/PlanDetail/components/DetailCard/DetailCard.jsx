@@ -10,6 +10,7 @@ const DetailCard = ({ onShowDetail }) => {
         <Icon type={"gears"} />
       </i>
       <Text>MVP</Text>
+
       <button className={styles.btn} onClick={onShowDetail}>
         <Icon type={"arrows"} />
       </button>
