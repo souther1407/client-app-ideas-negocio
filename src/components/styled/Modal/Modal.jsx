@@ -13,9 +13,16 @@ import {
 
 const Modal = ({ title = "MVP", children, isOpen, onClose, renderFooter }) => {
   const [showFooter, setShowFooter] = useState(false);
-
+  const handlerClose = () => {
+    setShowFooter(false);
+    onClose();
+  };
   return (
-    <ChakraModal onClose={onClose} isOpen={isOpen} scrollBehavior={"inside"}>
+    <ChakraModal
+      onClose={handlerClose}
+      isOpen={isOpen}
+      scrollBehavior={"inside"}
+    >
       <ModalOverlay />
       <ModalContent
         backgroundImage={"linear-gradient(#061e32, #0d4572, #061e32)"}
