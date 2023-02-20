@@ -11,20 +11,27 @@ body {
 
 :root {
   --primary-light: #2d4356;
-  --btn-primary-border-color: #8d8c90;
+  --btn-primary-border-color: #bdbdbd;
   --primary-dark: #2d4356;
   --secondary-light: #21252f;
   --secondary-dark: #21252f;
   --text-light: white;
+  --white: aliceblue;
   --text-dark: black;
+  --black: rgb(15, 15, 15);
   --bg-dark: #1e1c24;
   --gradien-blue: rgb(7, 7, 129);
   --bg-blue-dark: #061e32;
   --color-shining: #0282b5;
+  --blue-shining: #0282b52c;
+  --md: 20px;
+  --sm: 16px;
+  --lg: 24px;
+  --xlg: 32px;
 }
 
 h1 {
-  font-size: 2.4rem !important;
+  font-size: 2.4rem;
 }
 p {
   font-size: 1.1rem;

@@ -22,6 +22,7 @@
 
 .info > :first-child {
   margin-bottom: 32px;
+  font-size: var(--xlg);
 }
 .info > :last-child {
   font-size: 1.1rem;

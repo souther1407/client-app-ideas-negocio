@@ -1,7 +1,7 @@
 import "./App.css";
 import { context } from "./Context/ColorModeContext/ColorModeContext";
 import { useContext } from "react";
-import GenerateIdea from "./pages/GenerateIdea/GenerateIdea";
+import GenerateIdea from "./pages/GenerateIdea(deprecated)/GenerateIdea";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -10,6 +10,7 @@ import Response from "./pages/Response/Response";
 import Subscribe from "./pages/Subscribe/Subscribe";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PlanDetail from "./pages/PlanDetail/PlanDetail";
+import StartABusiness from "./pages/StartABusiness/StartABusiness";
 import {
   LOGIN,
   MAIN,
@@ -18,6 +19,7 @@ import {
   SUBSCRIBE,
   LANDING_PAGE,
   PLAN_DETAIL,
+  START_A_BUSINESS,
 } from "./utils/constants/routes";
 function App() {
   const { theme } = useContext(context);
@@ -32,6 +34,7 @@ function App() {
         <Route path={RESPONSE} element={<Response />} />
         <Route path={PLAN_DETAIL} element={<PlanDetail />} />
         <Route path={SUBSCRIBE} element={<Subscribe />} />
+        <Route path={START_A_BUSINESS} element={<StartABusiness />} />
         <Route path="*" element={<h1>404 not found :C</h1>} />
       </Routes>
     </div>

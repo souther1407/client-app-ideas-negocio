@@ -11,6 +11,7 @@ import { ImLocation } from "react-icons/im";
 import { FaMoneyBillWave, FaUserCircle, FaHeadSideVirus } from "react-icons/fa";
 import { GiGears } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "./icon.module.css";
 
 const Icon = ({ type }) => {
@@ -32,6 +33,8 @@ const Icon = ({ type }) => {
     aiHead: <FaHeadSideVirus {...props} />,
     gears: <GiGears {...props} />,
     arrows: <TfiArrowsCorner {...props} />,
+    leftArrow: <BsArrowLeft {...props} />,
+    rightArrow: <BsArrowRight {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

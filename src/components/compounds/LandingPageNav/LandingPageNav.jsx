@@ -6,7 +6,10 @@ import ChangeLanguage from "../ChangeLanguage/ChangeLanguage";
 import WhiteBtn from "../../styled/WhiteBtn/WhiteBtn";
 import { useScroll } from "../../../hooks/useScroll";
 import { useNavigate, useLocation } from "react-router-dom";
-import { LANDING_PAGE } from "../../../utils/constants/routes";
+import {
+  LANDING_PAGE,
+  START_A_BUSINESS,
+} from "../../../utils/constants/routes";
 const LandingPageNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,7 +29,7 @@ const LandingPageNav = () => {
       }`}
     >
       <section className={styles.links}>
-        <Link to={"/"}>
+        <Link to={LANDING_PAGE}>
           <Text>Home</Text>
         </Link>
 
@@ -34,7 +37,7 @@ const LandingPageNav = () => {
           Ejemplos
         </Text>
 
-        <Link to={"/"}>
+        <Link to={LANDING_PAGE}>
           <Text>Como funciona</Text>
         </Link>
       </section>
@@ -43,7 +46,10 @@ const LandingPageNav = () => {
         <WhiteBtn type="bordered" classes={styles.loginBtn}>
           <Text>Log in</Text>
         </WhiteBtn>
-        <WhiteBtn classes={styles.startBusinessBtn}>
+        <WhiteBtn
+          classes={styles.startBusinessBtn}
+          onClick={() => navigate(START_A_BUSINESS)}
+        >
           <Text>
             Star a<br></br> business
           </Text>

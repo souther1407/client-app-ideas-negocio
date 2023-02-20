@@ -3,7 +3,10 @@ import styles from "./mainBanner.module.css";
 import WhiteBtn from "../../../../components/styled/WhiteBtn/WhiteBtn";
 import Text from "../../../../components/styled/Text/Text";
 import Box from "../../../../assets/box.png";
+import { useNavigate } from "react-router-dom";
+import { START_A_BUSINESS } from "../../../../utils/constants/routes";
 const MainBanner = () => {
+  const navigate = useNavigate();
   const handleClick = (e) => {
     const elementAiDropships = document.getElementById("airDropshipings");
     elementAiDropships.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -20,7 +23,7 @@ const MainBanner = () => {
             contratados. Son nuestros héroes. Pueden ayudarte
           </Text>
           <div className={styles.buttons}>
-            <WhiteBtn>
+            <WhiteBtn onClick={() => navigate(START_A_BUSINESS)}>
               <Text>
                 Crear mi<br></br> negocio
               </Text>

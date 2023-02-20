@@ -19,6 +19,7 @@
 .title {
   padding-bottom: 32px;
   border-bottom: 2px solid gainsboro;
+  font-size: var(--xlg);
 }
 .details {
   padding-top: 32px;
