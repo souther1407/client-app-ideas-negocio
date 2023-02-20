@@ -13,7 +13,12 @@ const StartABusiness = () => {
   });
 
   const [field, setField] = useState(1);
-
+  const [shine, setShine] = useState({
+    budget: false,
+    age: false,
+    skills: false,
+    location: false,
+  });
   const nextField = () => {
     if (field === 5) return;
     setField((prev) => prev + 1);
@@ -24,7 +29,23 @@ const StartABusiness = () => {
   };
 
   const handleChange = (e) => {
+    setShine((prev) => ({ ...prev, [e.target.id]: e.target.value.length > 0 }));
     setInput((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const isMustShine = () => {
+    switch (field) {
+      case 1:
+        return shine.location;
+      case 2:
+        return shine.age;
+      case 3:
+        return shine.skills;
+      case 4:
+        return shine.budget;
+      default:
+        return false;
+    }
   };
   return (
     <div className={styles.startABusiness}>
@@ -36,7 +57,7 @@ const StartABusiness = () => {
           <input
             type="text"
             id="location"
-            className={styles.input}
+            className={`${styles.input} ${shine.location && styles.shine}`}
             onChange={handleChange}
           />
         </section>
@@ -45,7 +66,7 @@ const StartABusiness = () => {
           <input
             type="number"
             id="age"
-            className={styles.input}
+            className={`${styles.input} ${shine.age && styles.shine}`}
             onChange={handleChange}
           />
         </section>
@@ -54,7 +75,7 @@ const StartABusiness = () => {
           <input
             type="text"
             id="skills"
-            className={styles.input}
+            className={`${styles.input} ${shine.skills && styles.shine}`}
             onChange={handleChange}
           />
         </section>
@@ -63,7 +84,7 @@ const StartABusiness = () => {
           <input
             type="text"
             id="budget"
-            className={styles.input}
+            className={`${styles.input} ${shine.budget && styles.shine}`}
             onChange={handleChange}
           />
         </section>
@@ -87,7 +108,12 @@ const StartABusiness = () => {
             <Text>MVP</Text>
           </div>
         </div>
-        <div className={`${styles.nextBtn} ${field < 5 && styles.enabled}`}>
+
+        <div
+          className={`${styles.nextBtn} ${field < 5 && styles.enabled} ${
+            isMustShine() && styles.shine
+          }`}
+        >
           <div className={styles.desc}>
             <Text>Next</Text>
             <Text>MVP</Text>
