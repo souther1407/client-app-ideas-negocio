@@ -4,12 +4,23 @@ import Text from "../../components/styled/Text/Text";
 import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
 import Icon from "../../components/styled/Icon/Icon";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
+
+const TEACHER = "Elon Musk";
+const TEACHERS = {
+  elonMusk: "Elon Musk",
+  billGates: "Bill Gates",
+  steveJobs: "Steve Jobs",
+  joeBezos: "Joe Bezos",
+  marcosGasperin: "Marcos Gasperin",
+  warrenBuffet: "Warren Buffet",
+};
 const StartABusiness = () => {
   const [input, setInput] = useState({
     budget: "",
     age: "",
     skills: "",
     location: "",
+    teacher: "",
   });
 
   const [field, setField] = useState(1);
@@ -18,9 +29,10 @@ const StartABusiness = () => {
     age: false,
     skills: false,
     location: false,
+    teacher: false,
   });
   const nextField = () => {
-    if (field === 5) return;
+    if (field === 6) return;
     setField((prev) => prev + 1);
   };
   const antField = () => {
@@ -33,6 +45,11 @@ const StartABusiness = () => {
     setInput((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  const handleTeacherSelect = (teacher) => {
+    setShine((prev) => ({ ...prev, teacher: true }));
+    setInput((prev) => ({ ...prev, teacher: teacher }));
+  };
+
   const isMustShine = () => {
     switch (field) {
       case 1:
@@ -43,6 +60,8 @@ const StartABusiness = () => {
         return shine.skills;
       case 4:
         return shine.budget;
+      case 5:
+        return shine.teacher;
       default:
         return false;
     }
@@ -50,7 +69,8 @@ const StartABusiness = () => {
   return (
     <div className={styles.startABusiness}>
       <LandingPageNav />
-      <ProgressBar value={(field * 100) / 5} />
+      {field !== 5 && <ProgressBar value={(field * 100) / 6} />}
+
       <section className={styles.form}>
         <section className={`${styles.field} ${field === 1 && styles.show}`}>
           <Text type="title">De donde eres?</Text>
@@ -88,12 +108,70 @@ const StartABusiness = () => {
             onChange={handleChange}
           />
         </section>
-        <section className={`${styles.field} ${field === 5 && styles.show}`}>
+        <section
+          className={`${styles.field} ${styles.teachersField} ${
+            field === 5 && styles.show
+          }`}
+        >
+          <Text type="title">Elige a tu profesor</Text>
+          <div className={styles.teachersContainer}>
+            <div
+              className={`${styles.teacher} ${
+                input.teacher === TEACHERS.elonMusk && styles.shine
+              }`}
+              onClick={() => handleTeacherSelect(TEACHERS.elonMusk)}
+            >
+              <Icon type={"image"} />
+            </div>
+            <div
+              className={`${styles.teacher} ${
+                input.teacher === TEACHERS.billGates && styles.shine
+              }`}
+              onClick={() => handleTeacherSelect(TEACHERS.billGates)}
+            >
+              <Icon type={"image"} />
+            </div>
+            <div
+              className={`${styles.teacher} ${
+                input.teacher === TEACHERS.joeBezos && styles.shine
+              }`}
+              onClick={() => handleTeacherSelect(TEACHERS.joeBezos)}
+            >
+              <Icon type={"image"} />
+            </div>
+            <div
+              className={`${styles.teacher} ${
+                input.teacher === TEACHERS.marcosGasperin && styles.shine
+              }`}
+              onClick={() => handleTeacherSelect(TEACHERS.marcosGasperin)}
+            >
+              <Icon type={"image"} />
+            </div>
+            <div
+              className={`${styles.teacher} ${
+                input.teacher === TEACHERS.steveJobs && styles.shine
+              }`}
+              onClick={() => handleTeacherSelect(TEACHERS.steveJobs)}
+            >
+              <Icon type={"image"} />
+            </div>
+            <div
+              className={`${styles.teacher} ${
+                input.teacher === TEACHERS.warrenBuffet && styles.shine
+              }`}
+              onClick={() => handleTeacherSelect(TEACHERS.warrenBuffet)}
+            >
+              <Icon type={"image"} />
+            </div>
+          </div>
+        </section>
+        <section className={`${styles.field} ${field === 6 && styles.show}`}>
           <button className={styles.generateIdeaBtn}>
             <Text type="title">Generar Idea</Text>
           </button>
         </section>
       </section>
+
       <section className={styles.controls}>
         <div className={`${styles.antBtn} ${field > 1 && styles.enabled}`}>
           <button
@@ -110,7 +188,7 @@ const StartABusiness = () => {
         </div>
 
         <div
-          className={`${styles.nextBtn} ${field < 5 && styles.enabled} ${
+          className={`${styles.nextBtn} ${field < 6 && styles.enabled} ${
             isMustShine() && styles.shine
           }`}
         >
@@ -120,7 +198,7 @@ const StartABusiness = () => {
           </div>
           <button
             className={styles.arrow}
-            disabled={field === 5}
+            disabled={field === 6}
             onClick={nextField}
           >
             <Icon type={"rightArrow"} />
