@@ -1,0 +1,29 @@
+.detailCard {
+  display: flex;
+  padding: 24px 16px;
+  width: 350px;
+  border-radius: 8px;
+  border: 1px solid aliceblue;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-dark-green);
+}
+
+.icon {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.37);
+  box-shadow: 0 0 25px blue;
+  width: 35px;
+  margin-right: 32px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+.btn {
+  position: relative;
+  width: 32px;
+  bottom: 2px;
+  transform: rotateY(180deg);
+}

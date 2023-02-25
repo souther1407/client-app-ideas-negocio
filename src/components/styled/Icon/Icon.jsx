@@ -8,7 +8,10 @@ import {
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { BiBrain } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
-import { FaMoneyBillWave, FaUserCircle } from "react-icons/fa";
+import { FaMoneyBillWave, FaUserCircle, FaHeadSideVirus } from "react-icons/fa";
+import { GiGears } from "react-icons/gi";
+import { TfiArrowsCorner } from "react-icons/tfi";
+import { BsArrowLeft, BsArrowRight, BsImage } from "react-icons/bs";
 import styles from "./icon.module.css";
 
 const Icon = ({ type }) => {
@@ -27,6 +30,12 @@ const Icon = ({ type }) => {
     budget: <FaMoneyBillWave {...props} />,
     user: <FaUserCircle {...props} />,
     case: <BsFillBriefcaseFill {...props} />,
+    aiHead: <FaHeadSideVirus {...props} />,
+    gears: <GiGears {...props} />,
+    arrows: <TfiArrowsCorner {...props} />,
+    leftArrow: <BsArrowLeft {...props} />,
+    rightArrow: <BsArrowRight {...props} />,
+    image: <BsImage {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

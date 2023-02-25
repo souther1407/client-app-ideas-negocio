@@ -1,0 +1,52 @@
+.planDetail {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  min-height: 100vh;
+  padding-top: 60px;
+  background-color: var(--bg-dark-green);
+  color: var(--white);
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 50%;
+}
+
+.info > :first-child {
+  margin-bottom: 32px;
+  font-size: var(--xlg);
+}
+.info > :last-child {
+  font-size: 1.1rem;
+}
+
+.img {
+  width: 280px;
+}
+
+.cardsDetail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  align-self: center;
+  padding: 8px;
+
+  margin-top: 12px;
+}
+.cardsDetail > * {
+  margin: 32px;
+}
+
+.details {
+  font-size: 16px;
+}

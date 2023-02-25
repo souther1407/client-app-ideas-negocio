@@ -1,0 +1,31 @@
+.aiDropshipings {
+  padding: 32px;
+  padding-top: 150px;
+  background-color: var(--bg-dark-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  border-bottom: 2px solid gainsboro;
+  padding-bottom: 16px;
+  font-size: var(--xlg);
+}
+
+.desc {
+  padding-top: 16px;
+  color: rgba(220, 220, 220, 0.685);
+  text-align: center;
+}
+
+.carousel {
+  padding: 32px;
+  width: 100%;
+}
+.element {
+  display: flex;
+  justify-content: center;
+
+  z-index: 5;
+}

@@ -1,0 +1,8 @@
+.container {
+  background-color: var(--white);
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  color: var(--black);
+}

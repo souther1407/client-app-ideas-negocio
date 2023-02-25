@@ -2,15 +2,26 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  signInWithCustomToken,
 } from "firebase/auth";
 import { auth } from "../firebase.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AuthUserData from "../services/authentication/auth.js";
 
 export const useLogin = ({ onLogin = () => {}, onLogout = () => {} }) => {
   const [credentials, setCredentials] = useState(null);
-  onAuthStateChanged(auth, (user) => {
-    setCredentials(user);
-  });
+  const [lastSubscription, setLastSubscription] = useState([]);
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const data = await AuthUserData.getUserData(user.uid);
+        setLastSubscription(data);
+      } else {
+        setLastSubscription([]);
+      }
+      setCredentials(user);
+    });
+  }, []);
 
   const login = async (email, password) => {
     try {
@@ -30,5 +41,5 @@ export const useLogin = ({ onLogin = () => {}, onLogout = () => {} }) => {
     }
   };
 
-  return { login, credentials, logout };
+  return { login, credentials, logout, lastSubscription };
 };

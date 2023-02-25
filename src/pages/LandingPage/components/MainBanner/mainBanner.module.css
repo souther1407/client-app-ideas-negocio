@@ -1,0 +1,42 @@
+.mainBanner {
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0) 1%,
+    var(--transparent-blue) 65%,
+    #0b2237,
+    rgb(1, 1, 37)
+  );
+  padding: 32px;
+  padding-top: 64px;
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding-bottom: 32px;
+  border-bottom: 2px solid gainsboro;
+  font-size: var(--xxxlg);
+}
+.details {
+  padding-top: 32px;
+  color: rgba(240, 248, 255, 0.699);
+  font-size: medium;
+}
+.buttons {
+  margin-top: 32px;
+  display: flex;
+}
+
+.buttons > :first-child {
+  margin-right: 64px;
+}
+
+.boxImg {
+  width: 1000px;
+}

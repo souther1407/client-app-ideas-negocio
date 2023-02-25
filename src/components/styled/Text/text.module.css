@@ -1,6 +1,6 @@
 .text {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: inherit;
-    display: flex;
+  font-family: "DM Sans", sans-serif;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.1;
 }
-

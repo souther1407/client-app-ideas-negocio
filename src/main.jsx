@@ -13,19 +13,20 @@ const theme = extendTheme({
     primaryDark: {
       base: "#2D4356;",
     },
+    bgBlueDark: {
+      base: "#061e32",
+    },
   },
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <ColorModeContext>
-        <GenerateDataContext>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </GenerateDataContext>
-      </ColorModeContext>
-    </ChakraProvider>
-  </React.StrictMode>
+  <ChakraProvider theme={theme}>
+    <ColorModeContext>
+      <GenerateDataContext>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </GenerateDataContext>
+    </ColorModeContext>
+  </ChakraProvider>
 );

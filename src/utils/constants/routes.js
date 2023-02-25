@@ -1,5 +1,11 @@
-export const MAIN = "/";
-export const RESPONSE = "/response";
+export const MAIN = "/dashboard";
+export const RESPONSE = MAIN + "/response";
 export const LOGIN = "/login";
 export const REGISTER = "/register";
 export const SUBSCRIBE = "/subscribe";
+export const LANDING_PAGE = "/";
+export const PLAN_DETAIL = "/plans/detail";
+export const START_A_BUSINESS = "/start";
+export const PLAN_EXAMPLE_1 = "/examples/1";
+export const PLAN_EXAMPLE_2 = "/examples/2";
+export const PLAN_EXAMPLE_3 = "/examples/3";

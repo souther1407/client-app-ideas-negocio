@@ -1,3 +1,8 @@
+.response {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 .textResponse {
   display: flex;
   flex-direction: column;
