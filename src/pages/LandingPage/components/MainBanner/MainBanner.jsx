@@ -4,7 +4,9 @@ import WhiteBtn from "../../../../components/styled/WhiteBtn/WhiteBtn";
 import Text from "../../../../components/styled/Text/Text";
 import Box from "../../../../assets/box.png";
 import { useNavigate } from "react-router-dom";
+import Button from "../../../../components/styled/Button/Button";
 import { START_A_BUSINESS } from "../../../../utils/constants/routes";
+import Mark from "../../../../components/styled/Mark/Mark";
 const MainBanner = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
@@ -15,7 +17,9 @@ const MainBanner = () => {
     <div className={styles.mainBanner}>
       <section className={styles.info}>
         <div className={styles.title}>
-          <Text type="title">La historia de tu éxito empieza ahora</Text>
+          <Text type="title">
+            La historia de tu <Mark>éxito</Mark> empieza ahora
+          </Text>
         </div>
         <div className={styles.details}>
           <Text>
@@ -23,16 +27,15 @@ const MainBanner = () => {
             contratados. Son nuestros héroes. Pueden ayudarte
           </Text>
           <div className={styles.buttons}>
-            <WhiteBtn onClick={() => navigate(START_A_BUSINESS)}>
-              <Text>
-                Crear mi<br></br> negocio
-              </Text>
-            </WhiteBtn>
-            <WhiteBtn type="bordered" onClick={handleClick}>
-              <Text>
-                Ver<br></br> ejemplos
-              </Text>
-            </WhiteBtn>
+            <Button
+              color="secondary"
+              onClick={() => navigate(START_A_BUSINESS)}
+            >
+              <Text>Crear negocio</Text>
+            </Button>
+            <Button type="bordered" onClick={handleClick}>
+              <Text>Ver ejemplos</Text>
+            </Button>
           </div>
         </div>
       </section>

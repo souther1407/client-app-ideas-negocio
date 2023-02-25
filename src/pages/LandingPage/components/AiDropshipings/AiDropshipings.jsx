@@ -4,6 +4,7 @@ import Text from "../../../../components/styled/Text/Text";
 import CarouselMultiline from "../../../../components/compounds/CarouselMultiline/CarouselMultiline";
 import AiDropshipingCard from "./components/AiDropshipingCard/AiDropshipingCard";
 import { useState } from "react";
+import { PLAN_EXAMPLE_1 } from "../../../../utils/constants/routes";
 
 const AiDropshipings = () => {
   const [currentCard, setCurrentCard] = useState(5);
@@ -28,6 +29,7 @@ const AiDropshipings = () => {
                 currentCard + 1 === 5
               }
               index={1}
+              to={PLAN_EXAMPLE_1}
             />
           </div>
           <div className={`${styles.element}`}>
@@ -38,6 +40,7 @@ const AiDropshipings = () => {
                 currentCard + 1 === 6
               }
               index={2}
+              to={PLAN_EXAMPLE_1}
             />
           </div>
           <div className={`${styles.element}`}>
@@ -48,6 +51,7 @@ const AiDropshipings = () => {
                 currentCard + 1 === 12 ||
                 currentCard + 1 === 7
               }
+              to={PLAN_EXAMPLE_1}
             />
           </div>
           <div className={`${styles.element}`}>
@@ -58,6 +62,7 @@ const AiDropshipings = () => {
                 currentCard + 1 === 8
               }
               index={4}
+              to={PLAN_EXAMPLE_1}
             />
           </div>
           <div className={`${styles.element}`}>
@@ -68,6 +73,7 @@ const AiDropshipings = () => {
                 currentCard + 1 === 9
               }
               index={5}
+              to={PLAN_EXAMPLE_1}
             />
           </div>
         </CarouselMultiline>

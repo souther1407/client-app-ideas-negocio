@@ -3,9 +3,11 @@ import Text from "../../components/styled/Text/Text";
 import Button from "../../components/styled/Button/Button";
 import Input from "../../components/styled/Input/Input";
 import styles from "./login.module.css";
+import Link from "../../components/styled/Link/Link";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { REGISTER } from "../../utils/constants/routes";
 const Login = () => {
   const [input, setInput] = useState({
     email: "",
@@ -42,6 +44,9 @@ const Login = () => {
           <Text>Login</Text>
         </Button>
       </form>
+      <Link to={REGISTER}>
+        <Text>No tienes una cuenta? registrate</Text>
+      </Link>
     </div>
   );
 };

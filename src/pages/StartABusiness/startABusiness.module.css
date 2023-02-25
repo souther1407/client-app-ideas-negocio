@@ -8,10 +8,11 @@
   padding: 32px;
   background-image: radial-gradient(
     var(--blue-shining),
-    var(--black),
-    var(--black),
-    var(--black)
+    var(--bg-dark-green),
+    var(--bg-dark-green),
+    var(--bg-dark-green)
   );
+  color: var(--white);
 }
 
 .startABusiness > :nth-child(2) {

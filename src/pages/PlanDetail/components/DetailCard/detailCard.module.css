@@ -1,16 +1,12 @@
 .detailCard {
   display: flex;
   padding: 24px 16px;
+  width: 350px;
   border-radius: 8px;
   border: 1px solid aliceblue;
   align-items: center;
-}
-
-.detailCard > :nth-child(2) {
-  font-size: 20px;
-}
-.detailCard > :not(:last-child) {
-  margin-right: 32px;
+  justify-content: space-between;
+  background-color: var(--bg-dark-green);
 }
 
 .icon {
@@ -18,10 +14,14 @@
   background-color: rgba(0, 0, 255, 0.37);
   box-shadow: 0 0 25px blue;
   width: 35px;
+  margin-right: 32px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
 }
 .btn {
-  margin-left: 32px;
-
   position: relative;
   width: 32px;
   bottom: 2px;

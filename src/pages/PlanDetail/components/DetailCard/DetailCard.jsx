@@ -3,15 +3,17 @@ import styles from "./detailCard.module.css";
 import Text from "../../../../components/styled/Text/Text";
 import Icon from "../../../../components/styled/Icon/Icon";
 
-const DetailCard = ({ onShowDetail }) => {
+const DetailCard = ({ title, id, onShowDetail }) => {
   return (
     <section className={styles.detailCard}>
-      <i className={styles.icon}>
-        <Icon type={"gears"} />
-      </i>
-      <Text>MVP</Text>
+      <div className={styles.title}>
+        <i className={styles.icon}>
+          <Icon type={"gears"} />
+        </i>
+        <Text>{title}</Text>
+      </div>
 
-      <button className={styles.btn} onClick={onShowDetail}>
+      <button className={styles.btn} onClick={() => onShowDetail(id, title)}>
         <Icon type={"arrows"} />
       </button>
     </section>

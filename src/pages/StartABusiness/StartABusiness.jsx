@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./startABusiness.module.css";
 import Text from "../../components/styled/Text/Text";
 import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
 import Icon from "../../components/styled/Icon/Icon";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
+import { useNavigate } from "react-router-dom";
+import { PLAN_DETAIL } from "../../utils/constants/routes";
+import useBusinessPlan from "../../states/businessPlan";
+import NeedLoginOrPayWindow from "../../components/compounds/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
+import { useLogin } from "../../hooks/useLogin";
+import GradientBorder from "../../components/styled/GradientBorder/GradientBorder";
 
-const TEACHER = "Elon Musk";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   billGates: "Bill Gates",
@@ -14,6 +19,7 @@ const TEACHERS = {
   marcosGasperin: "Marcos Gasperin",
   warrenBuffet: "Warren Buffet",
 };
+
 const StartABusiness = () => {
   const [input, setInput] = useState({
     budget: "",
@@ -23,6 +29,10 @@ const StartABusiness = () => {
     teacher: "",
   });
 
+  const { credentials, lastSubscription } = useLogin({});
+
+  const navigate = useNavigate();
+
   const [field, setField] = useState(1);
   const [shine, setShine] = useState({
     budget: false,
@@ -31,6 +41,17 @@ const StartABusiness = () => {
     location: false,
     teacher: false,
   });
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const { creating, generateBusinessPlan } = useBusinessPlan((state) => state);
+
+  const handlerSendData = async () => {
+    if (!credentials || lastSubscription.length === 0)
+      return setShowPopup(true);
+    await generateBusinessPlan(input);
+    navigate(PLAN_DETAIL);
+  };
   const nextField = () => {
     if (field === 6) return;
     setField((prev) => prev + 1);
@@ -69,6 +90,7 @@ const StartABusiness = () => {
   return (
     <div className={styles.startABusiness}>
       <LandingPageNav />
+
       {field !== 5 && <ProgressBar value={(field * 100) / 6} />}
 
       <section className={styles.form}>
@@ -166,8 +188,14 @@ const StartABusiness = () => {
           </div>
         </section>
         <section className={`${styles.field} ${field === 6 && styles.show}`}>
-          <button className={styles.generateIdeaBtn}>
-            <Text type="title">Generar Idea</Text>
+          <button
+            disabled={creating}
+            className={styles.generateIdeaBtn}
+            onClick={handlerSendData}
+          >
+            <Text type="title">
+              {creating ? "creating...." : "Generar Plan"}
+            </Text>
           </button>
         </section>
       </section>
@@ -205,6 +233,7 @@ const StartABusiness = () => {
           </button>
         </div>
       </section>
+      {showPopup && <NeedLoginOrPayWindow />}
     </div>
   );
 };

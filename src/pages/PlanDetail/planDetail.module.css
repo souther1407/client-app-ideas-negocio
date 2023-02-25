@@ -4,7 +4,8 @@
   padding: 8px;
   min-height: 100vh;
   padding-top: 60px;
-  background-color: var(--bg-blue-dark);
+  background-color: var(--bg-dark-green);
+  color: var(--white);
 }
 
 .description {
@@ -39,7 +40,7 @@
   position: relative;
   align-self: center;
   padding: 8px;
-  margin: 0 64px;
+
   margin-top: 12px;
 }
 .cardsDetail > * {

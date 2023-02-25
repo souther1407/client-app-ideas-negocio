@@ -4,7 +4,7 @@ import Text from "../../../../../../components/styled/Text/Text";
 import Icon from "../../../../../../components/styled/Icon/Icon";
 import Link from "../../../.././../../components/styled/Link/Link";
 import { PLAN_DETAIL } from "../../../../../../utils/constants/routes";
-const AiDropshipingCard = ({ show, index }) => {
+const AiDropshipingCard = ({ show, index, to }) => {
   return (
     <div className={`${styles.containerShadow} ${show && styles.shadow}`}>
       <div className={`${styles.card} ${show && styles.show}`}>
@@ -16,7 +16,7 @@ const AiDropshipingCard = ({ show, index }) => {
         </section>
         <section className={`${styles.details} ${show && styles.showDetails}`}>
           <Text>Programador, 20 años, presupuesto de $1000...</Text>
-          <Link to={PLAN_DETAIL} className={styles.link}>
+          <Link to={to} className={styles.link}>
             <Text>Ver plan {"------->"}</Text>
           </Link>
         </section>

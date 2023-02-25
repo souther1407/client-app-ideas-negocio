@@ -9,11 +9,21 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {
   LANDING_PAGE,
   START_A_BUSINESS,
+  LOGIN,
 } from "../../../utils/constants/routes";
+import { useLogin } from "../../../hooks/useLogin";
+import Button from "../../styled/Button/Button";
 const LandingPageNav = () => {
+  const { credentials, logout } = useLogin({});
   const location = useLocation();
   const navigate = useNavigate();
   const stateScroll = useScroll();
+
+  const handleUserlogin = () => {
+    if (credentials) logout();
+    else navigate(LOGIN);
+  };
+
   const handlerClick = (e) => {
     if (location.pathname !== LANDING_PAGE) navigate(LANDING_PAGE);
     else {
@@ -28,32 +38,36 @@ const LandingPageNav = () => {
         stateScroll.isScrolledUp && styles.show
       }`}
     >
-      <section className={styles.links}>
-        <Link to={LANDING_PAGE}>
-          <Text>Home</Text>
-        </Link>
-
-        <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
-          Ejemplos
-        </Text>
-
-        <Link to={LANDING_PAGE}>
-          <Text>Como funciona</Text>
-        </Link>
+      <section className={styles.logo}>
+        <Text>Prodigy AI</Text>
       </section>
-      <section className={styles.buttons}>
-        <ChangeLanguage />
-        <WhiteBtn type="bordered" classes={styles.loginBtn}>
-          <Text>Log in</Text>
-        </WhiteBtn>
-        <WhiteBtn
-          classes={styles.startBusinessBtn}
-          onClick={() => navigate(START_A_BUSINESS)}
-        >
-          <Text>
-            Star a<br></br> business
+      <section className={styles.butonsAndLinks}>
+        <section className={styles.links}>
+          <Link to={LANDING_PAGE}>
+            <Text>Home</Text>
+          </Link>
+
+          <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
+            Ejemplos
           </Text>
-        </WhiteBtn>
+        </section>
+        <section className={styles.buttons}>
+          <ChangeLanguage />
+          <Button
+            type="bordered"
+            classes={styles.loginBtn}
+            onClick={handleUserlogin}
+          >
+            <Text>{credentials ? "log out" : "log in"}</Text>
+          </Button>
+          <Button
+            classes={styles.startBusinessBtn}
+            color="secondary"
+            onClick={() => navigate(START_A_BUSINESS)}
+          >
+            <Text>Crear Negocio</Text>
+          </Button>
+        </section>
       </section>
     </nav>
   );

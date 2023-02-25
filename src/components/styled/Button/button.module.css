@@ -1,35 +1,49 @@
 .button {
-    padding: 8px 16px;
-    border-radius: 16px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    transition: all 0.2s ease-in;
-    border: none;
+  padding: 8px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  width: 140px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in;
+  border: none;
+}
+.button > p {
+  font-size: var(--sm);
 }
 .button:disabled {
-    background-color: gainsboro !important;
-    cursor: auto;
+  background-color: gainsboro !important;
+  cursor: auto;
 }
 
-.primary.light {
-    background-color: var(--primary-dark);
-    color: var(--text-dark);
-
+.fulled.primary.light {
+  background-color: var(--white);
+  color: var(--text-dark);
 }
 
-.secondary.light {
-    background-color: var(--secondary-dark);
-    color: var(--text-light);
+.fulled.secondary.light {
+  background-color: var(--secondary-light);
+  color: var(--text-light);
+}
+
+.bordered.primary.light {
+  border: 1px solid var(--btn-primary-border-color);
+  color: var(--white);
+}
+.bordered.secondary.light {
+  border: 1px solid var(--secondary-light);
+  color: var(--secondary-light);
 }
 
 .primary.dark {
-    background-color: var(--primary-light);
-    border: 4px solid var(--btn-primary-border-color);
-    color: var(--text-light);
+  background-color: var(--primary-light);
+  border: 4px solid var(--btn-primary-border-color);
+  color: var(--text-light);
 }
 
 .secondary.dark {
-    background-color: var(--secondary-light);
-    color: var(--text-light);
+  background-color: var(--secondary-light);
+  color: var(--text-light);
 }

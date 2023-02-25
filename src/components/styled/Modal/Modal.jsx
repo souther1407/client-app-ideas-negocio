@@ -11,10 +11,10 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-const Modal = ({ title = "MVP", children, isOpen, onClose, renderFooter }) => {
-  const [showFooter, setShowFooter] = useState(false);
+const Modal = ({ title = "", children, isOpen, onClose, renderFooter }) => {
+  const [showFooter, setShowFooter] = useState(true);
   const handlerClose = () => {
-    setShowFooter(false);
+    setShowFooter(true);
     onClose();
   };
   return (
@@ -38,9 +38,11 @@ const Modal = ({ title = "MVP", children, isOpen, onClose, renderFooter }) => {
         </ModalHeader>
         <ModalBody
           onScroll={(e) => {
+            console.log(e.target.scrollHeight);
+            if (e.target.scrollHeight <= 600) return;
             setShowFooter(
               Math.round(e.target.scrollTop) >=
-                (e.target.scrollHeight - e.target.offsetHeight) / 1.4
+                (e.target.scrollHeight - e.target.offsetHeight) / 2
             );
           }}
           className={styles.body}

@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./text.module.css";
 
-const Text = ({ type = "text", children, ...otherProps }) => {
+const Text = ({ type = "text", mark, children, ...otherProps }) => {
   const props = {
-    className: `${styles.text}`,
+    className: `${styles.text} ${mark && styles.mark}`,
   };
   if (type === "title") {
     return (

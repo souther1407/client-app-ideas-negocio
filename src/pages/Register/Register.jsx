@@ -3,8 +3,8 @@ import styles from "./register.module.css";
 import Text from "../../components/styled/Text/Text";
 import Button from "../../components/styled/Button/Button";
 import Input from "../../components/styled/Input/Input";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import AuthUser from "../../services/authentication/auth";
 const Register = () => {
   const [input, setInput] = useState({
     email: "",
@@ -18,7 +18,7 @@ const Register = () => {
   const handlerSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, input.email, input.password);
+      await AuthUser.registerUser(input);
       alert("user created :D");
     } catch (error) {
       alert(error.message);

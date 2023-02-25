@@ -6,98 +6,101 @@ import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPag
 import DetailCard from "./components/DetailCard/DetailCard";
 import Modal from "../../components/styled/Modal/Modal";
 import ModalNextCard from "./components/modalNextCard/ModalNextCard";
-const PlanDetail = () => {
-  const [showDetails, setShowDetails] = useState(false);
+
+import GradienBorder from "../../components/styled/GradientBorder/GradientBorder";
+
+const parts = [
+  { title: "Analisis de Mercado", id: "marketAnalisis" },
+  { title: "Precio", id: "prices" },
+  { title: "Ventas", id: "sales" },
+  { title: "Plan de Marketing", id: "marketingPlan" },
+  { title: "Analisis de Riesgo", id: "riskAnalisis" },
+];
+
+const PlanDetail = ({ response }) => {
+  const [partsCurrentIndex, setpartsCurrentIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  //const response = useBusinessPlan((state) => state.businessPlan);
+  const handleModalOpen = (index) => {
+    setpartsCurrentIndex(index);
+    setShowModal(true);
+  };
+
+  const prevPart = () => {
+    if (partsCurrentIndex === 0) return;
+    setpartsCurrentIndex((prev) => prev - 1);
+  };
+  const nextPart = () => {
+    if (partsCurrentIndex === parts.length - 1) return;
+    setpartsCurrentIndex((prev) => prev + 1);
+  };
   return (
     <div className={styles.planDetail}>
       <LandingPageNav />
       <section className={styles.description}>
         <section className={styles.info}>
-          <Text type="title">AI Dropshipping</Text>
-          <Text>
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.
-            <br />
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte
-          </Text>
+          <Text type="title">{response.title}</Text>
+          <Text>{response.description}</Text>
         </section>
         <section className={styles.img}>
           <img src={Boximg} />
         </section>
       </section>
       <section className={styles.cardsDetail}>
-        <DetailCard onShowDetail={() => setShowDetails(true)} />
-        <DetailCard onShowDetail={() => setShowDetails(true)} />
-        <DetailCard onShowDetail={() => setShowDetails(true)} />
-        <DetailCard onShowDetail={() => setShowDetails(true)} />
-        <DetailCard onShowDetail={() => setShowDetails(true)} />
-        <DetailCard onShowDetail={() => setShowDetails(true)} />
+        <GradienBorder>
+          <DetailCard
+            title={"Analisis de Mercado"}
+            id="marketAnalisis"
+            onShowDetail={() => handleModalOpen(0)}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <DetailCard
+            title={"Precio"}
+            id={"prices"}
+            onShowDetail={() => handleModalOpen(1)}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <DetailCard
+            title={"Ventas"}
+            id={"sales"}
+            onShowDetail={() => handleModalOpen(2)}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <DetailCard
+            title={"Plan de Marketing"}
+            id={"marketingPlan"}
+            onShowDetail={() => handleModalOpen(3)}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <DetailCard
+            title={"Analisis de Riesgo"}
+            id={"riskAnalisis"}
+            onShowDetail={() => handleModalOpen(4)}
+          />
+        </GradienBorder>
       </section>
       <Modal
-        isOpen={showDetails}
+        isOpen={showModal}
         onClose={() => {
-          setShowDetails(false);
+          setShowModal(false);
         }}
-        title="MVP"
-        renderFooter={() => <ModalNextCard />}
+        title={parts[partsCurrentIndex].title}
+        renderFooter={() => (
+          <ModalNextCard onPrev={prevPart} onNext={nextPart} />
+        )}
       >
         <section className={styles.details}>
           <Text>
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.
-            <br />
-            <br />
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.
-            <br />
-            <br />
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.
-            <br />
-            <br />
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.
-            <br />
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
-            <br /> Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte.Echa un vistazo a
-            los 457 currículums...
+            {response[parts[partsCurrentIndex].id].split("\n").map((str) => (
+              <>
+                {str}
+                <br />
+              </>
+            ))}
           </Text>
         </section>
       </Modal>

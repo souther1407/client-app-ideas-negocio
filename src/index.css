@@ -13,10 +13,11 @@ body {
   --primary-light: #2d4356;
   --btn-primary-border-color: #bdbdbd;
   --primary-dark: #2d4356;
-  --secondary-light: #21252f;
+  --secondary-light: #3d82dd;
   --secondary-dark: #21252f;
   --text-light: white;
   --white: aliceblue;
+  --bg-dark-green: #122e38;
   --text-dark: black;
   --black: rgb(15, 15, 15);
   --bg-dark: #1e1c24;
@@ -24,11 +25,15 @@ body {
   --bg-blue-dark: #061e32;
   --color-shining: #0282b5;
   --blue-shining: #0282b52c;
+  --transparent-black: rgba(0, 0, 0, 0.411);
+  --transparent-blue: #3392b246;
   --md: 20px;
   --sm: 16px;
   --ty: 12px;
   --lg: 24px;
   --xlg: 32px;
+  --xxlg: 36px;
+  --xxxlg: 40px;
 }
 
 h1 {

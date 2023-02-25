@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./modalNextCard.module.css";
 import Text from "../../../../components/styled/Text/Text";
 import Icon from "../../../../components/styled/Icon/Icon";
-const ModalNextCard = () => {
+const ModalNextCard = ({ onPrev, onNext }) => {
   return (
     <div className={styles.modalNextCard}>
       <div className={styles.ant}>
-        <button>{"<--"}</button>
+        <button onClick={onPrev}>{"<--"}</button>
         <section className={styles.info}>
           <Text>Ant</Text>
           <Text>MVP</Text>
@@ -17,7 +17,7 @@ const ModalNextCard = () => {
           <Text>Next</Text>
           <Text>MVP</Text>
         </section>
-        <button>{"-->"}</button>
+        <button onClick={onNext}>{"-->"}</button>
       </div>
     </div>
   );

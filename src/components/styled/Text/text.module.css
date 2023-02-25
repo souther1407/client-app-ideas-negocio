@@ -1,7 +1,6 @@
 .text {
   font-family: "DM Sans", sans-serif;
   color: inherit;
-  display: flex;
   font-size: inherit;
   line-height: 1.1;
 }
