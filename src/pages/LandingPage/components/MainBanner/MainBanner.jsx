@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./mainBanner.module.css";
-import WhiteBtn from "../../../../components/styled/WhiteBtn/WhiteBtn";
+
 import Text from "../../../../components/styled/Text/Text";
 import Box from "../../../../assets/box.png";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../../components/styled/Button/Button";
 import { START_A_BUSINESS } from "../../../../utils/constants/routes";
 import Mark from "../../../../components/styled/Mark/Mark";
+import bg from "../../../../assets/bg.webp";
+import GradientBorder from "../../../../components/styled/GradientBorder/GradientBorder";
 const MainBanner = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
@@ -15,6 +17,7 @@ const MainBanner = () => {
   };
   return (
     <div className={styles.mainBanner}>
+      <img src={bg} className={styles.imgbg} />
       <section className={styles.info}>
         <div className={styles.title}>
           <Text type="title">
@@ -33,9 +36,21 @@ const MainBanner = () => {
             >
               <Text>Crear negocio</Text>
             </Button>
-            <Button type="bordered" onClick={handleClick}>
-              <Text>Ver ejemplos</Text>
-            </Button>
+            <GradientBorder
+              style={{
+                borderRadius: "16px",
+                position: "relative",
+                bottom: "2px",
+              }}
+            >
+              <Button
+                type="bordered"
+                onClick={handleClick}
+                style={{ backgroundColor: "#0F1E2F", borderRadius: "16px" }}
+              >
+                <Text>Ver ejemplos</Text>
+              </Button>
+            </GradientBorder>
           </div>
         </div>
       </section>

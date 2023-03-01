@@ -4,14 +4,17 @@ import { CardElement, PaymentElement } from "@stripe/react-stripe-js";
 import Text from "../../../../components/styled/Text/Text";
 import Button from "../../../../components/styled/Button/Button";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
-import { auth } from "../../../../firebase";
+import { useLogin } from "../../../../hooks/useLogin";
 import { createSubscription } from "../../../../services/subscribe/createSubscription";
-
+import { useNavigate } from "react-router-dom";
+import { LANDING_PAGE } from "../../../../utils/constants/routes";
 const productId = "prod_NIWRInDTSlNtdl";
 
 const SubscribeForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const { userData, refreshToken } = useLogin({});
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,32 +27,35 @@ const SubscribeForm = () => {
     if (error) return alert(error.message);
     try {
       const body = await createSubscription({
-        user: auth.currentUser,
+        user: userData.uid,
         paymentMethod: paymentMethod.id,
         productId,
       });
 
       const confirmation = await stripe.confirmCardPayment(body.clientSecret);
-      alert("exito :D");
+      console.log("listoooo");
+      alert("subscription created");
+      navigate(LANDING_PAGE);
     } catch (error) {
       alert(error.message);
     }
+    await refreshToken();
   };
   return (
-    <div className={styles.subscribeForm} onSubmit={handleSubmit}>
-      <form>
-        <Text>Subscribe :D</Text>
-        <CardElement
-          options={{
-            classes: { base: styles.cardInput },
-            style: { base: { color: "white" } },
-          }}
-        />
-        <Button>
-          <Text>Subscribe!</Text>
-        </Button>
-      </form>
-    </div>
+    <form className={styles.subscribeForm} onSubmit={handleSubmit}>
+      <Text type="title">Subscribe</Text>
+
+      <CardElement
+        options={{
+          classes: { base: styles.cardInput },
+          style: { base: { color: "white" } },
+        }}
+      />
+
+      <Button color="secondary">
+        <Text>Subscribe!</Text>
+      </Button>
+    </form>
   );
 };
 

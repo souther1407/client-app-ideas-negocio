@@ -4,26 +4,31 @@ import Button from "../../components/styled/Button/Button";
 import Input from "../../components/styled/Input/Input";
 import styles from "./login.module.css";
 import Link from "../../components/styled/Link/Link";
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { REGISTER } from "../../utils/constants/routes";
+import { useLogin } from "../../hooks/useLogin";
+import { useLogged } from "../../hooks/useLogged";
+
 const Login = () => {
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
+  useLogged();
+  const { login, isLogged, logout } = useLogin({});
+
   const navigate = useNavigate();
 
   const handlerChange = (id, value) => {
     setInput((prev) => ({ ...prev, [id]: value }));
   };
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, input.email, input.password);
+      await login(input.email, input.password);
       alert("user logged :D");
-      navigate("/");
+      navigate(-2, { replace: true });
     } catch (error) {
       alert(error.message);
     }

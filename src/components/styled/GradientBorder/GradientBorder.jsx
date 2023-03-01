@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "./gradientBorder.module.css";
-const GradientBorder = ({ children }) => {
-  return <div className={styles.gradientBorder}>{children}</div>;
+const GradientBorder = ({ children, ...otherProps }) => {
+  return (
+    <div className={styles.gradientBorder} {...otherProps}>
+      {children}
+    </div>
+  );
 };
 
 export default GradientBorder;

@@ -16,7 +16,7 @@
   flex-direction: column;
   height: 210px;
   width: 160px;
-  border: 1px solid black;
+
   border-radius: 4px;
   transition: all 0.1s ease-in;
 }
@@ -40,7 +40,7 @@
 
 .title.showDetails {
   flex-basis: 40%;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid transparent;
   flex-direction: row;
   font-size: 14px;
 }

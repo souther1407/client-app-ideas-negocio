@@ -4,6 +4,7 @@ import { context } from "../../../Context/ColorModeContext/ColorModeContext";
 import { useContext } from "react";
 
 const Button = ({
+  w,
   children,
   type = "fulled",
   color = "primary",
@@ -13,7 +14,9 @@ const Button = ({
   const { theme } = useContext(context);
   return (
     <button
-      className={`${styles.button} ${styles[type]} ${styles[color]} ${styles[theme]}`}
+      className={`${styles.button} ${styles[type]} ${styles[color]} ${
+        styles[theme]
+      } ${w && styles.w}`}
       onClick={onClick}
       {...otherProps}
     >

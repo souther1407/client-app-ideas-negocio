@@ -1,5 +1,7 @@
 import { create } from "zustand";
-import { createText } from "../services/createText/createText";
+import { createDetail, createOptions } from "../services/createText/createText";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const useBusinessPlan = create((set) => ({
   creating: false,
@@ -12,16 +14,31 @@ const useBusinessPlan = create((set) => ({
     marketingPlan: "",
     riskAnalisis: "",
   },
+  options: [],
   error: "",
-  async generateBusinessPlan(data) {
+  async generateBusinessPlan(body) {
     set((state) => ({ ...state, creating: true }));
     try {
-      const response = await createText(data);
+      const response = await createDetail(body);
       set((state) => ({
         ...state,
         error: "",
         creating: false,
         businessPlan: response,
+      }));
+    } catch (error) {
+      set((state) => ({ ...state, creating: false, error: error.message }));
+    }
+  },
+  async generateOptions(body) {
+    set((state) => ({ ...state, creating: true }));
+    try {
+      const options = await createOptions(body);
+      set((state) => ({
+        ...state,
+        error: "",
+        creating: false,
+        options,
       }));
     } catch (error) {
       set((state) => ({ ...state, creating: false, error: error.message }));

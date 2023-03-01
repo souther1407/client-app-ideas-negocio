@@ -7,14 +7,14 @@ import Link from "../../styled/Link/Link";
 import { SUBSCRIBE, LOGIN } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 const NeedLoginOrPayWindow = () => {
-  const { credentials } = useLogin({});
+  const { userData, isLogged } = useLogin({});
   return (
     <div className={styles.needLoginOrPay}>
       <Container>
         <Text>Programador, 20 años, presupuesto de $1000...</Text>
       </Container>
       <Container>
-        {!credentials && (
+        {!isLogged() && (
           <Link to={LOGIN}>
             <Button color="secondary">
               <Text>Login/Register</Text>

@@ -1,7 +1,13 @@
 import { URL } from "../../config/config";
 class Auth {
-  static async getUserData(uid) {
-    const response = await fetch(`${URL}/users/${uid}`);
+  static async login(user) {
+    const response = await fetch(`${URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
     const body = await response.json();
     return body;
   }
@@ -12,6 +18,16 @@ class Auth {
         "Content-type": "application/json",
       },
       body: JSON.stringify(user),
+    });
+    const body = await response.json();
+    return body;
+  }
+  static async refreshToken() {
+    const response = await fetch(`${URL}/users/refreshToken`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     });
     const body = await response.json();
     return body;

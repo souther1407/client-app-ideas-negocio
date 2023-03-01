@@ -1,3 +1,26 @@
+.subscribeForm {
+  border: 5px solid var(--btn-primary-border-color);
+  padding: 16px 32px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.subscribeForm > :first-child {
+  text-align: center;
+  font-size: var(--lg);
+}
+.subscribeForm > :nth-child(2) {
+  margin: 16px 0;
+}
+.subscribeForm > :last-child {
+  align-self: center;
+}
+.cardInput {
+  border-bottom: 1px solid var(--white);
+  padding: 16px 0;
+}
 .cardInput > * {
   color: var(--text-light);
 }

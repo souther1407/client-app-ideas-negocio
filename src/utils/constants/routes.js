@@ -9,3 +9,5 @@ export const START_A_BUSINESS = "/start";
 export const PLAN_EXAMPLE_1 = "/examples/1";
 export const PLAN_EXAMPLE_2 = "/examples/2";
 export const PLAN_EXAMPLE_3 = "/examples/3";
+export const AFFILIATE = "/affiliate";
+export const CHOOSE_BUSINESS = "/choose";

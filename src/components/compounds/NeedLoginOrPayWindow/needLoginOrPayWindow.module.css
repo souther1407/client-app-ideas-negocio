@@ -8,4 +8,5 @@
   height: 100vh;
   justify-content: space-around;
   align-items: center;
+  z-index: 100;
 }

@@ -7,17 +7,18 @@
 
 .label {
   margin-bottom: 8px;
-  position: relative;
+  position: absolute;
   width: fit-content;
+  font-size: var(--md);
   z-index: 1;
-  font-weight: bold;
-  left: 40px;
-  top: 50px;
-  transition: all 0.25s ease-in-out;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.45s ease-in-out;
 }
 .label.effect {
   left: 0px;
   top: 0px;
+  font-size: var(--sm);
 }
 .inputCont {
   display: flex;
@@ -27,23 +28,29 @@
 }
 
 .input {
-  border-radius: 8px;
-  padding: 12px 64px 12px 12px;
+  font-size: var(--sm);
+  padding: 16px 24px 16px 12px;
 }
 
-.input.light.primary {
+.input.borderFull.light.primary {
   background-color: transparent;
+  border-radius: 8px;
   border: 1px solid var(--white);
 }
-.input.light.secondary {
+
+.input.borderBottom.light.primary {
+  background-color: transparent;
+  border-bottom: 1px solid var(--white);
+}
+.input.borderFull.light.secondary {
   background-color: var(--secondary-light);
   border: 1px solid var(--secondary-light);
 }
 
 .icon {
   position: absolute;
-  width: 32px;
-  right: 40px;
+  width: var(--md);
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
 
