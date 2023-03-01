@@ -8,7 +8,7 @@ import Modal from "../../components/styled/Modal/Modal";
 import ModalNextCard from "./components/modalNextCard/ModalNextCard";
 
 import GradienBorder from "../../components/styled/GradientBorder/GradientBorder";
-
+import GradientBg from "../../components/styled/GradientBg/GradientBg";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -104,6 +104,7 @@ const PlanDetail = ({ response }) => {
           </Text>
         </section>
       </Modal>
+      <GradientBg />
     </div>
   );
 };

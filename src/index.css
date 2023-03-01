@@ -9,6 +9,12 @@ body {
   background-color: #1e1c24 !important;
 }
 
+input:autofill {
+  background: none !important;
+}
+input:-webkit-autofill {
+  background: none !important;
+}
 :root {
   --primary-light: #2d4356;
   --btn-primary-border-color: #bdbdbd;
@@ -17,11 +23,11 @@ body {
   --secondary-dark: #21252f;
   --text-light: white;
   --white: aliceblue;
-  --bg-dark-green: #122e38;
+  --bg-dark-green: #10323e;
   --text-dark: black;
-  --black: rgb(15, 15, 15);
+  --black: rgb(0, 0, 0);
   --bg-dark: #1e1c24;
-  --gradien-blue: rgb(7, 7, 129);
+  --gradien-blue: #0d2a3d;
   --bg-blue-dark: #061e32;
   --color-shining: #0282b5;
   --blue-shining: #0282b52c;

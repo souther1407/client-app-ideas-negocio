@@ -4,14 +4,16 @@
   padding: 8px;
   min-height: 100vh;
   padding-top: 60px;
-  background-color: var(--bg-dark-green);
+  background-color: black;
   color: var(--white);
+  position: relative;
 }
 
 .description {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  z-index: 1;
 }
 
 .info {
@@ -40,7 +42,7 @@
   position: relative;
   align-self: center;
   padding: 8px;
-
+  z-index: 1;
   margin-top: 12px;
 }
 .cardsDetail > * {

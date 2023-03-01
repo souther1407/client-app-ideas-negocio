@@ -1,0 +1,23 @@
+.chooseBusiness {
+  background-color: var(--black);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--white);
+  padding: 16px;
+}
+
+.options {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, auto);
+  justify-items: center;
+  width: 800px;
+  row-gap: 64px;
+  z-index: 1;
+}

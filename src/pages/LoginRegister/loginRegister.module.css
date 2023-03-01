@@ -1,0 +1,69 @@
+.loginRegister {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: var(--black);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.login,
+.register {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  transition: transform 0.7s ease;
+}
+.login.hide {
+  transform: translateY(-100%);
+}
+
+.register.show {
+  transform: translateY(-100%);
+}
+
+.loginForm,
+.registerForm {
+  border: 4px solid var(--btn-primary-border-color);
+  border-radius: 8px;
+  padding: 16px 40px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginForm > :first-child,
+.registerForm > :first-child {
+  font-size: var(--xlg);
+}
+
+.loginForm > * {
+  margin-bottom: 32px;
+}
+.loginForm > :last-child {
+  font-size: var(--sm);
+}
+.registerForm > :nth-child(4) {
+  margin-bottom: 16px;
+}
+.registerForm > :last-child {
+  font-size: var(--sm);
+}
+.registerForm > * {
+  margin-bottom: 16px;
+}
+.terms {
+  display: flex;
+}
+.terms > :first-child {
+  margin-right: 8px;
+}
+.terms > :last-child {
+  font-size: var(--sm);
+}

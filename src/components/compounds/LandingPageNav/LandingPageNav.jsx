@@ -3,7 +3,6 @@ import styles from "./landingPageNav.module.css";
 import Link from "../../styled/Link/Link";
 import Text from "../../styled/Text/Text";
 import ChangeLanguage from "../ChangeLanguage/ChangeLanguage";
-import WhiteBtn from "../../styled/WhiteBtn/WhiteBtn";
 import { useScroll } from "../../../hooks/useScroll";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
@@ -13,14 +12,16 @@ import {
 } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 import Button from "../../styled/Button/Button";
+import GradientBorder from "../../../components/styled/GradientBorder/GradientBorder";
+
 const LandingPageNav = () => {
-  const { credentials, logout } = useLogin({});
+  const { logout, isLogged } = useLogin({});
   const location = useLocation();
   const navigate = useNavigate();
   const stateScroll = useScroll();
 
   const handleUserlogin = () => {
-    if (credentials) logout();
+    if (isLogged()) logout();
     else navigate(LOGIN);
   };
 
@@ -46,20 +47,26 @@ const LandingPageNav = () => {
           <Link to={LANDING_PAGE}>
             <Text>Home</Text>
           </Link>
-
           <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
             Ejemplos
           </Text>
         </section>
         <section className={styles.buttons}>
-          <ChangeLanguage />
-          <Button
-            type="bordered"
-            classes={styles.loginBtn}
-            onClick={handleUserlogin}
-          >
-            <Text>{credentials ? "log out" : "log in"}</Text>
-          </Button>
+          <GradientBorder>
+            <ChangeLanguage />
+          </GradientBorder>
+          {location.pathname !== LOGIN && (
+            <GradientBorder style={{ borderRadius: "16px" }}>
+              <Button
+                type="bordered"
+                classes={styles.loginBtn}
+                onClick={handleUserlogin}
+                style={{ backgroundColor: "#0B263C", borderRadius: "16px" }}
+              >
+                <Text>{isLogged() ? "log out" : "log in"}</Text>
+              </Button>
+            </GradientBorder>
+          )}
           <Button
             classes={styles.startBusinessBtn}
             color="secondary"

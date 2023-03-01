@@ -5,7 +5,8 @@ import CarouselMultiline from "../../../../components/compounds/CarouselMultilin
 import AiDropshipingCard from "./components/AiDropshipingCard/AiDropshipingCard";
 import { useState } from "react";
 import { PLAN_EXAMPLE_1 } from "../../../../utils/constants/routes";
-
+import GradientBg from "../../../../components/styled/GradientBg/GradientBg";
+import GradientBorder from "../../../../components/styled/GradientBorder/GradientBorder";
 const AiDropshipings = () => {
   const [currentCard, setCurrentCard] = useState(5);
   return (
@@ -78,6 +79,7 @@ const AiDropshipings = () => {
           </div>
         </CarouselMultiline>
       </section>
+      <GradientBg />
     </div>
   );
 };

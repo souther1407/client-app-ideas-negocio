@@ -13,6 +13,7 @@ const Input = ({
   onErrors = (id, error) => {},
   validators = [],
   label = "",
+  variant = "borderFull",
   icon,
   ...otherProps
 }) => {
@@ -31,12 +32,14 @@ const Input = ({
 
   return (
     <div className={styles.cont}>
-      <label
-        className={`${styles.label} ${labelEffect && styles.effect}`}
-        onClick={() => inputRef.current.focus()}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          className={`${styles.label} ${labelEffect && styles.effect}`}
+          onClick={() => inputRef.current.focus()}
+        >
+          {label}
+        </label>
+      )}
       {textarea ? (
         <textarea
           {...otherProps}
@@ -56,7 +59,7 @@ const Input = ({
             }}
             type={type}
             onChange={handlerChange}
-            className={`${styles.input} ${styles[theme]} ${styles[color]}`}
+            className={`${styles.input} ${styles[variant]} ${styles[theme]} ${styles[color]}`}
           />
           <i className={styles.icon}>{icon && icon()}</i>
         </div>

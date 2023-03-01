@@ -10,18 +10,21 @@ const Select = ({ options, ...otherProps }) => {
           ...baseStyles,
           background: "none",
           color: "white",
+          borderColor: state.isFocused ? "transparent" : "transparent",
           height: "42px",
         }),
         container: (baseStyles, state) => ({
           ...baseStyles,
-          background: "none",
+          background: "#0C2D40",
+          borderColor: "transparent",
+          borderRadius: "4px",
           color: "white",
           width: "85px",
         }),
         menu: (baseStyles, state) => ({
           ...baseStyles,
           backgroundColor: "#1E1C24",
-          border: "1px solid white",
+          border: "none",
         }),
         singleValue: (baseStyles, state) => ({
           ...baseStyles,

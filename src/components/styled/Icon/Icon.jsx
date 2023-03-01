@@ -8,7 +8,14 @@ import {
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { BiBrain } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
-import { FaMoneyBillWave, FaUserCircle, FaHeadSideVirus } from "react-icons/fa";
+import {
+  FaMoneyBillWave,
+  FaUserCircle,
+  FaHeadSideVirus,
+  FaLongArrowAltDown,
+  FaShieldAlt,
+} from "react-icons/fa";
+import { AiOutlineMail } from "react-icons/ai";
 import { GiGears } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
 import { BsArrowLeft, BsArrowRight, BsImage } from "react-icons/bs";
@@ -36,6 +43,9 @@ const Icon = ({ type }) => {
     leftArrow: <BsArrowLeft {...props} />,
     rightArrow: <BsArrowRight {...props} />,
     image: <BsImage {...props} />,
+    downArrow: <FaLongArrowAltDown {...props} />,
+    mail: <AiOutlineMail {...props} />,
+    shield: <FaShieldAlt {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

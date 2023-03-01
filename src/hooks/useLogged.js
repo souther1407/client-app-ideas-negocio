@@ -5,7 +5,6 @@ import { useEffect } from "react";
 export const useLogged = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(auth.currentUser);
-    if (!auth.currentUser) return navigate("/login");
+    if (!localStorage.getItem("token")) return navigate("/login");
   }, []);
 };

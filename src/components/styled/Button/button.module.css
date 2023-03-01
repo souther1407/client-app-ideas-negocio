@@ -29,7 +29,8 @@
 }
 
 .bordered.primary.light {
-  border: 1px solid var(--btn-primary-border-color);
+  border: 1px solid var(--white);
+
   color: var(--white);
 }
 .bordered.secondary.light {
@@ -46,4 +47,8 @@
 .secondary.dark {
   background-color: var(--secondary-light);
   color: var(--text-light);
+}
+
+.w {
+  width: 100%;
 }

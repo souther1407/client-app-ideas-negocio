@@ -1,12 +1,12 @@
 .gradientBorder {
   width: fit-content;
   height: fit-content;
-  padding: 1px;
-  background-image: linear-gradient(#5150fd, #00fbf8);
+  padding: 2px;
+  background-image: linear-gradient(#6f6ffa, #00fbf8);
   border-radius: 4px;
 }
 
 .gradientBorder > * {
-  border: none;
+  border: none !important;
   border-radius: 4px;
 }

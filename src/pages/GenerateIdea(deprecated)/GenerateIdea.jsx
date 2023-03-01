@@ -4,7 +4,7 @@ import Text from "../../components/styled/Text/Text";
 import Slider from "../../components/styled/Slider/Slider";
 import Input from "../../components/styled/Input/Input";
 import { parseData } from "../../utils/parse/parseData";
-import { createText } from "../../services/createText/createText";
+
 import Loading from "../../components/compounds/Loading/Loading";
 
 import styles from "./generateIdea.module.css";
