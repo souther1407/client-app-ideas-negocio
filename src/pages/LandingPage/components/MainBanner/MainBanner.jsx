@@ -9,6 +9,7 @@ import { START_A_BUSINESS } from "../../../../utils/constants/routes";
 import Mark from "../../../../components/styled/Mark/Mark";
 import bg from "../../../../assets/bg.webp";
 import GradientBorder from "../../../../components/styled/GradientBorder/GradientBorder";
+import ShineEffect from "../../../../components/styled/ShineEffect/ShineEffect";
 const MainBanner = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
@@ -30,12 +31,14 @@ const MainBanner = () => {
             contratados. Son nuestros héroes. Pueden ayudarte
           </Text>
           <div className={styles.buttons}>
-            <Button
-              color="secondary"
-              onClick={() => navigate(START_A_BUSINESS)}
-            >
-              <Text>Crear negocio</Text>
-            </Button>
+            <ShineEffect>
+              <Button
+                color="secondary"
+                onClick={() => navigate(START_A_BUSINESS)}
+              >
+                <Text>Crear negocio</Text>
+              </Button>
+            </ShineEffect>
             <GradientBorder
               style={{
                 borderRadius: "16px",
