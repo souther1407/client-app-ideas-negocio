@@ -13,7 +13,7 @@ import {
 import { useLogin } from "../../../hooks/useLogin";
 import Button from "../../styled/Button/Button";
 import GradientBorder from "../../../components/styled/GradientBorder/GradientBorder";
-
+import ShineEffect from "../../styled/ShineEffect/ShineEffect";
 const LandingPageNav = () => {
   const { logout, isLogged } = useLogin({});
   const location = useLocation();
@@ -67,13 +67,15 @@ const LandingPageNav = () => {
               </Button>
             </GradientBorder>
           )}
-          <Button
-            classes={styles.startBusinessBtn}
-            color="secondary"
-            onClick={() => navigate(START_A_BUSINESS)}
-          >
-            <Text>Crear Negocio</Text>
-          </Button>
+          <ShineEffect>
+            <Button
+              classes={styles.startBusinessBtn}
+              color="secondary"
+              onClick={() => navigate(START_A_BUSINESS)}
+            >
+              <Text>Crear Negocio</Text>
+            </Button>
+          </ShineEffect>
         </section>
       </section>
     </nav>
