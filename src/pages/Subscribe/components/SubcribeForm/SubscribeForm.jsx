@@ -35,7 +35,7 @@ const SubscribeForm = () => {
       const confirmation = await stripe.confirmCardPayment(body.clientSecret);
       console.log("listoooo");
       alert("subscription created");
-      navigate(LANDING_PAGE);
+      navigate(-1);
     } catch (error) {
       alert(error.message);
     }
