@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "../../../../styled/Link/Link";
-import Icon from "../../../../styled/Icon/Icon";
+import Link from "../../../../atoms/Link/Link";
+import Icon from "../../../../atoms/Icon/Icon";
 import styles from "./navigation.module.css";
 import { useLocation } from "react-router-dom";
 import {

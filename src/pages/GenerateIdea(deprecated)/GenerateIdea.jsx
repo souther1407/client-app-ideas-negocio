@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import Button from "../../components/styled/Button/Button";
-import Text from "../../components/styled/Text/Text";
-import Slider from "../../components/styled/Slider/Slider";
-import Input from "../../components/styled/Input/Input";
+import Button from "../../components/atoms/Button/Button";
+import Text from "../../components/atoms/Text/Text";
+import Slider from "../../components/atoms/Slider/Slider";
+import Input from "../../components/atoms/Input/Input";
 import { parseData } from "../../utils/parse/parseData";
 
-import Loading from "../../components/compounds/Loading/Loading";
+import Loading from "../../components/molecules/Loading/Loading";
 
 import styles from "./generateIdea.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
-import Icon from "../../components/styled/Icon/Icon";
+import Icon from "../../components/atoms/Icon/Icon";
 import { context } from "../../Context/GenerateDataContext/GenerateDataContext";
 import { LOGIN, RESPONSE } from "../../utils/constants/routes";
-import Nav from "../../components/compounds/Nav/Nav";
+import Nav from "../../components/molecules/Nav/Nav";
 
 const GenerateIdea = () => {
   const [input, setInput] = useState({

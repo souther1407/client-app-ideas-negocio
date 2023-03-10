@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  display: flex;
+}
+.shine > * {
+  box-shadow: 0 0 5px var(--white);
+}
+.container > * {
+  width: 100%;
+}

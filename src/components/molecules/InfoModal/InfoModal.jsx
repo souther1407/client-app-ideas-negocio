@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Text from "../Text/Text";
+import Text from "../../atoms/Text/Text";
 import styles from "./modal.module.css";
 import {
   Modal as ChakraModal,
@@ -11,7 +11,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-const Modal = ({ title = "", children, isOpen, onClose, renderFooter }) => {
+const InfoModal = ({ title = "", children, isOpen, onClose, renderFooter }) => {
   const [showFooter, setShowFooter] = useState(true);
   const handlerClose = () => {
     setShowFooter(true);
@@ -59,4 +59,4 @@ const Modal = ({ title = "", children, isOpen, onClose, renderFooter }) => {
   );
 };
 
-export default Modal;
+export default InfoModal;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./gearCard.module.css";
-import Text from "../../../../components/styled/Text/Text";
-import Icon from "../../../../components/styled/Icon/Icon";
+import Text from "../../../../components/atoms/Text/Text";
+import Icon from "../../../../components/atoms/Icon/Icon";
 
 const GearCard = ({ title, id, onShowDetail }) => {
   return (

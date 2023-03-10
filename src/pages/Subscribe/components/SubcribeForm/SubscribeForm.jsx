@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./subscribeForm.module.css";
 import { CardElement, PaymentElement } from "@stripe/react-stripe-js";
-import Text from "../../../../components/styled/Text/Text";
-import Button from "../../../../components/styled/Button/Button";
+import Text from "../../../../components/atoms/Text/Text";
+import Button from "../../../../components/atoms/Button/Button";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { useLogin } from "../../../../hooks/useLogin";
 import { createSubscription } from "../../../../services/subscribe/createSubscription";

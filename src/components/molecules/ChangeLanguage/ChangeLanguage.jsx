@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Button from "../../styled/Button/Button";
-import Text from "../../styled/Text/Text";
+import Button from "../../atoms/Button/Button";
+import Text from "../../atoms/Text/Text";
 import { GB, ES } from "country-flag-icons/react/1x1";
-import Select from "../../styled/Select/Select";
+import Select from "../../atoms/Select/Select";
 import styles from "./changeLanguage.module.css";
 
 const ChangeLanguage = () => {

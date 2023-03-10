@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./startABusiness.module.css";
-import Text from "../../components/styled/Text/Text";
-import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
-import Icon from "../../components/styled/Icon/Icon";
+import Text from "../../components/atoms/Text/Text";
+import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
+import Icon from "../../components/atoms/Icon/Icon";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL, CHOOSE_BUSINESS } from "../../utils/constants/routes";
 import useBusinessPlan from "../../states/businessPlan";
-import NeedLoginOrPayWindow from "../../components/compounds/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
+import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { useLogin } from "../../hooks/useLogin";
-import GradientBorder from "../../components/styled/GradientBorder/GradientBorder";
-import GradientBg from "../../components/styled/GradientBg/GradientBg";
-import Input from "../../components/styled/Input/Input";
+import GradientBorder from "../../components/atoms/GradientBorder/GradientBorder";
+import GradientBg from "../../components/atoms/GradientBg/GradientBg";
+import LabeledInput from "../../components/molecules/LabeledInput/LabeledInput";
 import { useStorage } from "../../hooks/useStorage";
+import ShineGradientInput from "../../components/organisms/ShineGradientInput/ShineGradientInput";
+
 const TEACHERS = {
   elonMusk: "Elon Musk",
   billGates: "Bill Gates",
@@ -108,71 +110,71 @@ const StartABusiness = () => {
       <section className={styles.form}>
         <section className={`${styles.field} ${field === 1 && styles.show}`}>
           <Text type="title">De donde eres?</Text>
-          <GradientBorder>
-            <Input
-              type="text"
-              id="location"
-              value={input.location}
-              className={`${styles.input} ${shine.location && styles.shine}`}
-              onChange={handleChange}
-              style={{
-                border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
-              }}
-            />
-          </GradientBorder>
+
+          <ShineGradientInput
+            type="text"
+            id="location"
+            label=""
+            value={input.location}
+            shine={shine.location}
+            onChange={handleChange}
+            style={{
+              border: "none",
+              background: "#0F2233",
+              borderRadius: "4px",
+            }}
+          />
         </section>
         <section className={`${styles.field} ${field === 2 && styles.show}`}>
           <Text type="title">Que edad tienes?</Text>
-          <GradientBorder>
-            <Input
-              value={input.age}
-              type="number"
-              id="age"
-              className={`${styles.input} ${shine.age && styles.shine}`}
-              onChange={handleChange}
-              style={{
-                border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
-              }}
-            />
-          </GradientBorder>
+
+          <ShineGradientInput
+            type="text"
+            id="age"
+            label=""
+            value={input.age}
+            shine={shine.age}
+            onChange={handleChange}
+            style={{
+              border: "none",
+              background: "#0F2233",
+              borderRadius: "4px",
+            }}
+          />
         </section>
         <section className={`${styles.field} ${field === 3 && styles.show}`}>
           <Text type="title">Qué habilidades tienes?</Text>
-          <GradientBorder>
-            <Input
-              type="text"
-              value={input.skills}
-              id="skills"
-              className={`${styles.input} ${shine.skills && styles.shine}`}
-              onChange={handleChange}
-              style={{
-                border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
-              }}
-            />
-          </GradientBorder>
+
+          <ShineGradientInput
+            type="text"
+            id="skills"
+            label=""
+            value={input.skills}
+            shine={shine.skills}
+            onChange={handleChange}
+            style={{
+              border: "none",
+              background: "#0F2233",
+              borderRadius: "4px",
+            }}
+          />
         </section>
         <section className={`${styles.field} ${field === 4 && styles.show}`}>
           <Text type="title">Cual es tu presupuesto?</Text>
-          <GradientBorder>
-            <Input
-              type="text"
-              id="budget"
-              value={input.budget}
-              className={`${styles.input} ${shine.budget && styles.shine}`}
-              onChange={handleChange}
-              style={{
-                border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
-              }}
-            />
-          </GradientBorder>
+
+          <ShineGradientInput
+            type="text"
+            id="budget"
+            label=""
+            value={input.budget}
+            shine={shine.budget}
+            onChange={handleChange}
+            style={{
+              border: "none",
+              background: "#0F2233",
+              borderRadius: "4px",
+            }}
+          />
         </section>
         <section
           className={`${styles.field} ${styles.teachersField} ${

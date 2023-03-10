@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./modalNextCard.module.css";
-import Text from "../../../../components/styled/Text/Text";
-import Icon from "../../../../components/styled/Icon/Icon";
-import GradientBorder from "../../../../components/styled/GradientBorder/GradientBorder";
+import Text from "../../../../components/atoms/Text/Text";
+import Icon from "../../../../components/atoms/Icon/Icon";
+import GradientBorder from "../../../../components/atoms/GradientBorder/GradientBorder";
 const ModalNextCard = ({ onPrev, onNext }) => {
   return (
     <div className={styles.modalNextCard}>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./login.module.css";
 
-import Text from "../../styled/Text/Text";
-import Icon from "../../styled/Icon/Icon";
+import Text from "../../atoms/Text/Text";
+import Icon from "../../atoms/Icon/Icon";
 import { auth } from "../../../firebase.js";
 import { useNavigate } from "react-router-dom";
 import { signOut, onAuthStateChanged } from "firebase/auth";

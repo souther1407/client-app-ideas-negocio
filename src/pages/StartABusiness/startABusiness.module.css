@@ -6,12 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  /* background-image: radial-gradient(
-    var(--blue-shining),
-    var(--bg-dark-green),
-    var(--bg-dark-green),
-    var(--bg-dark-green)
-  ); */
+
   position: relative;
   background-color: black;
   color: var(--white);
@@ -40,13 +35,7 @@
   font-size: var(--xlg);
   margin-bottom: 16px;
 }
-.input {
-  margin-top: 24px;
-  border: 1px solid var(--white);
-  width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-}
+
 .input.shine {
   box-shadow: 0 0 10px var(--color-shining);
 }

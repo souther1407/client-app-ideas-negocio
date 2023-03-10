@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./aiDropshipings.module.css";
-import Text from "../../../../components/styled/Text/Text";
-import CarouselMultiline from "../../../../components/compounds/CarouselMultiline/CarouselMultiline";
+import Text from "../../../../components/atoms/Text/Text";
+import CarouselMultiline from "../../../../components/organisms/CarouselMultiline/CarouselMultiline";
 import AiDropshipingCard from "./components/AiDropshipingCard/AiDropshipingCard";
 import { useState } from "react";
 import { PLAN_EXAMPLE_1 } from "../../../../utils/constants/routes";
-import GradientBg from "../../../../components/styled/GradientBg/GradientBg";
-import GradientBorder from "../../../../components/styled/GradientBorder/GradientBorder";
+import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
+import GradientBorder from "../../../../components/atoms/GradientBorder/GradientBorder";
 const AiDropshipings = () => {
   const [currentCard, setCurrentCard] = useState(5);
   return (

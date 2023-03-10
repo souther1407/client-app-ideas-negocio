@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./affiliate.module.css";
-import Text from "../../components/styled/Text/Text";
-import Button from "../../components/styled/Button/Button";
+import Text from "../../components/atoms/Text/Text";
+import Button from "../../components/atoms/Button/Button";
 import { useLogin } from "../../hooks/useLogin";
 import {
   affiliateUser,

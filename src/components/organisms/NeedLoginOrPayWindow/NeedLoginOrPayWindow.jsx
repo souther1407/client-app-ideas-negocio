@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./needLoginOrPayWindow.module.css";
-import Container from "../../styled/Container/Container";
-import Button from "../../styled/Button/Button";
-import Text from "../../styled/Text/Text";
-import Link from "../../styled/Link/Link";
+import Container from "../../atoms/Container/Container";
+import Button from "../../atoms/Button/Button";
+import Text from "../../atoms/Text/Text";
+import Link from "../../atoms/Link/Link";
 import { SUBSCRIBE, LOGIN } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 const NeedLoginOrPayWindow = () => {

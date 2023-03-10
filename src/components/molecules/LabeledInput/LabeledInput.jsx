@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import styles from "./input.module.css";
-import { useContext } from "react";
+import styles from "./labeledInput.module.css";
 import { useValidate } from "../../../hooks/useValidate";
-import { context } from "../../../Context/ColorModeContext/ColorModeContext";
+import Label from "../../atoms/Label/Label";
+import Input from "../../atoms/Input/Input";
 
-const Input = ({
+const LabeledInput = ({
   type = "text",
-  textarea,
   color = "primary",
   id,
   onChange = (id, value) => {},
@@ -17,7 +16,6 @@ const Input = ({
   icon,
   ...otherProps
 }) => {
-  const { theme } = useContext(context);
   const { error, validate } = useValidate(validators);
   const [labelEffect, setLabelEffect] = useState(false);
   const inputRef = useRef(null);
@@ -33,39 +31,31 @@ const Input = ({
   return (
     <div className={styles.cont}>
       {label && (
-        <label
+        <Label
           className={`${styles.label} ${labelEffect && styles.effect}`}
           onClick={() => inputRef.current.focus()}
         >
           {label}
-        </label>
+        </Label>
       )}
-      {textarea ? (
-        <textarea
+      <div className={styles.inputCont}>
+        <Input
           {...otherProps}
+          variant={variant}
+          color={color}
+          ref={inputRef}
           id={id}
+          onFocus={() => setLabelEffect(true)}
+          onBlur={(e) => {
+            if (e.target.value.length === 0) setLabelEffect(false);
+          }}
+          type={type}
           onChange={handlerChange}
-          className={`${styles.textarea} ${styles[theme]} ${styles[color]}`}
         />
-      ) : (
-        <div className={styles.inputCont}>
-          <input
-            {...otherProps}
-            ref={inputRef}
-            id={id}
-            onFocus={() => setLabelEffect(true)}
-            onBlur={(e) => {
-              if (e.target.value.length === 0) setLabelEffect(false);
-            }}
-            type={type}
-            onChange={handlerChange}
-            className={`${styles.input} ${styles[variant]} ${styles[theme]} ${styles[color]}`}
-          />
-          <i className={styles.icon}>{icon && icon()}</i>
-        </div>
-      )}
+        <i className={styles.icon}>{icon && icon()}</i>
+      </div>
     </div>
   );
 };
 
-export default Input;
+export default LabeledInput;

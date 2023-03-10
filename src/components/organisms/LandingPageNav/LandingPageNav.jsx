@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styles from "./landingPageNav.module.css";
-import Link from "../../styled/Link/Link";
-import Text from "../../styled/Text/Text";
-import ChangeLanguage from "../ChangeLanguage/ChangeLanguage";
+import Link from "../../atoms/Link/Link";
+import Text from "../../atoms/Text/Text";
+import ChangeLanguage from "../../molecules/ChangeLanguage/ChangeLanguage";
 import { useScroll } from "../../../hooks/useScroll";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
@@ -11,9 +11,9 @@ import {
   LOGIN,
 } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
-import Button from "../../styled/Button/Button";
-import GradientBorder from "../../../components/styled/GradientBorder/GradientBorder";
-import ShineEffect from "../../styled/ShineEffect/ShineEffect";
+import Button from "../../atoms/Button/Button";
+import GradientBorder from "../../../components/atoms/GradientBorder/GradientBorder";
+import ShineEffect from "../../atoms/ShineEffect/ShineEffect";
 const LandingPageNav = () => {
   const { logout, isLogged } = useLogin({});
   const location = useLocation();
