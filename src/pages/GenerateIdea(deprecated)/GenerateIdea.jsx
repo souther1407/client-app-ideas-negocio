@@ -4,9 +4,7 @@ import Text from "../../components/atoms/Text/Text";
 import Slider from "../../components/atoms/Slider/Slider";
 import Input from "../../components/atoms/Input/Input";
 import { parseData } from "../../utils/parse/parseData";
-
 import Loading from "../../components/molecules/Loading/Loading";
-
 import styles from "./generateIdea.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";

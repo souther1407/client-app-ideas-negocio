@@ -3,7 +3,7 @@ import styles from "./loginRegister.module.css";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import Text from "../../components/atoms/Text/Text";
-import Input from "../../components/atoms/Input/Input";
+import Input from "../../components/molecules/LabeledInput/LabeledInput";
 import Button from "../../components/atoms/Button/Button";
 import Icon from "../../components/atoms/Icon/Icon";
 import Mark from "../../components/atoms/Mark/Mark";

@@ -9,8 +9,11 @@ import Text from "../../components/atoms/Text/Text";
 import useBusinessPlan from "../../states/businessPlan";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
+import { useStorage } from "../../hooks/useStorage";
 
 const ChooseBusiness = () => {
+  const { load } = useStorage();
+
   const [option, setOption] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navitagte = useNavigate();
@@ -19,7 +22,10 @@ const ChooseBusiness = () => {
   );
   const handleClick = async () => {
     try {
-      await generateBusinessPlan(options[option]);
+      await generateBusinessPlan({
+        input: load("input"),
+        header: options[option],
+      });
       navitagte(PLAN_DETAIL);
     } catch (error) {
       alert(error.message);

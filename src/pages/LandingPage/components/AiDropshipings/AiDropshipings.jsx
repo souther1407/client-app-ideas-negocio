@@ -6,7 +6,7 @@ import AiDropshipingCard from "./components/AiDropshipingCard/AiDropshipingCard"
 import { useState } from "react";
 import { PLAN_EXAMPLE_1 } from "../../../../utils/constants/routes";
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
-import GradientBorder from "../../../../components/atoms/GradientBorder/GradientBorder";
+
 const AiDropshipings = () => {
   const [currentCard, setCurrentCard] = useState(5);
   return (

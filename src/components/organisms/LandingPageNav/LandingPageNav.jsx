@@ -9,6 +9,7 @@ import {
   LANDING_PAGE,
   START_A_BUSINESS,
   LOGIN,
+  DASHBOARD,
 } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 import Button from "../../atoms/Button/Button";
@@ -50,6 +51,9 @@ const LandingPageNav = () => {
           <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
             Ejemplos
           </Text>
+          <Link to={DASHBOARD}>
+            <Text>Dashboard</Text>
+          </Link>
         </section>
         <section className={styles.buttons}>
           <GradientBorder>

@@ -1,0 +1,35 @@
+.dashboard {
+  background-color: black;
+  color: var(--white);
+  position: relative;
+  width: 100%;
+  padding-top: 120px;
+  height: 100vh;
+  padding-left: 32px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.verticalNav {
+  border: 1px solid var(--white);
+  position: relative;
+  z-index: 1;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-evenly;
+}
+.myPrompts {
+  margin: 0 16px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.myPrompts > * {
+  margin: 8px;
+}
