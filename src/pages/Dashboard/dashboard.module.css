@@ -23,7 +23,7 @@
 .myPrompts {
   margin: 0 16px;
   flex-grow: 1;
-  display: flex;
+  display: none;
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
@@ -32,4 +32,16 @@
 
 .myPrompts > * {
   margin: 8px;
+}
+
+.affiliateProgram {
+  display: none;
+  position: relative;
+  justify-content: center;
+  z-index: 1;
+  flex-grow: 1;
+}
+
+.show {
+  display: flex;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, forwardRef } from "react";
 import styles from "./labeledInput.module.css";
 import { useValidate } from "../../../hooks/useValidate";
 import Label from "../../atoms/Label/Label";
@@ -40,7 +40,6 @@ const LabeledInput = ({
       )}
       <div className={styles.inputCont}>
         <Input
-          {...otherProps}
           variant={variant}
           color={color}
           ref={inputRef}
@@ -51,6 +50,7 @@ const LabeledInput = ({
           }}
           type={type}
           onChange={handlerChange}
+          {...otherProps}
         />
         <i className={styles.icon}>{icon && icon()}</i>
       </div>

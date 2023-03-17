@@ -23,7 +23,8 @@ const LandingPageNav = () => {
 
   const handleUserlogin = () => {
     if (isLogged()) logout();
-    else navigate(LOGIN);
+
+    navigate(LOGIN);
   };
 
   const handlerClick = (e) => {
