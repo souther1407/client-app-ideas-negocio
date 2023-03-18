@@ -9,29 +9,32 @@ import {
   generatePaymentLink,
 } from "../../../../services/affiliate/affiliate";
 import { parseCentToMoney } from "../../../../utils/parse/parseMoney";
+import ShineEffect from "../../../../components/atoms/ShineEffect/ShineEffect";
+import AreaChart from "../../../../components/organisms/AreaChart/AreaChart";
 const AffiliateProgram = () => {
   const { userData, refreshToken } = useLogin({});
   const [loading, setLoading] = useState(false);
   const [referralsData, setReferralsData] = useState({
     earnings: 0,
-    totalRegisters: "",
-    totalSubcriptions: "",
+    totalClicks: 0,
+    totalSubcriptions: 0,
   });
+
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
         const data = await getReferralsData();
+        console.log("data", data);
         setReferralsData(data);
         setLoading(false);
       } catch (error) {
         alert(error.message);
       }
     };
-    if (userData.affiliateAccount.affiliateLink) {
-      getData();
-    }
-  }, [userData]);
+    getData();
+    console.log(referralsData);
+  }, []);
 
   const handleGeneratePaymentLink = async () => {
     try {
@@ -41,6 +44,7 @@ const AffiliateProgram = () => {
       alert(error.message);
     }
   };
+
   const handleActiveAffiliateAccount = async () => {
     try {
       const { url } = await generateActivateLink();
@@ -49,34 +53,63 @@ const AffiliateProgram = () => {
       alert(error.message);
     }
   };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(userData.affiliateAccount.affiliateLink);
+    alert("copiado");
+  };
+
   return (
-    <div>
-      {userData.affiliateAccount.enabled ? (
-        <>
-          <Text>La tenes activada</Text>
-          {!userData.affiliateAccount.affiliateLink ? (
-            <Button onClick={handleGeneratePaymentLink}>
-              <Text>Generar link de pago</Text>
-            </Button>
+    <div className={styles.affiliateProgram}>
+      <section className={styles.card}>
+        <div className={styles.clicks}>
+          <Text>Clicks</Text>
+          <Text type="title">{referralsData.totalClicks}</Text>
+        </div>
+
+        <div className={styles.convertions}>
+          <Text>Número de conversiones</Text>
+          <Text type="title">{referralsData.totalSubcriptions}</Text>
+        </div>
+      </section>
+
+      <section className={`${styles.card} ${styles.middle}`}>
+        <div className={styles.earnings}>
+          <Text>Dinero ganado</Text>
+          <Text type="title">{parseCentToMoney(referralsData.earnings)}</Text>
+          {!userData.affiliateAccount.enabled ? (
+            <ShineEffect>
+              <Button color="secondary" onClick={handleActiveAffiliateAccount}>
+                <Text>Unirse</Text>
+              </Button>
+            </ShineEffect>
           ) : (
-            <>
-              <Text>Link: {userData.affiliateAccount.affiliateLink}</Text>
-              <Text>Registrados: {referralsData.totalRegisters}</Text>
-              <Text>Subscritos: {referralsData.totalSubcriptions}</Text>
-              <Text>
-                Ganancias totales: {parseCentToMoney(referralsData.earnings)}
-              </Text>
-            </>
+            <Button color="secondary" onClick={handleCopyLink}>
+              <Text>Copiar link</Text>
+            </Button>
           )}
-        </>
-      ) : (
-        <>
-          <Text>Te falta completar datos</Text>
-          <Button onClick={handleActiveAffiliateAccount}>
-            <Text>Activar Cuenta</Text>
-          </Button>
-        </>
-      )}
+        </div>
+
+        <div className={styles.monthResume}>
+          <Text>Resumen de este mes</Text>
+        </div>
+      </section>
+
+      <section className={styles.card}>
+        <div className={styles.lastClicks}>
+          <Text>Clicks</Text>
+          <div className={styles.chart}>
+            <AreaChart />
+          </div>
+        </div>
+
+        <div className={styles.lastCovertions}>
+          <Text>Conversiones</Text>
+          <div className={styles.chart}>
+            <AreaChart />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

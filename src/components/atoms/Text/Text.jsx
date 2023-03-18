@@ -1,19 +1,16 @@
 import React from "react";
 import styles from "./text.module.css";
 
-const Text = ({ type = "text", mark, children, ...otherProps }) => {
-  const props = {
-    className: `${styles.text} ${mark && styles.mark}`,
-  };
+const Text = ({ type = "text", children, ...otherProps }) => {
   if (type === "title") {
     return (
-      <h1 {...props} {...otherProps}>
+      <h1 className={styles.title} {...otherProps}>
         {children}
       </h1>
     );
   }
   return (
-    <p {...props} {...otherProps}>
+    <p className={styles.text} {...otherProps}>
       {children}
     </p>
   );

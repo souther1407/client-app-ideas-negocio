@@ -1,6 +1,11 @@
-.text {
+.text,
+.title {
   font-family: "DM Sans", sans-serif;
   color: inherit;
   font-size: inherit;
   line-height: 1.1;
+}
+
+.title {
+  font-size: var(--xxlg);
 }
