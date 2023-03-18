@@ -36,8 +36,8 @@ import {
   CHOOSE_BUSINESS,
   DASHBOARD,
   MY_PROMPTS_DETAIL,
-  SUCCESS,
   AFFILIATE_LINK,
+  ACTIVATE_SUCCESS,
 } from "./utils/constants/routes";
 function App() {
   const { theme } = useContext(context);
@@ -59,7 +59,7 @@ function App() {
         <Route path={CHOOSE_BUSINESS} element={<ChooseBusiness />} />
         <Route path={DASHBOARD} element={<Dashboard />} />
         <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<MyPromptDetail />} />
-        <Route path={SUCCESS} element={<Success />} />
+        <Route path={ACTIVATE_SUCCESS} element={<Success />} />
         <Route
           path={AFFILIATE_LINK}
           element={<RedirectEnterByAffiliateLink />}

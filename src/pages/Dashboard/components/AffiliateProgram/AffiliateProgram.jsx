@@ -16,8 +16,8 @@ const AffiliateProgram = () => {
   const [loading, setLoading] = useState(false);
   const [referralsData, setReferralsData] = useState({
     earnings: 0,
-    totalClicks: "",
-    totalSubcriptions: "",
+    totalClicks: 0,
+    totalSubcriptions: 0,
   });
 
   useEffect(() => {
@@ -25,16 +25,16 @@ const AffiliateProgram = () => {
       try {
         setLoading(true);
         const data = await getReferralsData();
+        console.log("data", data);
         setReferralsData(data);
         setLoading(false);
       } catch (error) {
         alert(error.message);
       }
     };
-    if (userData.affiliateAccount) {
-      getData();
-    }
-  }, [userData]);
+    getData();
+    console.log(referralsData);
+  }, []);
 
   const handleGeneratePaymentLink = async () => {
     try {
@@ -79,7 +79,7 @@ const AffiliateProgram = () => {
           <Text type="title">{parseCentToMoney(referralsData.earnings)}</Text>
           {!userData.affiliateAccount.enabled ? (
             <ShineEffect>
-              <Button color="secondary">
+              <Button color="secondary" onClick={handleActiveAffiliateAccount}>
                 <Text>Unirse</Text>
               </Button>
             </ShineEffect>

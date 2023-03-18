@@ -13,6 +13,6 @@ export const AFFILIATE = "/affiliate";
 export const CHOOSE_BUSINESS = "/choose";
 export const DASHBOARD = "/dashboard";
 export const MY_PROMPTS_DETAIL = DASHBOARD + "/prompt";
-export const SUCCESS = "/success";
+export const ACTIVATE_SUCCESS = "/activate/success";
 export const REGISTER_REFERED = "/affiliate/success";
 export const AFFILIATE_LINK = "/link/:affiliateId";

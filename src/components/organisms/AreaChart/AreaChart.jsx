@@ -38,8 +38,8 @@ const AreaChart = () => {
         datasets: [
           {
             data: [10, 15, 9, 15, 8, 5, 20],
-            backgroundColor: "#0ec3f0",
-            borderColor: "#0ec3f0",
+            backgroundColor: "#3e59f0",
+            borderColor: "#4a63f0",
             borderJoinStyle: "bevel",
             pointRadius: 1,
             fill: "origin",

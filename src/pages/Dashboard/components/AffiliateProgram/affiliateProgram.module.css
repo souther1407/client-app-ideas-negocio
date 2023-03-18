@@ -2,13 +2,13 @@
   display: flex;
 }
 .card {
-  --borders-color: #41545a48;
+  --borders-color: #5c606148;
   width: 300px;
   height: 400px;
   background-image: linear-gradient(
     to right,
     var(--borders-color),
-    #10333e60,
+    #10333ebb,
     var(--borders-color)
   );
   margin: 2px;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
 import { useStorage } from "../../hooks/useStorage";
 import { LOGIN } from "../../utils/constants/routes";
+
 const RedirectRegisterReferided = () => {
   const { affiliate } = useQuery();
   const { save } = useStorage();
