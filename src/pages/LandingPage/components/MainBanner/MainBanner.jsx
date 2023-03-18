@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./mainBanner.module.css";
 
-import Text from "../../../../components/styled/Text/Text";
+import Text from "../../../../components/atoms/Text/Text";
 import Box from "../../../../assets/box.png";
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../components/styled/Button/Button";
+import Button from "../../../../components/atoms/Button/Button";
 import { START_A_BUSINESS } from "../../../../utils/constants/routes";
-import Mark from "../../../../components/styled/Mark/Mark";
+import Mark from "../../../../components/atoms/Mark/Mark";
 import bg from "../../../../assets/bg.webp";
-import GradientBorder from "../../../../components/styled/GradientBorder/GradientBorder";
-import ShineEffect from "../../../../components/styled/ShineEffect/ShineEffect";
+import GradientBorder from "../../../../components/atoms/GradientBorder/GradientBorder";
+import ShineEffect from "../../../../components/atoms/ShineEffect/ShineEffect";
 const MainBanner = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {

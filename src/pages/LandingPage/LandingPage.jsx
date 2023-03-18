@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./landingPage.module.css";
-import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
+import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import MainBanner from "./components/MainBanner/MainBanner";
 import AiDropshippings from "./components/AiDropshipings/AiDropshipings";
 

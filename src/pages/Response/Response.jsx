@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import styles from "./response.module.css";
 import { context } from "../../Context/GenerateDataContext/GenerateDataContext";
-import Text from "../../components/styled/Text/Text";
+import Text from "../../components/atoms/Text/Text";
 import { parserResponse } from "../../utils/format/formatResponse";
-import Nav from "../../components/compounds/Nav/Nav";
+import Nav from "../../components/molecules/Nav/Nav";
 const Response = () => {
   const { data } = useContext(context);
   const [steps] = useState(parserResponse(data));

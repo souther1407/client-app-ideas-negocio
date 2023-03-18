@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Text from "../../components/styled/Text/Text";
-import Button from "../../components/styled/Button/Button";
-import Input from "../../components/styled/Input/Input";
+import Text from "../../components/atoms/Text/Text";
+import Button from "../../components/atoms/Button/Button";
+import Input from "../../components/atoms/Input/Input";
 import styles from "./login.module.css";
-import Link from "../../components/styled/Link/Link";
+import Link from "../../components/atoms/Link/Link";
 import { useNavigate, useLocation } from "react-router-dom";
 import { REGISTER } from "../../utils/constants/routes";
 import { useLogin } from "../../hooks/useLogin";

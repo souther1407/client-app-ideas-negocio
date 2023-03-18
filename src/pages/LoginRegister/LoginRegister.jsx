@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./loginRegister.module.css";
-import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
-import GradientBg from "../../components/styled/GradientBg/GradientBg";
-import Text from "../../components/styled/Text/Text";
-import Input from "../../components/styled/Input/Input";
-import Button from "../../components/styled/Button/Button";
-import Icon from "../../components/styled/Icon/Icon";
-import Mark from "../../components/styled/Mark/Mark";
+import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
+import GradientBg from "../../components/atoms/GradientBg/GradientBg";
+import Text from "../../components/atoms/Text/Text";
+import Input from "../../components/molecules/LabeledInput/LabeledInput";
+import Button from "../../components/atoms/Button/Button";
+import Icon from "../../components/atoms/Icon/Icon";
+import Mark from "../../components/atoms/Mark/Mark";
 import AuthUser from "../../services/authentication/auth";
 import { useLogin } from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import { useStorage } from "../../hooks/useStorage";
 
 const LoginRegister = () => {
+  const { load, clear } = useStorage();
+  const affiliateId = useRef(load("affiliate"));
   const [showRegister, setShowRegister] = useState(false);
-
   const [loginInput, setLoginInput] = useState({
     email: "",
     password: "",
@@ -25,6 +27,7 @@ const LoginRegister = () => {
     username: "",
     email: "",
     password: "",
+    referredBy: affiliateId.current ?? "",
   });
   const handlerRegister = async (e) => {
     e.preventDefault();
@@ -32,17 +35,21 @@ const LoginRegister = () => {
       await AuthUser.registerUser(registerInput);
       alert("user created :D");
       setShowRegister(false);
+      clear("affiliate");
     } catch (error) {
       alert(error.message);
     }
   };
 
-  const handleChangeLogin = (id, value) => {
-    setLoginInput((prev) => ({ ...prev, [id]: value }));
-  };
-
-  const handleChangeRegister = (id, value) => {
-    setRegisterInput((prev) => ({ ...prev, [id]: value }));
+  const handleChange = (id, value) => {
+    const splitedStr = id.split("-");
+    const typeInput = splitedStr[0];
+    const inputId = splitedStr[1];
+    if (typeInput === "login") {
+      setLoginInput((prev) => ({ ...prev, [inputId]: value }));
+    } else {
+      setRegisterInput((prev) => ({ ...prev, [inputId]: value }));
+    }
   };
 
   const handlerShowRegister = () => {
@@ -74,8 +81,8 @@ const LoginRegister = () => {
             label="Email"
             type="text"
             variant="borderBottom"
-            id={"email"}
-            onChange={handleChangeLogin}
+            id={"login-email"}
+            onChange={handleChange}
             icon={() => <Icon type={"mail"} />}
             onErrors={() => {}}
           />
@@ -84,8 +91,8 @@ const LoginRegister = () => {
             label="Password"
             type="password"
             variant="borderBottom"
-            id={"password"}
-            onChange={handleChangeLogin}
+            id={"login-password"}
+            onChange={handleChange}
             icon={() => <Icon type={"shield"} />}
             onErrors={() => {}}
           />
@@ -114,9 +121,9 @@ const LoginRegister = () => {
           <Input
             label="Username"
             type="text"
-            id={"username"}
+            id={"register-username"}
             variant="borderBottom"
-            onChange={handleChangeRegister}
+            onChange={handleChange}
             icon={() => <Icon type={"user"} />}
             onErrors={() => {}}
           />
@@ -124,17 +131,17 @@ const LoginRegister = () => {
             label="Email"
             type="text"
             variant="borderBottom"
-            id={"email"}
-            onChange={handleChangeRegister}
+            id={"register-email"}
+            onChange={handleChange}
             icon={() => <Icon type={"mail"} />}
             onErrors={() => {}}
           />
           <Input
             label="Password"
             type="password"
-            id={"password"}
+            id={"register-password"}
             variant="borderBottom"
-            onChange={handleChangeRegister}
+            onChange={handleChange}
             icon={() => <Icon type={"shield"} />}
             onErrors={() => {}}
           />

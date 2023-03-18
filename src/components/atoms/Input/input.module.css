@@ -1,0 +1,19 @@
+.input {
+  font-size: var(--sm);
+  padding: 16px 24px 16px 12px !important;
+}
+
+.input.borderFull.primary {
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid var(--white);
+}
+
+.input.borderBottom.primary {
+  background-color: transparent;
+  border-bottom: 1px solid var(--white);
+}
+.input.borderFull.secondary {
+  background-color: var(--secondary-light);
+  border: 1px solid var(--secondary-light);
+}

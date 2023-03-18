@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styles from "./planDetail.module.css";
-import Text from "../../components/styled/Text/Text";
+import Text from "../../components/atoms/Text/Text";
 import Boximg from "../../assets/box.png";
-import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
+import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import DetailCard from "./components/DetailCard/DetailCard";
-import Modal from "../../components/styled/Modal/Modal";
+import InfoModal from "../../components/molecules/InfoModal/InfoModal";
 import ModalNextCard from "./components/modalNextCard/ModalNextCard";
 
-import GradienBorder from "../../components/styled/GradientBorder/GradientBorder";
-import GradientBg from "../../components/styled/GradientBg/GradientBg";
+import GradienBorder from "../../components/atoms/GradientBorder/GradientBorder";
+import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -83,7 +83,7 @@ const PlanDetail = ({ response }) => {
           />
         </GradienBorder>
       </section>
-      <Modal
+      <InfoModal
         isOpen={showModal}
         onClose={() => {
           setShowModal(false);
@@ -103,7 +103,7 @@ const PlanDetail = ({ response }) => {
             ))}
           </Text>
         </section>
-      </Modal>
+      </InfoModal>
       <GradientBg />
     </div>
   );

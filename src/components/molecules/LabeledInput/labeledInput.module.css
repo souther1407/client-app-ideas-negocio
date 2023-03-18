@@ -1,0 +1,39 @@
+.cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.label {
+  margin-bottom: 8px;
+  position: absolute;
+  width: fit-content;
+  font-size: var(--md);
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.45s ease-in-out;
+}
+
+.label.effect {
+  left: 0px;
+  top: 0px;
+  font-size: var(--sm);
+}
+.inputCont {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  width: var(--md);
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: var(--text-light);
+}

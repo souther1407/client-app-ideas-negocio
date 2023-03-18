@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./register.module.css";
-import Text from "../../components/styled/Text/Text";
-import Button from "../../components/styled/Button/Button";
-import Input from "../../components/styled/Input/Input";
+import Text from "../../components/atoms/Text/Text";
+import Button from "../../components/atoms/Button/Button";
+import Input from "../../components/atoms/Input/Input";
 import { useNavigate } from "react-router-dom";
 import AuthUser from "../../services/authentication/auth";
 import { START_A_BUSINESS } from "../../utils/constants/routes";

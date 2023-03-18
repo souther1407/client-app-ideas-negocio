@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./aiDropshipingCard.module.css";
-import Text from "../../../../../../components/styled/Text/Text";
-import Icon from "../../../../../../components/styled/Icon/Icon";
-import Link from "../../../.././../../components/styled/Link/Link";
-import GradientBorder from "../../../../../../components/styled/GradientBorder/GradientBorder";
+import Text from "../../../../../../components/atoms/Text/Text";
+import Icon from "../../../../../../components/atoms/Icon/Icon";
+import Link from "../../../.././../../components/atoms/Link/Link";
+import GradientBorder from "../../../../../../components/atoms/GradientBorder/GradientBorder";
 import gradient from "../../../../../../assets/blue-gradient.jpg";
 const AiDropshipingCard = ({ show, index, to, ...otherProps }) => {
   return (

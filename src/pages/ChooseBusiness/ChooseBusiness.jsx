@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import styles from "./chooseBusiness.module.css";
-import GradientBg from "../../components/styled/GradientBg/GradientBg";
-import LandingPageNav from "../../components/compounds/LandingPageNav/LandingPageNav";
-import Modal from "../../components/styled/Modal/Modal";
+import GradientBg from "../../components/atoms/GradientBg/GradientBg";
+import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
+import InfoModal from "../../components/molecules/InfoModal/InfoModal";
 import GearCard from "./components/GearCard/GearCard";
-import Button from "../../components/styled/Button/Button";
-import Text from "../../components/styled/Text/Text";
+import Button from "../../components/atoms/Button/Button";
+import Text from "../../components/atoms/Text/Text";
 import useBusinessPlan from "../../states/businessPlan";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
+import { useStorage } from "../../hooks/useStorage";
 
 const ChooseBusiness = () => {
+  const { load } = useStorage();
+
   const [option, setOption] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navitagte = useNavigate();
@@ -19,7 +22,10 @@ const ChooseBusiness = () => {
   );
   const handleClick = async () => {
     try {
-      await generateBusinessPlan(options[option]);
+      await generateBusinessPlan({
+        input: load("input"),
+        header: options[option],
+      });
       navitagte(PLAN_DETAIL);
     } catch (error) {
       alert(error.message);
@@ -58,7 +64,7 @@ const ChooseBusiness = () => {
           }}
         />
       </section>
-      <Modal
+      <InfoModal
         title={options[option].title}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -69,7 +75,7 @@ const ChooseBusiness = () => {
         )}
       >
         <section>{options[option].description}</section>
-      </Modal>
+      </InfoModal>
       <GradientBg />
     </div>
   );
