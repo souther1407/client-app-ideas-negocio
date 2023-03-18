@@ -1,0 +1,54 @@
+.affiliateProgram {
+  display: flex;
+}
+.card {
+  --borders-color: #41545a48;
+  width: 300px;
+  height: 400px;
+  background-image: linear-gradient(
+    to right,
+    var(--borders-color),
+    #10333e60,
+    var(--borders-color)
+  );
+  margin: 2px;
+  padding: 0px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.middle {
+  width: 350px;
+  position: relative;
+  bottom: 28px;
+  height: 450px;
+}
+
+.clicks,
+.convertions,
+.earnings,
+.lastClicks,
+.lastCovertions {
+  color: rgb(219, 219, 219);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.clicks > :last-child,
+.convertions > :last-child {
+  margin-top: 16px;
+}
+
+.earnings > :nth-child(2) {
+  font-size: var(--superlg);
+}
+
+.earnings > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.chart {
+  width: 250px;
+}

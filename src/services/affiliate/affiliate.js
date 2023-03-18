@@ -49,3 +49,16 @@ export const getReferralsData = async () => {
   if (!response.ok) throw new Error(body.error);
   return body;
 };
+
+export const addClick = async (affiliateId, clicked = "") => {
+  const response = await fetch(URL + "/affiliates/click", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({ affiliateId, clicked }),
+  });
+  const body = await response.json();
+  if (!response.ok) throw new Error(body.error);
+  return body;
+};
