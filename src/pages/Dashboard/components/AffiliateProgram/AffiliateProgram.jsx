@@ -16,12 +16,12 @@ const AffiliateProgram = () => {
   const [loading, setLoading] = useState(false);
   const [referralsData, setReferralsData] = useState({
     earnings: 0,
-    totalClick: "",
+    totalClicks: "",
     totalSubcriptions: "",
   });
 
   useEffect(() => {
-    /* const getData = async () => {
+    const getData = async () => {
       try {
         setLoading(true);
         const data = await getReferralsData();
@@ -31,9 +31,9 @@ const AffiliateProgram = () => {
         alert(error.message);
       }
     };
-    if (userData.affiliateAccount.affiliateLink) {
+    if (userData.affiliateAccount) {
       getData();
-    } */
+    }
   }, [userData]);
 
   const handleGeneratePaymentLink = async () => {
@@ -64,19 +64,19 @@ const AffiliateProgram = () => {
       <section className={styles.card}>
         <div className={styles.clicks}>
           <Text>Clicks</Text>
-          <Text type="title">15</Text>
+          <Text type="title">{referralsData.totalClicks}</Text>
         </div>
 
         <div className={styles.convertions}>
           <Text>Número de conversiones</Text>
-          <Text type="title">20</Text>
+          <Text type="title">{referralsData.totalSubcriptions}</Text>
         </div>
       </section>
 
       <section className={`${styles.card} ${styles.middle}`}>
         <div className={styles.earnings}>
           <Text>Dinero ganado</Text>
-          <Text type="title">{parseCentToMoney(2000)}</Text>
+          <Text type="title">{parseCentToMoney(referralsData.earnings)}</Text>
           {!userData.affiliateAccount.enabled ? (
             <ShineEffect>
               <Button color="secondary">
