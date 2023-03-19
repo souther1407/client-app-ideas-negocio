@@ -3,13 +3,16 @@ import {
   Chart as ChartJS,
   LineElement,
   PointElement,
+  LineController,
   LinearScale,
   CategoryScale,
   Title,
   Filler,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
+
 ChartJS.register(
+  LineController,
   LineElement,
   PointElement,
   LinearScale,
