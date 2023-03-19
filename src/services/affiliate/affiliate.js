@@ -58,7 +58,9 @@ export const addClick = async (affiliateId, clicked = "") => {
     },
     body: JSON.stringify({ affiliateId, clicked }),
   });
+
   const body = await response.json();
+  console.log(body);
   if (!response.ok) throw new Error(body.error);
   return body;
 };

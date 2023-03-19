@@ -24,6 +24,7 @@
   position: relative;
   bottom: 28px;
   height: 450px;
+  box-shadow: 1px 1px 16px rgba(44, 44, 44, 0.212);
 }
 
 .clicks,
