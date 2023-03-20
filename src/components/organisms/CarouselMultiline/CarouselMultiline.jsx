@@ -38,13 +38,15 @@ const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
     </div>
   );
 };
-const CarouselMultiline = ({ children, onChange }) => {
+const CarouselMultiline = ({ children, onChange, infinite = false }) => {
   return (
     <Carousel
+      transitionDuration={700}
       beforeChange={onChange}
+      customTransition="all .6s ease-out"
       className={styles.carousel}
       responsive={responsive}
-      infinite={true}
+      infinite={infinite}
       arrows={false}
       customButtonGroup={<ButtonGroup />}
     >
