@@ -11,3 +11,9 @@
   height: 100%;
   background-color: var(--primary-dark);
 }
+
+@media screen and (max-width: 640px) {
+  .progressBar {
+    width: 100%;
+  }
+}

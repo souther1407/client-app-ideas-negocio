@@ -6,7 +6,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-
   position: relative;
   background-color: black;
   color: var(--white);
@@ -110,4 +109,27 @@
 
 .show {
   display: flex;
+}
+
+@media screen and (max-width: 640px) {
+  .startABusiness {
+    padding: 16px;
+  }
+  .form {
+    width: 100%;
+  }
+  .controls {
+    width: 100%;
+  }
+
+  .controls > :first-child {
+    margin-right: 8px;
+  }
+  .antBtn .arrow {
+    margin-right: 60px;
+  }
+
+  .nextBtn .arrow {
+    margin-left: 60px;
+  }
 }

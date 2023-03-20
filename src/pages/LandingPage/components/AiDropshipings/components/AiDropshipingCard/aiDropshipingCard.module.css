@@ -99,3 +99,9 @@
 button.link {
   display: flex;
 }
+
+@media screen and (max-width: 640px) {
+  .details > :first-child {
+    text-align: center;
+  }
+}

@@ -17,7 +17,7 @@
 .desc {
   padding-top: 16px;
   color: rgba(220, 220, 220, 0.685);
-  text-align: center;
+
   z-index: 1;
 }
 
@@ -26,6 +26,13 @@
   width: 75%;
   position: relative;
   z-index: 1;
+}
+.carouselMobile {
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 32px 0;
 }
 .element {
   display: flex;
@@ -45,4 +52,13 @@
 .startABusiness {
   position: relative;
   z-index: 1;
+}
+
+@media screen and (max-width: 640px) {
+  .carousel {
+    display: none;
+  }
+  .carouselMobile {
+    display: block;
+  }
 }

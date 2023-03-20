@@ -1,27 +1,25 @@
-import React, { useEffect } from "react";
-import styles from "./landingPageNav.module.css";
-import Link from "../../atoms/Link/Link";
-import Text from "../../atoms/Text/Text";
-import ChangeLanguage from "../../molecules/ChangeLanguage/ChangeLanguage";
-import { useScroll } from "../../../hooks/useScroll";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import IconButton from "../../../molecules/IconButton/IconButton";
+import styles from "./mobileMenu.module.css";
+import Button from "../../../atoms/Button/Button";
+import Link from "../../../atoms/Link/Link";
+import Text from "../../../atoms/Text/Text";
 import {
   LANDING_PAGE,
   START_A_BUSINESS,
   LOGIN,
   DASHBOARD,
-} from "../../../utils/constants/routes";
-import { useLogin } from "../../../hooks/useLogin";
-import Button from "../../atoms/Button/Button";
-import GradientBorder from "../../../components/atoms/GradientBorder/GradientBorder";
-import ShineEffect from "../../atoms/ShineEffect/ShineEffect";
-import MobileMenu from "./components/MobileMenu";
-const LandingPageNav = () => {
-  const { logout, isLogged } = useLogin({});
+} from "../../../../utils/constants/routes";
+import { useLocation, useNavigate } from "react-router-dom";
+import GradientBorder from "../../../atoms/GradientBorder/GradientBorder";
+import ChangeLanguage from "../../../molecules/ChangeLanguage/ChangeLanguage";
+import ShineEffect from "../../../atoms/ShineEffect/ShineEffect";
+import { useLogin } from "../../../../hooks/useLogin";
+const MobileMenu = () => {
+  const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
+  const { isLogged } = useLogin({});
   const navigate = useNavigate();
-  const stateScroll = useScroll();
-
   const handleUserlogin = () => {
     if (isLogged()) logout();
 
@@ -34,27 +32,29 @@ const LandingPageNav = () => {
       const elementAirDrops = document.getElementById("airDropshipings");
       elementAirDrops.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+    setShowMenu(false);
   };
 
   return (
-    <nav
-      className={`${styles.landingPageNav} ${
-        stateScroll.isScrolledUp && styles.show
-      }`}
-    >
-      <section className={styles.logo}>
-        <Text>Prodigy AI</Text>
-      </section>
-      <section className={styles.buttonsAndLinks}>
+    <div className={styles.mobileMenu}>
+      <IconButton icon={"bars"} onClick={() => setShowMenu(true)} />
+      <section className={`${styles.subMenu} ${showMenu && styles.show}`}>
+        <div className={styles.closeButton}>
+          <IconButton icon={"close"} onClick={() => setShowMenu(false)} />
+        </div>
         <section className={styles.links}>
           <Link to={LANDING_PAGE}>
-            <Text>Home</Text>
+            <Text type="title">Home</Text>
           </Link>
-          <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
+          <Text
+            type="title"
+            onClick={handlerClick}
+            style={{ cursor: "pointer" }}
+          >
             Ejemplos
           </Text>
           <Link to={DASHBOARD}>
-            <Text>Dashboard</Text>
+            <Text type="title">Dashboard</Text>
           </Link>
         </section>
         <section className={styles.buttons}>
@@ -84,11 +84,8 @@ const LandingPageNav = () => {
           </ShineEffect>
         </section>
       </section>
-      <section className={styles.mobileMenu}>
-        <MobileMenu />
-      </section>
-    </nav>
+    </div>
   );
 };
 
-export default LandingPageNav;
+export default MobileMenu;

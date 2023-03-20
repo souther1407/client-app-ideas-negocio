@@ -85,6 +85,28 @@ const AiDropshipings = () => {
           </div>
         </CarouselMultiline>
       </section>
+      <section className={styles.carouselMobile}>
+        <CarouselMultiline
+          onChange={(before, state) => setCurrentCard(before)}
+          infinite
+        >
+          <div className={`${styles.element} `}>
+            <AiDropshipingCard show={true} index={1} to={PLAN_EXAMPLE_1} />
+          </div>
+          <div className={`${styles.element}`}>
+            <AiDropshipingCard show={true} index={2} to={PLAN_EXAMPLE_1} />
+          </div>
+          <div className={`${styles.element}`}>
+            <AiDropshipingCard index={3} show={true} to={PLAN_EXAMPLE_1} />
+          </div>
+          <div className={`${styles.element}`}>
+            <AiDropshipingCard show={true} index={4} to={PLAN_EXAMPLE_1} />
+          </div>
+          <div className={`${styles.element}`}>
+            <AiDropshipingCard show={true} index={5} to={PLAN_EXAMPLE_1} />
+          </div>
+        </CarouselMultiline>
+      </section>
       <div className={styles.startABusiness}>
         <Link to={START_A_BUSINESS}>
           <ShineEffect>

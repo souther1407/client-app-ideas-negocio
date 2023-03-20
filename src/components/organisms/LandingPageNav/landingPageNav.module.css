@@ -15,7 +15,7 @@
 .show {
   transform: translateY(0%);
 }
-.butonsAndLinks {
+.buttonsAndLinks {
   display: flex;
 }
 .links {
@@ -58,4 +58,16 @@
 
 .loginBtn {
   padding: 12px 40px !important;
+}
+.mobileMenu {
+  display: none;
+}
+
+@media screen and (max-width: 840px) {
+  .buttonsAndLinks {
+    display: none;
+  }
+  .mobileMenu {
+    display: block;
+  }
 }

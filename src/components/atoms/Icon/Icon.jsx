@@ -14,6 +14,8 @@ import {
   FaHeadSideVirus,
   FaLongArrowAltDown,
   FaShieldAlt,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { GiGears } from "react-icons/gi";
@@ -46,6 +48,8 @@ const Icon = ({ type }) => {
     downArrow: <FaLongArrowAltDown {...props} />,
     mail: <AiOutlineMail {...props} />,
     shield: <FaShieldAlt {...props} />,
+    bars: <FaBars {...props} />,
+    close: <FaTimes {...props} />,
   };
   return <i>{icons[type]}</i>;
 };
