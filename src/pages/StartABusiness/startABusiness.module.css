@@ -118,6 +118,10 @@
   .form {
     width: 100%;
   }
+  .teacher {
+    width: 80px;
+    height: 80px;
+  }
   .controls {
     width: 100%;
   }
