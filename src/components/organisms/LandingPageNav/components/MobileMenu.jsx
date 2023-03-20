@@ -18,8 +18,9 @@ import { useLogin } from "../../../../hooks/useLogin";
 const MobileMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
-  const { isLogged } = useLogin({});
+  const { isLogged, logout } = useLogin({});
   const navigate = useNavigate();
+
   const handleUserlogin = () => {
     if (isLogged()) logout();
 
