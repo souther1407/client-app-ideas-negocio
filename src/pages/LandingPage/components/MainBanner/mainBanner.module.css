@@ -1,11 +1,4 @@
 .mainBanner {
-  /* background-image: linear-gradient(
-    to right,
-    rgb(0, 0, 0) 1%,
-    var(--transparent-blue) 65%,
-    #0b2237,
-    rgb(1, 1, 37)
-  ); */
   padding: 32px;
   background-color: black;
   padding-top: 64px;
@@ -51,4 +44,28 @@
 .boxImg {
   width: 1000px;
   z-index: 1;
+}
+
+@media screen and (max-width: 840px) {
+  .mainBanner {
+    padding: 16px;
+    padding-top: 80px;
+  }
+  .boxImg {
+    display: none;
+  }
+
+  .title {
+    padding-bottom: 4px;
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .buttons > * {
+    margin-bottom: 8px;
+  }
+  .buttons > :first-child {
+    margin-right: 0;
+  }
 }

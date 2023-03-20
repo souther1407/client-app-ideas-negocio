@@ -4,8 +4,11 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-size: 20px !important;
+  font-size: 20px;
+}
+body {
   background-color: #1e1c24 !important;
 }
 
@@ -36,14 +39,15 @@ input:-webkit-autofill {
   --transparent-green: #66858548;
   --dark-green: #0e3541bb;
   --light-green: #8da9b3;
-  --md: 20px;
-  --sm: 16px;
-  --ty: 12px;
-  --lg: 24px;
-  --xlg: 32px;
-  --xxlg: 36px;
-  --xxxlg: 40px;
-  --superlg: 60px;
+  --mobile-w: 840px;
+  --md: 1rem;
+  --sm: 0.8rem;
+  --ty: 0.6rem;
+  --lg: 1.2rem;
+  --xlg: 1.6rem;
+  --xxlg: 1.8rem;
+  --xxxlg: 2rem;
+  --superlg: 3rem;
 }
 
 h1 {
@@ -61,4 +65,11 @@ input {
 }
 input:focus {
   outline: none;
+}
+
+@media screen and (max-width: 640px) {
+  html,
+  body {
+    font-size: 13px;
+  }
 }

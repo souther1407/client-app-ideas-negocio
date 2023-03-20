@@ -12,6 +12,7 @@
 .leftBtn,
 .rightBtn {
   font-size: 40px;
+  z-index: 10;
 }
 .leftBtn {
   position: relative;
@@ -21,4 +22,10 @@
 .rightBtn {
   position: absolute;
   left: 97%;
+}
+
+@media screen and (max-width: 640px) {
+  .rightBtn {
+    left: 92%;
+  }
 }
