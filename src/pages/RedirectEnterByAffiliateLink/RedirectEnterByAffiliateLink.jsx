@@ -14,7 +14,6 @@ const RedirectEnterByAffiliateLink = () => {
     save("affiliate", affiliateId);
     navigate(LANDING_PAGE);
   }, []);
-
   return <div></div>;
 };
 

@@ -32,7 +32,10 @@ input:-webkit-autofill {
   --color-shining: #0282b5;
   --blue-shining: #0282b52c;
   --transparent-black: rgba(0, 0, 0, 0.411);
-  --transparent-blue: #3392b246;
+  --transparent-blue: #40687541;
+  --transparent-green: #66858548;
+  --dark-green: #0e3541bb;
+  --light-green: #8da9b3;
   --md: 20px;
   --sm: 16px;
   --ty: 12px;

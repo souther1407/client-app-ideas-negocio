@@ -9,7 +9,6 @@
 }
 
 .title {
-  border-bottom: 2px solid gainsboro;
   padding-bottom: 16px;
   font-size: var(--xlg);
   z-index: 1;
@@ -23,12 +22,27 @@
 }
 
 .carousel {
-  padding: 32px;
-  width: 100%;
+  padding: 32px 0;
+  width: 75%;
+  position: relative;
   z-index: 1;
 }
 .element {
   display: flex;
   justify-content: center;
+  position: relative;
   z-index: 5;
+}
+
+.createBusiness {
+  padding: 8px 16px;
+  color: var(--white);
+  position: relative;
+  font-size: var(--md);
+  z-index: 1;
+}
+
+.startABusiness {
+  position: relative;
+  z-index: 1;
 }

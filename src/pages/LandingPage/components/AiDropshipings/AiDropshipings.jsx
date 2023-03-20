@@ -3,10 +3,13 @@ import styles from "./aiDropshipings.module.css";
 import Text from "../../../../components/atoms/Text/Text";
 import CarouselMultiline from "../../../../components/organisms/CarouselMultiline/CarouselMultiline";
 import AiDropshipingCard from "./components/AiDropshipingCard/AiDropshipingCard";
+import Button from "../../../../components/atoms/Button/Button";
 import { useState } from "react";
 import { PLAN_EXAMPLE_1 } from "../../../../utils/constants/routes";
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
-
+import { START_A_BUSINESS } from "../../../../utils/constants/routes";
+import Link from "../../../../components/atoms/Link/Link";
+import ShineEffect from "../../../../components/atoms/ShineEffect/ShineEffect";
 const AiDropshipings = () => {
   const [currentCard, setCurrentCard] = useState(5);
   return (
@@ -21,7 +24,10 @@ const AiDropshipings = () => {
         </Text>
       </section>
       <section className={styles.carousel}>
-        <CarouselMultiline onChange={(before, state) => setCurrentCard(before)}>
+        <CarouselMultiline
+          onChange={(before, state) => setCurrentCard(before)}
+          infinite
+        >
           <div className={`${styles.element} `}>
             <AiDropshipingCard
               show={
@@ -79,6 +85,16 @@ const AiDropshipings = () => {
           </div>
         </CarouselMultiline>
       </section>
+      <div className={styles.startABusiness}>
+        <Link to={START_A_BUSINESS}>
+          <ShineEffect>
+            <Button color="secondary">
+              <Text>Crear negocio</Text>
+            </Button>
+          </ShineEffect>
+        </Link>
+      </div>
+
       <GradientBg />
     </div>
   );

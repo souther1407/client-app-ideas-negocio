@@ -8,32 +8,14 @@ import { useLogged } from "../../hooks/useLogged";
 import { useSubscribed } from "../../hooks/useSubscribed";
 import { getPrompts } from "../../services/userPrompts/getPrompts";
 import { useLogin } from "../../hooks/useLogin";
-import Button from "../../components/atoms/Button/Button";
 
 import AffiliateProgram from "./components/AffiliateProgram/AffiliateProgram";
-
+import MyPromps from "./components/MyPromps/MyPromps";
 const Dashboard = () => {
   useLogged();
-
   const { subscribed } = useSubscribed();
-  const [prompts, setPrompts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [showAffiliateSection, setShowAffiliateSection] = useState(false);
   const { userData, refreshToken } = useLogin({});
-
-  useEffect(() => {
-    const initPrompts = async () => {
-      try {
-        setLoading(true);
-        const data = await getPrompts();
-        setPrompts(data);
-      } catch (error) {
-        alert(error.message);
-      }
-      setLoading(false);
-    };
-    initPrompts();
-  }, []);
 
   useEffect(() => {}, [subscribed]);
 
@@ -57,20 +39,7 @@ const Dashboard = () => {
           !showAffiliateSection && styles.show
         }`}
       >
-        {loading && <Text>Cargando...</Text>}
-        {!loading &&
-          prompts.length > 0 &&
-          prompts.map((p) => (
-            <PromptCard
-              id={p.id}
-              age={p.input.age}
-              budget={p.input.budget}
-              location={p.input.location}
-              skills={p.input.skills}
-              teacher={p.input.teacher}
-              details={p.details}
-            />
-          ))}
+        <MyPromps />
       </section>
       <section
         className={`${styles.affiliateProgram} ${
