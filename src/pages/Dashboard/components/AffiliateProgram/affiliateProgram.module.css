@@ -52,3 +52,17 @@
 .chart {
   width: 250px;
 }
+
+@media screen and (max-width: 640px) {
+  .affiliateProgram {
+    flex-direction: column;
+  }
+  .card {
+    margin-bottom: 16px;
+  }
+  .card,
+  .middle {
+    width: 100%;
+    bottom: 0;
+  }
+}
