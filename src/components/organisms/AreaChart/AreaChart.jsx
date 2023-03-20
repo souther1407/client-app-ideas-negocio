@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Chart as ChartJS,
   LineElement,
@@ -10,7 +10,7 @@ import {
   Filler,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
-
+import { parseDay } from "../../../utils/parse/parseDay";
 ChartJS.register(
   LineController,
   LineElement,
@@ -32,15 +32,27 @@ const plugin = {
   },
 };
 
-const AreaChart = () => {
+const AreaChart = ({ earnings, label }) => {
+  const labels = useMemo(() => {
+    return earnings.map((earning) => {
+      const date = new Date(earning.date.timestamp * 1000);
+      console.log(date.toString());
+      return `${parseDay(date.getDay())}`;
+    });
+  }, [earnings]);
+  const data = useMemo(() => {
+    return earnings.map((earning) => {
+      return earning[label];
+    });
+  }, [earnings]);
   return (
     <Chart
       type="line"
       data={{
-        labels: ["lun", "mar", "mie", "jue", "vie", "sab", "dom"],
+        labels: labels,
         datasets: [
           {
-            data: [10, 15, 9, 15, 8, 5, 20],
+            data: data,
             backgroundColor: "#3e59f0",
             borderColor: "#4a63f0",
             borderJoinStyle: "bevel",

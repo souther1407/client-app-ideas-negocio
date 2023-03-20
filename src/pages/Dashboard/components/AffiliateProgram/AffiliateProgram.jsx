@@ -18,6 +18,7 @@ const AffiliateProgram = () => {
     earnings: 0,
     totalClicks: 0,
     totalSubcriptions: 0,
+    lastWeekData: [],
   });
 
   useEffect(() => {
@@ -35,15 +36,6 @@ const AffiliateProgram = () => {
     getData();
     console.log(referralsData);
   }, []);
-
-  const handleGeneratePaymentLink = async () => {
-    try {
-      await generatePaymentLink();
-      await refreshToken();
-    } catch (error) {
-      alert(error.message);
-    }
-  };
 
   const handleActiveAffiliateAccount = async () => {
     try {
@@ -99,14 +91,20 @@ const AffiliateProgram = () => {
         <div className={styles.lastClicks}>
           <Text>Clicks</Text>
           <div className={styles.chart}>
-            <AreaChart />
+            <AreaChart
+              earnings={referralsData.lastWeekData}
+              label={"totalClicks"}
+            />
           </div>
         </div>
 
         <div className={styles.lastCovertions}>
           <Text>Conversiones</Text>
           <div className={styles.chart}>
-            <AreaChart />
+            <AreaChart
+              earnings={referralsData.lastWeekData}
+              label={"totalSubscriptions"}
+            />
           </div>
         </div>
       </section>
