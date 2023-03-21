@@ -31,6 +31,6 @@
 }
 @media screen and (max-width: 500px) {
   .detailCard {
-    width: 100%;
+    width: 85vw;
   }
 }
