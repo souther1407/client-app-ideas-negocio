@@ -15,6 +15,7 @@ import { useStorage } from "../../hooks/useStorage";
 const LoginRegister = () => {
   const { load, clear } = useStorage();
   const affiliateId = useRef(load("affiliate"));
+  const [loading, setLoading] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [loginInput, setLoginInput] = useState({
     email: "",
@@ -29,15 +30,19 @@ const LoginRegister = () => {
     password: "",
     referredBy: affiliateId.current ?? "",
   });
+
   const handlerRegister = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       await AuthUser.registerUser(registerInput);
       alert("user created :D");
       setShowRegister(false);
       clear("affiliate");
     } catch (error) {
       alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -63,10 +68,13 @@ const LoginRegister = () => {
   const handlerLogin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       await login(loginInput.email, loginInput.password);
       navigate(-1);
     } catch (error) {
       alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,8 +108,8 @@ const LoginRegister = () => {
             <input type="checkbox" />
             <Text>Remember me forget password</Text>
           </section>
-          <Button w color="secondary">
-            <Text>Log in</Text>
+          <Button w color="secondary" disabled={loading}>
+            <Text>{loading ? "logging.." : "Log in"}</Text>
           </Button>
           <Text>
             Don't have an account{" "}
@@ -149,8 +157,8 @@ const LoginRegister = () => {
             <input type="checkbox" />
             <Text>I agree to terms & conditions</Text>
           </section>
-          <Button w color="secondary">
-            <Text>Sign up</Text>
+          <Button w color="secondary" disabled={loading}>
+            <Text>{loading ? "Signing up" : "Sign up"}</Text>
           </Button>
           <Text>
             Already have an account{" "}

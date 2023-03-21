@@ -21,7 +21,7 @@ export const useLogin = ({ onLogin = () => {}, onLogout = () => {} }) => {
       setData(payload);
       onLogin();
     } catch (error) {
-      alert(error.message);
+      throw new Error(error.message);
     }
   };
 
