@@ -6,6 +6,7 @@ import Link from "../../../.././../../components/atoms/Link/Link";
 import usePromptDetail from "../../../../../../states/prompDetail";
 import { useNavigate } from "react-router-dom";
 import { MY_PROMPTS_DETAIL } from "../../../../../../utils/constants/routes";
+
 const AiDropshipingCard = ({
   show,
   index,
@@ -22,7 +23,11 @@ const AiDropshipingCard = ({
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const navigate = useNavigate();
   const handleClick = () => {
-    setPromptDetail(details);
+    console.log(details);
+    setPromptDetail({
+      ...details,
+      input: { age, teacher, skills, budget, location },
+    });
     navigate(MY_PROMPTS_DETAIL + `/${id}`);
   };
   return (

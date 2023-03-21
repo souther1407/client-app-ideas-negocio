@@ -1,0 +1,21 @@
+.inputCard {
+  border: 2px solid var(--secondary-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 150px;
+  height: 200px;
+  align-items: center;
+}
+
+.inputCard > :first-child {
+  color: var(--secondary-light);
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 500px) {
+  .inputCard {
+    width: 100%;
+  }
+}

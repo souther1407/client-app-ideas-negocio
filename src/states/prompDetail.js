@@ -8,6 +8,14 @@ const usePromptDetail = create((set) => ({
     sales: "",
     marketingPlan: "",
     riskAnalisis: "",
+    time: "tiempo",
+    input: {
+      budget: 2000,
+      age: 25,
+      location: "Argentina",
+      skills: "Programacion",
+      teacher: "Elon Musk",
+    },
   },
   setPromptDetail(details) {
     set((state) => ({ ...state, promptDetail: details }));

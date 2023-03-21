@@ -6,21 +6,23 @@ import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPag
 import DetailCard from "./components/DetailCard/DetailCard";
 import InfoModal from "../../components/molecules/InfoModal/InfoModal";
 import ModalNextCard from "./components/modalNextCard/ModalNextCard";
-
 import GradienBorder from "../../components/atoms/GradientBorder/GradientBorder";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
+import InputCard from "./components/InputCard/InputCard";
+import { formatStringToShort } from "../../utils/format/formatStringToShort";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
   { title: "Ventas", id: "sales" },
   { title: "Plan de Marketing", id: "marketingPlan" },
+  { title: "Tiempo", id: "time" },
   { title: "Analisis de Riesgo", id: "riskAnalisis" },
 ];
 
 const PlanDetail = ({ response }) => {
   const [partsCurrentIndex, setpartsCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  //const response = useBusinessPlan((state) => state.businessPlan);
+
   const handleModalOpen = (index) => {
     setpartsCurrentIndex(index);
     setShowModal(true);
@@ -42,46 +44,65 @@ const PlanDetail = ({ response }) => {
           <Text type="title">{response.title}</Text>
           <Text>{response.description}</Text>
         </section>
-        <section className={styles.img}>
-          <img src={Boximg} />
-        </section>
-      </section>
-      <section className={styles.cardsDetail}>
-        <GradienBorder>
+        <section className={styles.cardsDetail}>
           <DetailCard
             title={"Analisis de Mercado"}
             id="marketAnalisis"
             onShowDetail={() => handleModalOpen(0)}
           />
-        </GradienBorder>
-        <GradienBorder>
+
           <DetailCard
             title={"Precio"}
             id={"prices"}
             onShowDetail={() => handleModalOpen(1)}
           />
-        </GradienBorder>
-        <GradienBorder>
+
           <DetailCard
             title={"Ventas"}
             id={"sales"}
             onShowDetail={() => handleModalOpen(2)}
           />
-        </GradienBorder>
-        <GradienBorder>
+
           <DetailCard
             title={"Plan de Marketing"}
             id={"marketingPlan"}
             onShowDetail={() => handleModalOpen(3)}
           />
-        </GradienBorder>
-        <GradienBorder>
+          <DetailCard
+            title={"Tiempo"}
+            id={"time"}
+            onShowDetail={() => handleModalOpen(4)}
+          />
           <DetailCard
             title={"Analisis de Riesgo"}
             id={"riskAnalisis"}
-            onShowDetail={() => handleModalOpen(4)}
+            onShowDetail={() => handleModalOpen(5)}
           />
-        </GradienBorder>
+        </section>
+      </section>
+      <section className={styles.inputUser}>
+        <InputCard
+          info={formatStringToShort(response.input.location)}
+          title={"Ubicación"}
+        />
+        <InputCard
+          info={formatStringToShort(response.input.budget)}
+          title={"Presupuesto"}
+        />
+        <InputCard
+          info={formatStringToShort(response.input.age)}
+          title={"Edad"}
+        />
+        <InputCard
+          info={formatStringToShort(response.input.skills)}
+          title={"Habilidades"}
+        />
+        <InputCard info={formatStringToShort("tiempo")} title={"Tiempo"} />
+
+        <InputCard
+          info={formatStringToShort(response.input.teacher)}
+          title={"Profesor"}
+        />
       </section>
       <InfoModal
         isOpen={showModal}
