@@ -6,25 +6,22 @@ import Text from "../../atoms/Text/Text";
 import Link from "../../atoms/Link/Link";
 import { SUBSCRIBE, LOGIN } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 const NeedLoginOrPayWindow = () => {
   const { userData, isLogged } = useLogin({});
+  const navigate = useNavigate();
   return (
     <div className={styles.needLoginOrPay}>
-      <Container>
-        <Text>Programador, 20 años, presupuesto de $1000...</Text>
-      </Container>
-      <Container>
+      <div className={styles.buttons}>
         {!isLogged() && (
-          <Link to={LOGIN}>
-            <Button color="secondary">
-              <Text>Login/Register</Text>
-            </Button>
-          </Link>
+          <button className={styles.btn} onClick={() => navigate(LOGIN)}>
+            <Text>Log in / Sign Up</Text>
+          </button>
         )}
-        <Link to={SUBSCRIBE}>
+        <button className={styles.btn} onClick={() => navigate(SUBSCRIBE)}>
           <Text>Checkout</Text>
-        </Link>
-      </Container>
+        </button>
+      </div>
     </div>
   );
 };
