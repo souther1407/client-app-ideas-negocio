@@ -14,13 +14,19 @@ import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import LabeledInput from "../../components/molecules/LabeledInput/LabeledInput";
 import { useStorage } from "../../hooks/useStorage";
 import ShineGradientInput from "../../components/organisms/ShineGradientInput/ShineGradientInput";
-
+import elomMuskImg from "../../assets/elon_musk.png";
+import jeffBezosImg from "../../assets/jeff_bezos.png";
+import markZuckerbergImg from "../../assets/mark_zuckerberg.png";
+import samAltmanImg from "../../assets/sam_altman.png";
+import steveJobsImg from "../../assets/steve_jobs.webp";
+import warrenBuffetImg from "../../assets/warren_buffet.png";
+import Avatar from "../../components/atoms/Avatar/Avatar";
 const TEACHERS = {
   elonMusk: "Elon Musk",
-  billGates: "Bill Gates",
+  samAltman: "Sam Altman",
   steveJobs: "Steve Jobs",
-  joeBezos: "Joe Bezos",
-  marcosGasperin: "Marcos Gasperin",
+  jeffBezos: "Jeff Bezos",
+  markZuckerberg: "Mark Zuckerberg",
   warrenBuffet: "Warren Buffet",
 };
 
@@ -191,40 +197,40 @@ const StartABusiness = () => {
                 }`}
                 onClick={() => handleTeacherSelect(TEACHERS.elonMusk)}
               >
-                <Icon type={"image"} />
+                <Avatar src={elomMuskImg} />
               </div>
             </GradientBorder>
             <GradientBorder style={{ borderRadius: "50%" }}>
               <div
                 style={{ background: "#112A3B" }}
                 className={`${styles.teacher} ${
-                  input.teacher === TEACHERS.billGates && styles.shine
+                  input.teacher === TEACHERS.samAltman && styles.shine
                 }`}
-                onClick={() => handleTeacherSelect(TEACHERS.billGates)}
+                onClick={() => handleTeacherSelect(TEACHERS.samAltman)}
               >
-                <Icon type={"image"} />
+                <Avatar src={samAltmanImg} />
               </div>
             </GradientBorder>
             <GradientBorder style={{ borderRadius: "50%" }}>
               <div
                 style={{ background: "#112A3B" }}
                 className={`${styles.teacher} ${
-                  input.teacher === TEACHERS.joeBezos && styles.shine
+                  input.teacher === TEACHERS.jeffBezos && styles.shine
                 }`}
-                onClick={() => handleTeacherSelect(TEACHERS.joeBezos)}
+                onClick={() => handleTeacherSelect(TEACHERS.jeffBezos)}
               >
-                <Icon type={"image"} />
+                <Avatar src={jeffBezosImg} />
               </div>
             </GradientBorder>
             <GradientBorder style={{ borderRadius: "50%" }}>
               <div
                 style={{ background: "#0E2134" }}
                 className={`${styles.teacher} ${
-                  input.teacher === TEACHERS.marcosGasperin && styles.shine
+                  input.teacher === TEACHERS.markZuckerberg && styles.shine
                 }`}
-                onClick={() => handleTeacherSelect(TEACHERS.marcosGasperin)}
+                onClick={() => handleTeacherSelect(TEACHERS.markZuckerberg)}
               >
-                <Icon type={"image"} />
+                <Avatar src={markZuckerbergImg} />
               </div>
             </GradientBorder>
             <GradientBorder style={{ borderRadius: "50%" }}>
@@ -235,7 +241,7 @@ const StartABusiness = () => {
                 }`}
                 onClick={() => handleTeacherSelect(TEACHERS.steveJobs)}
               >
-                <Icon type={"image"} />
+                <Avatar src={steveJobsImg} />
               </div>
             </GradientBorder>
             <GradientBorder style={{ borderRadius: "50%" }}>
@@ -246,7 +252,7 @@ const StartABusiness = () => {
                 }`}
                 onClick={() => handleTeacherSelect(TEACHERS.warrenBuffet)}
               >
-                <Icon type={"image"} />
+                <Avatar src={warrenBuffetImg} />
               </div>
             </GradientBorder>
           </div>

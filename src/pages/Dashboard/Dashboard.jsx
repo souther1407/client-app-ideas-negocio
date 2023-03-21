@@ -8,7 +8,6 @@ import { useLogged } from "../../hooks/useLogged";
 import { useSubscribed } from "../../hooks/useSubscribed";
 import { getPrompts } from "../../services/userPrompts/getPrompts";
 import { useLogin } from "../../hooks/useLogin";
-
 import AffiliateProgram from "./components/AffiliateProgram/AffiliateProgram";
 import MyPromps from "./components/MyPromps/MyPromps";
 const Dashboard = () => {

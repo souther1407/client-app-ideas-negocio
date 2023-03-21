@@ -53,7 +53,6 @@
 }
 .teacher {
   width: 108px;
-  padding: 32px;
   height: 108px;
   border-radius: 50%;
   border: 1px solid var(--white);
