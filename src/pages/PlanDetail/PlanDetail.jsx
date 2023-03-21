@@ -45,64 +45,93 @@ const PlanDetail = ({ response }) => {
           <Text>{response.description}</Text>
         </section>
         <section className={styles.cardsDetail}>
-          <DetailCard
-            title={"Analisis de Mercado"}
-            id="marketAnalisis"
-            onShowDetail={() => handleModalOpen(0)}
-          />
-
-          <DetailCard
-            title={"Precio"}
-            id={"prices"}
-            onShowDetail={() => handleModalOpen(1)}
-          />
-
-          <DetailCard
-            title={"Ventas"}
-            id={"sales"}
-            onShowDetail={() => handleModalOpen(2)}
-          />
-
-          <DetailCard
-            title={"Plan de Marketing"}
-            id={"marketingPlan"}
-            onShowDetail={() => handleModalOpen(3)}
-          />
-          <DetailCard
-            title={"Tiempo"}
-            id={"time"}
-            onShowDetail={() => handleModalOpen(4)}
-          />
-          <DetailCard
-            title={"Analisis de Riesgo"}
-            id={"riskAnalisis"}
-            onShowDetail={() => handleModalOpen(5)}
-          />
+          <GradienBorder>
+            <DetailCard
+              title={"Analisis de Mercado"}
+              id="marketAnalisis"
+              onShowDetail={() => handleModalOpen(0)}
+            />
+          </GradienBorder>
+          <GradienBorder>
+            <DetailCard
+              title={"Precio"}
+              id={"prices"}
+              onShowDetail={() => handleModalOpen(1)}
+            />
+          </GradienBorder>
+          <GradienBorder>
+            <DetailCard
+              title={"Ventas"}
+              id={"sales"}
+              onShowDetail={() => handleModalOpen(2)}
+            />
+          </GradienBorder>
+          <GradienBorder>
+            <DetailCard
+              title={"Plan de Marketing"}
+              id={"marketingPlan"}
+              onShowDetail={() => handleModalOpen(3)}
+            />
+          </GradienBorder>
+          <GradienBorder>
+            <DetailCard
+              title={"Tiempo"}
+              id={"time"}
+              onShowDetail={() => handleModalOpen(4)}
+            />
+          </GradienBorder>
+          <GradienBorder>
+            <DetailCard
+              title={"Analisis de Riesgo"}
+              id={"riskAnalisis"}
+              onShowDetail={() => handleModalOpen(5)}
+            />
+          </GradienBorder>
         </section>
       </section>
       <section className={styles.inputUser}>
-        <InputCard
-          info={formatStringToShort(response.input.location)}
-          title={"Ubicación"}
-        />
-        <InputCard
-          info={formatStringToShort(response.input.budget)}
-          title={"Presupuesto"}
-        />
-        <InputCard
-          info={formatStringToShort(response.input.age)}
-          title={"Edad"}
-        />
-        <InputCard
-          info={formatStringToShort(response.input.skills)}
-          title={"Habilidades"}
-        />
-        <InputCard info={formatStringToShort("tiempo")} title={"Tiempo"} />
-
-        <InputCard
-          info={formatStringToShort(response.input.teacher)}
-          title={"Profesor"}
-        />
+        <GradienBorder>
+          <InputCard
+            info={formatStringToShort(response.input.location)}
+            title={"Ubicación"}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <InputCard
+            info={formatStringToShort(response.input.budget)}
+            title={"Presupuesto"}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <InputCard
+            info={formatStringToShort(response.input.age)}
+            title={"Edad"}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <InputCard
+            info={formatStringToShort(response.input.skills)}
+            title={"Habilidades"}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <InputCard
+            info={formatStringToShort("tiempo")}
+            title={"Tiempo"}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
+        </GradienBorder>
+        <GradienBorder>
+          <InputCard
+            info={formatStringToShort(response.input.teacher)}
+            title={"Profesor"}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
+        </GradienBorder>
       </section>
       <InfoModal
         isOpen={showModal}

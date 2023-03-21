@@ -1,6 +1,6 @@
 .inputCard {
   border: 2px solid var(--secondary-light);
-  border-radius: 8px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -16,6 +16,6 @@
 
 @media screen and (max-width: 500px) {
   .inputCard {
-    width: 100%;
+    width: 85vw;
   }
 }
