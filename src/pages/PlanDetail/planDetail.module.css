@@ -1,7 +1,7 @@
 .planDetail {
   display: flex;
-  flex-direction: column;
-  padding: 8px;
+  padding: 0 32px;
+  width: 100%;
   min-height: 100vh;
   padding-top: 60px;
   background-color: black;
@@ -11,24 +11,37 @@
 
 .description {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-around;
+  flex-basis: 50%;
   z-index: 1;
+  margin-right: 16px;
+}
+.inputUser {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  align-content: center;
+  column-gap: 16px;
+  row-gap: 40px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 50%;
+  margin-bottom: 16px;
 }
 
 .info > :first-child {
   margin-bottom: 32px;
-  font-size: var(--xlg);
+  font-size: var(--lg);
 }
 .info > :last-child {
-  font-size: 1.1rem;
+  font-size: var(--sm);
+  color: gainsboro;
 }
 
 .img {
@@ -37,18 +50,34 @@
 
 .cardsDetail {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  position: relative;
-  align-self: center;
-  padding: 8px;
-  z-index: 1;
-  margin-top: 12px;
-}
-.cardsDetail > * {
-  margin: 32px;
+  flex-direction: column;
 }
 
 .details {
   font-size: 16px;
+}
+
+@media screen and (max-width: 850px) {
+  .inputUser {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .planDetail {
+    flex-direction: column;
+  }
+  .cardsDetail {
+    margin: 32px 0;
+  }
+  .inputUser {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .inputUser {
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+  }
 }

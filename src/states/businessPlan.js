@@ -13,6 +13,7 @@ const useBusinessPlan = create((set) => ({
     sales: "",
     marketingPlan: "",
     riskAnalisis: "",
+    time: "tiempo",
   },
   options: [],
   error: "",

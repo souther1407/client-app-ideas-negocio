@@ -1,8 +1,8 @@
 .detailCard {
   display: flex;
-  padding: 24px 16px;
+  padding: 16px 16px;
   width: 350px;
-  border-radius: 8px;
+
   border: 1px solid aliceblue;
   align-items: center;
   justify-content: space-between;
@@ -11,19 +11,26 @@
 
 .icon {
   border-radius: 50%;
-  background-color: rgba(0, 0, 255, 0.37);
-  box-shadow: 0 0 25px blue;
-  width: 35px;
+  color: var(--secondary-light);
+  width: var(--lg);
   margin-right: 32px;
 }
 
 .title {
   display: flex;
   align-items: center;
+  font-size: var(--sm);
+  font-weight: bold;
 }
 .btn {
   position: relative;
-  width: 32px;
+  width: var(--lg);
   bottom: 2px;
+  color: var(--secondary-light);
   transform: rotateY(180deg);
+}
+@media screen and (max-width: 500px) {
+  .detailCard {
+    width: 100%;
+  }
 }
