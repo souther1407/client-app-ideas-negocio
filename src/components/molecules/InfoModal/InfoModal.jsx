@@ -33,6 +33,7 @@ const InfoModal = ({ title = "", children, isOpen, onClose, renderFooter }) => {
         h={"100vh"}
         marginTop={"0"}
       >
+        <ModalCloseButton />
         <ModalHeader display={"flex"} justifyContent={"center"}>
           <Text>{title}</Text>
         </ModalHeader>
