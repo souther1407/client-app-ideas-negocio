@@ -20,6 +20,7 @@ const LabeledInput = ({
   const [labelEffect, setLabelEffect] = useState(false);
   const inputRef = useRef(null);
   const handlerChange = (e) => {
+    if (!labelEffect) setLabelEffect(true);
     onChange(e.target.id, e.target.value);
     validate(e.target.value);
   };
