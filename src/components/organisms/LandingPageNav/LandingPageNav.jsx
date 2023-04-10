@@ -16,6 +16,10 @@ import Button from "../../atoms/Button/Button";
 import GradientBorder from "../../../components/atoms/GradientBorder/GradientBorder";
 import ShineEffect from "../../atoms/ShineEffect/ShineEffect";
 import MobileMenu from "./components/MobileMenu";
+
+import Drawer from "../../molecules/Drawer/Drawer";
+import Icon from "../../atoms/Icon/Icon";
+
 const LandingPageNav = () => {
   const { logout, isLogged } = useLogin({});
   const location = useLocation();
@@ -36,32 +40,36 @@ const LandingPageNav = () => {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate(LANDING_PAGE);
+  };
+
   return (
     <nav
       className={`${styles.landingPageNav} ${
         stateScroll.isScrolledUp && styles.show
       }`}
     >
-      <section className={styles.logo}>
-        <Text>Prodigy AI</Text>
-      </section>
       <section className={styles.buttonsAndLinks}>
-        <section className={styles.links}>
-          <Link to={LANDING_PAGE}>
-            <Text>Home</Text>
-          </Link>
-          <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
-            Ejemplos
-          </Text>
-          <Link to={DASHBOARD}>
-            <Text>Dashboard</Text>
-          </Link>
-        </section>
+        {!isLogged() && (
+          <section className={styles.links}>
+            <Link to={LANDING_PAGE}>
+              <Text>Home</Text>
+            </Link>
+            <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
+              Ejemplos
+            </Text>
+            <Link to={DASHBOARD}>
+              <Text>Dashboard</Text>
+            </Link>
+          </section>
+        )}
         <section className={styles.buttons}>
           <GradientBorder>
             <ChangeLanguage />
           </GradientBorder>
-          {location.pathname !== LOGIN && (
+          {location.pathname !== LOGIN && !isLogged() && (
             <GradientBorder style={{ borderRadius: "16px" }}>
               <Button
                 type="bordered"
@@ -84,9 +92,35 @@ const LandingPageNav = () => {
           </ShineEffect>
         </section>
       </section>
-      <section className={styles.mobileMenu}>
-        <MobileMenu />
-      </section>
+      {!isLogged() && (
+        <section className={styles.mobileMenu}>
+          <MobileMenu />
+        </section>
+      )}
+      {isLogged() && (
+        <section className={styles.usermenu}>
+          <Drawer
+            renderIcon={(onOpen, isOpen) => (
+              <div className={styles.menuIcon} onClick={onOpen}>
+                <Icon type={"user"} />
+                {<Icon type={isOpen ? "arrowUp" : "arrowDown"} />}
+              </div>
+            )}
+            renderContent={() => (
+              <div className={styles.usermenuContent}>
+                <GradientBorder>
+                  <Button
+                    onClick={handleLogout}
+                    style={{ backgroundColor: "#070E21", color: "white" }}
+                  >
+                    <Text>Log out</Text>
+                  </Button>
+                </GradientBorder>
+              </div>
+            )}
+          />
+        </section>
+      )}
     </nav>
   );
 };
