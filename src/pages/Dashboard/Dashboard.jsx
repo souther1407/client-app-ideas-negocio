@@ -16,8 +16,6 @@ const Dashboard = () => {
   const [showAffiliateSection, setShowAffiliateSection] = useState(false);
   const { userData, refreshToken } = useLogin({});
 
-  useEffect(() => {}, [subscribed]);
-
   return (
     <div className={styles.dashboard}>
       <LandingPageNav />
