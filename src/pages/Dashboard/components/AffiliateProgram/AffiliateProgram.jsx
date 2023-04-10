@@ -28,9 +28,10 @@ const AffiliateProgram = () => {
         const data = await getReferralsData();
         console.log("data", data);
         setReferralsData(data);
-        setLoading(false);
       } catch (error) {
-        alert(error.message);
+        console.log("affiliate program:", error.message);
+      } finally {
+        setLoading(false);
       }
     };
     getData();
@@ -39,6 +40,7 @@ const AffiliateProgram = () => {
 
   const handleActiveAffiliateAccount = async () => {
     try {
+      if (!userData.affiliateAccount) return alert("need to subscribe :c");
       const { url } = await generateActivateLink();
       window.location.replace(url);
     } catch (error) {
