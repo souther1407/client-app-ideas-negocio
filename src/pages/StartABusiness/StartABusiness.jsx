@@ -68,7 +68,7 @@ const StartABusiness = () => {
 
   const handlerSendData = async () => {
     save("input", input);
-    if (!isLogged() || !userData.subscription) return setShowPopup(true);
+    if (!isLogged()) return setShowPopup(true);
     await generateOptions(input);
     navigate(CHOOSE_BUSINESS);
   };

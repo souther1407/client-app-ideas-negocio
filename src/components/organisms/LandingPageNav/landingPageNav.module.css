@@ -1,6 +1,6 @@
 .landingPageNav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 16px 32px;
   position: fixed;
   align-items: center;
@@ -11,7 +11,9 @@
   transform: translateY(-100%);
   z-index: 5;
 }
-
+.landingPageNav > * {
+  margin: 0 16px;
+}
 .show {
   transform: translateY(0%);
 }
@@ -61,6 +63,18 @@
 }
 .mobileMenu {
   display: none;
+}
+
+.menuIcon {
+  width: 80px;
+  display: flex;
+}
+.menuIcon > :first-child {
+  width: 40px;
+  margin-right: 4px;
+}
+.menuIcon > :last-child {
+  width: 20px;
 }
 
 @media screen and (max-width: 840px) {
