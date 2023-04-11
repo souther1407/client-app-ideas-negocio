@@ -1,21 +1,23 @@
 .planDetail {
   display: flex;
-  padding: 0 32px;
   width: 100%;
   min-height: 100vh;
-  padding-top: 60px;
   background-color: black;
   color: var(--white);
   position: relative;
 }
-
+.content {
+  display: flex;
+  padding-top: 60px;
+  padding-left: 16px;
+  width: fit-content;
+}
 .description {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   flex-basis: 50%;
   z-index: 1;
-  margin-right: 16px;
 }
 .inputUser {
   position: relative;

@@ -10,7 +10,7 @@ import {
 } from "../../../utils/constants/routes";
 
 const VerticalLoginNav = () => {
-  const [active, setActive] = useState("ideas");
+  const [active, setActive] = useState("");
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
