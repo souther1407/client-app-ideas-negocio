@@ -10,6 +10,8 @@ import GradienBorder from "../../components/atoms/GradientBorder/GradientBorder"
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import InputCard from "./components/InputCard/InputCard";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
+import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
+import { useLogin } from "../../hooks/useLogin";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -22,7 +24,7 @@ const parts = [
 const PlanDetail = ({ response }) => {
   const [partsCurrentIndex, setpartsCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-
+  const { isLogged } = useLogin({});
   const handleModalOpen = (index) => {
     setpartsCurrentIndex(index);
     setShowModal(true);
@@ -38,122 +40,126 @@ const PlanDetail = ({ response }) => {
   };
   return (
     <div className={styles.planDetail}>
-      <LandingPageNav />
-      <section className={styles.description}>
-        <section className={styles.info}>
-          <Text type="title">{response.title}</Text>
-          <Text>{response.description}</Text>
+      {isLogged() && <VerticalLoginNav />}
+      <section className={styles.content}>
+        <LandingPageNav />
+
+        <section className={styles.description}>
+          <section className={styles.info}>
+            <Text type="title">{response.title}</Text>
+            <Text>{response.description}</Text>
+          </section>
+          <section className={styles.cardsDetail}>
+            <GradienBorder>
+              <DetailCard
+                title={"Analisis de Mercado"}
+                id="marketAnalisis"
+                onShowDetail={() => handleModalOpen(0)}
+              />
+            </GradienBorder>
+            <GradienBorder>
+              <DetailCard
+                title={"Precio"}
+                id={"prices"}
+                onShowDetail={() => handleModalOpen(1)}
+              />
+            </GradienBorder>
+            <GradienBorder>
+              <DetailCard
+                title={"Ventas"}
+                id={"sales"}
+                onShowDetail={() => handleModalOpen(2)}
+              />
+            </GradienBorder>
+            <GradienBorder>
+              <DetailCard
+                title={"Plan de Marketing"}
+                id={"marketingPlan"}
+                onShowDetail={() => handleModalOpen(3)}
+              />
+            </GradienBorder>
+            <GradienBorder>
+              <DetailCard
+                title={"Tiempo"}
+                id={"time"}
+                onShowDetail={() => handleModalOpen(4)}
+              />
+            </GradienBorder>
+            <GradienBorder>
+              <DetailCard
+                title={"Analisis de Riesgo"}
+                id={"riskAnalisis"}
+                onShowDetail={() => handleModalOpen(5)}
+              />
+            </GradienBorder>
+          </section>
         </section>
-        <section className={styles.cardsDetail}>
+        <section className={styles.inputUser}>
           <GradienBorder>
-            <DetailCard
-              title={"Analisis de Mercado"}
-              id="marketAnalisis"
-              onShowDetail={() => handleModalOpen(0)}
+            <InputCard
+              info={formatStringToShort(response.input.location)}
+              title={"Ubicación"}
+              style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
-            <DetailCard
-              title={"Precio"}
-              id={"prices"}
-              onShowDetail={() => handleModalOpen(1)}
+            <InputCard
+              info={formatStringToShort(response.input.budget)}
+              title={"Presupuesto"}
+              style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
-            <DetailCard
-              title={"Ventas"}
-              id={"sales"}
-              onShowDetail={() => handleModalOpen(2)}
+            <InputCard
+              info={formatStringToShort(response.input.age)}
+              title={"Edad"}
+              style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
-            <DetailCard
-              title={"Plan de Marketing"}
-              id={"marketingPlan"}
-              onShowDetail={() => handleModalOpen(3)}
+            <InputCard
+              info={formatStringToShort(response.input.skills)}
+              title={"Habilidades"}
+              style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
-            <DetailCard
+            <InputCard
+              info={formatStringToShort("tiempo")}
               title={"Tiempo"}
-              id={"time"}
-              onShowDetail={() => handleModalOpen(4)}
+              style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
-            <DetailCard
-              title={"Analisis de Riesgo"}
-              id={"riskAnalisis"}
-              onShowDetail={() => handleModalOpen(5)}
+            <InputCard
+              info={formatStringToShort(response.input.teacher)}
+              title={"Profesor"}
+              style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
         </section>
+        <InfoModal
+          isOpen={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          title={parts[partsCurrentIndex].title}
+          renderFooter={() => (
+            <ModalNextCard onPrev={prevPart} onNext={nextPart} />
+          )}
+        >
+          <section className={styles.details}>
+            <Text>
+              {response[parts[partsCurrentIndex].id].split("\n").map((str) => (
+                <>
+                  {str}
+                  <br />
+                </>
+              ))}
+            </Text>
+          </section>
+        </InfoModal>
       </section>
-      <section className={styles.inputUser}>
-        <GradienBorder>
-          <InputCard
-            info={formatStringToShort(response.input.location)}
-            title={"Ubicación"}
-            style={{ backgroundColor: "#0C1C2F" }}
-          />
-        </GradienBorder>
-        <GradienBorder>
-          <InputCard
-            info={formatStringToShort(response.input.budget)}
-            title={"Presupuesto"}
-            style={{ backgroundColor: "#0C1C2F" }}
-          />
-        </GradienBorder>
-        <GradienBorder>
-          <InputCard
-            info={formatStringToShort(response.input.age)}
-            title={"Edad"}
-            style={{ backgroundColor: "#0C1C2F" }}
-          />
-        </GradienBorder>
-        <GradienBorder>
-          <InputCard
-            info={formatStringToShort(response.input.skills)}
-            title={"Habilidades"}
-            style={{ backgroundColor: "#0C1C2F" }}
-          />
-        </GradienBorder>
-        <GradienBorder>
-          <InputCard
-            info={formatStringToShort("tiempo")}
-            title={"Tiempo"}
-            style={{ backgroundColor: "#0C1C2F" }}
-          />
-        </GradienBorder>
-        <GradienBorder>
-          <InputCard
-            info={formatStringToShort(response.input.teacher)}
-            title={"Profesor"}
-            style={{ backgroundColor: "#0C1C2F" }}
-          />
-        </GradienBorder>
-      </section>
-      <InfoModal
-        isOpen={showModal}
-        onClose={() => {
-          setShowModal(false);
-        }}
-        title={parts[partsCurrentIndex].title}
-        renderFooter={() => (
-          <ModalNextCard onPrev={prevPart} onNext={nextPart} />
-        )}
-      >
-        <section className={styles.details}>
-          <Text>
-            {response[parts[partsCurrentIndex].id].split("\n").map((str) => (
-              <>
-                {str}
-                <br />
-              </>
-            ))}
-          </Text>
-        </section>
-      </InfoModal>
       <GradientBg />
     </div>
   );

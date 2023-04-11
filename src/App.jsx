@@ -57,7 +57,7 @@ function App() {
         <Route path={PLAN_EXAMPLE_3} element={<Example3 />} />
         <Route path={AFFILIATE} element={<Affiliate />} />
         <Route path={CHOOSE_BUSINESS} element={<ChooseBusiness />} />
-        <Route path={DASHBOARD} element={<Dashboard />} />
+        <Route path={DASHBOARD + "/:section"} element={<Dashboard />} />
         <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<MyPromptDetail />} />
         <Route path={ACTIVATE_SUCCESS} element={<Success />} />
         <Route

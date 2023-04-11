@@ -1,0 +1,51 @@
+.verticalLoginNav {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  border-right: 1px solid var(--btn-primary-border-color);
+  width: 250px;
+  overflow: hidden;
+  z-index: 1;
+  transition: width 0.3s ease-in-out;
+}
+
+.verticalLoginNav.hidden {
+  width: 80px;
+}
+
+.icon {
+  width: var(--big);
+}
+.arrow {
+  display: flex;
+  justify-content: flex-end;
+  width: 95%;
+  margin-bottom: 32px;
+}
+.section {
+  display: flex;
+  align-items: center;
+  padding: 16px 32px;
+  width: 250px;
+  transition: padding 0.3s ease-in-out;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+}
+
+.section .icon {
+  margin-right: 14px;
+}
+.active {
+  border-left: 4px solid var(--white);
+}
+
+.hidden .section {
+  padding: 16px 0;
+  padding-left: 12px;
+}
+.hidden .arrow {
+  width: 100%;
+  padding-left: 2px;
+  justify-content: center;
+}
