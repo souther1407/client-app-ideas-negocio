@@ -11,7 +11,7 @@ import AuthUser from "../../services/authentication/auth";
 import { useLogin } from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import { useStorage } from "../../hooks/useStorage";
-import { DASHBOARD } from "../../utils/constants/routes";
+import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
 
 const LoginRegister = () => {
   const { load, clear } = useStorage();
@@ -71,7 +71,7 @@ const LoginRegister = () => {
     try {
       setLoading(true);
       await login(loginInput.email, loginInput.password);
-      navigate(DASHBOARD);
+      navigate(DASHBOARD_IDEAS);
     } catch (error) {
       alert(error.message);
     } finally {

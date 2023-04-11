@@ -11,6 +11,7 @@ import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import InputCard from "./components/InputCard/InputCard";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
+import { useLogin } from "../../hooks/useLogin";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -23,7 +24,7 @@ const parts = [
 const PlanDetail = ({ response }) => {
   const [partsCurrentIndex, setpartsCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-
+  const { isLogged } = useLogin({});
   const handleModalOpen = (index) => {
     setpartsCurrentIndex(index);
     setShowModal(true);
@@ -39,7 +40,7 @@ const PlanDetail = ({ response }) => {
   };
   return (
     <div className={styles.planDetail}>
-      <VerticalLoginNav />
+      {isLogged() && <VerticalLoginNav />}
       <section className={styles.content}>
         <LandingPageNav />
 

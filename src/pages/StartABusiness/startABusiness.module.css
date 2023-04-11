@@ -1,20 +1,19 @@
 .startABusiness {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 32px;
   position: relative;
   background-color: black;
   color: var(--white);
 }
-
-.startABusiness > :nth-child(2) {
-  position: relative;
-  top: 64px;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 80px;
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -64,6 +63,7 @@
 .controls {
   display: flex;
   width: 650px;
+
   z-index: 1;
   justify-content: space-between;
 }
