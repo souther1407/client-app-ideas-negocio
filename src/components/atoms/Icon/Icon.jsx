@@ -6,7 +6,7 @@ import {
   BsFillBriefcaseFill,
 } from "react-icons/bs";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { BiBrain } from "react-icons/bi";
+import { BiBrain, BiHelpCircle } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import {
   FaMoneyBillWave,
@@ -17,21 +17,23 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import { AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineBulb, AiOutlineUserAdd } from "react-icons/ai";
 import { GiGears } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
 import { BsArrowLeft, BsArrowRight, BsImage } from "react-icons/bs";
 import styles from "./icon.module.css";
 
-const Icon = ({ type }) => {
+const Icon = ({ type, size }) => {
   const props = {
-    size: "100%",
+    size: size || "100%",
     className: `${styles.icon}`,
   };
   const icons = {
     loading: <AiOutlineLoading3Quarters {...props} />,
     arrowDown: <SlArrowDown {...props} />,
     arrowUp: <SlArrowUp {...props} />,
+    bulb: <AiOutlineBulb {...props} />,
+    userplus: <AiOutlineUserAdd {...props} />,
     sun: <BsFillSunFill {...props} />,
     moon: <BsFillMoonFill {...props} />,
     ai: <BiBrain {...props} />,
@@ -49,6 +51,7 @@ const Icon = ({ type }) => {
     mail: <AiOutlineMail {...props} />,
     shield: <FaShieldAlt {...props} />,
     bars: <FaBars {...props} />,
+    help: <BiHelpCircle {...props} />,
     close: <FaTimes {...props} />,
   };
   return <i>{icons[type]}</i>;

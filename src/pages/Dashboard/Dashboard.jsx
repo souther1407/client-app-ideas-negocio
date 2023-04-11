@@ -10,41 +10,35 @@ import { getPrompts } from "../../services/userPrompts/getPrompts";
 import { useLogin } from "../../hooks/useLogin";
 import AffiliateProgram from "./components/AffiliateProgram/AffiliateProgram";
 import MyPromps from "./components/MyPromps/MyPromps";
+import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
+import { useParams } from "react-router-dom";
+import useVerticalNavigation from "../../states/verticalNavigation";
 const Dashboard = () => {
   useLogged();
+  const { section } = useParams();
   const { subscribed } = useSubscribed();
-  const [showAffiliateSection, setShowAffiliateSection] = useState(false);
   const { userData, refreshToken } = useLogin({});
 
   return (
     <div className={styles.dashboard}>
-      <LandingPageNav />
-      <nav className={styles.verticalNav}>
-        <Text
-          onClick={() => showAffiliateSection && setShowAffiliateSection(false)}
+      <VerticalLoginNav />
+
+      <section className={styles.content}>
+        <LandingPageNav />
+        <section
+          className={`${styles.myPrompts} ${section == "ideas" && styles.show}`}
         >
-          Negocios
-        </Text>
-        <Text
-          onClick={() => !showAffiliateSection && setShowAffiliateSection(true)}
+          <MyPromps />
+        </section>
+        <section
+          className={`${styles.affiliateProgram} ${
+            section == "affiliates" && styles.show
+          }`}
         >
-          Programa de afiliados
-        </Text>
-      </nav>
-      <section
-        className={`${styles.myPrompts} ${
-          !showAffiliateSection && styles.show
-        }`}
-      >
-        <MyPromps />
+          <AffiliateProgram />
+        </section>
       </section>
-      <section
-        className={`${styles.affiliateProgram} ${
-          showAffiliateSection && styles.show
-        }`}
-      >
-        <AffiliateProgram />
-      </section>
+
       <GradientBg />
     </div>
   );

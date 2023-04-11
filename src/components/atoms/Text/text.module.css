@@ -9,3 +9,7 @@
 .title {
   font-size: var(--xxlg);
 }
+
+.bold {
+  font-weight: bold;
+}

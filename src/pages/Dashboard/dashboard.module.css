@@ -3,9 +3,8 @@
   color: var(--white);
   position: relative;
   width: 100%;
-  padding-top: 120px;
   height: 100vh;
-  padding-left: 32px;
+
   justify-content: space-between;
   display: flex;
 }
@@ -20,6 +19,13 @@
   padding: 16px;
   justify-content: space-evenly;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+}
+
 .myPrompts {
   margin: 0 16px;
   flex-grow: 1;
