@@ -34,12 +34,12 @@ const SubscribeForm = () => {
 
       const confirmation = await stripe.confirmCardPayment(body.clientSecret);
       console.log("listoooo");
+      await refreshToken();
       alert("subscription created");
       navigate(-1);
     } catch (error) {
       alert(error.message);
     }
-    await refreshToken();
   };
   return (
     <form className={styles.subscribeForm} onSubmit={handleSubmit}>
