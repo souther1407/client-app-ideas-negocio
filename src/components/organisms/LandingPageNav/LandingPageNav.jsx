@@ -116,6 +116,13 @@ const LandingPageNav = () => {
                     <Text>Log out</Text>
                   </Button>
                 </GradientBorder>
+                <GradientBorder>
+                  <Button
+                    style={{ backgroundColor: "#070E21", color: "white" }}
+                  >
+                    <Text>Payment method</Text>
+                  </Button>
+                </GradientBorder>
               </div>
             )}
           />
