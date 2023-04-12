@@ -8,4 +8,5 @@ export const FIREBASE = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGINGSENDERID,
   appId: import.meta.env.VITE_FIREBASE_APPID,
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENTID,
+  secretKey: import.meta.env.VITE_ENCRYPT_SECRET,
 };
