@@ -27,7 +27,8 @@
   margin-bottom: 32px;
 }
 
-.noPaymentMethod {
+.noPaymentMethod,
+.paymentMethod {
   display: flex;
   padding: 0 64px;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./configPaymentMethod.module.css";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
@@ -6,8 +6,10 @@ import GradienBg from "../../components/atoms/GradientBg/GradientBg";
 import Text from "../../components/atoms/Text/Text";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import Button from "../../components/atoms/Button/Button";
-
+import InfoModal from "../../components/molecules/InfoModal/InfoModal";
+import PaymentMethodCard from "./components/PaymentMethodCard/PaymentMethodCard";
 const ConfigPaymentMethod = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   return (
     <div className={styles.configPaymentMethod}>
       <VerticalLoginNav />
@@ -29,8 +31,17 @@ const ConfigPaymentMethod = () => {
               <Text>Añadir método de pago</Text>
             </Button>
           </div>
+          {/* <div className={styles.paymentMethod}>
+            <PaymentMethodCard />
+          </div> */}
         </section>
       </main>
+      <InfoModal
+        isOpen={isFormOpen}
+        renderFooter={() => {}}
+        onClose={() => setIsFormOpen(false)}
+        title="agregue metodo de pago"
+      ></InfoModal>
       <GradienBg />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading3Quarters, AiFillCreditCard } from "react-icons/ai";
 import {
   BsFillSunFill,
   BsFillMoonFill,
@@ -30,6 +30,7 @@ const Icon = ({ type, size }) => {
   };
   const icons = {
     loading: <AiOutlineLoading3Quarters {...props} />,
+    card: <AiFillCreditCard {...props} />,
     arrowDown: <SlArrowDown {...props} />,
     arrowUp: <SlArrowUp {...props} />,
     bulb: <AiOutlineBulb {...props} />,
