@@ -18,3 +18,4 @@ export const MY_PROMPTS_DETAIL = DASHBOARD + "/prompt";
 export const ACTIVATE_SUCCESS = "/activate/success";
 export const REGISTER_REFERED = "/affiliate/success";
 export const AFFILIATE_LINK = "/link/:affiliateId";
+export const PAYMENT_METHOD = "/payment/method";

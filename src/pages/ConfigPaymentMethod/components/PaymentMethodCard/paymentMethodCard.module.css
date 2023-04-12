@@ -1,0 +1,28 @@
+.paymentMethodCard {
+  border: 2px solid var(--white);
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 16px;
+}
+.cardInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.cardInfo > :last-child {
+  font-size: var(--lg);
+  position: relative;
+  top: 1px;
+}
+.icon {
+  width: var(--xlg);
+  margin-right: 8px;
+}
+
+.buttons {
+  display: flex;
+}
+.buttons > :first-child {
+  margin-right: 16px;
+}

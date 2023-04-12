@@ -1,7 +1,7 @@
 .text,
 .title {
   font-family: "DM Sans", sans-serif;
-  color: inherit;
+
   font-size: inherit;
   line-height: 1.1;
 }
@@ -10,6 +10,14 @@
   font-size: var(--xxlg);
 }
 
+.inherit {
+  color: inherit;
+}
+
 .bold {
   font-weight: bold;
+}
+
+.soft {
+  color: var(--btn-primary-border-color);
 }
