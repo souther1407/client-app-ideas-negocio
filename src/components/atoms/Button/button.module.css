@@ -52,3 +52,6 @@
 .w {
   width: 100%;
 }
+.flexible {
+  width: fit-content;
+}

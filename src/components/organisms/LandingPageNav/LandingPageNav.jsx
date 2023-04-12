@@ -10,6 +10,7 @@ import {
   START_A_BUSINESS,
   LOGIN,
   DASHBOARD,
+  PAYMENT_METHOD,
 } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 import Button from "../../atoms/Button/Button";
@@ -118,6 +119,7 @@ const LandingPageNav = () => {
                 </GradientBorder>
                 <GradientBorder>
                   <Button
+                    onClick={() => navigate(PAYMENT_METHOD)}
                     style={{ backgroundColor: "#070E21", color: "white" }}
                   >
                     <Text>Payment method</Text>

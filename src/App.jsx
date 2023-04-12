@@ -20,6 +20,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import MyPromptDetail from "./pages/MyPromptDetail/MyPromptDetail";
 import Success from "./pages/Success/Success";
 import RedirectEnterByAffiliateLink from "./pages/RedirectEnterByAffiliateLink/RedirectEnterByAffiliateLink";
+import ConfigPaymentMethod from "./pages/ConfigPaymentMethod/ConfigPaymentMethod";
 import {
   LOGIN,
   MAIN,
@@ -38,6 +39,7 @@ import {
   MY_PROMPTS_DETAIL,
   AFFILIATE_LINK,
   ACTIVATE_SUCCESS,
+  PAYMENT_METHOD,
 } from "./utils/constants/routes";
 function App() {
   const { theme } = useContext(context);
@@ -60,6 +62,7 @@ function App() {
         <Route path={DASHBOARD + "/:section"} element={<Dashboard />} />
         <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<MyPromptDetail />} />
         <Route path={ACTIVATE_SUCCESS} element={<Success />} />
+        <Route path={PAYMENT_METHOD} element={<ConfigPaymentMethod />} />
         <Route
           path={AFFILIATE_LINK}
           element={<RedirectEnterByAffiliateLink />}

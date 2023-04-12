@@ -6,6 +6,7 @@ import { useContext } from "react";
 const Button = ({
   w,
   children,
+  flexible,
   type = "fulled",
   color = "primary",
   onClick,
@@ -16,7 +17,7 @@ const Button = ({
     <button
       className={`${styles.button} ${styles[type]} ${styles[color]} ${
         styles[theme]
-      } ${w && styles.w}`}
+      } ${w && styles.w} ${flexible && styles.flexible}`}
       onClick={onClick}
       {...otherProps}
     >
