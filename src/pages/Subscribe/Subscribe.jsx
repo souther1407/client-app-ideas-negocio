@@ -6,6 +6,7 @@ import styles from "./subscribe.module.css";
 import { useLogged } from "../../hooks/useLogged";
 import GradiendBg from "../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
+
 const Subscribe = () => {
   useLogged();
   return (
