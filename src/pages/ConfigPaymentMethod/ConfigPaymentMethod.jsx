@@ -9,7 +9,10 @@ import Button from "../../components/atoms/Button/Button";
 
 import PaymentMethodCard from "./components/PaymentMethodCard/PaymentMethodCard";
 import AddPaymentMethodModal from "./components/AddPaymentMethodModal/AddPaymentMethodModal";
-import { getPaymentMethods } from "../../services/paymentMethods/paymentMethods";
+import {
+  getPaymentMethods,
+  deletePaymentMethod,
+} from "../../services/paymentMethods/paymentMethods";
 import { useNavigate } from "react-router-dom";
 const ConfigPaymentMethod = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -35,9 +38,13 @@ const ConfigPaymentMethod = () => {
   const addPaymentMethod = (paymentMethod) => {
     setPaymentMethod(paymentMethod);
   };
-  const deletePaymentMethod = (id) => {
+  const handleDeletePaymentMethod = async (id) => {
     try {
-    } catch (error) {}
+      await deletePaymentMethod(id);
+      setPaymentMethod({});
+    } catch (error) {
+      alert(error.message);
+    }
   };
   return (
     <div className={styles.configPaymentMethod}>
@@ -75,7 +82,7 @@ const ConfigPaymentMethod = () => {
                     last4={paymentMethod.last4}
                     brand={paymentMethod.brand}
                     id={paymentMethod.id}
-                    onDelete={deletePaymentMethod}
+                    onDelete={handleDeletePaymentMethod}
                   />
                 </div>
               )}

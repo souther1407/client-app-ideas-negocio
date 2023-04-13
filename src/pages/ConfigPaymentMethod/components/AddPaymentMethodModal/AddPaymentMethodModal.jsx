@@ -11,7 +11,7 @@ import {
 import Button from "../../../../components/atoms/Button/Button";
 import Text from "../../../../components/atoms/Text/Text";
 import { setPaymentMethods } from "../../../../services/paymentMethods/paymentMethods.js";
-const Form = ({ onAddPayment }) => {
+const Form = ({ onAddPayment, onClose }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -27,6 +27,7 @@ const Form = ({ onAddPayment }) => {
       const newPaymentMethod = await setPaymentMethods(paymentMethod.id);
       onAddPayment(newPaymentMethod);
       alert("listo");
+      onClose();
     } catch (error) {
       alert(error.message);
     }
@@ -47,7 +48,7 @@ const AddPaymentMethodModal = ({ onClose, isOpen, onAddPaymentMethod }) => {
     <div className={styles.addPaymentMethodModal}>
       <InfoModal isOpen={isOpen} onClose={onClose} renderFooter={() => {}}>
         <Elements stripe={stripePromise}>
-          <Form onAddPayment={onAddPaymentMethod} />
+          <Form onAddPayment={onAddPaymentMethod} onClose={onClose} />
         </Elements>
       </InfoModal>
     </div>
