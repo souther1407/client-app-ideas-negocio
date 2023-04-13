@@ -16,14 +16,14 @@ const SubscribeForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { userData, refreshToken } = useLogin({});
-  const [paymentMethod, setPaymentMethod] = useState({});
+  const [currentPaymentMethod, setCurrentPaymentMethod] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     const initPaymentMethod = async () => {
       try {
         const payment = await getPaymentMethods();
-        setPaymentMethod(payment);
+        setCurrentPaymentMethod(payment);
       } catch (error) {
         alert(error.message);
       }
@@ -33,14 +33,20 @@ const SubscribeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
-    });
+    let error;
+    let paymentMethod = currentPaymentMethod;
+    if (!paymentMethod.id) {
+      const { error: err, paymentMethod: pm } =
+        await stripe.createPaymentMethod({
+          type: "card",
+          card: elements.getElement(CardElement),
+        });
+      error = err;
+      paymentMethod = pm;
+    }
 
     if (error) return alert(error.message);
-    console.log("funciono hasta aca");
+
     try {
       const body = await createSubscription({
         user: userData.uid,
@@ -49,7 +55,7 @@ const SubscribeForm = () => {
       });
 
       const confirmation = await stripe.confirmCardPayment(body.clientSecret);
-      console.log("listoooo");
+
       await refreshToken();
       alert("subscription created");
       navigate(-1);
@@ -62,7 +68,7 @@ const SubscribeForm = () => {
     <form className={styles.subscribeForm} onSubmit={handleSubmit}>
       <Text type="title">Subscribe</Text>
 
-      {!paymentMethod.id && (
+      {!currentPaymentMethod.id && (
         <CardElement
           options={{
             classes: { base: styles.cardInput },
@@ -71,9 +77,9 @@ const SubscribeForm = () => {
         />
       )}
 
-      {paymentMethod.id && (
+      {currentPaymentMethod.id && (
         <Text>
-          {paymentMethod.brand} ... {paymentMethod.last4}
+          {currentPaymentMethod.brand} ... {currentPaymentMethod.last4}
         </Text>
       )}
 
