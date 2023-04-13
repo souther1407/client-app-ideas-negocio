@@ -35,6 +35,10 @@ const ConfigPaymentMethod = () => {
   const addPaymentMethod = (paymentMethod) => {
     setPaymentMethod(paymentMethod);
   };
+  const deletePaymentMethod = (id) => {
+    try {
+    } catch (error) {}
+  };
   return (
     <div className={styles.configPaymentMethod}>
       <VerticalLoginNav />
@@ -70,6 +74,8 @@ const ConfigPaymentMethod = () => {
                   <PaymentMethodCard
                     last4={paymentMethod.last4}
                     brand={paymentMethod.brand}
+                    id={paymentMethod.id}
+                    onDelete={deletePaymentMethod}
                   />
                 </div>
               )}

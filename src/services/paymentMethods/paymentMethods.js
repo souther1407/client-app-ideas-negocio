@@ -24,3 +24,15 @@ export const getPaymentMethods = async () => {
   if (!response.ok) throw new Error(body.error);
   return body;
 };
+
+export const deletePaymentMethod = async () => {
+  const response = await fetch(`${URL}/paymentMethods`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const body = await response.json();
+  if (!response.ok) throw new Error(body.error);
+  return body;
+};
