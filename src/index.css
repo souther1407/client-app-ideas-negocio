@@ -25,6 +25,7 @@ input:-webkit-autofill {
   --secondary-light: #3d82dd;
   --secondary-dark: #21252f;
   --text-light: white;
+  --white-transparent: rgba(255, 255, 255, 0.479);
   --white: aliceblue;
   --bg-dark-green: #10323e;
   --text-dark: black;
