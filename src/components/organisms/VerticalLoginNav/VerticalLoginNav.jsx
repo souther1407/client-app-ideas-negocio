@@ -40,9 +40,7 @@ const VerticalLoginNav = () => {
 
       <div
         id="ideas"
-        className={`${styles.section} ${
-          active == "ideas" && expanded && styles.active
-        }`}
+        className={`${styles.section} ${active == "ideas" && styles.active}`}
         onClick={handleClick}
       >
         <div className={styles.icon}>
@@ -54,7 +52,7 @@ const VerticalLoginNav = () => {
       <div
         id="affiliates"
         className={`${styles.section} ${
-          active == "affiliates" && expanded && styles.active
+          active == "affiliates" && styles.active
         }`}
         onClick={handleClick}
       >
@@ -66,9 +64,7 @@ const VerticalLoginNav = () => {
 
       <div
         id="help"
-        className={`${styles.section} ${
-          active == "help" && expanded && styles.active
-        }`}
+        className={`${styles.section} ${active == "help" && styles.active}`}
         onClick={handleClick}
       >
         <div className={styles.icon}>

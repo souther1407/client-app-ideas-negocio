@@ -97,28 +97,28 @@ const PlanDetail = ({ response }) => {
         <section className={styles.inputUser}>
           <GradienBorder>
             <InputCard
-              info={formatStringToShort(response.input.location)}
+              info={formatStringToShort(response?.input?.location)}
               title={"Ubicación"}
               style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
             <InputCard
-              info={formatStringToShort(response.input.budget)}
+              info={formatStringToShort(response?.input?.budget)}
               title={"Presupuesto"}
               style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
             <InputCard
-              info={formatStringToShort(response.input.age)}
+              info={formatStringToShort(response?.input?.age)}
               title={"Edad"}
               style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>
           <GradienBorder>
             <InputCard
-              info={formatStringToShort(response.input.skills)}
+              info={formatStringToShort(response?.input?.skills)}
               title={"Habilidades"}
               style={{ backgroundColor: "#0C1C2F" }}
             />

@@ -4,7 +4,7 @@ import Text from "../../../../components/atoms/Text/Text";
 import Icon from "../../../../components/atoms/Icon/Icon";
 import Button from "../../../../components/atoms/Button/Button";
 
-const PaymentMethodCard = ({ last4, brand, id, onDelete }) => {
+const PaymentMethodCard = ({ last4, brand, id, onDelete, onUpdate }) => {
   const [deleting, setDeleting] = useState(false);
   const handleDelete = async () => {
     try {
@@ -30,7 +30,7 @@ const PaymentMethodCard = ({ last4, brand, id, onDelete }) => {
         <Button onClick={handleDelete} disabled={deleting}>
           <Text>{deleting ? "borrando..." : "borrar"}</Text>
         </Button>
-        <Button>
+        <Button onClick={onUpdate}>
           <Text>Cambiar</Text>
         </Button>
       </section>

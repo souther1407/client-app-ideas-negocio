@@ -46,6 +46,10 @@ const ConfigPaymentMethod = () => {
       alert(error.message);
     }
   };
+
+  const handleUpdatePaymentMethod = () => {
+    setIsFormOpen(true);
+  };
   return (
     <div className={styles.configPaymentMethod}>
       <VerticalLoginNav />
@@ -83,6 +87,7 @@ const ConfigPaymentMethod = () => {
                     brand={paymentMethod.brand}
                     id={paymentMethod.id}
                     onDelete={handleDeletePaymentMethod}
+                    onUpdate={handleUpdatePaymentMethod}
                   />
                 </div>
               )}
@@ -90,13 +95,13 @@ const ConfigPaymentMethod = () => {
           )}
         </section>
       </main>
-      {!paymentMethod.last4 && (
-        <AddPaymentMethodModal
-          isOpen={isFormOpen}
-          onClose={() => setIsFormOpen(false)}
-          onAddPaymentMethod={addPaymentMethod}
-        />
-      )}
+
+      <AddPaymentMethodModal
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        onAddPaymentMethod={addPaymentMethod}
+      />
+
       <GradienBg />
     </div>
   );

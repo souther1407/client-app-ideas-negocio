@@ -6,7 +6,7 @@ import AiDropshippings from "./components/AiDropshipings/AiDropshipings";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../hooks/useLogin";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
-
+import OptionCard from "../ChooseBusiness/components/OptionCard/OptionCard";
 const LandingPage = () => {
   const navigate = useNavigate();
   const { isLogged } = useLogin({});
@@ -18,6 +18,7 @@ const LandingPage = () => {
       <LandingPageNav />
       <MainBanner />
       <AiDropshippings />
+      {/*  <OptionCard /> */}
     </div>
   );
 };
