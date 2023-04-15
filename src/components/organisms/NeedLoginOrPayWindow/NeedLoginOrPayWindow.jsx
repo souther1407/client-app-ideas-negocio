@@ -18,9 +18,6 @@ const NeedLoginOrPayWindow = () => {
             <Text>Log in / Sign Up</Text>
           </button>
         )}
-        <button className={styles.btn} onClick={() => navigate(SUBSCRIBE)}>
-          <Text>Checkout</Text>
-        </button>
       </div>
     </div>
   );

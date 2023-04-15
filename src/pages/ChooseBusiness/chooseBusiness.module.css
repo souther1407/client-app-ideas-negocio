@@ -8,7 +8,7 @@
   width: 100%;
   min-height: 100vh;
   color: var(--white);
-  padding: 16px;
+  padding-top: 64px;
 }
 
 .options {
@@ -19,5 +19,6 @@
   justify-items: center;
   width: 800px;
   row-gap: 64px;
+  column-gap: 32px;
   z-index: 1;
 }
