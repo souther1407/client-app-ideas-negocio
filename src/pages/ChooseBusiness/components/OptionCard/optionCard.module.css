@@ -1,14 +1,15 @@
 .optionCard {
   border: 2px solid var(--white-transparent);
-  width: 500px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   padding: 16px;
   position: relative;
-  padding-top: 80px;
+  padding-top: 60px;
   background-size: cover;
   background-repeat: no-repeat;
   transition: all 0.4s ease-in;
+  cursor: pointer;
 }
 
 .optionCard:hover,
@@ -18,7 +19,7 @@
 }
 
 .profile {
-  width: 120px;
+  width: 100px;
   position: absolute;
   top: 0;
   transform: translate(-50%, -50%);
@@ -31,13 +32,13 @@
 
 .optionCard > :nth-child(2) {
   align-self: center;
-  font-size: var(--lg);
+  font-size: var(--mg);
   margin-bottom: 8px;
 }
 
 .time > :first-child,
 .estimatedCost > :first-child {
-  font-size: var(--sm);
+  font-size: var(--ty);
   margin-bottom: 4px;
 }
 
@@ -48,11 +49,20 @@
 .costBar {
   width: 100%;
   border: 2px solid var(--secondary-light);
+  position: relative;
 }
-
+.costBar > :first-child {
+  position: relative;
+  z-index: 2;
+}
 .filled {
   padding: 4px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 100% !important;
   width: 40%;
   background-color: var(--secondary-light);
   border-radius: 0 16px 16px 0;
+  font-size: var(--sm);
 }

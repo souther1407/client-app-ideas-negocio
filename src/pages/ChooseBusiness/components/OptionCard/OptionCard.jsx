@@ -3,18 +3,21 @@ import styles from "./optionCard.module.css";
 import Text from "../../../../components/atoms/Text/Text";
 import bg from "../../../../assets/gradient-card.svg";
 import Avatar from "../../../../components/atoms/Avatar/Avatar";
+import { formatStringToShort } from "../../../../utils/format/formatStringToShort";
 
-const CostBar = ({ total, estimatedMin, estimatedminMax }) => {
+const extractValues = (estimatedCost) => {
+  return Number(estimatedCost.replace("$", ""));
+};
+const CostBar = ({ total, estimatedMin = 0, estimatedminMax }) => {
   return (
     <div className={styles.costBar}>
+      <Text>
+        {estimatedMin}-{estimatedminMax}$
+      </Text>
       <div
         className={styles.filled}
         style={{ width: `${(estimatedminMax * 100) / total}%` }}
-      >
-        <Text>
-          {estimatedMin}-{estimatedminMax}$
-        </Text>
-      </div>
+      ></div>
     </div>
   );
 };
@@ -24,11 +27,19 @@ const CostBar = ({ total, estimatedMin, estimatedminMax }) => {
 800 --> x
 */
 
-const OptionCard = () => {
+const OptionCard = ({
+  title,
+  estimatedTime,
+  estimatedCost,
+  onShowDetail,
+  totalCost,
+}) => {
+  console.log(totalCost);
   return (
     <div
       className={styles.optionCard}
       style={{ backgroundImage: `url(${bg})` }}
+      onClick={onShowDetail}
     >
       <div className={styles.profile}>
         <Avatar
@@ -38,14 +49,17 @@ const OptionCard = () => {
           alt="foto de un perfil"
         />
       </div>
-      <Text>Ai dropshiping</Text>
+      <Text>{formatStringToShort(title)}</Text>
       <section className={styles.time}>
         <Text color="soft">Tiempo estimado</Text>
-        <Text>24 HORAS SEMANALES</Text>
+        <Text>{estimatedTime}</Text>
       </section>
       <section className={styles.estimatedCost}>
         <Text color="soft">Costo estimado</Text>
-        <CostBar total={2000} estimatedMin={500} estimatedminMax={800} />
+        <CostBar
+          total={totalCost}
+          estimatedminMax={extractValues(estimatedCost)}
+        />
       </section>
     </div>
   );

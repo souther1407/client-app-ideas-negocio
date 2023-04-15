@@ -10,20 +10,21 @@ import useBusinessPlan from "../../states/businessPlan";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
 import { useStorage } from "../../hooks/useStorage";
-
+import OptionCard from "./components/OptionCard/OptionCard";
 const ChooseBusiness = () => {
   const { load } = useStorage();
 
   const [option, setOption] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navitagte = useNavigate();
+  const [input, setInput] = useState(load("input"));
   const { options, generateBusinessPlan, creating } = useBusinessPlan(
     (state) => state
   );
   const handleClick = async () => {
     try {
       await generateBusinessPlan({
-        input: load("input"),
+        input: input,
         header: options[option],
       });
       navitagte(PLAN_DETAIL);
@@ -35,29 +36,41 @@ const ChooseBusiness = () => {
     <div className={styles.chooseBusiness}>
       <LandingPageNav />
       <section className={styles.options}>
-        <GearCard
-          title={"opcion 1"}
+        <OptionCard
+          title={options[0].title}
+          totalCost={input.budget}
+          estimatedTime={options[0].estimatedTime}
+          estimatedCost={options[0].estimatedCost}
           onShowDetail={() => {
             setOption(0);
             setIsOpen(true);
           }}
         />
-        <GearCard
-          title={"opcion 2"}
+        <OptionCard
+          title={options[1].title}
+          totalCost={input.budget}
+          estimatedTime={options[1].estimatedTime}
+          estimatedCost={options[1].estimatedCost}
           onShowDetail={() => {
             setOption(1);
             setIsOpen(true);
           }}
         />
-        <GearCard
-          title={"opcion 3"}
+        <OptionCard
+          title={options[2].title}
+          totalCost={input.budget}
+          estimatedTime={options[2].estimatedTime}
+          estimatedCost={options[2].estimatedCost}
           onShowDetail={() => {
             setOption(2);
             setIsOpen(true);
           }}
         />
-        <GearCard
-          title={"opcion 4"}
+        <OptionCard
+          title={options[3].title}
+          totalCost={input.budget}
+          estimatedTime={options[3].estimatedTime}
+          estimatedCost={options[3].estimatedCost}
           onShowDetail={() => {
             setOption(3);
             setIsOpen(true);
