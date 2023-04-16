@@ -8,6 +8,7 @@ import {
   DASHBOARD_AFFILIATES,
   DASHBOARD_IDEAS,
   DASHBOARD_ASK_QUESTION,
+  DASHBOARD_MY_QUESTIONS,
 } from "../../../utils/constants/routes";
 
 const VerticalLoginNav = () => {
@@ -28,6 +29,9 @@ const VerticalLoginNav = () => {
         break;
       case "help":
         navigate(DASHBOARD_ASK_QUESTION);
+        break;
+      case "questions":
+        navigate(DASHBOARD_MY_QUESTIONS);
         break;
       default:
         break;
@@ -75,6 +79,19 @@ const VerticalLoginNav = () => {
           <Icon type={"help"} size={"inherit"} />
         </div>
         <Text bold={active == "help"}>Consulta</Text>
+      </div>
+
+      <div
+        id="questions"
+        className={`${styles.section} ${
+          active == "questions" && styles.active
+        }`}
+        onClick={handleClick}
+      >
+        <div className={styles.icon}>
+          <Icon type={"checkMark"} size={"inherit"} />
+        </div>
+        <Text bold={active == "questions"}>Preguntas</Text>
       </div>
     </nav>
   );

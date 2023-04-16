@@ -1,0 +1,49 @@
+.myQuestions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.filter {
+  display: flex;
+  position: relative;
+  top: 4px;
+}
+.filter > * {
+  font-size: var(--lg);
+  margin-right: 8px;
+  font-weight: lighter;
+}
+
+.card {
+  border-top: 1px solid var(--white-transparent);
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 0;
+}
+
+.card > * {
+  width: 210px;
+}
+.isAnsweredSection {
+  display: flex;
+}
+.circle {
+  border: 1px solid var(--white-transparent);
+  margin-right: 8px;
+  width: var(--md);
+  height: var(--md);
+  border-radius: 50%;
+}
+
+.circle.answered {
+  background-color: rgb(20, 182, 133);
+}

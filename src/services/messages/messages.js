@@ -13,3 +13,15 @@ export const createMessage = async (body) => {
   if (!response.ok) throw new Error(responseBody.error);
   return responseBody;
 };
+
+export const getMyQuestions = async () => {
+  const response = await fetch(`${URL}/messages/user`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const responseBody = await response.json();
+  if (!response.ok) throw new Error(responseBody.error);
+  return responseBody;
+};

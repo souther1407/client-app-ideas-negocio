@@ -1,5 +1,9 @@
 import React from "react";
-import { AiOutlineLoading3Quarters, AiFillCreditCard } from "react-icons/ai";
+import {
+  AiOutlineLoading3Quarters,
+  AiFillCreditCard,
+  AiOutlineCheckCircle,
+} from "react-icons/ai";
 import {
   BsFillSunFill,
   BsFillMoonFill,
@@ -60,6 +64,7 @@ const Icon = ({ type, size }) => {
     bold: <FaBold {...props} />,
     underline: <FaUnderline {...props} />,
     italic: <FaItalic {...props} />,
+    checkMark: <AiOutlineCheckCircle {...props} />,
   };
   return <i>{icons[type]}</i>;
 };
