@@ -12,6 +12,7 @@ import InputCard from "./components/InputCard/InputCard";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import { useLogin } from "../../hooks/useLogin";
+import InputSection from "./components/InputSection/InputSection";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -96,44 +97,12 @@ const PlanDetail = ({ response }) => {
         </section>
         <section className={styles.inputUser}>
           <GradienBorder>
-            <InputCard
-              info={formatStringToShort(response?.input?.location)}
-              title={"Ubicación"}
-              style={{ backgroundColor: "#0C1C2F" }}
-            />
-          </GradienBorder>
-          <GradienBorder>
-            <InputCard
-              info={formatStringToShort(response?.input?.budget)}
-              title={"Presupuesto"}
-              style={{ backgroundColor: "#0C1C2F" }}
-            />
-          </GradienBorder>
-          <GradienBorder>
-            <InputCard
-              info={formatStringToShort(response?.input?.age)}
-              title={"Edad"}
-              style={{ backgroundColor: "#0C1C2F" }}
-            />
-          </GradienBorder>
-          <GradienBorder>
-            <InputCard
-              info={formatStringToShort(response?.input?.skills)}
-              title={"Habilidades"}
-              style={{ backgroundColor: "#0C1C2F" }}
-            />
-          </GradienBorder>
-          <GradienBorder>
-            <InputCard
-              info={formatStringToShort("tiempo")}
-              title={"Tiempo"}
-              style={{ backgroundColor: "#0C1C2F" }}
-            />
-          </GradienBorder>
-          <GradienBorder>
-            <InputCard
-              info={formatStringToShort(response.input.teacher)}
-              title={"Profesor"}
+            <InputSection
+              age={formatStringToShort(response?.input?.age)}
+              budget={formatStringToShort(response?.input?.budget)}
+              location={formatStringToShort(response?.input?.location)}
+              skills={formatStringToShort(response?.input?.skills)}
+              teacher={formatStringToShort(response?.input?.teacher)}
               style={{ backgroundColor: "#0C1C2F" }}
             />
           </GradienBorder>

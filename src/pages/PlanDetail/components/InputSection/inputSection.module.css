@@ -1,0 +1,17 @@
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section > :first-child {
+  margin-bottom: 4px;
+}
+
+.section > :last-child {
+  font-size: var(--lg);
+}

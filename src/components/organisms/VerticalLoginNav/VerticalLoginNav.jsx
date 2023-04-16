@@ -49,7 +49,7 @@ const VerticalLoginNav = () => {
         <Text bold={active == "ideas"}>Ideas</Text>
       </div>
 
-      <div
+      {/* <div
         id="affiliates"
         className={`${styles.section} ${
           active == "affiliates" && styles.active
@@ -61,7 +61,7 @@ const VerticalLoginNav = () => {
         </div>
         <Text bold={active == "affiliates"}>Affiliados</Text>
       </div>
-
+ */}
       <div
         id="help"
         className={`${styles.section} ${active == "help" && styles.active}`}
