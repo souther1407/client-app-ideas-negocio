@@ -4,7 +4,6 @@
   position: relative;
   width: 100%;
   height: 100vh;
-
   justify-content: space-between;
   display: flex;
 }
@@ -24,27 +23,31 @@
   display: flex;
   flex-direction: column;
   padding-top: 120px;
+  width: 100%;
 }
 
 .myPrompts {
   margin: 0 16px;
   flex-grow: 1;
-  display: none;
+
   justify-content: center;
   flex-wrap: wrap;
+}
+.askQuestion,
+.myPrompts,
+.affiliateProgram {
   position: relative;
   z-index: 1;
+  display: none;
 }
-
+.askQuestion {
+}
 .myPrompts > * {
   margin: 8px;
 }
 
 .affiliateProgram {
-  display: none;
-  position: relative;
   justify-content: center;
-  z-index: 1;
   flex-grow: 1;
 }
 

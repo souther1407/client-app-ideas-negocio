@@ -1,0 +1,45 @@
+.askQuestion {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  --form-width: 700px;
+}
+
+.form {
+  width: var(--form-width);
+  height: 250px;
+}
+
+.questionInput {
+  width: 100%;
+  height: 150px;
+  background: none;
+  border: 1px solid var(--white-transparent);
+  resize: none;
+  padding: 16px;
+  color: var(--white-transparent);
+}
+
+.questionInput:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--white-transparent);
+  width: var(--form-width);
+  padding: 8px;
+}
+
+.controls > * {
+  width: var(--lg);
+  margin: 8px;
+}
+
+.uploadImg {
+  display: flex;
+  align-items: center;
+}

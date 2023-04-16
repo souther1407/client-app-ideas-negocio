@@ -12,7 +12,7 @@ import AffiliateProgram from "./components/AffiliateProgram/AffiliateProgram";
 import MyPromps from "./components/MyPromps/MyPromps";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import { useParams } from "react-router-dom";
-import useVerticalNavigation from "../../states/verticalNavigation";
+import AskQuestion from "./components/AskQuetion/AskQuestion";
 const Dashboard = () => {
   useLogged();
   const { section } = useParams();
@@ -36,6 +36,11 @@ const Dashboard = () => {
           }`}
         >
           <AffiliateProgram />
+        </section>
+        <section
+          className={`${styles.askQuestion} ${section == "ask" && styles.show}`}
+        >
+          <AskQuestion />
         </section>
       </section>
 

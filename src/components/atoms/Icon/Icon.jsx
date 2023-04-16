@@ -15,7 +15,10 @@ import {
   FaLongArrowAltDown,
   FaShieldAlt,
   FaBars,
+  FaBold,
   FaTimes,
+  FaItalic,
+  FaUnderline,
 } from "react-icons/fa";
 import { AiOutlineMail, AiOutlineBulb, AiOutlineUserAdd } from "react-icons/ai";
 import { GiGears } from "react-icons/gi";
@@ -54,6 +57,9 @@ const Icon = ({ type, size }) => {
     bars: <FaBars {...props} />,
     help: <BiHelpCircle {...props} />,
     close: <FaTimes {...props} />,
+    bold: <FaBold {...props} />,
+    underline: <FaUnderline {...props} />,
+    italic: <FaItalic {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

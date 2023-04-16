@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {
   DASHBOARD_AFFILIATES,
   DASHBOARD_IDEAS,
+  DASHBOARD_ASK_QUESTION,
 } from "../../../utils/constants/routes";
 
 const VerticalLoginNav = () => {
@@ -24,6 +25,9 @@ const VerticalLoginNav = () => {
         break;
       case "affiliates":
         navigate(DASHBOARD_AFFILIATES);
+        break;
+      case "help":
+        navigate(DASHBOARD_ASK_QUESTION);
         break;
       default:
         break;
@@ -70,7 +74,7 @@ const VerticalLoginNav = () => {
         <div className={styles.icon}>
           <Icon type={"help"} size={"inherit"} />
         </div>
-        <Text bold={active == "help"}>...</Text>
+        <Text bold={active == "help"}>Consulta</Text>
       </div>
     </nav>
   );
