@@ -1,0 +1,9 @@
+.uploadImg > * {
+  cursor: pointer;
+}
+.icon {
+  width: var(--xlg);
+}
+.input {
+  display: none;
+}

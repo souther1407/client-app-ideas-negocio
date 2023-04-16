@@ -21,6 +21,7 @@ import MyPromptDetail from "./pages/MyPromptDetail/MyPromptDetail";
 import Success from "./pages/Success/Success";
 import RedirectEnterByAffiliateLink from "./pages/RedirectEnterByAffiliateLink/RedirectEnterByAffiliateLink";
 import ConfigPaymentMethod from "./pages/ConfigPaymentMethod/ConfigPaymentMethod";
+import AskQuestion from "./pages/AskQuestion/AskQuestion";
 import {
   LOGIN,
   MAIN,
