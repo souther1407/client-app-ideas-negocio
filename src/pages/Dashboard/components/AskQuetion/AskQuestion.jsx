@@ -10,13 +10,13 @@ const AskQuestion = () => {
     content: "",
     urlImg: "",
   });
-
+  const [isValid, setIsValid] = useState(false);
   const handleImgUploaded = (url) => {
     setInput((prev) => ({ ...prev, urlImg: url }));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("aasf");
+
     try {
       const message = await createMessage(input);
       alert("respuesta enviada :D");
@@ -44,11 +44,13 @@ const AskQuestion = () => {
         <textarea
           className={styles.questionInput}
           onChange={(e) => {
-            setInput((prev) => ({ ...prev, content: e.target.value }));
+            const value = e.target.value;
+            setIsValid(value.length > 0);
+            setInput((prev) => ({ ...prev, content: value }));
           }}
           value={input.content}
         ></textarea>
-        <Button color="secondary" flexible>
+        <Button color="secondary" flexible disabled={!isValid}>
           <Text>Enviar pregunta</Text>
         </Button>
       </form>
