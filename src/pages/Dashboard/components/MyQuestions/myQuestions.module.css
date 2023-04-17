@@ -21,6 +21,7 @@
   font-size: var(--lg);
   margin-right: 8px;
   font-weight: lighter;
+  cursor: pointer;
 }
 
 .card {
