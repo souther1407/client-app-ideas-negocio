@@ -1,0 +1,9 @@
+.card {
+  border: 1px solid var(--white-transparent);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card > :first-child {
+  margin-bottom: 8px;
+}

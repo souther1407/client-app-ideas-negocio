@@ -13,3 +13,16 @@ export const createResponse = async (id, content) => {
   if (!response.ok) throw new Error(body.error);
   return body;
 };
+
+export const getAnswers = async (id) => {
+  const response = await fetch(URL + "/answers/" + id, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  const body = await response.json();
+  if (!response.ok) throw new Error(body.error);
+  return body;
+};

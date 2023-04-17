@@ -36,10 +36,15 @@
 }
 .isAnsweredSection {
   display: flex;
+  width: 300px;
+  align-items: center;
+}
+.isAnsweredSection > * {
+  margin-right: 8px;
 }
 .circle {
   border: 1px solid var(--white-transparent);
-  margin-right: 8px;
+
   width: var(--md);
   height: var(--md);
   border-radius: 50%;
