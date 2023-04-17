@@ -4,7 +4,7 @@ import Text from "../../../../components/atoms/Text/Text";
 import bg from "../../../../assets/gradient-card.svg";
 import Avatar from "../../../../components/atoms/Avatar/Avatar";
 import { formatStringToShort } from "../../../../utils/format/formatStringToShort";
-
+import bussinessMan from "../../../../assets/bussinessman.svg";
 const extractValues = (estimatedCost) => {
   return Number(estimatedCost.replace("$", ""));
 };
@@ -42,12 +42,7 @@ const OptionCard = ({
       onClick={onShowDetail}
     >
       <div className={styles.profile}>
-        <Avatar
-          src={
-            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-          }
-          alt="foto de un perfil"
-        />
+        <Avatar src={bussinessMan} alt="foto de un perfil" />
       </div>
       <Text>{formatStringToShort(title)}</Text>
       <section className={styles.time}>

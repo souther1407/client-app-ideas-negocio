@@ -21,7 +21,8 @@ import MyPromptDetail from "./pages/MyPromptDetail/MyPromptDetail";
 import Success from "./pages/Success/Success";
 import RedirectEnterByAffiliateLink from "./pages/RedirectEnterByAffiliateLink/RedirectEnterByAffiliateLink";
 import ConfigPaymentMethod from "./pages/ConfigPaymentMethod/ConfigPaymentMethod";
-import AskQuestion from "./pages/AskQuestion/AskQuestion";
+import ExpertDashboard from "./pages/ExpertDashboard/ExpertDashboard";
+import ExpertLogin from "./pages/ExpertLogin/ExpertLogin";
 import {
   LOGIN,
   MAIN,
@@ -41,6 +42,8 @@ import {
   AFFILIATE_LINK,
   ACTIVATE_SUCCESS,
   PAYMENT_METHOD,
+  EXPERT_DASHBOARD,
+  EXPERT_LOGIN,
 } from "./utils/constants/routes";
 function App() {
   const { theme } = useContext(context);
@@ -68,6 +71,8 @@ function App() {
           path={AFFILIATE_LINK}
           element={<RedirectEnterByAffiliateLink />}
         />
+        <Route path={EXPERT_DASHBOARD} element={<ExpertDashboard />} />
+        <Route path={EXPERT_LOGIN} element={<ExpertLogin />} />
         <Route path="*" element={<h1>404 not found :C</h1>} />
       </Routes>
     </div>

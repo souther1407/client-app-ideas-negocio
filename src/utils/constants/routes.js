@@ -21,3 +21,5 @@ export const ACTIVATE_SUCCESS = "/activate/success";
 export const REGISTER_REFERED = "/affiliate/success";
 export const AFFILIATE_LINK = "/link/:affiliateId";
 export const PAYMENT_METHOD = "/payment/method";
+export const EXPERT_LOGIN = "/expert/login";
+export const EXPERT_DASHBOARD = "/expert/dashboard";
