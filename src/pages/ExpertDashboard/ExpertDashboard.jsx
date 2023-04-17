@@ -6,7 +6,8 @@ import { getNoAnsweredQuestions } from "../../services/messages/messages";
 import { createResponse } from "../../services/answers/answers";
 import Button from "../../components/atoms/Button/Button";
 import InfoModal from "../../components/molecules/InfoModal/InfoModal";
-
+import { useLogin } from "../../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 const Message = ({ id, email, content, created, onResponse }) => {
   return (
     <div className={styles.answer}>
@@ -21,9 +22,12 @@ const Message = ({ id, email, content, created, onResponse }) => {
     </div>
   );
 };
+import { LANDING_PAGE } from "../../utils/constants/routes";
 
 const ExpertDashboard = () => {
   useLogged("experts");
+  const navigate = useNavigate();
+  const { logout } = useLogin({ type: "experts" });
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
 
@@ -31,6 +35,7 @@ const ExpertDashboard = () => {
     id: "",
     content: "",
   });
+
   const resetForm = () => {
     setIsOpenForm(false);
     setResponse({
@@ -63,6 +68,12 @@ const ExpertDashboard = () => {
       alert(error.message);
     }
   };
+
+  const handleLogout = () => {
+    logout();
+    navigate(LANDING_PAGE);
+  };
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -79,7 +90,11 @@ const ExpertDashboard = () => {
   }, []);
   return (
     <div className={styles.expertDashboard}>
-      <header></header>
+      <header>
+        <Button onClick={handleLogout}>
+          <Text>Log out</Text>
+        </Button>
+      </header>
       <section className={styles.messages}>
         {!loading &&
           messages.map((m) => (
