@@ -3,6 +3,7 @@ import styles from "./myQuestions.module.css";
 import Text from "../../../../components/atoms/Text/Text";
 import { formatStringToShort } from "../../../../utils/format/formatStringToShort";
 import { getMyQuestions } from "../../../../services/messages/messages";
+
 const Card = ({ answered, created, content }) => {
   return (
     <div className={styles.card}>
@@ -18,9 +19,26 @@ const Card = ({ answered, created, content }) => {
   );
 };
 
+const Filter = ({ onSelectFilter }) => {
+  const handleClick = (e) => {
+    onSelectFilter(e.target.innerText);
+  };
+  return (
+    <div className={styles.filter}>
+      <Text onClick={handleClick}>Todas</Text>
+      <Text>|</Text>
+      <Text onClick={handleClick}>Respondidas</Text>
+    </div>
+  );
+};
 const MyQuestions = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("Todas");
+  const applyFilter = () => {
+    if (filter == "Todas") return questions;
+    return questions.filter((q) => q.answered);
+  };
   useEffect(() => {
     const getData = async () => {
       try {
@@ -38,11 +56,7 @@ const MyQuestions = () => {
     <div className={styles.myQuestions}>
       <section className={styles.header}>
         <Text type="title">Mis preguntas</Text>
-        <div className={styles.filter}>
-          <Text>Todas</Text>
-          <Text>|</Text>
-          <Text>Respondidas</Text>
-        </div>
+        <Filter onSelectFilter={(filter) => setFilter(filter)} />
       </section>
       {/* <Card
         answered={false}
@@ -55,7 +69,7 @@ const MyQuestions = () => {
         content={"Aguante boquita asfas"}
       /> */}
       {!loading &&
-        questions.map((q) => (
+        applyFilter().map((q) => (
           <Card
             answered={q.answered}
             content={q.content}
