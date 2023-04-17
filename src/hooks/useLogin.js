@@ -4,7 +4,11 @@ import AuthUserData from "../services/authentication/auth.js";
 import { decodeToken } from "react-jwt";
 import useLoginData from "../states/userLoginData.js";
 
-export const useLogin = ({ onLogin = () => {}, onLogout = () => {} }) => {
+export const useLogin = ({
+  onLogin = () => {},
+  onLogout = () => {},
+  type = "users",
+}) => {
   const { setData, resetData, userData } = useLoginData((state) => state);
   useEffect(() => {
     if (localStorage.getItem("token") && !userData.email) {
@@ -14,8 +18,14 @@ export const useLogin = ({ onLogin = () => {}, onLogout = () => {} }) => {
   }, []);
   const login = async (email, password) => {
     try {
-      const response = await AuthUserData.login({ email, password });
-      if (response.error) throw new Error(response.error);
+      let response;
+      if (type === "users") {
+        response = await AuthUserData.login({ email, password });
+      } else {
+        console.log("deberia entrar aca");
+        response = await AuthUserData.expertLogin({ email, password });
+      }
+
       localStorage.setItem("token", response.token);
       const payload = decodeToken(response.token);
       setData(payload);
@@ -37,8 +47,8 @@ export const useLogin = ({ onLogin = () => {}, onLogout = () => {} }) => {
   const isLogged = () => {
     return !!localStorage.getItem("token");
   };
-  const refreshToken = async () => {
-    if (!isLogged()) return;
+  const refreshToken = async (type = "users") => {
+    if (!isLogged(type)) return;
     try {
       const response = await AuthUserData.refreshToken();
       if (response.error) throw new Error(response.error);

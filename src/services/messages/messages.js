@@ -25,3 +25,15 @@ export const getMyQuestions = async () => {
   if (!response.ok) throw new Error(responseBody.error);
   return responseBody;
 };
+
+export const getNoAnsweredQuestions = async () => {
+  const response = await fetch(`${URL}/messages/all?answered=false`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const responseBody = await response.json();
+  if (!response.ok) throw new Error(responseBody.error);
+  return responseBody;
+};
