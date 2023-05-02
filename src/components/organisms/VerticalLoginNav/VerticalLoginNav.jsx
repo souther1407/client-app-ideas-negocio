@@ -11,8 +11,9 @@ import {
   DASHBOARD_MY_QUESTIONS,
 } from "../../../utils/constants/routes";
 
-const VerticalLoginNav = () => {
-  const [active, setActive] = useState("");
+const VerticalLoginNav = ({ section = "" }) => {
+  console.log("section??", section);
+  const [active, setActive] = useState(section);
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
