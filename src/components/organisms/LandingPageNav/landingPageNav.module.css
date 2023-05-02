@@ -1,6 +1,6 @@
 .landingPageNav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 16px 32px;
   position: fixed;
   align-items: center;

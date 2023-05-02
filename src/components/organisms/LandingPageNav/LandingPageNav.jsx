@@ -52,6 +52,9 @@ const LandingPageNav = () => {
         stateScroll.isScrolledUp && styles.show
       }`}
     >
+      <section className={styles.logo}>
+        <Text>Paddawan</Text>
+      </section>
       <section className={styles.buttonsAndLinks}>
         {!isLogged() && (
           <section className={styles.links}>
@@ -67,9 +70,9 @@ const LandingPageNav = () => {
           </section>
         )}
         <section className={styles.buttons}>
-          <GradientBorder>
+          {/* <GradientBorder>
             <ChangeLanguage />
-          </GradientBorder>
+          </GradientBorder> */}
           {location.pathname !== LOGIN && !isLogged() && (
             <GradientBorder style={{ borderRadius: "16px" }}>
               <Button

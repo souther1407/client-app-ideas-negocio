@@ -60,9 +60,9 @@ const MobileMenu = () => {
           </Link>
         </section>
         <section className={styles.buttons}>
-          <GradientBorder>
+          {/* <GradientBorder>
             <ChangeLanguage />
-          </GradientBorder>
+          </GradientBorder> */}
           {location.pathname !== LOGIN && (
             <GradientBorder style={{ borderRadius: "16px" }}>
               <Button
