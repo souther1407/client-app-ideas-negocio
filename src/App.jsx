@@ -10,10 +10,6 @@ import Subscribe from "./pages/Subscribe/Subscribe";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import StartABusiness from "./pages/StartABusiness/StartABusiness";
 import PlanResult from "./pages/PlanResult/PlanResult";
-import Example1 from "./pages/Example1/Example1";
-import Example2 from "./pages/Example2/Example2";
-import Example3 from "./pages/Example3/Example3";
-import Affiliate from "./pages/Affiliate/Affiliate";
 import ChooseBusiness from "./pages/ChooseBusiness/ChooseBusiness";
 import LoginRegister from "./pages/LoginRegister/LoginRegister";
 import Dashboard from "./pages/Dashboard/Dashboard";
@@ -23,6 +19,8 @@ import RedirectEnterByAffiliateLink from "./pages/RedirectEnterByAffiliateLink/R
 import ConfigPaymentMethod from "./pages/ConfigPaymentMethod/ConfigPaymentMethod";
 import ExpertDashboard from "./pages/ExpertDashboard/ExpertDashboard";
 import ExpertLogin from "./pages/ExpertLogin/ExpertLogin";
+import Affiliate from "./pages/Affiliate/Affiliate";
+import PlanSectionDetail from "./pages/PlanSectionDetail/PlanSectionDetail";
 import {
   LOGIN,
   MAIN,
@@ -32,9 +30,6 @@ import {
   LANDING_PAGE,
   PLAN_DETAIL,
   START_A_BUSINESS,
-  PLAN_EXAMPLE_1,
-  PLAN_EXAMPLE_2,
-  PLAN_EXAMPLE_3,
   AFFILIATE,
   CHOOSE_BUSINESS,
   DASHBOARD,
@@ -58,14 +53,15 @@ function App() {
         <Route path={PLAN_DETAIL} element={<PlanResult />} />
         <Route path={SUBSCRIBE} element={<Subscribe />} />
         <Route path={START_A_BUSINESS} element={<StartABusiness />} />
-        <Route path={PLAN_EXAMPLE_1} element={<Example1 />} />
-        <Route path={PLAN_EXAMPLE_2} element={<Example2 />} />
-        <Route path={PLAN_EXAMPLE_3} element={<Example3 />} />
         <Route path={AFFILIATE} element={<Affiliate />} />
         <Route path={CHOOSE_BUSINESS} element={<ChooseBusiness />} />
         <Route path={DASHBOARD + "/:section"} element={<Dashboard />} />
         <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<MyPromptDetail />} />
         <Route path={ACTIVATE_SUCCESS} element={<Success />} />
+        <Route
+          path={PLAN_DETAIL + "/:section"}
+          element={<PlanSectionDetail />}
+        />
         <Route path={PAYMENT_METHOD} element={<ConfigPaymentMethod />} />
         <Route
           path={AFFILIATE_LINK}

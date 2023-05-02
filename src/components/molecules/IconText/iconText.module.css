@@ -1,0 +1,12 @@
+.iconText {
+  align-items: center;
+  display: flex;
+}
+
+.iconText > :first-child {
+  margin-right: 8px;
+}
+
+.soft > * {
+  color: var(--btn-primary-border-color) !important;
+}
