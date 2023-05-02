@@ -5,7 +5,7 @@ import Text from "../../../../components/atoms/Text/Text";
 import Box from "../../../../assets/box.png";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../../components/atoms/Button/Button";
-import { START_A_BUSINESS } from "../../../../utils/constants/routes";
+import { START_A_BUSINESS, LOGIN } from "../../../../utils/constants/routes";
 import Mark from "../../../../components/atoms/Mark/Mark";
 import bg from "../../../../assets/bg.webp";
 import GradientBorder from "../../../../components/atoms/GradientBorder/GradientBorder";
@@ -13,8 +13,7 @@ import ShineEffect from "../../../../components/atoms/ShineEffect/ShineEffect";
 const MainBanner = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
-    const elementAiDropships = document.getElementById("airDropshipings");
-    elementAiDropships.scrollIntoView({ behavior: "smooth", block: "center" });
+    navigate(LOGIN);
   };
   return (
     <div className={styles.mainBanner}>
@@ -22,13 +21,13 @@ const MainBanner = () => {
       <section className={styles.info}>
         <div className={styles.title}>
           <Text type="title">
-            La historia de tu <Mark>éxito</Mark> empieza ahora
+            Explora el <Mark>Futuro</Mark> del emprendimiento con AI
           </Text>
         </div>
         <div className={styles.details}>
           <Text>
-            Echa un vistazo a los 457 currículums de nuestros clientes ya
-            contratados. Son nuestros héroes. Pueden ayudarte
+            Empieza tu primer negocio con ayuda de nuestra herramienta de
+            Inteligencia Artificial, y nuestro equipo de expertos
           </Text>
           <div className={styles.buttons}>
             <ShineEffect>
@@ -36,7 +35,7 @@ const MainBanner = () => {
                 color="secondary"
                 onClick={() => navigate(START_A_BUSINESS)}
               >
-                <Text>Crear negocio</Text>
+                <Text>Prueba Gratis</Text>
               </Button>
             </ShineEffect>
             <GradientBorder
@@ -51,7 +50,7 @@ const MainBanner = () => {
                 onClick={handleClick}
                 style={{ backgroundColor: "#0F1E2F", borderRadius: "16px" }}
               >
-                <Text>Ver ejemplos</Text>
+                <Text>Log in</Text>
               </Button>
             </GradientBorder>
           </div>

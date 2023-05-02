@@ -50,7 +50,7 @@
 @media screen and (max-width: 840px) {
   .mainBanner {
     padding: 16px;
-    padding-top: 80px;
+    padding-top: 20px;
   }
   .boxImg {
     display: none;
@@ -60,13 +60,8 @@
     padding-bottom: 4px;
   }
   .buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  .buttons > * {
-    margin-bottom: 8px;
   }
   .buttons > :first-child {
-    margin-right: 0;
+    margin-right: 16px;
   }
 }
