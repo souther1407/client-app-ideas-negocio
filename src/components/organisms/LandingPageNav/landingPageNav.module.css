@@ -14,6 +14,13 @@
 .landingPageNav > * {
   margin: 0 16px;
 }
+.elements {
+  display: flex;
+  align-items: center;
+}
+.logo.positioned {
+  position: relative;
+}
 .show {
   transform: translateY(0%);
 }

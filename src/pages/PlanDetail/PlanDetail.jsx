@@ -107,7 +107,7 @@ const PlanDetail = ({ response }) => {
             />
           </GradienBorder>
         </section>
-        <InfoModal
+        {/*   <InfoModal
           isOpen={showModal}
           onClose={() => {
             setShowModal(false);
@@ -127,7 +127,7 @@ const PlanDetail = ({ response }) => {
               ))}
             </Text>
           </section>
-        </InfoModal>
+        </InfoModal> */}
       </section>
       <GradientBg />
     </div>
