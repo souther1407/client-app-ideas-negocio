@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <VerticalLoginNav />
+      <VerticalLoginNav section={section} />
 
       <section className={styles.content}>
         <LandingPageNav />
@@ -38,7 +38,9 @@ const Dashboard = () => {
           <AffiliateProgram />
         </section>
         <section
-          className={`${styles.askQuestion} ${section == "ask" && styles.show}`}
+          className={`${styles.askQuestion} ${
+            section == "help" && styles.show
+          }`}
         >
           <AskQuestion />
         </section>
