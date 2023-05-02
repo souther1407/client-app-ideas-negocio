@@ -34,7 +34,7 @@ const PromptSectionDetail = ({ detail }) => {
   const changeSection = () => {
     const isInDetail =
       mainRef.current?.clientHeight + scrollPos <
-      detailRef.current?.clientHeight;
+        detailRef.current?.clientHeight || scrollPos === 0;
 
     const isQuestion =
       mainRef.current?.clientHeight + scrollPos >=
