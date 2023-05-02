@@ -6,7 +6,7 @@
   border-right: 1px solid var(--btn-primary-border-color);
   width: 250px;
   overflow: hidden;
-  z-index: 1;
+  z-index: 100000;
   transition: width 0.3s ease-in-out;
 }
 
@@ -63,7 +63,8 @@
     border-top: 1px solid var(--btn-primary-border-color);
     width: 100%;
     overflow: hidden;
-    z-index: 1;
+    z-index: 1000;
+    background-color: var(--dark-blue);
     transition: width 0.3s ease-in-out;
   }
   .verticalLoginNav.hidden {

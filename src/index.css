@@ -38,6 +38,7 @@ input:-webkit-autofill {
   --transparent-black: rgba(0, 0, 0, 0.411);
   --transparent-blue: #40687541;
   --transparent-green: #66858548;
+  --dark-blue: rgb(12, 28, 47);
   --dark-green: #0e3541bb;
   --light-green: #8da9b3;
   --mobile-w: 840px;

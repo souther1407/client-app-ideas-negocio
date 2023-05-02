@@ -15,3 +15,17 @@
 .section > :last-child {
   font-size: var(--lg);
 }
+
+@media screen and (max-width: 600px) {
+  .inputSection {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+    padding: 16px;
+    gap: 16px;
+    width: 85vw;
+  }
+  .section {
+    margin-bottom: 0;
+  }
+}

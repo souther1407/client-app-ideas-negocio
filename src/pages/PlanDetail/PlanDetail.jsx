@@ -13,6 +13,9 @@ import { formatStringToShort } from "../../utils/format/formatStringToShort";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import { useLogin } from "../../hooks/useLogin";
 import InputSection from "./components/InputSection/InputSection";
+import DetailSection from "./components/DetailSection/DetailSection";
+import { useNavigate } from "react-router-dom";
+import { PLAN_DETAIL } from "../../utils/constants/routes";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -21,10 +24,10 @@ const parts = [
   { title: "Tiempo", id: "time" },
   { title: "Analisis de Riesgo", id: "riskAnalisis" },
 ];
-
 const PlanDetail = ({ response }) => {
   const [partsCurrentIndex, setpartsCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const { isLogged } = useLogin({});
   const handleModalOpen = (index) => {
     setpartsCurrentIndex(index);
@@ -55,42 +58,42 @@ const PlanDetail = ({ response }) => {
               <DetailCard
                 title={"Analisis de Mercado"}
                 id="marketAnalisis"
-                onShowDetail={() => handleModalOpen(0)}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
               />
             </GradienBorder>
             <GradienBorder>
               <DetailCard
                 title={"Precio"}
                 id={"prices"}
-                onShowDetail={() => handleModalOpen(1)}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/prices")}
               />
             </GradienBorder>
             <GradienBorder>
               <DetailCard
                 title={"Ventas"}
                 id={"sales"}
-                onShowDetail={() => handleModalOpen(2)}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/sales")}
               />
             </GradienBorder>
             <GradienBorder>
               <DetailCard
                 title={"Plan de Marketing"}
                 id={"marketingPlan"}
-                onShowDetail={() => handleModalOpen(3)}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
               />
             </GradienBorder>
             <GradienBorder>
               <DetailCard
                 title={"Tiempo"}
                 id={"time"}
-                onShowDetail={() => handleModalOpen(4)}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/time")}
               />
             </GradienBorder>
             <GradienBorder>
               <DetailCard
                 title={"Analisis de Riesgo"}
                 id={"riskAnalisis"}
-                onShowDetail={() => handleModalOpen(5)}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/riskAnalisis")}
               />
             </GradienBorder>
           </section>
@@ -107,7 +110,7 @@ const PlanDetail = ({ response }) => {
             />
           </GradienBorder>
         </section>
-        <InfoModal
+        {/*   <InfoModal
           isOpen={showModal}
           onClose={() => {
             setShowModal(false);
@@ -127,7 +130,7 @@ const PlanDetail = ({ response }) => {
               ))}
             </Text>
           </section>
-        </InfoModal>
+        </InfoModal> */}
       </section>
       <GradientBg />
     </div>
