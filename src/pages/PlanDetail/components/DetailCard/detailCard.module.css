@@ -1,36 +1,34 @@
 .detailCard {
   display: flex;
-  padding: 16px 16px;
-  width: 350px;
-
-  border: 1px solid aliceblue;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   background-color: #0e1c2c;
+  width: 100%;
+  padding: 16px;
+}
+
+.img {
+  width: 200px;
+  align-self: center;
+}
+
+.detail {
+  display: flex;
 }
 
 .icon {
-  border-radius: 50%;
-  color: var(--secondary-light);
-  width: var(--lg);
-  margin-right: 32px;
+  margin-right: 8px;
 }
 
-.title {
-  display: flex;
-  align-items: center;
-  font-size: var(--sm);
+.nameTitle > :first-child {
   font-weight: bold;
 }
-.btn {
-  position: relative;
-  width: var(--lg);
-  bottom: 2px;
-  color: var(--secondary-light);
-  transform: rotateY(180deg);
+
+.nameTitle > :last-child {
+  font-size: var(--sm);
 }
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width: 700px) {
   .detailCard {
-    width: 85vw;
+    width: 100%;
   }
 }

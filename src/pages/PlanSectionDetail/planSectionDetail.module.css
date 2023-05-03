@@ -35,14 +35,14 @@
 .options > * {
   transition: all 0.3s ease-in;
   flex-shrink: 0;
-  margin-right: 4px;
+  padding-right: 8px;
 }
 
 .main {
   position: relative;
   height: 80vh;
   overflow-x: hidden;
-  padding: 16px;
+  padding: 24px;
   overflow-y: auto;
   top: 10px;
 }
@@ -51,7 +51,6 @@
   border-bottom: 1px solid var(--white-transparent);
 }
 .detail > :first-child {
-  text-align: center;
   margin-bottom: 16px;
 }
 .askQuestions {

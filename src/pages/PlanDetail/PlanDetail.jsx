@@ -4,18 +4,19 @@ import Text from "../../components/atoms/Text/Text";
 import Boximg from "../../assets/box.png";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import DetailCard from "./components/DetailCard/DetailCard";
-import InfoModal from "../../components/molecules/InfoModal/InfoModal";
-import ModalNextCard from "./components/modalNextCard/ModalNextCard";
 import GradienBorder from "../../components/atoms/GradientBorder/GradientBorder";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
-import InputCard from "./components/InputCard/InputCard";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import { useLogin } from "../../hooks/useLogin";
 import InputSection from "./components/InputSection/InputSection";
-import DetailSection from "./components/DetailSection/DetailSection";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
+import imgMarketAnalisis from "../../assets/imgMarketAnalisis.svg";
+import imgCosts from "../../assets/imgCosts.svg";
+import imgMarketingPlan from "../../assets/imgMarketingPlan.svg";
+import imgProductMin from "../../assets/imgProductMin.svg";
+import imgTeam from "../../assets/imgTeam.svg";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -25,23 +26,9 @@ const parts = [
   { title: "Analisis de Riesgo", id: "riskAnalisis" },
 ];
 const PlanDetail = ({ response }) => {
-  const [partsCurrentIndex, setpartsCurrentIndex] = useState(0);
-  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const { isLogged } = useLogin({});
-  const handleModalOpen = (index) => {
-    setpartsCurrentIndex(index);
-    setShowModal(true);
-  };
 
-  const prevPart = () => {
-    if (partsCurrentIndex === 0) return;
-    setpartsCurrentIndex((prev) => prev - 1);
-  };
-  const nextPart = () => {
-    if (partsCurrentIndex === parts.length - 1) return;
-    setpartsCurrentIndex((prev) => prev + 1);
-  };
   return (
     <div className={styles.planDetail}>
       {isLogged() && <VerticalLoginNav />}
@@ -54,52 +41,72 @@ const PlanDetail = ({ response }) => {
             <Text>{response.description}</Text>
           </section>
           <section className={styles.cardsDetail}>
-            <GradienBorder>
+            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
               <DetailCard
-                title={"Analisis de Mercado"}
+                title={response.title}
+                sectionName={"Mensaje el profesor"}
+                id="marketAnalisis"
+                onShowDetail={() => {}}
+                icon={"book"}
+                img={
+                  "https://img.freepik.com/free-vector/teacher-classroom-pointing-chalkboard_40876-2422.jpg"
+                }
+              />
+            </GradienBorder>
+            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
+              <DetailCard
+                title={response.title}
+                sectionName={"Analisis de mercado"}
+                icon={"search"}
                 id="marketAnalisis"
                 onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
+                img={imgMarketAnalisis}
               />
             </GradienBorder>
-            <GradienBorder>
+            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
               <DetailCard
-                title={"Precio"}
+                title={response.title}
+                sectionName={"Producto mínimo viable"}
                 id={"prices"}
+                icon={"gears"}
                 onShowDetail={() => navigate(PLAN_DETAIL + "/prices")}
+                img={imgProductMin}
               />
             </GradienBorder>
-            <GradienBorder>
+            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
               <DetailCard
-                title={"Ventas"}
+                title={response.title}
+                sectionName={"Equipo"}
                 id={"sales"}
+                icon={"team"}
                 onShowDetail={() => navigate(PLAN_DETAIL + "/sales")}
+                img={imgTeam}
               />
             </GradienBorder>
-            <GradienBorder>
+            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
               <DetailCard
-                title={"Plan de Marketing"}
+                title={response.title}
+                sectionName={"Plan de Marketing"}
                 id={"marketingPlan"}
+                icon={"megaphone"}
                 onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
+                img={imgMarketingPlan}
               />
             </GradienBorder>
-            <GradienBorder>
+            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
               <DetailCard
-                title={"Tiempo"}
-                id={"time"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/time")}
-              />
-            </GradienBorder>
-            <GradienBorder>
-              <DetailCard
-                title={"Analisis de Riesgo"}
+                title={response.title}
+                sectionName={"Costos"}
                 id={"riskAnalisis"}
+                icon={"money"}
                 onShowDetail={() => navigate(PLAN_DETAIL + "/riskAnalisis")}
+                img={imgCosts}
               />
             </GradienBorder>
           </section>
         </section>
         <section className={styles.inputUser}>
-          <GradienBorder>
+          <GradienBorder w100>
             <InputSection
               age={formatStringToShort(response?.input?.age)}
               budget={formatStringToShort(response?.input?.budget)}
@@ -110,27 +117,6 @@ const PlanDetail = ({ response }) => {
             />
           </GradienBorder>
         </section>
-        {/*   <InfoModal
-          isOpen={showModal}
-          onClose={() => {
-            setShowModal(false);
-          }}
-          title={parts[partsCurrentIndex].title}
-          renderFooter={() => (
-            <ModalNextCard onPrev={prevPart} onNext={nextPart} />
-          )}
-        >
-          <section className={styles.details}>
-            <Text>
-              {response[parts[partsCurrentIndex].id].split("\n").map((str) => (
-                <>
-                  {str}
-                  <br />
-                </>
-              ))}
-            </Text>
-          </section>
-        </InfoModal> */}
       </section>
       <GradientBg />
     </div>

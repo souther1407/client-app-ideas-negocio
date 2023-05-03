@@ -3,14 +3,16 @@ import {
   AiOutlineLoading3Quarters,
   AiFillCreditCard,
   AiOutlineCheckCircle,
+  AiOutlineSearch,
 } from "react-icons/ai";
 import {
   BsFillSunFill,
   BsFillMoonFill,
   BsFillBriefcaseFill,
+  BsFillMegaphoneFill,
 } from "react-icons/bs";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { BiBrain, BiHelpCircle } from "react-icons/bi";
+import { BiBrain, BiHelpCircle, BiBookOpen } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import {
   FaMoneyBillWave,
@@ -24,8 +26,13 @@ import {
   FaItalic,
   FaUnderline,
 } from "react-icons/fa";
-import { AiOutlineMail, AiOutlineBulb, AiOutlineUserAdd } from "react-icons/ai";
-import { GiGears } from "react-icons/gi";
+import {
+  AiOutlineMail,
+  AiOutlineBulb,
+  AiOutlineUserAdd,
+  AiOutlineTeam,
+} from "react-icons/ai";
+import { GiGears, GiTakeMyMoney } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
 import { BsArrowLeft, BsArrowRight, BsImage } from "react-icons/bs";
 import styles from "./icon.module.css";
@@ -65,6 +72,11 @@ const Icon = ({ type, size }) => {
     underline: <FaUnderline {...props} />,
     italic: <FaItalic {...props} />,
     checkMark: <AiOutlineCheckCircle {...props} />,
+    money: <GiTakeMyMoney {...props} />,
+    megaphone: <BsFillMegaphoneFill {...props} />,
+    team: <AiOutlineTeam {...props} />,
+    book: <BiBookOpen {...props} />,
+    search: <AiOutlineSearch {...props} />,
   };
   return <i>{icons[type]}</i>;
 };
