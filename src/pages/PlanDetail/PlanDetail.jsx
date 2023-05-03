@@ -99,16 +99,14 @@ const PlanDetail = ({ response }) => {
           </section>
         </section>
         <section className={styles.inputUser}>
-          <GradienBorder w100>
-            <InputSection
-              age={formatStringToShort(response?.input?.age)}
-              budget={formatStringToShort(response?.input?.budget)}
-              location={formatStringToShort(response?.input?.location)}
-              skills={formatStringToShort(response?.input?.skills)}
-              teacher={formatStringToShort(response?.input?.teacher)}
-              style={{ backgroundColor: "#0C1C2F" }}
-            />
-          </GradienBorder>
+          <InputSection
+            age={formatStringToShort(response?.input?.age)}
+            budget={formatStringToShort(response?.input?.budget)}
+            location={formatStringToShort(response?.input?.location)}
+            skills={formatStringToShort(response?.input?.skills)}
+            teacher={formatStringToShort(response?.input?.teacher)}
+            style={{ backgroundColor: "#0C1C2F" }}
+          />
         </section>
       </section>
       <GradientBg opacity={25} />
