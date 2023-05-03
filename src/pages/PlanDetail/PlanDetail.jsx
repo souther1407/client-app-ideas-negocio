@@ -41,68 +41,61 @@ const PlanDetail = ({ response }) => {
             <Text>{response.description}</Text>
           </section>
           <section className={styles.cardsDetail}>
-            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
-              <DetailCard
-                title={response.title}
-                sectionName={"Mensaje el profesor"}
-                id="marketAnalisis"
-                onShowDetail={() => {}}
-                icon={"book"}
-                img={
-                  "https://img.freepik.com/free-vector/teacher-classroom-pointing-chalkboard_40876-2422.jpg"
-                }
-              />
-            </GradienBorder>
-            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
-              <DetailCard
-                title={response.title}
-                sectionName={"Analisis de mercado"}
-                icon={"search"}
-                id="marketAnalisis"
-                onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
-                img={imgMarketAnalisis}
-              />
-            </GradienBorder>
-            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
-              <DetailCard
-                title={response.title}
-                sectionName={"Producto mínimo viable"}
-                id={"prices"}
-                icon={"gears"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/prices")}
-                img={imgProductMin}
-              />
-            </GradienBorder>
-            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
-              <DetailCard
-                title={response.title}
-                sectionName={"Equipo"}
-                id={"sales"}
-                icon={"team"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/sales")}
-                img={imgTeam}
-              />
-            </GradienBorder>
-            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
-              <DetailCard
-                title={response.title}
-                sectionName={"Plan de Marketing"}
-                id={"marketingPlan"}
-                icon={"megaphone"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
-                img={imgMarketingPlan}
-              />
-            </GradienBorder>
-            <GradienBorder borderRadius={24} w100={window.innerWidth <= 700}>
-              <DetailCard
-                title={response.title}
-                sectionName={"Costos"}
-                id={"riskAnalisis"}
-                icon={"money"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/riskAnalisis")}
-                img={imgCosts}
-              />
-            </GradienBorder>
+            <DetailCard
+              title={response.title}
+              sectionName={"Mensaje el profesor"}
+              id="marketAnalisis"
+              onShowDetail={() => {}}
+              icon={"book"}
+              img={
+                "https://img.freepik.com/free-vector/teacher-classroom-pointing-chalkboard_40876-2422.jpg"
+              }
+            />
+
+            <DetailCard
+              title={response.title}
+              sectionName={"Analisis de mercado"}
+              icon={"search"}
+              id="marketAnalisis"
+              onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
+              img={imgMarketAnalisis}
+            />
+
+            <DetailCard
+              title={response.title}
+              sectionName={"Producto mínimo viable"}
+              id={"prices"}
+              icon={"gears"}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/prices")}
+              img={imgProductMin}
+            />
+
+            <DetailCard
+              title={response.title}
+              sectionName={"Equipo"}
+              id={"sales"}
+              icon={"team"}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/sales")}
+              img={imgTeam}
+            />
+
+            <DetailCard
+              title={response.title}
+              sectionName={"Plan de Marketing"}
+              id={"marketingPlan"}
+              icon={"megaphone"}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
+              img={imgMarketingPlan}
+            />
+
+            <DetailCard
+              title={response.title}
+              sectionName={"Costos"}
+              id={"riskAnalisis"}
+              icon={"money"}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/riskAnalisis")}
+              img={imgCosts}
+            />
           </section>
         </section>
         <section className={styles.inputUser}>
@@ -118,7 +111,7 @@ const PlanDetail = ({ response }) => {
           </GradienBorder>
         </section>
       </section>
-      <GradientBg />
+      <GradientBg opacity={25} />
     </div>
   );
 };

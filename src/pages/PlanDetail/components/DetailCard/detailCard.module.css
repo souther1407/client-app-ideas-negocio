@@ -6,7 +6,10 @@
   padding: 16px;
   position: relative;
   cursor: pointer;
+  border-radius: 16px;
+  border: 1px solid var(--gray-transparent);
 }
+
 .detailCard::before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
@@ -27,9 +30,11 @@
 .detailCard:hover::before {
   opacity: 1;
 }
+
 .img {
-  width: 200px;
+  width: 150px;
   align-self: center;
+  filter: opacity(80%);
 }
 
 .detail {
@@ -38,14 +43,17 @@
 
 .icon {
   margin-right: 8px;
+  position: relative;
+  top: 2px;
 }
 
 .nameTitle > :first-child {
   font-weight: bold;
+  font-size: var(--sm);
 }
 
 .nameTitle > :last-child {
-  font-size: var(--sm);
+  font-size: var(--ty);
 }
 
 @media screen and (max-width: 700px) {
