@@ -52,4 +52,12 @@
   .detailCard {
     width: 100%;
   }
+  .nameTitle > :first-child {
+    font-weight: bold;
+    font-size: var(--lg);
+  }
+
+  .nameTitle > :last-child {
+    font-size: var(--md);
+  }
 }
