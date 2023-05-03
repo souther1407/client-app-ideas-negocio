@@ -8,14 +8,17 @@
 }
 .content {
   display: flex;
+  flex-direction: column;
   padding-top: 60px;
   padding-left: 16px;
   width: 100%;
 }
 
 .cardsDetail {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px;
 }
 .description {
   display: flex;
@@ -30,8 +33,9 @@
   display: flex;
   justify-content: center;
   flex-grow: 1;
-
   align-items: center;
+  margin-top: 24px;
+  width: 85%;
 }
 
 .info {
@@ -54,17 +58,12 @@
   width: 280px;
 }
 
-.cardsDetail {
-  display: flex;
-  flex-direction: column;
-}
-
 .details {
   font-size: 16px;
 }
 
-@media screen and (max-width: 850px) {
-  .inputUser {
+@media screen and (max-width: 1050px) {
+  .cardsDetail {
     grid-template-columns: repeat(2, auto);
   }
 }
@@ -72,28 +71,25 @@
 @media screen and (max-width: 700px) {
   .content {
     flex-direction: column;
-    padding-top: 20px;
-    padding-left: 0;
+    padding: 32px;
+    padding-top: 70px;
   }
   .planDetail {
     flex-direction: column;
   }
   .cardsDetail {
-    align-items: center;
-    margin: 32px 0;
+    grid-template-columns: repeat(1, auto);
+  }
+  .cardsDetail > * {
+    width: 100% !important;
   }
   .inputUser {
-    justify-content: flex-start;
-    grid-template-columns: repeat(3, auto);
     margin-bottom: 80px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .planDetail {
-    padding: 0 24px;
-    padding-top: 60px;
-  }
   .description {
     margin-right: 0;
   }
@@ -102,9 +98,5 @@
   }
   .info {
     margin: 0;
-  }
-  .inputUser {
-    grid-template-columns: auto;
-    grid-auto-rows: auto;
   }
 }

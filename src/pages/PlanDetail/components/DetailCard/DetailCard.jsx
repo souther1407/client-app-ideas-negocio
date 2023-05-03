@@ -3,19 +3,21 @@ import styles from "./detailCard.module.css";
 import Text from "../../../../components/atoms/Text/Text";
 import Icon from "../../../../components/atoms/Icon/Icon";
 
-const DetailCard = ({ title, id, onShowDetail }) => {
+const DetailCard = ({ title, id, onShowDetail, sectionName, img, icon }) => {
   return (
-    <section className={styles.detailCard}>
-      <div className={styles.title}>
-        <i className={styles.icon}>
-          <Icon type={"gears"} />
-        </i>
-        <Text>{title}</Text>
+    <section className={styles.detailCard} onClick={onShowDetail}>
+      <div className={styles.img}>
+        <img src={img} alt="imagen representativa de una seccion" />
       </div>
-
-      <button className={styles.btn} onClick={() => onShowDetail(id, title)}>
-        <Icon type={"arrows"} />
-      </button>
+      <section className={styles.detail}>
+        <div className={styles.icon}>
+          <Icon size={"28px"} type={icon} />
+        </div>
+        <div className={styles.nameTitle}>
+          <Text>{sectionName}</Text>
+          <Text color="soft">{title}</Text>
+        </div>
+      </section>
     </section>
   );
 };

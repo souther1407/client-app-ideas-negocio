@@ -61,9 +61,7 @@ const PromptSectionDetail = ({ detail }) => {
         return `-${menuTitleRef.current.offsetWidth}px`;
       case "ask":
         return `-${
-          menuTitleRef.current.offsetWidth +
-          menuQuestionRef.current.offsetWidth +
-          8
+          menuTitleRef.current.offsetWidth + menuQuestionRef.current.offsetWidth
         }px`;
       default:
         return `0`;
