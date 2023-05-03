@@ -3,6 +3,8 @@
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(3, auto);
   padding: 16px;
+  border: 1px solid var(--gray-transparent);
+  border-radius: 16px;
   gap: 16px;
   width: 100%;
 }
