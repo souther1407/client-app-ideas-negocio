@@ -5,7 +5,19 @@ import Icon from "../../../../components/atoms/Icon/Icon";
 
 const DetailCard = ({ title, id, onShowDetail, sectionName, img, icon }) => {
   return (
-    <section className={styles.detailCard} onClick={onShowDetail}>
+    <section
+      className={styles.detailCard}
+      onClick={onShowDetail}
+      onMouseMove={(e) => {
+        const target = e.currentTarget;
+        const rect = target.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+
+        target.style.setProperty("--mouse-x", `${x}px`);
+        target.style.setProperty("--mouse-y", `${y}px`);
+      }}
+    >
       <div className={styles.img}>
         <img src={img} alt="imagen representativa de una seccion" />
       </div>
