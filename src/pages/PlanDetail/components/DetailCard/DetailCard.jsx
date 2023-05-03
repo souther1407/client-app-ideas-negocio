@@ -23,7 +23,7 @@ const DetailCard = ({ title, id, onShowDetail, sectionName, img, icon }) => {
       </div>
       <section className={styles.detail}>
         <div className={styles.icon}>
-          <Icon size={"28px"} type={icon} />
+          <Icon size={"16px"} type={icon} />
         </div>
         <div className={styles.nameTitle}>
           <Text>{sectionName}</Text>
