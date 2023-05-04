@@ -1,37 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./chooseBusiness.module.css";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import InfoModal from "../../components/molecules/InfoModal/InfoModal";
-import GearCard from "./components/GearCard/GearCard";
+import useOptions from "../../states/useOptions";
 import Button from "../../components/atoms/Button/Button";
 import Text from "../../components/atoms/Text/Text";
-import useBusinessPlan from "../../states/businessPlan";
+import usePromptDetail from "../../states/prompDetail";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
 import { useStorage } from "../../hooks/useStorage";
 import OptionCard from "./components/OptionCard/OptionCard";
+import { createDetail } from "../../services/createText/createText";
 const ChooseBusiness = () => {
   const { load } = useStorage();
 
   const [option, setOption] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navitagte = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [input, setInput] = useState(load("input"));
-  const { options, generateBusinessPlan, creating } = useBusinessPlan(
-    (state) => state
-  );
+  const { setPromptDetail } = usePromptDetail((state) => state);
+  const options = useOptions((states) => states.options);
+
   const handleClick = async () => {
     try {
-      await generateBusinessPlan({
+      /*  await generateBusinessPlan({
         input: input,
         header: options[option],
-      });
+      }); */
+      setLoading(true);
+      const detail = await createDetail({ input, header: options[option] });
+      setPromptDetail(detail);
       navitagte(PLAN_DETAIL);
     } catch (error) {
       alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
+  console.log(options);
+
   return (
     <div className={styles.chooseBusiness}>
       <LandingPageNav />
@@ -82,8 +91,8 @@ const ChooseBusiness = () => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         renderFooter={() => (
-          <Button color="secondary" disabled={creating} onClick={handleClick}>
-            <Text>{creating ? "creating..." : "Elegir opcion"}</Text>
+          <Button color="secondary" disabled={loading} onClick={handleClick}>
+            <Text>{loading ? "creating..." : "Elegir opcion"}</Text>
           </Button>
         )}
       >

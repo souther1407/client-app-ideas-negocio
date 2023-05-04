@@ -6,12 +6,12 @@ import Icon from "../../components/atoms/Icon/Icon";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL, CHOOSE_BUSINESS } from "../../utils/constants/routes";
-import useBusinessPlan from "../../states/businessPlan";
+import useOptions from "../../states/useOptions";
 import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { useLogin } from "../../hooks/useLogin";
 import GradientBorder from "../../components/atoms/GradientBorder/GradientBorder";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
-import LabeledInput from "../../components/molecules/LabeledInput/LabeledInput";
+
 import { useStorage } from "../../hooks/useStorage";
 import ShineGradientInput from "../../components/organisms/ShineGradientInput/ShineGradientInput";
 import elomMuskImg from "../../assets/elon_musk.png";
@@ -65,7 +65,7 @@ const StartABusiness = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const { creating, generateOptions } = useBusinessPlan((state) => state);
+  const { creating, generateOptions } = useOptions((state) => state);
 
   const handlerSendData = async () => {
     save("input", input);

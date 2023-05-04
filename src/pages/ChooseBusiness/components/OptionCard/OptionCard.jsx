@@ -8,10 +8,6 @@ import bussinessMan from "../../../../assets/bussinessman.svg";
 import Icon from "../../../../components/atoms/Icon/Icon";
 import IMG from "../../../../assets/imgProductMin.svg";
 
-const extractValues = (estimatedCost) => {
-  return Number(estimatedCost.replace("$", ""));
-};
-
 const IconDesc = ({ icon, title, desc }) => {
   return (
     <div className={styles.iconDesc}>
