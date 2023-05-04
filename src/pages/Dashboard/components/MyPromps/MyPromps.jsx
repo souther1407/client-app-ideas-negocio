@@ -32,19 +32,17 @@ const MyPromps = () => {
           <CarouselMultiline onChange={() => {}}>
             {prompts.map((p) => (
               <div className={styles.element}>
-                <ShineEffect>
-                  <PromptCard
-                    show={true}
-                    id={p.id}
-                    details={p.details}
-                    age={p.input.age}
-                    budget={p.input.budget}
-                    location={p.input.location}
-                    skills={p.input.skills}
-                    teacher={p.input.teacher}
-                    key={p.id}
-                  />
-                </ShineEffect>
+                <PromptCard
+                  show={true}
+                  id={p.id}
+                  details={p.details}
+                  age={p.input.age}
+                  budget={p.input.budget}
+                  location={p.input.location}
+                  skills={p.input.skills}
+                  teacher={p.input.teacher}
+                  key={p.id}
+                />
               </div>
             ))}
 

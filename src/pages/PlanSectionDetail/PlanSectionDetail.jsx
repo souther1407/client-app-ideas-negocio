@@ -12,6 +12,7 @@ import usePromptDetail from "../../states/prompDetail";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
 import { useScroll } from "../../hooks/useScroll";
 import { formatText } from "../../utils/format/formatText";
+import ReactMarkdown from "react-markdown";
 const PromptSectionDetail = ({ detail }) => {
   const { section } = useParams();
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ const PromptSectionDetail = ({ detail }) => {
         return `0`;
     }
   };
+  console.log(promptDetail[section]);
   useEffect(() => {
     changeSection();
   }, [scrollPos]);
@@ -123,11 +125,13 @@ const PromptSectionDetail = ({ detail }) => {
         >
           <section className={styles.detail} ref={detailRef}>
             <Text type="title">{promptDetail.title}</Text>
-            <Text>
+
+            {/*  <Text>
               {formatText(promptDetail[section].planDetail, (p) => (
                 <Text>{p}</Text>
               ))}
-            </Text>
+            </Text> */}
+            <ReactMarkdown>{promptDetail[section].planDetail}</ReactMarkdown>
           </section>
           <section className={styles.questions} ref={questionsRef}>
             <Text type="title">Preguntas</Text>
