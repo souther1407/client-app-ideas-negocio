@@ -17,6 +17,7 @@ import imgCosts from "../../assets/imgCosts.svg";
 import imgMarketingPlan from "../../assets/imgMarketingPlan.svg";
 import imgProductMin from "../../assets/imgProductMin.svg";
 import imgTeam from "../../assets/imgTeam.svg";
+import GradientText from "../../components/molecules/GradientText/GradientText";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -38,7 +39,9 @@ const PlanDetail = ({ response }) => {
 
         <section className={styles.description}>
           <section className={styles.info}>
-            <Text type="title">{response.title}</Text>
+            <GradientText type="title" bold>
+              {response.title}
+            </GradientText>
             <Text>{response.description}</Text>
           </section>
           <section className={styles.cardsDetail}>
