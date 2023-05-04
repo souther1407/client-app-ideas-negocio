@@ -55,7 +55,13 @@ input:-webkit-autofill {
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: var(--xxlg);
+}
+h2 {
+  font-size: var(--xlg) !important;
+}
+h3 {
+  font-size: var(--md) !important;
 }
 p {
   font-size: 1.1rem;

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./detailSection.module.css";
 import Text from "../../../../components/atoms/Text/Text";
+
 const DetailSection = ({ sectionName, isOpen, detail, onPrev, onNext }) => {
   return (
     <div className={styles.detailSection}>
