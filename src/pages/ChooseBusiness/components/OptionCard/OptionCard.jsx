@@ -5,27 +5,24 @@ import bg from "../../../../assets/gradient-card.svg";
 import Avatar from "../../../../components/atoms/Avatar/Avatar";
 import { formatStringToShort } from "../../../../utils/format/formatStringToShort";
 import bussinessMan from "../../../../assets/bussinessman.svg";
+import Icon from "../../../../components/atoms/Icon/Icon";
+import IMG from "../../../../assets/imgProductMin.svg";
+
 const extractValues = (estimatedCost) => {
   return Number(estimatedCost.replace("$", ""));
 };
-const CostBar = ({ total, estimatedMin = 0, estimatedminMax }) => {
+
+const IconDesc = ({ icon, title, desc }) => {
   return (
-    <div className={styles.costBar}>
-      <Text>
-        {estimatedMin}-{estimatedminMax}$
-      </Text>
-      <div
-        className={styles.filled}
-        style={{ width: `${(estimatedminMax * 100) / total}%` }}
-      ></div>
+    <div className={styles.iconDesc}>
+      <Icon size={"16px"} type={icon} />
+      <section className={styles.desc}>
+        <Text color="soft">{title}</Text>
+        <Text bold>{desc}</Text>
+      </section>
     </div>
   );
 };
-
-/*
-2000 --> 100%
-800 --> x
-*/
 
 const OptionCard = ({
   title,
@@ -34,28 +31,23 @@ const OptionCard = ({
   onShowDetail,
   totalCost,
 }) => {
-  console.log(totalCost);
+  console.log(estimatedTime);
   return (
-    <div
-      className={styles.optionCard}
-      style={{ backgroundImage: `url(${bg})` }}
-      onClick={onShowDetail}
-    >
-      <div className={styles.profile}>
-        <Avatar src={bussinessMan} alt="foto de un perfil" />
+    <div className={styles.optionCard} onClick={onShowDetail}>
+      <div className={styles.img}>
+        <img src={IMG} alt="imagen" />
       </div>
-      <Text>{formatStringToShort(title)}</Text>
-      <section className={styles.time}>
-        <Text color="soft">Tiempo estimado</Text>
-        <Text>{estimatedTime}</Text>
-      </section>
-      <section className={styles.estimatedCost}>
-        <Text color="soft">Costo estimado</Text>
-        <CostBar
-          total={totalCost}
-          estimatedminMax={extractValues(estimatedCost)}
+      <div className={styles.title}>
+        <Text bold>{formatStringToShort(title)}</Text>
+      </div>
+      <div className={styles.details}>
+        <IconDesc icon={"calc"} title={"Coste estimado"} desc={estimatedCost} />
+        <IconDesc
+          icon={"clock"}
+          title={"Tiempo estimado"}
+          desc={estimatedTime}
         />
-      </section>
+      </div>
     </div>
   );
 };

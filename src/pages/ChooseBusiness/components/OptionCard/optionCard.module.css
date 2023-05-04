@@ -1,69 +1,42 @@
 .optionCard {
-  border: 2px solid var(--white-transparent);
-  width: 350px;
+  border: 1px solid var(--white-transparent);
+  width: 400px;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 24px;
   position: relative;
-  padding-top: 60px;
-  background-size: cover;
-  background-repeat: no-repeat;
   transition: all 0.4s ease-in;
   cursor: pointer;
+  border-radius: 16px;
 }
 
-.optionCard:hover,
-.optionCard:hover .profile > * {
-  transition: all 0.3s ease-in;
-  box-shadow: 0 0 5px var(--white);
-}
-
-.profile {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, -50%);
-  left: 50%;
-}
-.profile > * {
-  border: 2px solid var(--white-transparent);
-  transition: all 0.4s ease-in;
-}
-
-.optionCard > :nth-child(2) {
+.img {
+  width: 150px;
+  filter: opacity(80%);
   align-self: center;
-  font-size: var(--mg);
-  margin-bottom: 8px;
 }
 
-.time > :first-child,
-.estimatedCost > :first-child {
-  font-size: var(--ty);
-  margin-bottom: 4px;
+.title {
+  text-align: center;
 }
 
-.time {
-  margin-bottom: 16px;
+.details {
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.costBar {
-  width: 100%;
-  border: 2px solid var(--secondary-light);
+.iconDesc {
+  display: flex;
+}
+.iconDesc > :first-child {
   position: relative;
+  top: 4px;
+  margin-right: 4px;
 }
-.costBar > :first-child {
-  position: relative;
-  z-index: 2;
-}
-.filled {
-  padding: 4px;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  height: 100% !important;
-  width: 40%;
-  background-color: var(--secondary-light);
-  border-radius: 0 16px 16px 0;
+.desc > :first-child {
   font-size: var(--sm);
+}
+.desc > :last-child {
+  font-size: var(--ty);
 }
