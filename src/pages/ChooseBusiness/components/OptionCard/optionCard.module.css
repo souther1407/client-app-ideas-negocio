@@ -18,6 +18,7 @@
 
 .title {
   text-align: center;
+  font-size: var(--sm);
 }
 
 .details {
@@ -35,7 +36,7 @@
   margin-right: 4px;
 }
 .desc > :first-child {
-  font-size: var(--sm);
+  font-size: var(--ty);
 }
 .desc > :last-child {
   font-size: var(--ty);

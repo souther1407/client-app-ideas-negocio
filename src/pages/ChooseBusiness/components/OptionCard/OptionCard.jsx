@@ -11,7 +11,7 @@ import IMG from "../../../../assets/imgProductMin.svg";
 const IconDesc = ({ icon, title, desc }) => {
   return (
     <div className={styles.iconDesc}>
-      <Icon size={"32px"} type={icon} />
+      <Icon size={"24px"} type={icon} />
       <section className={styles.desc}>
         <Text color="soft">{title}</Text>
         <Text bold>{desc}</Text>
@@ -34,7 +34,7 @@ const OptionCard = ({
         <img src={IMG} alt="imagen" />
       </div>
       <div className={styles.title}>
-        <Text bold>{formatStringToShort(title)}</Text>
+        <Text bold>{title}</Text>
       </div>
       <div className={styles.details}>
         <IconDesc icon={"calc"} title={"Coste estimado"} desc={estimatedCost} />
