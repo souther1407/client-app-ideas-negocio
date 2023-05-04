@@ -15,7 +15,7 @@ const extractValues = (estimatedCost) => {
 const IconDesc = ({ icon, title, desc }) => {
   return (
     <div className={styles.iconDesc}>
-      <Icon size={"16px"} type={icon} />
+      <Icon size={"32px"} type={icon} />
       <section className={styles.desc}>
         <Text color="soft">{title}</Text>
         <Text bold>{desc}</Text>
