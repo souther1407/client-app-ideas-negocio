@@ -36,6 +36,7 @@ const OptionCard = ({
       <div className={styles.title}>
         <Text bold>{title}</Text>
       </div>
+
       <div className={styles.details}>
         <IconDesc icon={"calc"} title={"Coste estimado"} desc={estimatedCost} />
         <IconDesc

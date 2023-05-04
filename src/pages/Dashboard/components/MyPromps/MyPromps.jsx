@@ -4,6 +4,8 @@ import CarouselMultiline from "../../../../components/organisms/CarouselMultilin
 import Text from "../../../../components/atoms/Text/Text";
 import { getPrompts } from "../../../../services/userPrompts/getPrompts";
 import PromptCard from "../../../LandingPage/components/AiDropshipings/components/AiDropshipingCard/AiDropshipingCard";
+import ShineEffect from "../../../../components/molecules/ShineEffect/ShineEffect";
+
 const MyPromps = () => {
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,17 +32,19 @@ const MyPromps = () => {
           <CarouselMultiline onChange={() => {}}>
             {prompts.map((p) => (
               <div className={styles.element}>
-                <PromptCard
-                  show={true}
-                  id={p.id}
-                  details={p.details}
-                  age={p.input.age}
-                  budget={p.input.budget}
-                  location={p.input.location}
-                  skills={p.input.skills}
-                  teacher={p.input.teacher}
-                  key={p.id}
-                />
+                <ShineEffect>
+                  <PromptCard
+                    show={true}
+                    id={p.id}
+                    details={p.details}
+                    age={p.input.age}
+                    budget={p.input.budget}
+                    location={p.input.location}
+                    skills={p.input.skills}
+                    teacher={p.input.teacher}
+                    key={p.id}
+                  />
+                </ShineEffect>
               </div>
             ))}
 

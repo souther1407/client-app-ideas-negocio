@@ -1,6 +1,7 @@
 .optionCard {
   border: 1px solid var(--white-transparent);
   width: 400px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -8,6 +9,7 @@
   transition: all 0.4s ease-in;
   cursor: pointer;
   border-radius: 16px;
+  justify-content: space-between;
 }
 
 .img {
@@ -22,7 +24,6 @@
 }
 
 .details {
-  margin: 16px 0;
   display: flex;
   justify-content: space-between;
 }

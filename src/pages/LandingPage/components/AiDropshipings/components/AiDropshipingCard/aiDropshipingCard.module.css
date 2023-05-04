@@ -1,3 +1,6 @@
+.containerShadow {
+  border-radius: 16px;
+}
 .card {
   background-color: var(--bg-blue-dark);
   border: 2px solid var(--gray-transparent);

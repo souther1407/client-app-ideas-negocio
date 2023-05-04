@@ -36,7 +36,7 @@ const AiDropshipingCard = ({
       style={
         show
           ? {
-              transform: "scale(130%)",
+              transform: "scale(125%)",
               position: "relative",
               bottom: "8px",
             }
