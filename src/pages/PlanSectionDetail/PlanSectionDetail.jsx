@@ -11,16 +11,16 @@ import Button from "../../components/atoms/Button/Button";
 import usePromptDetail from "../../states/prompDetail";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
 import { useScroll } from "../../hooks/useScroll";
+import { formatText } from "../../utils/format/formatText";
 const PromptSectionDetail = ({ detail }) => {
   const { section } = useParams();
   const navigate = useNavigate();
   const texts = {
     marketAnalisis: "Análisis de mercado",
-    prices: "Precios",
-    sales: "Ventas",
+    team: "Equipo",
+    productMin: "Producto mínimo viable",
     marketingPlan: "Plan de Marketing",
-    time: "Tiempo",
-    riskAnalisis: "Analisis de Riesgo",
+    costs: "Costes",
   };
   const promptDetail = usePromptDetail((state) => state.promptDetail);
 
@@ -123,15 +123,18 @@ const PromptSectionDetail = ({ detail }) => {
         >
           <section className={styles.detail} ref={detailRef}>
             <Text type="title">{promptDetail.title}</Text>
-            <Text>{promptDetail[section]}</Text>
+            <Text>
+              {formatText(promptDetail[section].planDetail, (p) => (
+                <Text>{p}</Text>
+              ))}
+            </Text>
           </section>
           <section className={styles.questions} ref={questionsRef}>
             <Text type="title">Preguntas</Text>
             <Text>
-              Echa un vistazo a los 457 currículums de nuestros clientes ya
-              contratados. Son nuestros héroes. Pueden ayudarte? Echa un vistazo
-              a los 457 currículums de nuestros clientes ya contratados? Echa un
-              vistazo a los 457 currículums de nuestros clientes ya contratados?
+              {formatText(promptDetail[section].questions, (p) => (
+                <Text>{p}</Text>
+              ))}
             </Text>
           </section>
           <section className={styles.askQuestions} ref={askQuestionsRef}>

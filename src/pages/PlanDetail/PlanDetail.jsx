@@ -27,6 +27,7 @@ const parts = [
 ];
 const PlanDetail = ({ response }) => {
   const navigate = useNavigate();
+  console.log("response??", response);
   const { isLogged } = useLogin({});
 
   return (
@@ -66,7 +67,7 @@ const PlanDetail = ({ response }) => {
               sectionName={"Producto mínimo viable"}
               id={"prices"}
               icon={"gears"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/prices")}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/productMin")}
               img={imgProductMin}
             />
 
@@ -75,7 +76,7 @@ const PlanDetail = ({ response }) => {
               sectionName={"Equipo"}
               id={"sales"}
               icon={"team"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/sales")}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/team")}
               img={imgTeam}
             />
 
@@ -93,7 +94,7 @@ const PlanDetail = ({ response }) => {
               sectionName={"Costos"}
               id={"riskAnalisis"}
               icon={"money"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/riskAnalisis")}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/costs")}
               img={imgCosts}
             />
           </section>
