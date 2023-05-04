@@ -3,7 +3,7 @@
   flex-direction: column;
   position: relative;
   justify-content: center;
-  border-right: 1px solid var(--btn-primary-border-color);
+  border-right: 1px solid var(--gray-transparent);
   width: 250px;
   overflow: hidden;
   z-index: 100000;
@@ -11,16 +11,16 @@
 }
 
 .verticalLoginNav.hidden {
-  width: 80px;
+  width: 64px;
 }
 
 .icon {
-  width: var(--big);
+  width: var(--xxxlg);
 }
 .arrow {
   display: flex;
   justify-content: flex-end;
-  width: 95%;
+  width: 90%;
   margin-bottom: 32px;
 }
 .section {
@@ -34,7 +34,7 @@
 }
 
 .section .icon {
-  margin-right: 14px;
+  margin-right: 16px;
 }
 .active {
   border-left: 4px solid var(--white);
@@ -61,7 +61,7 @@
     padding: 0 32px;
     border: none;
     border-top: 1px solid var(--btn-primary-border-color);
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
     z-index: 1000;
     background-color: var(--dark-blue);
@@ -79,6 +79,7 @@
     justify-content: center;
     padding: 0;
     border: none;
+    margin: 0;
     align-items: center;
     border-bottom: 2px solid transparent;
   }
@@ -87,7 +88,6 @@
     margin-bottom: 8px;
   }
   .hidden .section {
-    padding: 16px 0;
     padding-left: 0;
   }
   .active {
