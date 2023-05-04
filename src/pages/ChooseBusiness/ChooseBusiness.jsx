@@ -12,6 +12,7 @@ import { PLAN_DETAIL } from "../../utils/constants/routes";
 import { useStorage } from "../../hooks/useStorage";
 import OptionCard from "./components/OptionCard/OptionCard";
 import { createDetail } from "../../services/createText/createText";
+import ShineEffect from "../../components/molecules/ShineEffect/ShineEffect";
 const ChooseBusiness = () => {
   const { load } = useStorage();
 
@@ -45,46 +46,54 @@ const ChooseBusiness = () => {
     <div className={styles.chooseBusiness}>
       <LandingPageNav />
       <section className={styles.options}>
-        <OptionCard
-          title={options[0].title}
-          totalCost={input.budget}
-          estimatedTime={options[0].estimatedTime}
-          estimatedCost={options[0].estimatedCost}
-          onShowDetail={() => {
-            setOption(0);
-            setIsOpen(true);
-          }}
-        />
-        <OptionCard
-          title={options[1].title}
-          totalCost={input.budget}
-          estimatedTime={options[1].estimatedTime}
-          estimatedCost={options[1].estimatedCost}
-          onShowDetail={() => {
-            setOption(1);
-            setIsOpen(true);
-          }}
-        />
-        <OptionCard
-          title={options[2].title}
-          totalCost={input.budget}
-          estimatedTime={options[2].estimatedTime}
-          estimatedCost={options[2].estimatedCost}
-          onShowDetail={() => {
-            setOption(2);
-            setIsOpen(true);
-          }}
-        />
-        <OptionCard
-          title={options[3].title}
-          totalCost={input.budget}
-          estimatedTime={options[3].estimatedTime}
-          estimatedCost={options[3].estimatedCost}
-          onShowDetail={() => {
-            setOption(3);
-            setIsOpen(true);
-          }}
-        />
+        <ShineEffect>
+          <OptionCard
+            title={options[0].title}
+            totalCost={input.budget}
+            estimatedTime={options[0].estimatedTime}
+            estimatedCost={options[0].estimatedCost}
+            onShowDetail={() => {
+              setOption(0);
+              setIsOpen(true);
+            }}
+          />
+        </ShineEffect>
+        <ShineEffect>
+          <OptionCard
+            title={options[1].title}
+            totalCost={input.budget}
+            estimatedTime={options[1].estimatedTime}
+            estimatedCost={options[1].estimatedCost}
+            onShowDetail={() => {
+              setOption(1);
+              setIsOpen(true);
+            }}
+          />
+        </ShineEffect>
+        <ShineEffect>
+          <OptionCard
+            title={options[2].title}
+            totalCost={input.budget}
+            estimatedTime={options[2].estimatedTime}
+            estimatedCost={options[2].estimatedCost}
+            onShowDetail={() => {
+              setOption(2);
+              setIsOpen(true);
+            }}
+          />
+        </ShineEffect>
+        <ShineEffect>
+          <OptionCard
+            title={options[3].title}
+            totalCost={input.budget}
+            estimatedTime={options[3].estimatedTime}
+            estimatedCost={options[3].estimatedCost}
+            onShowDetail={() => {
+              setOption(3);
+              setIsOpen(true);
+            }}
+          />
+        </ShineEffect>
       </section>
       <InfoModal
         title={options[option].title}
