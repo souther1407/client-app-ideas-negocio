@@ -1,14 +1,14 @@
 import React from "react";
 import PlanDetail from "../PlanDetail/PlanDetail";
 import { useLogged } from "../../hooks/useLogged";
-import useBusinessPlan from "../../states/businessPlan";
+import usePromptDetail from "../../states/prompDetail";
 
 const PlanResult = () => {
   useLogged();
-  const planDetail = useBusinessPlan((state) => state.businessPlan);
+  const promptDetail = usePromptDetail((state) => state.promptDetail);
   return (
     <>
-      <PlanDetail response={planDetail} />
+      <PlanDetail response={promptDetail} />
     </>
   );
 };
