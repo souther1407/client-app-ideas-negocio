@@ -37,7 +37,9 @@ const LoginRegister = () => {
     try {
       setLoading(true);
       await AuthUser.registerUser(registerInput);
+      await analytics.track("Se registro un usuario");
       alert("user created :D");
+
       setShowRegister(false);
       clear("affiliate");
     } catch (error) {
