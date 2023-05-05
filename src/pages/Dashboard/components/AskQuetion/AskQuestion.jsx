@@ -7,7 +7,7 @@ import IconButton from "../../../../components/molecules/IconButton/IconButton";
 import { createMessage } from "../../../../services/messages/messages.js";
 import { useSubscribed } from "../../../../hooks/useSubscribed";
 import NeedLoginOrPayWindow from "../../../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
-
+import { analytics } from "../../../../segment";
 const AskQuestion = () => {
   const [input, setInput] = useState({
     content: "",
