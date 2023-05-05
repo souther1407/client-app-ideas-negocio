@@ -10,3 +10,5 @@ export const FIREBASE = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENTID,
   secretKey: import.meta.env.VITE_ENCRYPT_SECRET,
 };
+
+export const segmentKey = import.meta.env.VITE_SEGMENT_KEY;
