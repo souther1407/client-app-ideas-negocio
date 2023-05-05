@@ -58,7 +58,7 @@ h1 {
   font-size: var(--xxlg);
 }
 h2 {
-  font-size: var(--xlg) !important;
+  font-size: 1.5rem !important;
 }
 h3 {
   font-size: var(--lg) !important;
