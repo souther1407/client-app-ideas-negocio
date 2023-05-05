@@ -12,7 +12,7 @@ import { useLogin } from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import { useStorage } from "../../hooks/useStorage";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
-
+import { analytics } from "../../segment.js";
 const LoginRegister = () => {
   const { load, clear } = useStorage();
   const affiliateId = useRef(load("affiliate"));
