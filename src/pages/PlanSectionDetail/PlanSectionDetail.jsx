@@ -135,11 +135,7 @@ const PromptSectionDetail = ({ detail }) => {
           </section>
           <section className={styles.questions} ref={questionsRef}>
             <Text type="title">Preguntas</Text>
-            <Text>
-              {formatText(promptDetail[section].questions, (p) => (
-                <Text>{p}</Text>
-              ))}
-            </Text>
+            <ReactMarkdown>{promptDetail[section].questions}</ReactMarkdown>
           </section>
           <section className={styles.askQuestions} ref={askQuestionsRef}>
             <Text type="title">Empieza a construir tu negocio</Text>
