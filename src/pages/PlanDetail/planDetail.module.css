@@ -9,8 +9,9 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding-top: 60px;
+  padding-top: 100px;
   padding-left: 16px;
+  align-items: center;
   width: 100%;
 }
 
@@ -25,7 +26,13 @@
   flex-direction: column;
   justify-content: space-around;
   flex-basis: 50%;
+  align-items: center;
+
   z-index: 1;
+}
+.info {
+  text-align: center;
+  width: 80%;
 }
 .inputUser {
   position: relative;
