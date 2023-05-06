@@ -109,7 +109,6 @@ const PlanDetail = ({ response }) => {
             location={formatStringToShort(response?.input?.location)}
             skills={formatStringToShort(response?.input?.skills)}
             teacher={formatStringToShort(response?.input?.teacher)}
-            style={{ backgroundColor: "#0C1C2F" }}
           />
         </section>
       </section>
