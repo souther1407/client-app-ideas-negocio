@@ -30,7 +30,8 @@ input:-webkit-autofill {
   --white: aliceblue;
   --bg-dark-green: #10323e;
   --text-dark: black;
-  --black: rgb(0, 0, 0);
+  --black: rgba(0, 0, 0);
+  --black-transparent: rgba(20, 20, 20, 0.322);
   --bg-dark: #1e1c24;
   --gradien-blue: #0d2a3d;
   --bg-blue-dark: #061e32;
