@@ -1,7 +1,7 @@
 .detailCard {
   display: flex;
   flex-direction: column;
-  background-color: #0e1c2c;
+  background-color: var(--black-transparent);
   width: 100%;
   padding: 16px;
   position: relative;
