@@ -53,7 +53,8 @@ const LandingPageNav = () => {
       }`}
     >
       <section className={`${styles.logo} ${isLogged() && styles.positioned}`}>
-        <Text>Paddawan</Text>
+        {/* <Text>Paddawan</Text> */}
+        <Text></Text>
       </section>
       <section className={styles.elements}>
         <section className={styles.buttonsAndLinks}>
