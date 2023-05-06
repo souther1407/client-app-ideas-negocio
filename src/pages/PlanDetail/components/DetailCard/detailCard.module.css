@@ -62,10 +62,10 @@
   }
   .nameTitle > :first-child {
     font-weight: bold;
-    font-size: var(--lg);
+    font-size: var(--sm);
   }
 
   .nameTitle > :last-child {
-    font-size: var(--md);
+    font-size: var(--ty);
   }
 }
