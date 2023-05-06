@@ -112,7 +112,7 @@ const PlanDetail = ({ response }) => {
           />
         </section>
       </section>
-      <GradientBg opacity={25} />
+      <GradientBg opacity={16} />
     </div>
   );
 };
