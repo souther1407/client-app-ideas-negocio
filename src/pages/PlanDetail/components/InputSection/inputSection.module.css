@@ -15,10 +15,12 @@
 
 .section > :first-child {
   margin-bottom: 4px;
+  font-size: var(--ty);
 }
 
 .section > :last-child {
-  font-size: var(--lg);
+  font-size: var(--sm);
+  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
