@@ -3,7 +3,6 @@ import styles from "./startABusiness.module.css";
 import Text from "../../components/atoms/Text/Text";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import Icon from "../../components/atoms/Icon/Icon";
-import ProgressBar from "./components/ProgressBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL, CHOOSE_BUSINESS } from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
@@ -11,7 +10,6 @@ import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindo
 import { useLogin } from "../../hooks/useLogin";
 import GradientBorder from "../../components/atoms/GradientBorder/GradientBorder";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
-
 import { useStorage } from "../../hooks/useStorage";
 import ShineGradientInput from "../../components/organisms/ShineGradientInput/ShineGradientInput";
 import elomMuskImg from "../../assets/elon_musk.png";
@@ -22,6 +20,7 @@ import steveJobsImg from "../../assets/steve_jobs.webp";
 import warrenBuffetImg from "../../assets/warren_buffet.png";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
+import Button from "../../components/atoms/Button/Button";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   samAltman: "Sam Altman",
@@ -30,7 +29,7 @@ const TEACHERS = {
   markZuckerberg: "Mark Zuckerberg",
   warrenBuffet: "Warren Buffet",
 };
-
+const MAX_SECTION_NUMBER = 7;
 const StartABusiness = () => {
   const { load, save } = useStorage();
   const [input, setInput] = useState(
@@ -40,6 +39,7 @@ const StartABusiness = () => {
       skills: "",
       location: "",
       teacher: "",
+      description: "",
     }
   );
 
@@ -73,10 +73,13 @@ const StartABusiness = () => {
     await generateOptions(input);
     navigate(CHOOSE_BUSINESS);
   };
+
   const nextField = () => {
-    if (field === 6) return;
+    console.log(field + 1);
+    if (field === MAX_SECTION_NUMBER) return;
     setField((prev) => prev + 1);
   };
+
   const antField = () => {
     if (field === 1) return;
     setField((prev) => prev - 1);
@@ -94,28 +97,40 @@ const StartABusiness = () => {
 
   const isMustShine = () => {
     switch (field) {
-      case 1:
-        return shine.location;
       case 2:
-        return shine.age;
+        return shine.location;
       case 3:
-        return shine.skills;
+        return shine.age;
       case 4:
-        return shine.budget;
+        return shine.skills;
       case 5:
+        return shine.budget;
+      case 6:
         return shine.teacher;
       default:
         return false;
     }
   };
+
   return (
     <div className={styles.startABusiness}>
       {isLogged() && <VerticalLoginNav />}
       <main className={styles.content}>
         <LandingPageNav />
-        {field !== 5 && <ProgressBar value={(field * 100) / 6} />}
+        {/*  {field !== 5 && <ProgressBar value={(field * 100) / 6} />} */}
         <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
+            <Text type="title" textAlign="center">
+              ¿Ya tienes una idea de negocios?
+            </Text>
+            <Button type="bordered" w>
+              <Text>SI</Text>
+            </Button>
+            <Button type="bordered" w>
+              <Text>NO</Text>
+            </Button>
+          </section>
+          <section className={`${styles.field} ${field === 2 && styles.show}`}>
             <Text type="title">De donde eres?</Text>
 
             <ShineGradientInput
@@ -131,8 +146,11 @@ const StartABusiness = () => {
                 borderRadius: "4px",
               }}
             />
+            <Text color="soft" textAlign="center">
+              Ingresa un país, o tu ciudad junto con el país.
+            </Text>
           </section>
-          <section className={`${styles.field} ${field === 2 && styles.show}`}>
+          <section className={`${styles.field} ${field === 3 && styles.show}`}>
             <Text type="title">Que edad tienes?</Text>
 
             <ShineGradientInput
@@ -148,8 +166,9 @@ const StartABusiness = () => {
                 borderRadius: "4px",
               }}
             />
+            <Text color="soft" textAlign="center"></Text>
           </section>
-          <section className={`${styles.field} ${field === 3 && styles.show}`}>
+          <section className={`${styles.field} ${field === 4 && styles.show}`}>
             <Text type="title">Qué habilidades tienes?</Text>
 
             <ShineGradientInput
@@ -165,8 +184,9 @@ const StartABusiness = () => {
                 borderRadius: "4px",
               }}
             />
+            <Text color="soft" textAlign="center"></Text>
           </section>
-          <section className={`${styles.field} ${field === 4 && styles.show}`}>
+          <section className={`${styles.field} ${field === 5 && styles.show}`}>
             <Text type="title">Cual es tu presupuesto?</Text>
 
             <ShineGradientInput
@@ -182,10 +202,14 @@ const StartABusiness = () => {
                 borderRadius: "4px",
               }}
             />
+            <Text color="soft" textAlign="center">
+              Los planes de negocio son generados basados en cifras en dólares
+              americanos.
+            </Text>
           </section>
           <section
             className={`${styles.field} ${styles.teachersField} ${
-              field === 5 && styles.show
+              field === 6 && styles.show
             }`}
           >
             <Text type="title">Elige a tu profesor</Text>
@@ -258,7 +282,11 @@ const StartABusiness = () => {
               </GradientBorder>
             </div>
           </section>
-          <section className={`${styles.field} ${field === 6 && styles.show}`}>
+          <section
+            className={`${styles.field} ${
+              field === MAX_SECTION_NUMBER && styles.show
+            }`}
+          >
             <GradientBorder>
               <button
                 disabled={creating}
@@ -275,44 +303,39 @@ const StartABusiness = () => {
         </section>
 
         <section className={styles.controls}>
-          <GradientBorder>
-            <div
-              style={{ background: "#0E1C2D" }}
-              className={`${styles.antBtn} ${field > 1 && styles.enabled}`}
+          <div
+            style={{ background: "#0E1C2D" }}
+            className={`${styles.antBtn} ${field > 1 && styles.enabled}`}
+          >
+            <button
+              className={styles.arrow}
+              disabled={field === 1}
+              onClick={antField}
             >
-              <button
-                className={styles.arrow}
-                disabled={field === 1}
-                onClick={antField}
-              >
-                <Icon type={"leftArrow"} />
-              </button>
-              <div className={styles.desc}>
-                <Text>Back</Text>
-                <Text>MVP</Text>
-              </div>
+              <Icon type={"leftArrow"} />
+            </button>
+            <div className={styles.desc}>
+              <Text>Atrás</Text>
             </div>
-          </GradientBorder>
-          <GradientBorder>
-            <div
-              style={{ background: "#0E1C2D" }}
-              className={`${styles.nextBtn} ${field < 6 && styles.enabled} ${
-                isMustShine() && styles.shine
-              }`}
+          </div>
+
+          <div
+            style={{ background: "#0E1C2D" }}
+            className={`${styles.nextBtn} ${
+              field < MAX_SECTION_NUMBER && styles.enabled
+            } ${isMustShine() && styles.shine}`}
+          >
+            <div className={styles.desc}>
+              <Text>Siguiente</Text>
+            </div>
+            <button
+              className={styles.arrow}
+              disabled={field === MAX_SECTION_NUMBER}
+              onClick={nextField}
             >
-              <div className={styles.desc}>
-                <Text>Next</Text>
-                <Text>MVP</Text>
-              </div>
-              <button
-                className={styles.arrow}
-                disabled={field === 6}
-                onClick={nextField}
-              >
-                <Icon type={"rightArrow"} />
-              </button>
-            </div>
-          </GradientBorder>
+              <Icon type={"rightArrow"} />
+            </button>
+          </div>
         </section>
         {showPopup && <NeedLoginOrPayWindow />}
       </main>
