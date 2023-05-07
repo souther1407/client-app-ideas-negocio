@@ -95,15 +95,15 @@ const StartABusiness = () => {
 
   const isMustShine = () => {
     switch (field) {
-      case 2:
-        return shine.location;
       case 3:
-        return shine.age;
+        return shine.location;
       case 4:
-        return shine.skills;
+        return shine.age;
       case 5:
-        return shine.budget;
+        return shine.skills;
       case 6:
+        return shine.budget;
+      case 7:
         return shine.teacher;
       default:
         return false;
