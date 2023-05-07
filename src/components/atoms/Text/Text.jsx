@@ -6,12 +6,14 @@ const Text = ({
   bold,
   color = "inherit",
   children,
+  textAlign = "start",
   ...otherProps
 }) => {
   if (type === "title") {
     return (
       <h1
         className={`${styles.title} ${styles[color]} ${bold && styles.bold}`}
+        style={{ textAlign }}
         {...otherProps}
       >
         {children}
@@ -21,6 +23,7 @@ const Text = ({
   return (
     <p
       className={`${styles.text} ${styles[color]} ${bold && styles.bold}`}
+      style={{ textAlign }}
       {...otherProps}
     >
       {children}

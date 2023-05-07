@@ -34,6 +34,10 @@
   margin-bottom: 16px;
 }
 
+.field > :last-child {
+  margin-top: 16px;
+}
+
 .input.shine {
   box-shadow: 0 0 10px var(--color-shining);
 }
@@ -63,9 +67,9 @@
 .controls {
   display: flex;
   width: 650px;
-
   z-index: 1;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .generateIdeaBtn {
@@ -77,9 +81,10 @@
 
 .antBtn,
 .nextBtn {
-  border: 2px solid var(--white);
+  border: 2px solid var(--gray-transparent);
   justify-content: space-between;
   display: flex;
+  border-radius: 16px;
 }
 .antBtn {
   padding: 8px 8px 8px 16px;
@@ -90,16 +95,16 @@
 .arrow {
   width: 40px;
 }
-.desc > :first-child {
-  font-size: var(--sm);
-  color: var(--btn-primary-border-color);
+.desc {
+  display: flex;
+  align-items: center;
 }
 .antBtn .arrow {
-  margin-right: 120px;
+  margin-right: 16px;
 }
 
 .nextBtn .arrow {
-  margin-left: 120px;
+  margin-left: 16px;
 }
 
 .nextBtn.shine {
@@ -123,6 +128,7 @@
   }
   .controls {
     width: 100%;
+    margin-bottom: 80px;
   }
 
   .controls > :first-child {
