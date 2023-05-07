@@ -6,6 +6,7 @@ import Icon from "../../components/atoms/Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL, CHOOSE_BUSINESS } from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
+import usePromptDetail from "../../states/prompDetail";
 import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { useLogin } from "../../hooks/useLogin";
 import GradientBorder from "../../components/atoms/GradientBorder/GradientBorder";
@@ -21,6 +22,7 @@ import warrenBuffetImg from "../../assets/warren_buffet.png";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import Button from "../../components/atoms/Button/Button";
+import { createDetail } from "../../services/createText/createText";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   samAltman: "Sam Altman",
@@ -64,12 +66,29 @@ const StartABusiness = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const { creating, generateOptions } = useOptions((state) => state);
+  const { setPromptDetail } = usePromptDetail((state) => state);
   const [hasAnIdea, setHasAnIdea] = useState(false);
   const handlerSendData = async () => {
     save("input", input);
     if (!isLogged()) return setShowPopup(true);
-    await generateOptions(input);
-    navigate(CHOOSE_BUSINESS);
+    if (input.description.length > 0) {
+      try {
+        const detail = await createDetail({
+          input,
+          header: {
+            title: "Mi idea de negocio",
+            description: input.description,
+          },
+        });
+        setPromptDetail(detail);
+        navigate(PLAN_DETAIL);
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      await generateOptions(input);
+      navigate(CHOOSE_BUSINESS);
+    }
   };
 
   const nextField = () => {
