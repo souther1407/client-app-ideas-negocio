@@ -41,7 +41,18 @@
 .input.shine {
   box-shadow: 0 0 10px var(--color-shining);
 }
-
+.textarea {
+  background: none;
+  resize: none;
+  width: 100%;
+  height: 150px;
+  border: 1px solid var(--gray-transparent);
+  padding: 8px;
+  border-radius: 8px;
+}
+.textarea:focus {
+  outline: none;
+}
 .teachersField {
   position: relative;
   bottom: 40px;
