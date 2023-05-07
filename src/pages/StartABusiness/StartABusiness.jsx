@@ -55,7 +55,7 @@ const StartABusiness = () => {
     location: false,
     teacher: false,
   });
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     return () => {
       save("input", input);
@@ -73,6 +73,7 @@ const StartABusiness = () => {
     if (!isLogged()) return setShowPopup(true);
     if (input.description.length > 0) {
       try {
+        setLoading(true);
         const detail = await createDetail({
           input,
           header: {
@@ -80,10 +81,13 @@ const StartABusiness = () => {
             description: input.description,
           },
         });
+        console.log(detail);
         setPromptDetail(detail);
         navigate(PLAN_DETAIL);
       } catch (error) {
         alert(error.message);
+      } finally {
+        setLoading(false);
       }
     } else {
       await generateOptions(input);
@@ -337,7 +341,7 @@ const StartABusiness = () => {
                 style={{ background: "#0F2A3A" }}
               >
                 <Text type="title">
-                  {creating ? "creating...." : "Generar Plan"}
+                  {creating || loading ? "creating...." : "Generar Plan"}
                 </Text>
               </button>
             </GradientBorder>
