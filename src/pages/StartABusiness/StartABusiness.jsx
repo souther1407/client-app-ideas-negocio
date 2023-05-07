@@ -49,6 +49,7 @@ const StartABusiness = () => {
 
   const [field, setField] = useState(1);
   const [shine, setShine] = useState({
+    description: false,
     budget: false,
     age: false,
     skills: false,
@@ -118,6 +119,8 @@ const StartABusiness = () => {
 
   const isMustShine = () => {
     switch (field) {
+      case 2:
+        return shine.description;
       case 3:
         return shine.location;
       case 4:
@@ -170,7 +173,9 @@ const StartABusiness = () => {
               Describe tu Idea de Negocio en 100 palabras
             </Text>
             <textarea
-              className={styles.textarea}
+              className={`${styles.textarea} ${
+                shine.description && styles.shine
+              }`}
               onChange={(e) =>
                 handleChange("description", e.currentTarget.value)
               }

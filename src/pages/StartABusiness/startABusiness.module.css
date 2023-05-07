@@ -50,6 +50,9 @@
   padding: 8px;
   border-radius: 8px;
 }
+.textarea.shine {
+  box-shadow: 0 0 5px var(--white-transparent);
+}
 .textarea:focus {
   outline: none;
 }
