@@ -142,7 +142,7 @@ const PromptSectionDetail = ({ detail }) => {
             <Text color="soft">
               Responde todas tus preguntas con ayuda de nuestros expertos
             </Text>
-            <Button color="secondary">
+            <Button color="secondary" flexible>
               <Text>Empieza ahora</Text>
             </Button>
             <div className={styles.antNextBtns}>

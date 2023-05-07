@@ -6,6 +6,7 @@ import Icon from "../../components/atoms/Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL, CHOOSE_BUSINESS } from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
+import usePromptDetail from "../../states/prompDetail";
 import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { useLogin } from "../../hooks/useLogin";
 import GradientBorder from "../../components/atoms/GradientBorder/GradientBorder";
@@ -21,6 +22,7 @@ import warrenBuffetImg from "../../assets/warren_buffet.png";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import Button from "../../components/atoms/Button/Button";
+import { createDetail } from "../../services/createText/createText";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   samAltman: "Sam Altman",
@@ -29,25 +31,23 @@ const TEACHERS = {
   markZuckerberg: "Mark Zuckerberg",
   warrenBuffet: "Warren Buffet",
 };
-const MAX_SECTION_NUMBER = 7;
+const MAX_SECTION_NUMBER = 8;
 const StartABusiness = () => {
   const { load, save } = useStorage();
-  const [input, setInput] = useState(
-    load("input") ?? {
-      budget: "",
-      age: "",
-      skills: "",
-      location: "",
-      teacher: "",
-      description: "",
-    }
-  );
+  const [input, setInput] = useState({
+    budget: "",
+    age: "",
+    skills: "",
+    location: "",
+    teacher: "",
+    description: "",
+  });
 
   const { userData, isLogged } = useLogin({});
 
   const navigate = useNavigate();
 
-  const [field, setField] = useState(load("field") ?? 1);
+  const [field, setField] = useState(1);
   const [shine, setShine] = useState({
     budget: false,
     age: false,
@@ -66,12 +66,29 @@ const StartABusiness = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const { creating, generateOptions } = useOptions((state) => state);
-
+  const { setPromptDetail } = usePromptDetail((state) => state);
+  const [hasAnIdea, setHasAnIdea] = useState(false);
   const handlerSendData = async () => {
     save("input", input);
     if (!isLogged()) return setShowPopup(true);
-    await generateOptions(input);
-    navigate(CHOOSE_BUSINESS);
+    if (input.description.length > 0) {
+      try {
+        const detail = await createDetail({
+          input,
+          header: {
+            title: "Mi idea de negocio",
+            description: input.description,
+          },
+        });
+        setPromptDetail(detail);
+        navigate(PLAN_DETAIL);
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      await generateOptions(input);
+      navigate(CHOOSE_BUSINESS);
+    }
   };
 
   const nextField = () => {
@@ -81,7 +98,7 @@ const StartABusiness = () => {
   };
 
   const antField = () => {
-    if (field === 1) return;
+    if (hasAnIdea ? field === 2 : field === 3) return;
     setField((prev) => prev - 1);
   };
 
@@ -97,15 +114,15 @@ const StartABusiness = () => {
 
   const isMustShine = () => {
     switch (field) {
-      case 2:
-        return shine.location;
       case 3:
-        return shine.age;
+        return shine.location;
       case 4:
-        return shine.skills;
+        return shine.age;
       case 5:
-        return shine.budget;
+        return shine.skills;
       case 6:
+        return shine.budget;
+      case 7:
         return shine.teacher;
       default:
         return false;
@@ -123,14 +140,39 @@ const StartABusiness = () => {
             <Text type="title" textAlign="center">
               ¿Ya tienes una idea de negocios?
             </Text>
-            <Button type="bordered" w>
+            <Button
+              type="bordered"
+              w
+              onClick={() => {
+                setHasAnIdea(true);
+                setField(2);
+              }}
+            >
               <Text>SI</Text>
             </Button>
-            <Button type="bordered" w>
+            <Button
+              type="bordered"
+              w
+              onClick={() => {
+                setHasAnIdea(false);
+                setField(3);
+              }}
+            >
               <Text>NO</Text>
             </Button>
           </section>
           <section className={`${styles.field} ${field === 2 && styles.show}`}>
+            <Text type="title" textAlign="center">
+              Describe tu Idea de Negocio en 100 palabras
+            </Text>
+            <textarea
+              className={styles.textarea}
+              onChange={(e) =>
+                handleChange("description", e.currentTarget.value)
+              }
+            ></textarea>
+          </section>
+          <section className={`${styles.field} ${field === 3 && styles.show}`}>
             <Text type="title">De donde eres?</Text>
 
             <ShineGradientInput
@@ -150,7 +192,7 @@ const StartABusiness = () => {
               Ingresa un país, o tu ciudad junto con el país.
             </Text>
           </section>
-          <section className={`${styles.field} ${field === 3 && styles.show}`}>
+          <section className={`${styles.field} ${field === 4 && styles.show}`}>
             <Text type="title">Que edad tienes?</Text>
 
             <ShineGradientInput
@@ -168,7 +210,7 @@ const StartABusiness = () => {
             />
             <Text color="soft" textAlign="center"></Text>
           </section>
-          <section className={`${styles.field} ${field === 4 && styles.show}`}>
+          <section className={`${styles.field} ${field === 5 && styles.show}`}>
             <Text type="title">Qué habilidades tienes?</Text>
 
             <ShineGradientInput
@@ -186,7 +228,7 @@ const StartABusiness = () => {
             />
             <Text color="soft" textAlign="center"></Text>
           </section>
-          <section className={`${styles.field} ${field === 5 && styles.show}`}>
+          <section className={`${styles.field} ${field === 6 && styles.show}`}>
             <Text type="title">Cual es tu presupuesto?</Text>
 
             <ShineGradientInput
@@ -209,7 +251,7 @@ const StartABusiness = () => {
           </section>
           <section
             className={`${styles.field} ${styles.teachersField} ${
-              field === 6 && styles.show
+              field === 7 && styles.show
             }`}
           >
             <Text type="title">Elige a tu profesor</Text>
@@ -302,41 +344,43 @@ const StartABusiness = () => {
           </section>
         </section>
 
-        <section className={styles.controls}>
-          <div
-            style={{ background: "#0E1C2D" }}
-            className={`${styles.antBtn} ${field > 1 && styles.enabled}`}
-          >
-            <button
-              className={styles.arrow}
-              disabled={field === 1}
-              onClick={antField}
+        {field !== 1 && (
+          <section className={styles.controls}>
+            <div
+              style={{ background: "#0E1C2D" }}
+              className={`${styles.antBtn} ${field > 1 && styles.enabled}`}
             >
-              <Icon type={"leftArrow"} />
-            </button>
-            <div className={styles.desc}>
-              <Text>Atrás</Text>
+              <button
+                className={styles.arrow}
+                disabled={field === 1}
+                onClick={antField}
+              >
+                <Icon type={"leftArrow"} />
+              </button>
+              <div className={styles.desc}>
+                <Text>Atrás</Text>
+              </div>
             </div>
-          </div>
 
-          <div
-            style={{ background: "#0E1C2D" }}
-            className={`${styles.nextBtn} ${
-              field < MAX_SECTION_NUMBER && styles.enabled
-            } ${isMustShine() && styles.shine}`}
-          >
-            <div className={styles.desc}>
-              <Text>Siguiente</Text>
-            </div>
-            <button
-              className={styles.arrow}
-              disabled={field === MAX_SECTION_NUMBER}
-              onClick={nextField}
+            <div
+              style={{ background: "#0E1C2D" }}
+              className={`${styles.nextBtn} ${
+                field < MAX_SECTION_NUMBER && styles.enabled
+              } ${isMustShine() && styles.shine}`}
             >
-              <Icon type={"rightArrow"} />
-            </button>
-          </div>
-        </section>
+              <div className={styles.desc}>
+                <Text>Siguiente</Text>
+              </div>
+              <button
+                className={styles.arrow}
+                disabled={field === MAX_SECTION_NUMBER}
+                onClick={nextField}
+              >
+                <Icon type={"rightArrow"} />
+              </button>
+            </div>
+          </section>
+        )}
         {showPopup && <NeedLoginOrPayWindow />}
       </main>
       <GradientBg />
