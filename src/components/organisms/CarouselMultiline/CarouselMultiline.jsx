@@ -29,10 +29,10 @@ const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
   return (
     <div className={styles.customButtons}>
       {" "}
-      <button className={styles.leftBtn} onClick={() => next()}>
+      <button className={styles.leftBtn} onClick={() => previous()}>
         {"<"}
       </button>
-      <button className={styles.rightBtn} onClick={() => previous()}>
+      <button className={styles.rightBtn} onClick={() => next()}>
         {">"}
       </button>
     </div>

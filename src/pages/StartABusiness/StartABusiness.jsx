@@ -182,7 +182,7 @@ const StartABusiness = () => {
             ></textarea>
           </section>
           <section className={`${styles.field} ${field === 3 && styles.show}`}>
-            <Text type="title">De donde eres?</Text>
+            <Text type="title">¿De donde eres?</Text>
 
             <ShineGradientInput
               type="text"
@@ -193,8 +193,6 @@ const StartABusiness = () => {
               onChange={handleChange}
               style={{
                 border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
               }}
             />
             <Text color="soft" textAlign="center">
@@ -202,7 +200,7 @@ const StartABusiness = () => {
             </Text>
           </section>
           <section className={`${styles.field} ${field === 4 && styles.show}`}>
-            <Text type="title">Que edad tienes?</Text>
+            <Text type="title">¿Qué edad tienes?</Text>
 
             <ShineGradientInput
               type="text"
@@ -213,14 +211,12 @@ const StartABusiness = () => {
               onChange={handleChange}
               style={{
                 border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
               }}
             />
             <Text color="soft" textAlign="center"></Text>
           </section>
           <section className={`${styles.field} ${field === 5 && styles.show}`}>
-            <Text type="title">Qué habilidades tienes?</Text>
+            <Text type="title">¿Qué habilidades tienes?</Text>
 
             <ShineGradientInput
               type="text"
@@ -231,14 +227,12 @@ const StartABusiness = () => {
               onChange={handleChange}
               style={{
                 border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
               }}
             />
             <Text color="soft" textAlign="center"></Text>
           </section>
           <section className={`${styles.field} ${field === 6 && styles.show}`}>
-            <Text type="title">Cual es tu presupuesto?</Text>
+            <Text type="title">¿Cuál es tu presupuesto?</Text>
 
             <ShineGradientInput
               type="text"
@@ -249,8 +243,6 @@ const StartABusiness = () => {
               onChange={handleChange}
               style={{
                 border: "none",
-                background: "#0F2233",
-                borderRadius: "4px",
               }}
             />
             <Text color="soft" textAlign="center">
@@ -265,72 +257,65 @@ const StartABusiness = () => {
           >
             <Text type="title">Elige a tu profesor</Text>
             <div className={styles.teachersContainer}>
-              <GradientBorder style={{ borderRadius: "50%" }}>
-                <div
-                  style={{ background: "#112A3B" }}
-                  className={`${styles.teacher} ${
-                    input.teacher === TEACHERS.elonMusk && styles.shine
-                  }`}
-                  onClick={() => handleTeacherSelect(TEACHERS.elonMusk)}
-                >
-                  <Avatar src={elomMuskImg} />
-                </div>
-              </GradientBorder>
-              <GradientBorder style={{ borderRadius: "50%" }}>
-                <div
-                  style={{ background: "#112A3B" }}
-                  className={`${styles.teacher} ${
-                    input.teacher === TEACHERS.samAltman && styles.shine
-                  }`}
-                  onClick={() => handleTeacherSelect(TEACHERS.samAltman)}
-                >
-                  <Avatar src={samAltmanImg} />
-                </div>
-              </GradientBorder>
-              <GradientBorder style={{ borderRadius: "50%" }}>
-                <div
-                  style={{ background: "#112A3B" }}
-                  className={`${styles.teacher} ${
-                    input.teacher === TEACHERS.jeffBezos && styles.shine
-                  }`}
-                  onClick={() => handleTeacherSelect(TEACHERS.jeffBezos)}
-                >
-                  <Avatar src={jeffBezosImg} />
-                </div>
-              </GradientBorder>
-              <GradientBorder style={{ borderRadius: "50%" }}>
-                <div
-                  style={{ background: "#0E2134" }}
-                  className={`${styles.teacher} ${
-                    input.teacher === TEACHERS.markZuckerberg && styles.shine
-                  }`}
-                  onClick={() => handleTeacherSelect(TEACHERS.markZuckerberg)}
-                >
-                  <Avatar src={markZuckerbergImg} />
-                </div>
-              </GradientBorder>
-              <GradientBorder style={{ borderRadius: "50%" }}>
-                <div
-                  style={{ background: "#0E2134" }}
-                  className={`${styles.teacher} ${
-                    input.teacher === TEACHERS.steveJobs && styles.shine
-                  }`}
-                  onClick={() => handleTeacherSelect(TEACHERS.steveJobs)}
-                >
-                  <Avatar src={steveJobsImg} />
-                </div>
-              </GradientBorder>
-              <GradientBorder style={{ borderRadius: "50%" }}>
-                <div
-                  style={{ background: "#0E2036" }}
-                  className={`${styles.teacher} ${
-                    input.teacher === TEACHERS.warrenBuffet && styles.shine
-                  }`}
-                  onClick={() => handleTeacherSelect(TEACHERS.warrenBuffet)}
-                >
-                  <Avatar src={warrenBuffetImg} />
-                </div>
-              </GradientBorder>
+              <div
+                style={{ background: "#112A3B" }}
+                className={`${styles.teacher} ${
+                  input.teacher === TEACHERS.elonMusk && styles.shine
+                }`}
+                onClick={() => handleTeacherSelect(TEACHERS.elonMusk)}
+              >
+                <Avatar src={elomMuskImg} />
+              </div>
+
+              <div
+                style={{ background: "#112A3B" }}
+                className={`${styles.teacher} ${
+                  input.teacher === TEACHERS.samAltman && styles.shine
+                }`}
+                onClick={() => handleTeacherSelect(TEACHERS.samAltman)}
+              >
+                <Avatar src={samAltmanImg} />
+              </div>
+
+              <div
+                style={{ background: "#112A3B" }}
+                className={`${styles.teacher} ${
+                  input.teacher === TEACHERS.jeffBezos && styles.shine
+                }`}
+                onClick={() => handleTeacherSelect(TEACHERS.jeffBezos)}
+              >
+                <Avatar src={jeffBezosImg} />
+              </div>
+
+              <div
+                style={{ background: "#0E2134" }}
+                className={`${styles.teacher} ${
+                  input.teacher === TEACHERS.markZuckerberg && styles.shine
+                }`}
+                onClick={() => handleTeacherSelect(TEACHERS.markZuckerberg)}
+              >
+                <Avatar src={markZuckerbergImg} />
+              </div>
+
+              <div
+                style={{ background: "#0E2134" }}
+                className={`${styles.teacher} ${
+                  input.teacher === TEACHERS.steveJobs && styles.shine
+                }`}
+                onClick={() => handleTeacherSelect(TEACHERS.steveJobs)}
+              >
+                <Avatar src={steveJobsImg} />
+              </div>
+
+              <div
+                style={{ background: "#0E2036" }}
+                className={`${styles.teacher} ${
+                  input.teacher === TEACHERS.warrenBuffet && styles.shine
+                }`}
+                onClick={() => handleTeacherSelect(TEACHERS.warrenBuffet)}
+              >
+                <Avatar src={warrenBuffetImg} />
+              </div>
             </div>
           </section>
           <section
@@ -338,61 +323,54 @@ const StartABusiness = () => {
               field === MAX_SECTION_NUMBER && styles.show
             }`}
           >
-            <GradientBorder>
-              <button
-                disabled={creating}
-                className={styles.generateIdeaBtn}
-                onClick={handlerSendData}
-                style={{ background: "#0F2A3A" }}
-              >
-                <Text type="title">
-                  {creating || loading ? "creating...." : "Generar Plan"}
-                </Text>
-              </button>
-            </GradientBorder>
+            <button
+              disabled={creating || loading}
+              className={styles.generateIdeaBtn}
+              onClick={handlerSendData}
+            >
+              <Text type="title">
+                {creating || loading ? "creating...." : "Generar Plan"}
+              </Text>
+            </button>
           </section>
         </section>
 
         {field !== 1 && (
           <section className={styles.controls}>
-            <div
+            <button
               style={{ background: "#0E1C2D" }}
               className={`${styles.antBtn} ${field > 1 && styles.enabled}`}
+              onClick={antField}
             >
-              <button
-                className={styles.arrow}
-                disabled={field === 1}
-                onClick={antField}
-              >
+              <span className={styles.arrow}>
                 <Icon type={"leftArrow"} />
-              </button>
-              <div className={styles.desc}>
-                <Text>Atrás</Text>
-              </div>
-            </div>
+              </span>
 
-            <div
+              <span className={styles.desc}>
+                <Text>Atrás</Text>
+              </span>
+            </button>
+
+            <button
               style={{ background: "#0E1C2D" }}
+              onClick={nextField}
+              disabled={field === MAX_SECTION_NUMBER}
               className={`${styles.nextBtn} ${
                 field < MAX_SECTION_NUMBER && styles.enabled
               } ${isMustShine() && styles.shine}`}
             >
-              <div className={styles.desc}>
+              <span className={styles.desc}>
                 <Text>Siguiente</Text>
-              </div>
-              <button
-                className={styles.arrow}
-                disabled={field === MAX_SECTION_NUMBER}
-                onClick={nextField}
-              >
+              </span>
+              <span className={styles.arrow}>
                 <Icon type={"rightArrow"} />
-              </button>
-            </div>
+              </span>
+            </button>
           </section>
         )}
         {showPopup && <NeedLoginOrPayWindow />}
       </main>
-      <GradientBg />
+      <GradientBg opacity={15} />
     </div>
   );
 };

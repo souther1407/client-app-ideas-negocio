@@ -5,9 +5,7 @@ import styles from "./shineGradientInput.module.css";
 const ShineGradientInput = ({ shine = false, ...otherProps }) => {
   return (
     <div className={`${styles.container} ${shine && styles.shine}`}>
-      <GradientBorder w100>
-        <LabeledInput {...otherProps} />
-      </GradientBorder>
+      <LabeledInput {...otherProps} />
     </div>
   );
 };

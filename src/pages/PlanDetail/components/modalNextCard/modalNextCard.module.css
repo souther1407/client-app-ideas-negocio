@@ -7,8 +7,10 @@
 .ant,
 .next {
   display: flex;
-  border: 1px solid aliceblue;
+  border: 1px solid var(--white-transparent);
   padding: 8px 12px;
+  border-radius: 16px;
+  cursor: pointer;
 }
 
 .ant button {
