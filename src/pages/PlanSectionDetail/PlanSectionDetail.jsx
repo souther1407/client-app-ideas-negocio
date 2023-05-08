@@ -123,7 +123,11 @@ const PromptSectionDetail = ({ detail }) => {
         <nav className={styles.navigation}>
           <section className={styles.options}>
             <div
-              style={{ transform: `translateX(${getTransitionValue()})` }}
+              className={styles.planSectionName}
+              style={{
+                transform: `translateX(${getTransitionValue()})`,
+                flexShrink: "0",
+              }}
               ref={menuTitleRef}
               onClick={() =>
                 detailRef.current.scrollIntoView({ behavior: "smooth" })
