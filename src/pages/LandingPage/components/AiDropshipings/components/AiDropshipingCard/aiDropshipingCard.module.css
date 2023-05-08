@@ -2,7 +2,7 @@
   border-radius: 16px;
 }
 .card {
-  background-color: var(--bg-blue-dark);
+  background-color: var(--black-transparent);
   border: 2px solid var(--gray-transparent);
   color: var(--white);
   display: flex;
