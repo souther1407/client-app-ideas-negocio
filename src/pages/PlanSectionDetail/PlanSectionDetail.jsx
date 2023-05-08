@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
 import { useNavigate, useParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
-import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import ModalNextCard from "../../pages/PlanDetail/components/modalNextCard/ModalNextCard";
@@ -13,8 +12,7 @@ import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
 } from "../../utils/constants/routes";
-import { useScroll } from "../../hooks/useScroll";
-import { formatText } from "../../utils/format/formatText";
+
 import ReactMarkdown from "react-markdown";
 const texts = {
   marketAnalisis: "Análisis de mercado",
@@ -24,6 +22,8 @@ const texts = {
   costs: "Costes",
 };
 import { useStorage } from "../../hooks/useStorage";
+import DetailCard from "../PlanDetail/components/DetailCard/DetailCard";
+import gearsImg from "../../assets/imgProductMin.svg";
 const PromptSectionDetail = ({ detail }) => {
   const { section } = useParams();
   const navigate = useNavigate();
@@ -94,16 +94,18 @@ const PromptSectionDetail = ({ detail }) => {
   const menuAskRef = useRef();
 
   const getTransitionValue = () => {
-    switch (currentSection) {
-      case "questions":
-        return `-${menuTitleRef.current.offsetWidth}px`;
-      case "ask":
-        return `-${
-          menuTitleRef.current.offsetWidth + menuQuestionRef.current.offsetWidth
-        }px`;
-      default:
-        return `0`;
-    }
+    if (window.innerWidth <= 600)
+      switch (currentSection) {
+        case "questions":
+          return `-${menuTitleRef.current.offsetWidth}px`;
+        case "ask":
+          return `-${
+            menuTitleRef.current.offsetWidth +
+            menuQuestionRef.current.offsetWidth
+          }px`;
+        default:
+          return `0`;
+      }
   };
 
   useEffect(() => {
@@ -111,13 +113,25 @@ const PromptSectionDetail = ({ detail }) => {
   }, [scrollPos]);
   return (
     <div className={styles.promptSectionDetail}>
-      <VerticalLoginNav />
+      <section className={styles.close}>
+        <IconButton
+          icon={"close"}
+          onClick={() => navigate(load("PLAN_DETAIL_URL"))}
+        />
+      </section>
       <div className={styles.content}>
         <nav className={styles.navigation}>
           <section className={styles.options}>
             <div
-              style={{ transform: `translateX(${getTransitionValue()})` }}
+              className={styles.planSectionName}
+              style={{
+                transform: `translateX(${getTransitionValue()})`,
+                flexShrink: "0",
+              }}
               ref={menuTitleRef}
+              onClick={() =>
+                detailRef.current.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <IconText
                 icon={"case"}
@@ -129,6 +143,9 @@ const PromptSectionDetail = ({ detail }) => {
             <div
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuQuestionRef}
+              onClick={() =>
+                questionsRef.current.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <IconText
                 icon={"case"}
@@ -140,6 +157,9 @@ const PromptSectionDetail = ({ detail }) => {
             <div
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuAskRef}
+              onClick={() =>
+                askQuestionsRef.current.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <IconText
                 icon={"case"}
@@ -148,12 +168,6 @@ const PromptSectionDetail = ({ detail }) => {
                 Herramientas
               </IconText>
             </div>
-          </section>
-          <section className={styles.close}>
-            <IconButton
-              icon={"close"}
-              onClick={() => navigate(load("PLAN_DETAIL_URL"))}
-            />
           </section>
         </nav>
         <main
@@ -164,16 +178,15 @@ const PromptSectionDetail = ({ detail }) => {
           }}
         >
           <section className={styles.detail} ref={detailRef}>
-            {/*  <Text>
-              {formatText(promptDetail[section].planDetail, (p) => (
-                <Text>{p}</Text>
-              ))}
-            </Text> */}
-            <ReactMarkdown>{promptDetail[section].planDetail}</ReactMarkdown>
+            <ReactMarkdown className={styles.md}>
+              {promptDetail[section].planDetail}
+            </ReactMarkdown>
           </section>
           <section className={styles.questions} ref={questionsRef}>
             <Text type="title">Preguntas</Text>
-            <ReactMarkdown>{promptDetail[section].questions}</ReactMarkdown>
+            <ReactMarkdown className={styles.md}>
+              {promptDetail[section].questions}
+            </ReactMarkdown>
           </section>
           <section className={styles.askQuestions} ref={askQuestionsRef}>
             <Text type="title">Empieza a construir tu negocio</Text>
@@ -187,6 +200,14 @@ const PromptSectionDetail = ({ detail }) => {
             >
               <Text>Empieza ahora</Text>
             </Button>
+            {/* <DetailCard
+              id={"toAsk"}
+              icon={"case"}
+              img={gearsImg}
+              sectionName={"algo"}
+              title={"titulo"}
+              width={"350px"}
+            /> */}
             <div className={styles.antNextBtns}>
               <ModalNextCard onPrev={onAnt} onNext={onNext} />
             </div>

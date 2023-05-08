@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   background-color: var(--black-transparent);
-  width: 100%;
   padding: 16px;
   position: relative;
   cursor: pointer;
@@ -13,7 +12,7 @@
 .detailCard::before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    #3d82dd1c,
+    #c2c2c21c,
     transparent 40%
   );
   border-radius: inherit;
@@ -44,7 +43,7 @@
 .icon {
   margin-right: 8px;
   position: relative;
-  top: 2px;
+  top: 6px;
 }
 
 .nameTitle > :first-child {

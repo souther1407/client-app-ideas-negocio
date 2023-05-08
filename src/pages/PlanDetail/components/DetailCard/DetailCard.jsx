@@ -3,9 +3,18 @@ import styles from "./detailCard.module.css";
 import Text from "../../../../components/atoms/Text/Text";
 import Icon from "../../../../components/atoms/Icon/Icon";
 
-const DetailCard = ({ title, id, onShowDetail, sectionName, img, icon }) => {
+const DetailCard = ({
+  title,
+  id,
+  onShowDetail,
+  sectionName,
+  img,
+  icon,
+  width = "100%",
+}) => {
   return (
     <section
+      style={{ width }}
       className={styles.detailCard}
       onClick={onShowDetail}
       onMouseMove={(e) => {

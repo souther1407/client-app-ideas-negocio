@@ -6,12 +6,19 @@
   color: var(--white);
   position: relative;
 }
-
+.close {
+  position: fixed;
+  z-index: 10;
+  right: 10%;
+  top: 10%;
+  cursor: pointer;
+}
 .content {
   position: relative;
   height: 100%;
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
   z-index: 1;
 }
 
@@ -36,6 +43,7 @@
 .options > * {
   transition: all 0.3s ease-in;
   flex-shrink: 0;
+  cursor: pointer;
   padding-right: 8px;
 }
 
@@ -45,10 +53,16 @@
   overflow-x: hidden;
   overflow-y: auto;
   top: 10px;
+  padding: 24px;
   line-height: 1.7;
 }
+
+.md > ol,
+.md > ul {
+  margin-left: 36px;
+}
 .main > section:not(:last-child) {
-  padding: 24px;
+  padding-bottom: 24px;
   border-bottom: 1px solid var(--white-transparent);
 }
 .detail > :first-child {
@@ -74,13 +88,36 @@
   }
   .content {
     overflow: hidden;
+    flex-direction: row;
+  }
+  .navigation {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border: none;
+    flex-shrink: 0;
+    border-right: 1px solid var(--white-transparent);
+  }
+  .navigation .options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+  }
+  .navigation .options > * {
+    margin-bottom: 16px;
+    display: flex !important;
+    flex-shrink: 0;
+  }
+  .planSectionName > * {
+    flex-shrink: 0;
   }
   .main {
     height: 500px;
     overflow: auto;
-    padding: 32px 64px;
+    padding: 32px;
   }
-  .options > *:not(:last-child) {
-    margin-right: 16px;
+  .close {
+    top: 5%;
   }
 }
