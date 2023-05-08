@@ -6,7 +6,7 @@ import Link from "../../../.././../../components/atoms/Link/Link";
 import usePromptDetail from "../../../../../../states/prompDetail";
 import { useNavigate } from "react-router-dom";
 import { MY_PROMPTS_DETAIL } from "../../../../../../utils/constants/routes";
-
+import { formatStringToShort } from "../../../../../../utils/format/formatStringToShort";
 const AiDropshipingCard = ({
   show,
   index,
@@ -23,7 +23,6 @@ const AiDropshipingCard = ({
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log(details);
     setPromptDetail({
       ...details,
       input: { age, teacher, skills, budget, location },
@@ -44,11 +43,15 @@ const AiDropshipingCard = ({
       }
     >
       <div className={`${styles.card} ${show && styles.show}`} {...otherProps}>
-        <section className={`${styles.title} ${show && styles.showDetails}`}>
+        <section className={`${styles.header} ${show && styles.showDetails}`}>
           <div className={styles.icon}>
             <Icon type={"aiHead"} />
           </div>
-          <Text>AI Dropshipping</Text>
+          <div className={styles.title}>
+            <Text textAlign="center">
+              {formatStringToShort(details.title, 40)}
+            </Text>
+          </div>
         </section>
         <section className={`${styles.details} ${show && styles.showDetails}`}>
           <Text>

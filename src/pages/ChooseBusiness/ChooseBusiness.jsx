@@ -107,7 +107,7 @@ const ChooseBusiness = () => {
       >
         <section>{options[option].description}</section>
       </InfoModal>
-      <GradientBg />
+      <GradientBg opacity={15} />
     </div>
   );
 };

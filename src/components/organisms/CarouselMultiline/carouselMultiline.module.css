@@ -11,7 +11,7 @@
 
 .leftBtn,
 .rightBtn {
-  font-size: 40px;
+  font-size: var(--big);
   z-index: 10;
 }
 .leftBtn {

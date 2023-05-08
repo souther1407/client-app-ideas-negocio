@@ -88,7 +88,7 @@
 
 .generateIdeaBtn {
   padding: 12px 64px;
-  border: 1px solid var(--btn-primary-border-color);
+  border: 1px solid var(--white-transparent);
   border-radius: 4px;
   font-size: var(--xlg);
 }
@@ -112,7 +112,10 @@
 .desc {
   display: flex;
   align-items: center;
+  position: relative;
+  top: 2px;
 }
+
 .antBtn .arrow {
   margin-right: 16px;
 }

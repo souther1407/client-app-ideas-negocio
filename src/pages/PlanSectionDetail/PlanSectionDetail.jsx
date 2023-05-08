@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,19 +9,56 @@ import IconButton from "../../components/molecules/IconButton/IconButton";
 import ModalNextCard from "../../pages/PlanDetail/components/modalNextCard/ModalNextCard";
 import Button from "../../components/atoms/Button/Button";
 import usePromptDetail from "../../states/prompDetail";
-import { PLAN_DETAIL } from "../../utils/constants/routes";
+import {
+  PLAN_DETAIL,
+  DASHBOARD_ASK_QUESTION,
+} from "../../utils/constants/routes";
 import { useScroll } from "../../hooks/useScroll";
 import { formatText } from "../../utils/format/formatText";
 import ReactMarkdown from "react-markdown";
+const texts = {
+  marketAnalisis: "Análisis de mercado",
+  team: "Equipo",
+  productMin: "Producto mínimo viable",
+  marketingPlan: "Plan de Marketing",
+  costs: "Costes",
+};
+import { useStorage } from "../../hooks/useStorage";
 const PromptSectionDetail = ({ detail }) => {
   const { section } = useParams();
   const navigate = useNavigate();
-  const texts = {
-    marketAnalisis: "Análisis de mercado",
-    team: "Equipo",
-    productMin: "Producto mínimo viable",
-    marketingPlan: "Plan de Marketing",
-    costs: "Costes",
+  const { load } = useStorage();
+  const onAnt = () => {
+    if (section !== "marketAnalisis") mainRef.current.scrollTo({ top: 0 });
+    switch (section) {
+      case "team":
+        return navigate(PLAN_DETAIL + "/marketAnalisis");
+      case "productMin":
+        return navigate(PLAN_DETAIL + "/team");
+      case "marketingPlan":
+        return navigate(PLAN_DETAIL + "/marketingPlan");
+      case "costs":
+        return navigate(PLAN_DETAIL + "/productMin");
+      default:
+        return;
+    }
+  };
+
+  const onNext = () => {
+    if (section !== "costs") mainRef.current.scrollTo({ top: 0 });
+
+    switch (section) {
+      case "marketAnalisis":
+        return navigate(PLAN_DETAIL + "/team");
+      case "team":
+        return navigate(PLAN_DETAIL + "/productMin");
+      case "productMin":
+        return navigate(PLAN_DETAIL + "/marketingPlan");
+      case "marketingPlan":
+        return navigate(PLAN_DETAIL + "/costs");
+      default:
+        return;
+    }
   };
   const promptDetail = usePromptDetail((state) => state.promptDetail);
 
@@ -68,7 +105,7 @@ const PromptSectionDetail = ({ detail }) => {
         return `0`;
     }
   };
-  console.log(promptDetail[section]);
+
   useEffect(() => {
     changeSection();
   }, [scrollPos]);
@@ -113,7 +150,10 @@ const PromptSectionDetail = ({ detail }) => {
             </div>
           </section>
           <section className={styles.close}>
-            <IconButton icon={"close"} onClick={() => navigate(-1)} />
+            <IconButton
+              icon={"close"}
+              onClick={() => navigate(load("PLAN_DETAIL_URL"))}
+            />
           </section>
         </nav>
         <main
@@ -124,8 +164,6 @@ const PromptSectionDetail = ({ detail }) => {
           }}
         >
           <section className={styles.detail} ref={detailRef}>
-            <Text type="title">{promptDetail.title}</Text>
-
             {/*  <Text>
               {formatText(promptDetail[section].planDetail, (p) => (
                 <Text>{p}</Text>
@@ -142,16 +180,20 @@ const PromptSectionDetail = ({ detail }) => {
             <Text color="soft">
               Responde todas tus preguntas con ayuda de nuestros expertos
             </Text>
-            <Button color="secondary" flexible>
+            <Button
+              color="secondary"
+              flexible
+              onClick={() => navigate(DASHBOARD_ASK_QUESTION)}
+            >
               <Text>Empieza ahora</Text>
             </Button>
             <div className={styles.antNextBtns}>
-              <ModalNextCard onPrev={() => {}} onNext={() => {}} />
+              <ModalNextCard onPrev={onAnt} onNext={onNext} />
             </div>
           </section>
         </main>
       </div>
-      <GradientBg />
+      <GradientBg opacity={20} />
     </div>
   );
 };

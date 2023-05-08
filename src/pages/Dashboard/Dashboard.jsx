@@ -52,7 +52,7 @@ const Dashboard = () => {
           <MyQuestions />
         </section>
       </section>
-      <GradientBg />
+      <GradientBg opacity={15} />
     </div>
   );
 };

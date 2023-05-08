@@ -6,24 +6,15 @@ import GradientBorder from "../../../../components/atoms/GradientBorder/Gradient
 const ModalNextCard = ({ onPrev, onNext }) => {
   return (
     <div className={styles.modalNextCard}>
-      <GradientBorder>
-        <div className={styles.ant} style={{ background: "#07253E" }}>
-          <button onClick={onPrev}>{"<--"}</button>
-          <section className={styles.info}>
-            <Text>Ant</Text>
-            <Text>MVP</Text>
-          </section>
-        </div>
-      </GradientBorder>
-      <GradientBorder>
-        <div className={styles.next} style={{ background: "#07253E" }}>
-          <section className={styles.info}>
-            <Text>Next</Text>
-            <Text>MVP</Text>
-          </section>
-          <button onClick={onNext}>{"-->"}</button>
-        </div>
-      </GradientBorder>
+      <div className={styles.ant} onClick={onPrev}>
+        <button>{"<--"}</button>
+
+        <Text>Anterior</Text>
+      </div>
+      <div className={styles.next} onClick={onNext}>
+        <Text>Siguiente</Text>
+        <button>{"-->"}</button>
+      </div>
     </div>
   );
 };
