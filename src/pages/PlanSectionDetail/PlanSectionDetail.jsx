@@ -118,6 +118,9 @@ const PromptSectionDetail = ({ detail }) => {
             <div
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuTitleRef}
+              onClick={() =>
+                detailRef.current.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <IconText
                 icon={"case"}
@@ -129,6 +132,9 @@ const PromptSectionDetail = ({ detail }) => {
             <div
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuQuestionRef}
+              onClick={() =>
+                questionsRef.current.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <IconText
                 icon={"case"}
@@ -140,6 +146,9 @@ const PromptSectionDetail = ({ detail }) => {
             <div
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuAskRef}
+              onClick={() =>
+                askQuestionsRef.current.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <IconText
                 icon={"case"}
@@ -164,12 +173,9 @@ const PromptSectionDetail = ({ detail }) => {
           }}
         >
           <section className={styles.detail} ref={detailRef}>
-            {/*  <Text>
-              {formatText(promptDetail[section].planDetail, (p) => (
-                <Text>{p}</Text>
-              ))}
-            </Text> */}
-            <ReactMarkdown>{promptDetail[section].planDetail}</ReactMarkdown>
+            <ReactMarkdown className={styles.md}>
+              {promptDetail[section].planDetail}
+            </ReactMarkdown>
           </section>
           <section className={styles.questions} ref={questionsRef}>
             <Text type="title">Preguntas</Text>

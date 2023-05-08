@@ -1,4 +1,4 @@
-* {
+*:not(ol, ul) {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -55,6 +55,12 @@ input:-webkit-autofill {
   --superlg: 3rem;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 32px !important;
+}
 h1 {
   font-size: var(--xxlg);
 }
@@ -62,6 +68,7 @@ h2 {
   font-size: 1.5rem !important;
   font-weight: bold !important;
 }
+
 h3 {
   font-size: var(--lg) !important;
   font-weight: bold !important;

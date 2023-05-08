@@ -36,6 +36,7 @@
 .options > * {
   transition: all 0.3s ease-in;
   flex-shrink: 0;
+  cursor: pointer;
   padding-right: 8px;
 }
 
@@ -46,6 +47,12 @@
   overflow-y: auto;
   top: 10px;
   line-height: 1.7;
+}
+
+.md > ol,
+.md > ul {
+  margin-left: 32px;
+  list-style-position: inside;
 }
 .main > section:not(:last-child) {
   padding: 24px;
