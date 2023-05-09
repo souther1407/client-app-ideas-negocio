@@ -83,6 +83,9 @@
   align-items: center;
   margin-top: 16px;
 }
+.askQuestions > :first-child {
+  align-self: flex-start;
+}
 .askQuestions > * {
   margin-bottom: 16px;
 }

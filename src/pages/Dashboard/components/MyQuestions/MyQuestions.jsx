@@ -15,7 +15,7 @@ const Card = ({ id, answered, created, content, onShow }) => {
         ></div>
         <Text>{answered ? "Respondida" : "Sin responder"}</Text>
         {answered && (
-          <Button onClick={() => onShow(id)}>
+          <Button onClick={() => onShow(id)} flexible>
             <Text>Ver</Text>
           </Button>
         )}
