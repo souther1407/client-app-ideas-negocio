@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  background-color: var(--black-transparent);
+  width: 100%;
+  border: 1px solid var(--white-transparent);
+  border-radius: 32px;
+  align-items: center;
+  cursor: pointer;
+}
+.img {
+  width: 80px;
+  border: 1px solid var(--white-transparent);
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background-color: rgba(43, 43, 43, 0.527);
+  margin-right: 32px;
+}
+.effect {
+  width: 100%;
+  display: flex;
+  padding: 16px 24px;
+  border-radius: 32px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  position: relative;
+  bottom: 4px;
+}
+
+.detail > :first-child {
+  font-size: var(--lg);
+}
+.detail > :last-child {
+  font-size: var(--sm);
+}

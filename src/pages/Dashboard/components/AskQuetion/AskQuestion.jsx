@@ -8,6 +8,13 @@ import { createMessage } from "../../../../services/messages/messages.js";
 import { useSubscribed } from "../../../../hooks/useSubscribed";
 import NeedLoginOrPayWindow from "../../../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { analytics } from "../../../../segment";
+import { useSearchParams } from "react-router-dom";
+const texts = {
+  marketing: "Marketing",
+  productManager: "Product Manager",
+  socialMedia: "Redes Sociales",
+  webDesigner: "Diseño Web",
+};
 const AskQuestion = () => {
   const [input, setInput] = useState({
     content: "",
@@ -16,10 +23,13 @@ const AskQuestion = () => {
   const [isValid, setIsValid] = useState(false);
   const { subscribed } = useSubscribed();
   const [showPaywall, setShowPaywall] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [to, setTo] = useState(searchParams.get("to"));
+
   const handleImgUploaded = (url) => {
     setInput((prev) => ({ ...prev, urlImg: url }));
   };
-  useEffect(() => {}, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,10 +50,8 @@ const AskQuestion = () => {
         <NeedLoginOrPayWindow onClose={() => setShowPaywall(false)} />
       )}
       <section className={styles.buttons}>
-        <div className={styles.controls}>
-          <IconButton icon={"bold"} />
-          <IconButton icon={"italic"} />
-          <IconButton icon={"underline"} />
+        <div className={styles.to}>
+          <Text>Para: {texts[to]}</Text>
         </div>
         <div className={styles.uploadImg}>
           <ImgUpload
