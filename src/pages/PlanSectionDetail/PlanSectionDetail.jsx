@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
@@ -12,7 +12,7 @@ import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
 } from "../../utils/constants/routes";
-
+import Mark from "../../components/atoms/Mark/Mark";
 import ReactMarkdown from "react-markdown";
 const texts = {
   marketAnalisis: "Análisis de mercado",
@@ -22,12 +22,14 @@ const texts = {
   costs: "Costes",
 };
 import { useStorage } from "../../hooks/useStorage";
-import DetailCard from "../PlanDetail/components/DetailCard/DetailCard";
-import gearsImg from "../../assets/imgProductMin.svg";
-const PromptSectionDetail = ({ detail }) => {
+import HorizontalCard from "../../components/organisms/HorizontalCard/HorizontalCard";
+
+const PromptSectionDetail = () => {
   const { section } = useParams();
   const navigate = useNavigate();
+
   const { load } = useStorage();
+
   const onAnt = () => {
     if (section !== "marketAnalisis") mainRef.current.scrollTo({ top: 0 });
     switch (section) {
@@ -191,23 +193,44 @@ const PromptSectionDetail = ({ detail }) => {
           <section className={styles.askQuestions} ref={askQuestionsRef}>
             <Text type="title">Empieza a construir tu negocio</Text>
             <Text color="soft">
-              Responde todas tus preguntas con ayuda de nuestros expertos
+              ¿Tienes algún problema que no puedes resolver en tu negocio?
+              &nbsp;
+              <Mark color={"primary"}>
+                Responde todas tus preguntas con ayuda de nuestros expertos.
+                Ejemplo:
+              </Mark>
             </Text>
-            <Button
-              color="secondary"
-              flexible
-              onClick={() => navigate(DASHBOARD_ASK_QUESTION)}
-            >
-              <Text>Empieza ahora</Text>
-            </Button>
-            {/* <DetailCard
-              id={"toAsk"}
-              icon={"case"}
-              img={gearsImg}
-              sectionName={"algo"}
-              title={"titulo"}
-              width={"350px"}
-            /> */}
+
+            <HorizontalCard
+              title={"Marketing"}
+              detail={promptDetail.title}
+              onClick={() => navigate(DASHBOARD_ASK_QUESTION + "?to=Marketing")}
+            />
+
+            <HorizontalCard
+              title={"Redes Sociales"}
+              detail={promptDetail.title}
+              onClick={() =>
+                navigate(DASHBOARD_ASK_QUESTION + "?to=socialMedia")
+              }
+            />
+
+            <HorizontalCard
+              title={"Product Manager"}
+              detail={promptDetail.title}
+              onClick={() =>
+                navigate(DASHBOARD_ASK_QUESTION + "?to=productManager")
+              }
+            />
+
+            <HorizontalCard
+              title={"Diseño Web"}
+              detail={promptDetail.title}
+              onClick={() =>
+                navigate(DASHBOARD_ASK_QUESTION + "?to=webDesigner")
+              }
+            />
+
             <div className={styles.antNextBtns}>
               <ModalNextCard onPrev={onAnt} onNext={onNext} />
             </div>

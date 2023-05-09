@@ -56,12 +56,12 @@
   overflow-x: hidden;
   overflow-y: auto;
   top: 10px;
-  padding: 24px;
+  padding: 36px;
   line-height: 1.7;
 }
 
-.md > ol,
-.md > ul {
+.md ol,
+.md ul {
   margin-left: 36px;
 }
 .md h1,
@@ -124,7 +124,7 @@
   .main {
     height: 500px;
     overflow: auto;
-    padding: 32px;
+    padding: 80px;
   }
   .close {
     top: 5%;

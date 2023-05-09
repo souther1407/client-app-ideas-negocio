@@ -1,7 +1,13 @@
+.effect {
+  width: 100%;
+}
+.effect > :first-child {
+  position: relative;
+}
 .effect > :first-child:before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    #3d82dd1c,
+    #c2c2c21c,
     transparent 40%
   );
   border-radius: inherit;
