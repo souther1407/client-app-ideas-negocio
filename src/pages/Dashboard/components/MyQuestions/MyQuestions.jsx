@@ -71,24 +71,25 @@ const MyQuestions = () => {
         <Text type="title">Mis preguntas</Text>
         <Filter onSelectFilter={(filter) => setFilter(filter)} />
       </section>
-
-      {!loading &&
-        applyFilter().map((q) => (
-          <Card
-            answered={q.answered}
-            content={q.content}
-            id={q.id}
-            created={`${q.created.day}/${q.created.month}/${q.created.year}`}
-            onShow={(id) => setShowAnswers({ id, show: true })}
+      <div className={styles.questions}>
+        {!loading &&
+          applyFilter().map((q) => (
+            <Card
+              answered={q.answered}
+              content={q.content}
+              id={q.id}
+              created={`${q.created.day}/${q.created.month}/${q.created.year}`}
+              onShow={(id) => setShowAnswers({ id, show: true })}
+            />
+          ))}
+        {showAnswers.id && (
+          <ShowAnswers
+            open={showAnswers.show}
+            id={showAnswers.id}
+            onClose={() => setShowAnswers((prev) => ({ ...prev, show: false }))}
           />
-        ))}
-      {showAnswers.id && (
-        <ShowAnswers
-          open={showAnswers.show}
-          id={showAnswers.id}
-          onClose={() => setShowAnswers((prev) => ({ ...prev, show: false }))}
-        />
-      )}
+        )}
+      </div>
     </div>
   );
 };
