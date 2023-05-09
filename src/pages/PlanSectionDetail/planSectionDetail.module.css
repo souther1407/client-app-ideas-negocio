@@ -6,6 +6,9 @@
   color: var(--white);
   position: relative;
 }
+.promptSectionDetail > * {
+  font-family: "Libre Caslon Text", serif;
+}
 .close {
   position: fixed;
   z-index: 10;
@@ -60,6 +63,12 @@
 .md > ol,
 .md > ul {
   margin-left: 36px;
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  margin-top: 40px;
 }
 .main > section:not(:last-child) {
   padding-bottom: 24px;

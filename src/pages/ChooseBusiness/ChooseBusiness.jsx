@@ -13,6 +13,7 @@ import { useStorage } from "../../hooks/useStorage";
 import OptionCard from "./components/OptionCard/OptionCard";
 import { createDetail } from "../../services/createText/createText";
 import ShineEffect from "../../components/molecules/ShineEffect/ShineEffect";
+import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
 const ChooseBusiness = () => {
   const { load } = useStorage();
 
@@ -26,11 +27,8 @@ const ChooseBusiness = () => {
 
   const handleClick = async () => {
     try {
-      /*  await generateBusinessPlan({
-        input: input,
-        header: options[option],
-      }); */
       setLoading(true);
+      setIsOpen(false);
       const detail = await createDetail({ input, header: options[option] });
       setPromptDetail(detail);
       navitagte(PLAN_DETAIL);
@@ -45,56 +43,63 @@ const ChooseBusiness = () => {
   return (
     <div className={styles.chooseBusiness}>
       <LandingPageNav />
-      <section className={styles.options}>
-        <ShineEffect>
-          <OptionCard
-            title={options[0].title}
-            totalCost={input.budget}
-            estimatedTime={options[0].estimatedTime}
-            estimatedCost={options[0].estimatedCost}
-            onShowDetail={() => {
-              setOption(0);
-              setIsOpen(true);
-            }}
-          />
-        </ShineEffect>
-        <ShineEffect>
-          <OptionCard
-            title={options[1].title}
-            totalCost={input.budget}
-            estimatedTime={options[1].estimatedTime}
-            estimatedCost={options[1].estimatedCost}
-            onShowDetail={() => {
-              setOption(1);
-              setIsOpen(true);
-            }}
-          />
-        </ShineEffect>
-        <ShineEffect>
-          <OptionCard
-            title={options[2].title}
-            totalCost={input.budget}
-            estimatedTime={options[2].estimatedTime}
-            estimatedCost={options[2].estimatedCost}
-            onShowDetail={() => {
-              setOption(2);
-              setIsOpen(true);
-            }}
-          />
-        </ShineEffect>
-        <ShineEffect>
-          <OptionCard
-            title={options[3].title}
-            totalCost={input.budget}
-            estimatedTime={options[3].estimatedTime}
-            estimatedCost={options[3].estimatedCost}
-            onShowDetail={() => {
-              setOption(3);
-              setIsOpen(true);
-            }}
-          />
-        </ShineEffect>
-      </section>
+
+      {loading ? (
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <LoadingBooks />
+        </div>
+      ) : (
+        <section className={styles.options}>
+          <ShineEffect>
+            <OptionCard
+              title={options[0].title}
+              totalCost={input.budget}
+              estimatedTime={options[0].estimatedTime}
+              estimatedCost={options[0].estimatedCost}
+              onShowDetail={() => {
+                setOption(0);
+                setIsOpen(true);
+              }}
+            />
+          </ShineEffect>
+          <ShineEffect>
+            <OptionCard
+              title={options[1].title}
+              totalCost={input.budget}
+              estimatedTime={options[1].estimatedTime}
+              estimatedCost={options[1].estimatedCost}
+              onShowDetail={() => {
+                setOption(1);
+                setIsOpen(true);
+              }}
+            />
+          </ShineEffect>
+          <ShineEffect>
+            <OptionCard
+              title={options[2].title}
+              totalCost={input.budget}
+              estimatedTime={options[2].estimatedTime}
+              estimatedCost={options[2].estimatedCost}
+              onShowDetail={() => {
+                setOption(2);
+                setIsOpen(true);
+              }}
+            />
+          </ShineEffect>
+          <ShineEffect>
+            <OptionCard
+              title={options[3].title}
+              totalCost={input.budget}
+              estimatedTime={options[3].estimatedTime}
+              estimatedCost={options[3].estimatedCost}
+              onShowDetail={() => {
+                setOption(3);
+                setIsOpen(true);
+              }}
+            />
+          </ShineEffect>
+        </section>
+      )}
       <InfoModal
         title={options[option].title}
         isOpen={isOpen}
