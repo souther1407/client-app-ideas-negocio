@@ -23,6 +23,7 @@ import Avatar from "../../components/atoms/Avatar/Avatar";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import Button from "../../components/atoms/Button/Button";
 import { createDetail } from "../../services/createText/createText";
+import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   samAltman: "Sam Altman",
@@ -323,19 +324,22 @@ const StartABusiness = () => {
               field === MAX_SECTION_NUMBER && styles.show
             }`}
           >
-            <button
-              disabled={creating || loading}
-              className={styles.generateIdeaBtn}
-              onClick={handlerSendData}
-            >
-              <Text type="title">
-                {creating || loading ? "creating...." : "Generar Plan"}
-              </Text>
-            </button>
+            {!(creating || loading) && (
+              <button
+                disabled={creating || loading}
+                className={styles.generateIdeaBtn}
+                onClick={handlerSendData}
+              >
+                <Text type="title">
+                  {creating || loading ? "creating...." : "Generar Plan"}
+                </Text>
+              </button>
+            )}
+            {(creating || loading) && <LoadingBooks />}
           </section>
         </section>
 
-        {field !== 1 && (
+        {field !== 1 && !loading && !creating && (
           <section className={styles.controls}>
             <button
               style={{ background: "#0E1C2D" }}

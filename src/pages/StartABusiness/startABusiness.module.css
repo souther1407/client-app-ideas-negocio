@@ -91,6 +91,9 @@
   border: 1px solid var(--white-transparent);
   border-radius: 4px;
   font-size: var(--xlg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .antBtn,

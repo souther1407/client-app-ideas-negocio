@@ -26,6 +26,7 @@ const parts = [
   { title: "Tiempo", id: "time" },
   { title: "Analisis de Riesgo", id: "riskAnalisis" },
 ];
+
 import { useStorage } from "../../hooks/useStorage";
 const PlanDetail = ({ response }) => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const PlanDetail = ({ response }) => {
   useEffect(() => {
     save("PLAN_DETAIL_URL", window.location.pathname);
   }, []);
+
   return (
     <div className={styles.planDetail}>
       {isLogged() && <VerticalLoginNav />}
