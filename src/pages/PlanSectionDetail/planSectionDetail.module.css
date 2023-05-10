@@ -69,6 +69,10 @@
 .md h3,
 .md h4 {
   margin-top: 40px;
+  font-weight: bold;
+}
+.md h1 {
+  font-size: var(--xxlg);
 }
 .main > section:not(:last-child) {
   padding-bottom: 24px;

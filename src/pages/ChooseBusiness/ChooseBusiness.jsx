@@ -8,7 +8,7 @@ import Button from "../../components/atoms/Button/Button";
 import Text from "../../components/atoms/Text/Text";
 import usePromptDetail from "../../states/prompDetail";
 import { useNavigate } from "react-router-dom";
-import { PLAN_DETAIL } from "../../utils/constants/routes";
+import { PLAN_DETAIL, START_A_BUSINESS } from "../../utils/constants/routes";
 import { useStorage } from "../../hooks/useStorage";
 import OptionCard from "./components/OptionCard/OptionCard";
 import { createDetail } from "../../services/createText/createText";
@@ -33,7 +33,8 @@ const ChooseBusiness = () => {
       setPromptDetail(detail);
       navitagte(PLAN_DETAIL);
     } catch (error) {
-      alert(error.message);
+      alert("hubo un inconveniente, por favor inténtalo nuevamente");
+      navitagte(START_A_BUSINESS);
     } finally {
       setLoading(false);
     }
