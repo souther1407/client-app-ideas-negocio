@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./planDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
-import Boximg from "../../assets/box.png";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import DetailCard from "./components/DetailCard/DetailCard";
-import GradienBorder from "../../components/atoms/GradientBorder/GradientBorder";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
 import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
