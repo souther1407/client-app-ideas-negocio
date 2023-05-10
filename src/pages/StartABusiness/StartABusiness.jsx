@@ -87,7 +87,7 @@ const StartABusiness = () => {
         setPromptDetail(detail);
         navigate(PLAN_DETAIL);
       } catch (error) {
-        alert(error.message);
+        alert("hubo un problema, inténtalo nuevamente");
       } finally {
         setLoading(false);
       }

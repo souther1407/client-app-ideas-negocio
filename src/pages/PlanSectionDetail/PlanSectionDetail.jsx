@@ -14,6 +14,7 @@ import {
 } from "../../utils/constants/routes";
 import Mark from "../../components/atoms/Mark/Mark";
 import ReactMarkdown from "react-markdown";
+
 const texts = {
   marketAnalisis: "Análisis de mercado",
   team: "Equipo",
@@ -34,6 +35,8 @@ const PromptSectionDetail = () => {
   const onAnt = () => {
     if (section !== "marketAnalisis") mainRef.current.scrollTo({ top: 0 });
     switch (section) {
+      case "marketAnalisis":
+        return navigate(PLAN_DETAIL + "/teacherMessage");
       case "team":
         return navigate(PLAN_DETAIL + "/marketAnalisis");
       case "productMin":
@@ -51,6 +54,8 @@ const PromptSectionDetail = () => {
     if (section !== "costs") mainRef.current.scrollTo({ top: 0 });
 
     switch (section) {
+      case "teacherMessage":
+        return navigate(PLAN_DETAIL + "/marketAnalisis");
       case "marketAnalisis":
         return navigate(PLAN_DETAIL + "/team");
       case "team":
@@ -185,57 +190,63 @@ const PromptSectionDetail = () => {
               {promptDetail[section]?.planDetail}
             </ReactMarkdown>
           </section>
-          <section className={styles.questions} ref={questionsRef}>
-            <Text type="title">Preguntas</Text>
-            <ReactMarkdown className={styles.md}>
-              {promptDetail[section]?.questions}
-            </ReactMarkdown>
-          </section>
-          <section className={styles.askQuestions} ref={askQuestionsRef}>
-            <Text type="title">Empieza a construir tu negocio</Text>
-            <Text color="soft">
-              ¿Tienes algún problema que no puedes resolver en tu negocio?
-              &nbsp;
-              <Mark color={"primary"}>
-                Responde todas tus preguntas con ayuda de nuestros expertos.
-                Ejemplo:
-              </Mark>
-            </Text>
+          {section !== "teacherMessage" && (
+            <section className={styles.questions} ref={questionsRef}>
+              <Text type="title">Preguntas</Text>
+              <ReactMarkdown className={styles.md}>
+                {promptDetail[section]?.questions}
+              </ReactMarkdown>
+            </section>
+          )}
+          {section !== "teacherMessage" && (
+            <section className={styles.askQuestions} ref={askQuestionsRef}>
+              <Text type="title">Empieza a construir tu negocio</Text>
+              <Text color="soft">
+                ¿Tienes algún problema que no puedes resolver en tu negocio?
+                &nbsp;
+                <Mark color={"primary"}>
+                  Responde todas tus preguntas con ayuda de nuestros expertos.
+                  Ejemplo:
+                </Mark>
+              </Text>
 
-            <HorizontalCard
-              title={"Marketing"}
-              detail={promptDetail.title}
-              onClick={() => navigate(DASHBOARD_ASK_QUESTION + "?to=Marketing")}
-            />
+              <HorizontalCard
+                title={"Marketing"}
+                detail={promptDetail.title}
+                onClick={() =>
+                  navigate(DASHBOARD_ASK_QUESTION + "?to=Marketing")
+                }
+              />
 
-            <HorizontalCard
-              title={"Redes Sociales"}
-              detail={promptDetail.title}
-              onClick={() =>
-                navigate(DASHBOARD_ASK_QUESTION + "?to=socialMedia")
-              }
-            />
+              <HorizontalCard
+                title={"Redes Sociales"}
+                detail={promptDetail.title}
+                onClick={() =>
+                  navigate(DASHBOARD_ASK_QUESTION + "?to=socialMedia")
+                }
+              />
 
-            <HorizontalCard
-              title={"Product Manager"}
-              detail={promptDetail.title}
-              onClick={() =>
-                navigate(DASHBOARD_ASK_QUESTION + "?to=productManager")
-              }
-            />
+              <HorizontalCard
+                title={"Product Manager"}
+                detail={promptDetail.title}
+                onClick={() =>
+                  navigate(DASHBOARD_ASK_QUESTION + "?to=productManager")
+                }
+              />
 
-            <HorizontalCard
-              title={"Diseño Web"}
-              detail={promptDetail.title}
-              onClick={() =>
-                navigate(DASHBOARD_ASK_QUESTION + "?to=webDesigner")
-              }
-            />
+              <HorizontalCard
+                title={"Diseño Web"}
+                detail={promptDetail.title}
+                onClick={() =>
+                  navigate(DASHBOARD_ASK_QUESTION + "?to=webDesigner")
+                }
+              />
 
-            <div className={styles.antNextBtns}>
-              <ModalNextCard onPrev={onAnt} onNext={onNext} />
-            </div>
-          </section>
+              <div className={styles.antNextBtns}>
+                <ModalNextCard onPrev={onAnt} onNext={onNext} />
+              </div>
+            </section>
+          )}
         </main>
       </div>
       <GradientBg opacity={20} />

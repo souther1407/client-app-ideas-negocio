@@ -9,6 +9,7 @@ export const createDetail = async (prompt) => {
     },
     body: JSON.stringify(prompt),
   });
+  if (!response.ok) throw new Error("Something goes wrong :c");
   const body = await response.json();
   return body;
 };
@@ -22,6 +23,7 @@ export const createOptions = async (prompt) => {
     },
     body: JSON.stringify(prompt),
   });
+  if (!response.ok) throw new Error("Something goes wrong :c");
   const body = await response.json();
   return body;
 };
