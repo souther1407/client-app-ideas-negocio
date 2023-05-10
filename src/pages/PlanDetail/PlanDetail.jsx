@@ -17,6 +17,7 @@ import imgCosts from "../../assets/imgCosts.svg";
 import imgMarketingPlan from "../../assets/imgMarketingPlan.svg";
 import imgProductMin from "../../assets/imgProductMin.svg";
 import imgTeam from "../../assets/imgTeam.svg";
+import imgTeacherMessage from "../../assets/imgTeacherMessage.svg";
 import GradientText from "../../components/molecules/GradientText/GradientText";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
@@ -55,11 +56,9 @@ const PlanDetail = ({ response }) => {
               title={response.title}
               sectionName={"Mensaje el profesor"}
               id="marketAnalisis"
-              onShowDetail={() => {}}
+              onShowDetail={() => navigate(PLAN_DETAIL + "/teacherMessage")}
               icon={"book"}
-              img={
-                "https://img.freepik.com/free-vector/teacher-classroom-pointing-chalkboard_40876-2422.jpg"
-              }
+              img={imgTeacherMessage}
             />
 
             <DetailCard

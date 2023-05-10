@@ -20,6 +20,7 @@ const texts = {
   productMin: "Producto mínimo viable",
   marketingPlan: "Plan de Marketing",
   costs: "Costes",
+  teacherMessage: "Mensaje del profesor",
 };
 import { useStorage } from "../../hooks/useStorage";
 import HorizontalCard from "../../components/organisms/HorizontalCard/HorizontalCard";
@@ -181,13 +182,13 @@ const PromptSectionDetail = () => {
         >
           <section className={styles.detail} ref={detailRef}>
             <ReactMarkdown className={styles.md}>
-              {promptDetail[section].planDetail}
+              {promptDetail[section]?.planDetail}
             </ReactMarkdown>
           </section>
           <section className={styles.questions} ref={questionsRef}>
             <Text type="title">Preguntas</Text>
             <ReactMarkdown className={styles.md}>
-              {promptDetail[section].questions}
+              {promptDetail[section]?.questions}
             </ReactMarkdown>
           </section>
           <section className={styles.askQuestions} ref={askQuestionsRef}>
