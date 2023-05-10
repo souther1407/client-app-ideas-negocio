@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./mainBanner.module.css";
-
 import Text from "../../../../components/atoms/Text/Text";
-import Box from "../../../../assets/box.png";
+import Box from "../../../../assets/box.svg";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../../components/atoms/Button/Button";
 import { START_A_BUSINESS, LOGIN } from "../../../../utils/constants/routes";
