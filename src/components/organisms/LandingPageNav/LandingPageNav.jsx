@@ -58,19 +58,6 @@ const LandingPageNav = () => {
       </section>
       <section className={styles.elements}>
         <section className={styles.buttonsAndLinks}>
-          {!isLogged() && (
-            <section className={styles.links}>
-              <Link to={LANDING_PAGE}>
-                <Text>Home</Text>
-              </Link>
-              <Text onClick={handlerClick} style={{ cursor: "pointer" }}>
-                Ejemplos
-              </Text>
-              <Link to={DASHBOARD}>
-                <Text>Dashboard</Text>
-              </Link>
-            </section>
-          )}
           <section className={styles.buttons}>
             {/* <GradientBorder>
             <ChangeLanguage />
@@ -87,15 +74,6 @@ const LandingPageNav = () => {
                 </Button>
               </GradientBorder>
             )}
-            <ShineEffect>
-              <Button
-                classes={styles.startBusinessBtn}
-                color="secondary"
-                onClick={() => navigate(START_A_BUSINESS)}
-              >
-                <Text>Crear Negocio</Text>
-              </Button>
-            </ShineEffect>
           </section>
         </section>
         {!isLogged() && (
