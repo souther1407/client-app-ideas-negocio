@@ -10,25 +10,32 @@ import { useNavigate } from "react-router-dom";
 import { useStorage } from "../../hooks/useStorage";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
 import { analytics } from "../../segment.js";
+import { auth } from "../../firebase";
+import {
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+  FacebookAuthProvider,
+  signOut,
+} from "firebase/auth";
 const LoginRegister = () => {
   const { load, clear } = useStorage();
   const affiliateId = useRef(load("affiliate"));
   const [loading, setLoading] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [loginInput, setLoginInput] = useState({
+  /*  const [loginInput, setLoginInput] = useState({
     email: "",
     password: "",
-  });
-  const { login } = useLogin({});
+  }); */
+  const { logout, loginWithProvider } = useLogin({});
   const navigate = useNavigate();
 
-  const [registerInput, setRegisterInput] = useState({
+  /* const [registerInput, setRegisterInput] = useState({
     username: "",
     email: "",
     password: "",
     referredBy: affiliateId.current ?? "",
   });
-
+ */
   /* const handlerRegister = async (e) => {
     e.preventDefault();
     try {
@@ -46,7 +53,7 @@ const LoginRegister = () => {
     }
   }; */
 
-  const handleChange = (id, value) => {
+  /*   const handleChange = (id, value) => {
     const splitedStr = id.split("-");
     const typeInput = splitedStr[0];
     const inputId = splitedStr[1];
@@ -60,16 +67,14 @@ const LoginRegister = () => {
   const handlerShowRegister = () => {
     setShowRegister(true);
   };
-
+ */
   /* const handlerShowLogin = () => {
     setShowRegister(false);
   };
  */
-  const handlerLogin = async (e) => {
-    e.preventDefault();
+  const handlerLogin = async (provider, getCredentialsMethod) => {
     try {
-      setLoading(true);
-      await login(loginInput.email, loginInput.password);
+      await loginWithProvider(provider, getCredentialsMethod);
       navigate(DASHBOARD_IDEAS);
     } catch (error) {
       alert(error.message);
@@ -82,15 +87,39 @@ const LoginRegister = () => {
     <div className={styles.loginRegister}>
       <LandingPageNav />
       <section className={`${styles.login} ${showRegister && styles.hide}`}>
-        <form className={styles.loginForm} onSubmit={handlerLogin}>
+        <form className={styles.loginForm} onSubmit={(e) => e.preventDefault()}>
           <Text>Login</Text>
-          <Button w>
+          <Button
+            w
+            onClick={() =>
+              handlerLogin(
+                new GoogleAuthProvider(),
+                GoogleAuthProvider.credentialFromResult
+              )
+            }
+          >
             <IconText icon={"google"}>Continue with Google</IconText>
           </Button>
-          <Button w>
+          <Button
+            w
+            onClick={() =>
+              handlerLogin(
+                new FacebookAuthProvider(),
+                GoogleAuthProvider.credentialFromResult
+              )
+            }
+          >
             <IconText icon={"facebook"}>Continue with Facebook</IconText>
           </Button>
-          <Button w>
+          <Button
+            w
+            onClick={() =>
+              handlerLogin(
+                new TwitterAuthProvider(),
+                GoogleAuthProvider.credentialFromError
+              )
+            }
+          >
             <IconText icon={"twitter"}>Continue with Twitter</IconText>
           </Button>
           {/* <Input
