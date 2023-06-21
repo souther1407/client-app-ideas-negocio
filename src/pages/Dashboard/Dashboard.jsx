@@ -2,12 +2,9 @@ import React from "react";
 import styles from "./dashboard.module.css";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
-import AffiliateProgram from "./components/AffiliateProgram/AffiliateProgram";
 import MyPromps from "./components/MyPromps/MyPromps";
 import Finder from "./components/Finder/Finder";
 import { useParams } from "react-router-dom";
-import AskQuestion from "./components/AskQuetion/AskQuestion";
-import MyQuestions from "./components/MyQuestions/MyQuestions";
 
 const Dashboard = () => {
   const { section } = useParams();
