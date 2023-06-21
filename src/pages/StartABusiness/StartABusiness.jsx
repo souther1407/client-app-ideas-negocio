@@ -139,7 +139,6 @@ const StartABusiness = () => {
 
   return (
     <div className={styles.startABusiness}>
-      {isLogged() && <VerticalLoginNav />}
       <main className={styles.content}>
         <LandingPageNav />
         {/*  {field !== 5 && <ProgressBar value={(field * 100) / 6} />} */}

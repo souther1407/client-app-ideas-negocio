@@ -6,6 +6,7 @@ const Text = ({
   bold,
   color = "inherit",
   children,
+  size,
   textAlign = "start",
   ...otherProps
 }) => {
@@ -18,6 +19,16 @@ const Text = ({
       >
         {children}
       </h1>
+    );
+  } else if (type === "subtitle") {
+    return (
+      <p
+        className={`${styles.subtitle} ${styles[color]} ${bold && styles.bold}`}
+        style={{ textAlign }}
+        {...otherProps}
+      >
+        {children}
+      </p>
     );
   }
   return (

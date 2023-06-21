@@ -13,6 +13,9 @@
   font-size: var(--xxxlg);
 }
 
+.subtitle {
+  font-size: var(--lg);
+}
 .inherit {
   color: inherit;
 }
