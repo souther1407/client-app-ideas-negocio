@@ -11,6 +11,8 @@ import {
   LOGIN,
   DASHBOARD,
   PAYMENT_METHOD,
+  DASHBOARD_IDEAS,
+  DASHBOARD_FINDER,
 } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 import Button from "../../atoms/Button/Button";
@@ -34,7 +36,7 @@ const LandingPageNav = () => {
   };
 
   const handlerClick = (e) => {
-    if (location.pathname !== LANDING_PAGE) navigate(LANDING_PAGE);
+    if (location?.pathname !== LANDING_PAGE) navigate(LANDING_PAGE);
     else {
       const elementAirDrops = document.getElementById("airDropshipings");
       elementAirDrops.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -58,11 +60,24 @@ const LandingPageNav = () => {
       </section>
       <section className={styles.elements}>
         <section className={styles.buttonsAndLinks}>
+          {isLogged() && (
+            <section className={styles.links}>
+              <Link to={START_A_BUSINESS}>
+                <Text type="subtitle">New Report</Text>
+              </Link>
+              <Link to={DASHBOARD_IDEAS}>
+                <Text type="subtitle">My Reports</Text>
+              </Link>
+              <Link to={DASHBOARD_FINDER}>
+                <Text type="subtitle">Finder</Text>
+              </Link>
+            </section>
+          )}
           <section className={styles.buttons}>
             {/* <GradientBorder>
             <ChangeLanguage />
           </GradientBorder> */}
-            {location.pathname !== LOGIN && !isLogged() && (
+            {location?.pathname !== LOGIN && !isLogged() && (
               <GradientBorder style={{ borderRadius: "16px" }}>
                 <Button
                   type="bordered"

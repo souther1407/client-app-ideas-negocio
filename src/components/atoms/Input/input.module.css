@@ -18,6 +18,10 @@
   border: 1px solid var(--secondary-light);
 }
 
+.input.borderNone.primary {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+}
 .input:-webkit-autofill,
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus,

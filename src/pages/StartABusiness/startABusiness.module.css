@@ -20,22 +20,17 @@
   width: 450px;
   flex-grow: 1;
   z-index: 1;
-  justify-content: center;
 }
 
 .field {
   display: none;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
 }
 
 .field > :first-child {
   font-size: var(--xlg);
-  margin-bottom: 16px;
-}
-
-.field > :last-child {
-  margin-top: 16px;
 }
 
 .input.shine {

@@ -1,0 +1,23 @@
+.tagInput {
+  height: 100px;
+  padding: 4px;
+  border: 1px solid var(--white-transparent);
+  overflow: auto;
+  border-radius: 8px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: flex;
+  background-color: var(--white);
+  width: fit-content;
+  color: var(--black);
+  justify-content: center;
+  align-self: center;
+  border-radius: 8px;
+  padding: 4px;
+}

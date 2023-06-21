@@ -29,8 +29,7 @@
 }
 
 .bordered.primary.light {
-  border: 1px solid var(--white);
-
+  border: 1px solid var(--white-transparent);
   color: var(--white);
 }
 .bordered.secondary.light {

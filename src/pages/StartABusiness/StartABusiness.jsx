@@ -9,7 +9,6 @@ import useOptions from "../../states/useOptions";
 import usePromptDetail from "../../states/prompDetail";
 import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { useLogin } from "../../hooks/useLogin";
-import GradientBorder from "../../components/atoms/GradientBorder/GradientBorder";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import { useStorage } from "../../hooks/useStorage";
 import ShineGradientInput from "../../components/organisms/ShineGradientInput/ShineGradientInput";
@@ -20,10 +19,10 @@ import samAltmanImg from "../../assets/sam_altman.png";
 import steveJobsImg from "../../assets/steve_jobs.webp";
 import warrenBuffetImg from "../../assets/warren_buffet.png";
 import Avatar from "../../components/atoms/Avatar/Avatar";
-import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import Button from "../../components/atoms/Button/Button";
 import { createDetail } from "../../services/createText/createText";
 import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
+import FormPlayground from "./components/FormPlayground/FormPlayground";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   samAltman: "Sam Altman",
@@ -139,11 +138,39 @@ const StartABusiness = () => {
 
   return (
     <div className={styles.startABusiness}>
-      {isLogged() && <VerticalLoginNav />}
       <main className={styles.content}>
         <LandingPageNav />
-        {/*  {field !== 5 && <ProgressBar value={(field * 100) / 6} />} */}
         <section className={styles.form}>
+          {/* <section className={`${styles.field} ${field === 1 && styles.show}`}>
+            <Text type="title" textAlign="center">
+              ¿Ya tienes una idea de negocios?
+            </Text>
+            <Button
+              type="bordered"
+              w
+              onClick={() => {
+                setHasAnIdea(true);
+                setField(2);
+              }}
+            >
+              <Text>SI</Text>
+            </Button>
+            <Button
+              type="bordered"
+              w
+              onClick={() => {
+                setHasAnIdea(false);
+                setField(3);
+              }}
+            >
+              <Text>NO</Text>
+            </Button>
+          </section> */}
+          <section className={`${styles.field} ${styles.show}`}>
+            <FormPlayground />
+          </section>
+        </section>
+        {/* <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <Text type="title" textAlign="center">
               ¿Ya tienes una idea de negocios?
@@ -337,9 +364,9 @@ const StartABusiness = () => {
             )}
             {(creating || loading) && <LoadingBooks />}
           </section>
-        </section>
+        </section> */}
 
-        {field !== 1 && !loading && !creating && (
+        {/*  {field !== 1 && !loading && !creating && (
           <section className={styles.controls}>
             <button
               style={{ background: "#0E1C2D" }}
@@ -371,8 +398,8 @@ const StartABusiness = () => {
               </span>
             </button>
           </section>
-        )}
-        {showPopup && <NeedLoginOrPayWindow />}
+        )} */}
+        {/*  {showPopup && <NeedLoginOrPayWindow />} */}
       </main>
       <GradientBg opacity={15} />
     </div>
