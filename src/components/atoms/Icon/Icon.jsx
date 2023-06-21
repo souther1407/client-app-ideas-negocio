@@ -46,10 +46,11 @@ import {
 import { FiClock } from "react-icons/fi";
 import styles from "./icon.module.css";
 
-const Icon = ({ type, size }) => {
+const Icon = ({ type, size, color = "inherit" }) => {
   const props = {
     size: size || "100%",
     className: `${styles.icon}`,
+    color,
   };
   const icons = {
     loading: <AiOutlineLoading3Quarters {...props} />,
