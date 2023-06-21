@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import AuthUserData from "../services/authentication/auth.js";
 import { decodeToken } from "react-jwt";
 import useLoginData from "../states/userLoginData.js";
-
+import { signOut, signInWithPopup } from "firebase/auth";
 export const useLogin = ({
   onLogin = () => {},
   onLogout = () => {},
   type = "users",
 }) => {
   const { setData, resetData, userData } = useLoginData((state) => state);
+
   useEffect(() => {
     if (localStorage.getItem("token") && !userData.email) {
       const payload = decodeToken(localStorage.getItem("token"));
@@ -22,10 +23,8 @@ export const useLogin = ({
       if (type === "users") {
         response = await AuthUserData.login({ email, password });
       } else {
-        console.log("deberia entrar aca");
         response = await AuthUserData.expertLogin({ email, password });
       }
-
       localStorage.setItem("token", response.token);
       const payload = decodeToken(response.token);
       setData(payload);
@@ -35,10 +34,23 @@ export const useLogin = ({
     }
   };
 
-  const logout = () => {
+  const loginWithProvider = async (provider, getCredentialsMethod) => {
+    const credentials = await signInWithPopup(auth, provider);
+    const { token } = await AuthUserData.login({
+      email: credentials.user.email,
+      username: credentials.user.displayName,
+    });
+    localStorage.setItem("token", token);
+    const payload = decodeToken(token);
+    setData(payload);
+    return credentials;
+  };
+
+  const logout = async () => {
     try {
       localStorage.removeItem("token");
       resetData();
+      await signOut(auth);
       onLogout();
     } catch (error) {
       alert(error.message);
@@ -60,5 +72,5 @@ export const useLogin = ({
     }
   };
 
-  return { login, logout, isLogged, refreshToken, userData };
+  return { login, loginWithProvider, logout, isLogged, refreshToken, userData };
 };

@@ -3,36 +3,40 @@ import styles from "./loginRegister.module.css";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import Text from "../../components/atoms/Text/Text";
-import Input from "../../components/molecules/LabeledInput/LabeledInput";
 import Button from "../../components/atoms/Button/Button";
-import Icon from "../../components/atoms/Icon/Icon";
-import Mark from "../../components/atoms/Mark/Mark";
-import AuthUser from "../../services/authentication/auth";
+import IconText from "../../components/molecules/IconText/IconText";
 import { useLogin } from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import { useStorage } from "../../hooks/useStorage";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
 import { analytics } from "../../segment.js";
+import { auth } from "../../firebase";
+import {
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+  FacebookAuthProvider,
+  signOut,
+} from "firebase/auth";
 const LoginRegister = () => {
   const { load, clear } = useStorage();
   const affiliateId = useRef(load("affiliate"));
   const [loading, setLoading] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [loginInput, setLoginInput] = useState({
+  /*  const [loginInput, setLoginInput] = useState({
     email: "",
     password: "",
-  });
-  const { login } = useLogin({});
+  }); */
+  const { logout, loginWithProvider } = useLogin({});
   const navigate = useNavigate();
 
-  const [registerInput, setRegisterInput] = useState({
+  /* const [registerInput, setRegisterInput] = useState({
     username: "",
     email: "",
     password: "",
     referredBy: affiliateId.current ?? "",
   });
-
-  const handlerRegister = async (e) => {
+ */
+  /* const handlerRegister = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
@@ -47,9 +51,9 @@ const LoginRegister = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
-  const handleChange = (id, value) => {
+  /*   const handleChange = (id, value) => {
     const splitedStr = id.split("-");
     const typeInput = splitedStr[0];
     const inputId = splitedStr[1];
@@ -63,16 +67,14 @@ const LoginRegister = () => {
   const handlerShowRegister = () => {
     setShowRegister(true);
   };
-
-  const handlerShowLogin = () => {
+ */
+  /* const handlerShowLogin = () => {
     setShowRegister(false);
   };
-
-  const handlerLogin = async (e) => {
-    e.preventDefault();
+ */
+  const handlerLogin = async (provider, getCredentialsMethod) => {
     try {
-      setLoading(true);
-      await login(loginInput.email, loginInput.password);
+      await loginWithProvider(provider, getCredentialsMethod);
       navigate(DASHBOARD_IDEAS);
     } catch (error) {
       alert(error.message);
@@ -85,10 +87,42 @@ const LoginRegister = () => {
     <div className={styles.loginRegister}>
       <LandingPageNav />
       <section className={`${styles.login} ${showRegister && styles.hide}`}>
-        <form className={styles.loginForm} onSubmit={handlerLogin}>
+        <form className={styles.loginForm} onSubmit={(e) => e.preventDefault()}>
           <Text>Login</Text>
-
-          <Input
+          <Button
+            w
+            onClick={() =>
+              handlerLogin(
+                new GoogleAuthProvider(),
+                GoogleAuthProvider.credentialFromResult
+              )
+            }
+          >
+            <IconText icon={"google"}>Continue with Google</IconText>
+          </Button>
+          <Button
+            w
+            onClick={() =>
+              handlerLogin(
+                new FacebookAuthProvider(),
+                GoogleAuthProvider.credentialFromResult
+              )
+            }
+          >
+            <IconText icon={"facebook"}>Continue with Facebook</IconText>
+          </Button>
+          <Button
+            w
+            onClick={() =>
+              handlerLogin(
+                new TwitterAuthProvider(),
+                GoogleAuthProvider.credentialFromError
+              )
+            }
+          >
+            <IconText icon={"twitter"}>Continue with Twitter</IconText>
+          </Button>
+          {/* <Input
             label="Email"
             type="text"
             variant="borderBottom"
@@ -113,8 +147,8 @@ const LoginRegister = () => {
           </section>
           <Button w color="secondary" disabled={loading}>
             <Text>{loading ? "logging.." : "Log in"}</Text>
-          </Button>
-          <Text>
+          </Button> */}
+          {/*  <Text>
             Don't have an account{" "}
             <Mark
               style={{ cursor: "pointer" }}
@@ -123,10 +157,10 @@ const LoginRegister = () => {
             >
               Register
             </Mark>
-          </Text>
+          </Text> */}
         </form>
       </section>
-      <section className={`${styles.register} ${showRegister && styles.show}`}>
+      {/* <section className={`${styles.register} ${showRegister && styles.show}`}>
         <form className={styles.registerForm} onSubmit={handlerRegister}>
           <Text>Register</Text>
           <Input
@@ -174,7 +208,7 @@ const LoginRegister = () => {
             </Mark>
           </Text>
         </form>
-      </section>
+      </section> */}
       <GradientBg />
     </div>
   );

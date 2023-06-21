@@ -10,6 +10,5 @@ export const createSubscription = async (data) => {
     body: JSON.stringify(data),
   });
   const body = await response.json();
-  console.log(body);
   return body;
 };

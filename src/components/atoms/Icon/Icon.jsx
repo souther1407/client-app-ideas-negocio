@@ -31,7 +31,9 @@ import {
   AiOutlineBulb,
   AiOutlineUserAdd,
   AiOutlineTeam,
-  AiOutlineClockCircle,
+  AiOutlineGoogle,
+  AiOutlineTwitter,
+  AiFillFacebook,
 } from "react-icons/ai";
 import { GiGears, GiTakeMyMoney } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
@@ -86,6 +88,9 @@ const Icon = ({ type, size }) => {
     search: <AiOutlineSearch {...props} />,
     calc: <BsFillCalculatorFill {...props} />,
     clock: <FiClock {...props} />,
+    google: <AiOutlineGoogle {...props} />,
+    facebook: <AiFillFacebook {...props} />,
+    twitter: <AiOutlineTwitter {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

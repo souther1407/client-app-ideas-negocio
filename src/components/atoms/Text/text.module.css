@@ -5,6 +5,10 @@
   line-height: 1.7;
 }
 
+.text {
+  font-size: var(--sm);
+}
+
 .title {
   font-size: var(--xxxlg);
 }

@@ -44,7 +44,7 @@ const MobileMenu = () => {
         <div className={styles.closeButton}>
           <IconButton icon={"close"} onClick={() => setShowMenu(false)} />
         </div>
-        <section className={styles.links}>
+        {/* <section className={styles.links}>
           <Link to={LANDING_PAGE}>
             <Text type="title">Home</Text>
           </Link>
@@ -58,7 +58,7 @@ const MobileMenu = () => {
           <Link to={DASHBOARD}>
             <Text type="title">Dashboard</Text>
           </Link>
-        </section>
+        </section> */}
         <section className={styles.buttons}>
           {/* <GradientBorder>
             <ChangeLanguage />
