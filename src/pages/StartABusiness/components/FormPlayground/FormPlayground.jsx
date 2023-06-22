@@ -40,6 +40,11 @@ const FormPlayground = ({ onSubmit }) => {
       [id]: prev.skills.filter((t) => t !== tag),
     }));
   };
+
+  const handleSubmit = () => {
+    onSubmit(input);
+  };
+
   return (
     <form
       className={styles.formPlayground}
@@ -115,7 +120,7 @@ const FormPlayground = ({ onSubmit }) => {
         <Button flexible type="bordered">
           <IconText icon={"leftArrow"}>Back</IconText>
         </Button>
-        <Button flexible type="bordered">
+        <Button flexible type="bordered" onClick={handleSubmit}>
           <Text>{"Generate report"}</Text>
         </Button>
       </footer>

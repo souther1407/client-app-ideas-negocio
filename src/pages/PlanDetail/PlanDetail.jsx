@@ -38,7 +38,6 @@ const PlanDetail = ({ response }) => {
 
   return (
     <div className={styles.planDetail}>
-      {isLogged() && <VerticalLoginNav />}
       <section className={styles.content}>
         <LandingPageNav />
 
