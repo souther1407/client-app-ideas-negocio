@@ -1,6 +1,7 @@
 .input {
   font-size: var(--sm);
   padding: 16px 24px 16px 12px !important;
+  position: relative;
 }
 
 .input.borderFull.primary {

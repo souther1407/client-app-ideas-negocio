@@ -6,6 +6,8 @@ const Input = React.forwardRef(
       type = "text",
       variant = "borderBottom",
       color = "primary",
+      w = "100%",
+      fontSize = "inherit",
       ...otherProps
     },
     ref
@@ -13,6 +15,7 @@ const Input = React.forwardRef(
     return (
       <input
         type={type}
+        style={{ width: w, fontSize }}
         className={`${styles.input} ${styles[variant]} ${styles[color]}`}
         ref={ref}
         {...otherProps}

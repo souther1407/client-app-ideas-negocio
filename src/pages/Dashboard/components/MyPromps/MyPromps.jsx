@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./myPromps.module.css";
-import CarouselMultiline from "../../../../components/organisms/CarouselMultiline/CarouselMultiline";
 import Text from "../../../../components/atoms/Text/Text";
 import { getPrompts } from "../../../../services/userPrompts/getPrompts";
-import PromptCard from "../../../LandingPage/components/AiDropshipings/components/AiDropshipingCard/AiDropshipingCard";
-import ShineEffect from "../../../../components/molecules/ShineEffect/ShineEffect";
-
+import PlansTable from "../../../../components/organisms/PlansTable/PlansTable";
+import Paginator from "../../../../components/organisms/Paginator/Paginator";
 const MyPromps = () => {
   const [prompts, setPrompts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initPrompts = async () => {
       try {
-        setLoading(true);
         const data = await getPrompts();
         setPrompts(data);
       } catch (error) {
@@ -28,43 +25,12 @@ const MyPromps = () => {
     <div className={styles.myPrompts}>
       {loading && <Text>Cargando...</Text>}{" "}
       {!loading && prompts.length > 0 && (
-        <div className={styles.carousel}>
-          <CarouselMultiline onChange={() => {}}>
-            {prompts.map((p) => (
-              <div className={styles.element}>
-                <PromptCard
-                  show={true}
-                  id={p.id}
-                  details={p.details}
-                  age={p.input.age}
-                  budget={p.input.budget}
-                  location={p.input.location}
-                  skills={p.input.skills}
-                  teacher={p.input.teacher}
-                  key={p.id}
-                />
-              </div>
-            ))}
-
-            {/* <div className={styles.element}>
-              <PromptCard to={"example/1"} show={true} />
-            </div>
-            <div className={styles.element}>
-              <PromptCard to={"example/1"} show={true} />
-            </div>
-            <div className={styles.element}>
-              <PromptCard to={"example/1"} show={true} />
-            </div>
-            <div className={styles.element}>
-              <PromptCard to={"example/1"} show={true} />
-            </div>
-            <div className={styles.element}>
-              <PromptCard to={"example/1"} show={true} />
-            </div>
-            <div className={styles.element}>
-              <PromptCard to={"example/1"} show={true} />
-            </div> */}
-          </CarouselMultiline>
+        <div className={styles.list}>
+          <Text type="subtitle">My reports</Text>
+          <PlansTable data={prompts} onRowDelete={(id) => console.log(id)} />
+          <div className={styles.paginator}>
+            <Paginator />
+          </div>
         </div>
       )}
     </div>
