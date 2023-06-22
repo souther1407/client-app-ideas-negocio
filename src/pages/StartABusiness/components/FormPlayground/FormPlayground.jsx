@@ -15,15 +15,30 @@ import {
 import Slider from "../../../../components/atoms/Slider/Slider";
 import IconText from "../../../../components/molecules/IconText/IconText";
 import TagInput from "../../../../components/molecules/TagInput/TagInput";
+import { countries } from "../../../../utils/constants/countries";
+import Combobox from "../../../../components/molecules/Combobox/Combobox";
 const FormPlayground = ({ onSubmit }) => {
   const [input, setInput] = useState({
     budget: 0,
     freeTime: 1,
     location: "",
+    description: "",
+    skills: [],
   });
 
   const handleChange = (id, value) => {
     setInput((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleAddSkill = (id, tag) => {
+    setInput((prev) => ({ ...prev, [id]: [...prev.skills, tag] }));
+  };
+
+  const handleRemoveTag = (id, tag) => {
+    setInput((prev) => ({
+      ...prev,
+      [id]: prev.skills.filter((t) => t !== tag),
+    }));
   };
   return (
     <form
@@ -49,7 +64,11 @@ const FormPlayground = ({ onSubmit }) => {
         </Select>
       </header>
       <main className={styles.main}>
-        <Textarea placeholder={"Bussines description"} />
+        <Textarea
+          placeholder={"Bussines description"}
+          id="description"
+          onChange={handleChange}
+        />
         <section className={styles.inputs}>
           <div>
             <Text>Budget ($) {input.budget}</Text>
@@ -60,24 +79,35 @@ const FormPlayground = ({ onSubmit }) => {
             <Slider id={"freeTime"} onChange={handleChange} min={1} max={100} />
           </div>
           <div>
-            <Select onValueChange={(value) => handleChange("location", value)}>
+            <Combobox
+              nofoundText={"not country found"}
+              title={"Select Country"}
+              data={countries}
+              id={"location"}
+              w="250px"
+              onSelect={handleChange}
+            />
+            {/* <Select onValueChange={(value) => handleChange("location", value)}>
               <SelectTrigger className="w-[250px]">
                 <SelectValue placeholder="Country" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Country</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  {countries.map((c) => (
+                    <SelectItem value={c}>{c}</SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
-            </Select>
+            </Select> */}
           </div>
           <div>
-            <TagInput placeholder={"Type yours skills"} />
+            <TagInput
+              placeholder={"Type yours skills"}
+              onAddTag={handleAddSkill}
+              onRemoveTag={handleRemoveTag}
+              id="skills"
+            />
           </div>
         </section>
       </main>

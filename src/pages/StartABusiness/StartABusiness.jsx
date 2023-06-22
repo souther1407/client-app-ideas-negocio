@@ -69,6 +69,7 @@ const StartABusiness = () => {
   const { creating, generateOptions } = useOptions((state) => state);
   const { setPromptDetail } = usePromptDetail((state) => state);
   const [hasAnIdea, setHasAnIdea] = useState(false);
+
   const handlerSendData = async () => {
     save("input", input);
     if (!isLogged()) return setShowPopup(true);
