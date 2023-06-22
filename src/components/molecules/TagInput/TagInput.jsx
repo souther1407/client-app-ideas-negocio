@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../atoms/Input/Input";
 import styles from "./tagInput.module.css";
 import Text from "../../atoms/Text/Text";
@@ -18,23 +18,23 @@ const Tag = ({ id, input, onDelete }) => {
   );
 };
 
-const TagInput = ({ placeholder }) => {
+const TagInput = ({ placeholder, onAddTag, id, onRemoveTag }) => {
   const [tags, setTags] = useState([]);
   const [input, setInput] = useState("");
 
   const addTag = (e) => {
     const { key } = e;
     if (key === "Enter") {
-      console.log("presiono");
       const trimmedInput = input.trim();
       if (trimmedInput.length > 0 && !tags.includes(trimmedInput)) {
         setTags([...tags, trimmedInput]);
         setInput("");
+        onAddTag(id, trimmedInput);
       }
     }
   };
-
   const deleteTag = (input) => {
+    onRemoveTag(id, input);
     setTags(tags.filter((t) => t !== input));
   };
   return (

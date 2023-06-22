@@ -100,17 +100,7 @@ const LoginRegister = () => {
           >
             <IconText icon={"google"}>Continue with Google</IconText>
           </Button>
-          <Button
-            w
-            onClick={() =>
-              handlerLogin(
-                new FacebookAuthProvider(),
-                GoogleAuthProvider.credentialFromResult
-              )
-            }
-          >
-            <IconText icon={"facebook"}>Continue with Facebook</IconText>
-          </Button>
+
           <Button
             w
             onClick={() =>

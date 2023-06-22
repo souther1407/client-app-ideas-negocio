@@ -31,15 +31,15 @@ const TEACHERS = {
   markZuckerberg: "Mark Zuckerberg",
   warrenBuffet: "Warren Buffet",
 };
-const MAX_SECTION_NUMBER = 8;
+const MAX_SECTION_NUMBER = 2;
 const StartABusiness = () => {
   const { load, save } = useStorage();
   const [input, setInput] = useState({
     budget: "",
-    age: "",
+    age: "30",
     skills: "",
     location: "",
-    teacher: "",
+    teacher: "Elon musk",
     description: "",
   });
 
@@ -69,17 +69,25 @@ const StartABusiness = () => {
   const { creating, generateOptions } = useOptions((state) => state);
   const { setPromptDetail } = usePromptDetail((state) => state);
   const [hasAnIdea, setHasAnIdea] = useState(false);
-  const handlerSendData = async () => {
-    save("input", input);
+
+  const handlerSendData = async (input) => {
+    const parsedInputToMakeCompatibleWithPrompts = {
+      ...input,
+      age: "30",
+      skills: input.skills.join(", "),
+      teacher: "Elon musk",
+    };
+    console.log("input definitivo", parsedInputToMakeCompatibleWithPrompts);
+    save("input", parsedInputToMakeCompatibleWithPrompts);
     if (!isLogged()) return setShowPopup(true);
-    if (input.description.length > 0) {
+    if (parsedInputToMakeCompatibleWithPrompts.description.length > 0) {
       try {
         setLoading(true);
         const detail = await createDetail({
-          input,
+          input: parsedInputToMakeCompatibleWithPrompts,
           header: {
             title: "Mi idea de negocio",
-            description: input.description,
+            description: parsedInputToMakeCompatibleWithPrompts.description,
           },
         });
         console.log(detail);
@@ -96,27 +104,11 @@ const StartABusiness = () => {
     }
   };
 
-  const nextField = () => {
-    console.log(field + 1);
-    if (field === MAX_SECTION_NUMBER) return;
-    setField((prev) => prev + 1);
-  };
-
-  const antField = () => {
-    if (hasAnIdea ? field === 2 : field === 3) return;
-    setField((prev) => prev - 1);
-  };
-
-  const handleChange = (id, value) => {
-    setShine((prev) => ({ ...prev, [id]: value.length > 0 }));
-    setInput((prev) => ({ ...prev, [id]: value }));
-  };
-
-  const handleTeacherSelect = (teacher) => {
+  /* const handleTeacherSelect = (teacher) => {
     setShine((prev) => ({ ...prev, teacher: true }));
     setInput((prev) => ({ ...prev, teacher: teacher }));
-  };
-
+  }; */
+  /* 
   const isMustShine = () => {
     switch (field) {
       case 2:
@@ -135,13 +127,15 @@ const StartABusiness = () => {
         return false;
     }
   };
-
+ */
   return (
     <div className={styles.startABusiness}>
       <main className={styles.content}>
         <LandingPageNav />
-        <section className={styles.form}>
-          {/* <section className={`${styles.field} ${field === 1 && styles.show}`}>
+        {(creating || loading) && <LoadingBooks />}
+        {!loading && (
+          <section className={styles.form}>
+            {/* <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <Text type="title" textAlign="center">
               ¿Ya tienes una idea de negocios?
             </Text>
@@ -166,10 +160,11 @@ const StartABusiness = () => {
               <Text>NO</Text>
             </Button>
           </section> */}
-          <section className={`${styles.field} ${styles.show}`}>
-            <FormPlayground />
+            <section className={`${styles.field} ${styles.show}`}>
+              <FormPlayground onSubmit={handlerSendData} />
+            </section>
           </section>
-        </section>
+        )}
         {/* <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <Text type="title" textAlign="center">
