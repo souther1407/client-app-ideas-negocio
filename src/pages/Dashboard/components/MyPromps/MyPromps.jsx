@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./myPromps.module.css";
 import Text from "../../../../components/atoms/Text/Text";
 import { getPrompts } from "../../../../services/userPrompts/getPrompts";
@@ -178,6 +178,7 @@ const MyPromps = () => {
     };
     initPrompts();
   }, []);
+
   const getFilteredPrompsList = () => {
     const fileted = prompts.slice(
       (currentPage - 1) * rowsNumber,
@@ -201,7 +202,7 @@ const MyPromps = () => {
           <div className={styles.paginator}>
             <Paginator
               elementsPerPage={rowsNumber}
-              totalElements={mockedPromps.length}
+              totalElements={prompts.length}
               onNumPageChange={(value) => setRowsNumber(value)}
               onPageChange={(page) => setCurrentPage(page)}
             />
