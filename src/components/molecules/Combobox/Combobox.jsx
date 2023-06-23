@@ -58,20 +58,28 @@ function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={`w-[${w}] justify-between`}
+          className={`w-[${w}] justify-between border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
         >
-          {value ? value : title}
+          {value
+            ? formated.find(
+                (c) => c.value.toLowerCase() === value.toLowerCase()
+              )?.label
+            : title}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] h-[200px] p-0">
-        <Command>
-          <CommandInput placeholder={title} />
+      <PopoverContent className="w-[200px] h-[300px] border-neutral-700 p-0 overflow-auto bg-transparent">
+        <Command className="bg-neutral-950 text-white">
+          <CommandInput
+            placeholder={title}
+            className={"placeholder:text-neutral-400"}
+          />
           <CommandEmpty>{nofoundText}</CommandEmpty>
-          <CommandGroup>
+          <CommandGroup className="overflow-auto">
             {formated.map((framework) => (
               <CommandItem
                 key={framework.value}
+                className={"text-white"}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue);
                   setOpen(false);

@@ -1,11 +1,14 @@
 .tagInput {
   height: 100px;
   padding: 4px;
-  border: 1px solid var(--white-transparent);
+  border: 1px solid var(--dark-gray);
   overflow: auto;
   border-radius: 8px;
 }
 
+.tagInput:has(input:focus) {
+  border: 1px solid var(--white-transparent);
+}
 .tags {
   display: flex;
   flex-wrap: wrap;

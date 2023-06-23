@@ -1,0 +1,30 @@
+.paginator {
+  display: flex;
+  align-items: center;
+}
+.rowPerPage {
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.rowPerPage > :first-child {
+  margin-right: 8px;
+}
+.pages {
+  display: flex;
+  align-self: center;
+}
+.btns {
+  display: flex;
+  margin-left: 16px;
+  align-self: center;
+}
+.btns > * {
+  margin-right: 4px;
+}
+.btn {
+  border: 1px solid var(--white-transparent);
+  border-radius: 4px;
+  padding: 4px;
+}

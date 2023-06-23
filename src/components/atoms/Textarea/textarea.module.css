@@ -2,8 +2,13 @@
   resize: none;
   width: 100%;
   background: none;
-  border: 1px solid var(--white-transparent);
+  border: 1px solid var(--dark-gray);
   border-radius: 8px;
   padding: 8px;
   font-size: var(--sm);
+}
+
+.textarea:focus {
+  outline: none;
+  border: 1px solid var(--white-transparent);
 }

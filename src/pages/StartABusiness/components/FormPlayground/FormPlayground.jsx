@@ -51,22 +51,15 @@ const FormPlayground = ({ onSubmit }) => {
       onSubmit={(e) => e.preventDefault()}
     >
       <header className={styles.header}>
-        <Text type="subtitle">Hola</Text>
-        <Select>
-          <SelectTrigger className="w-[250px]">
-            <SelectValue placeholder="Load an example" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Fruits</SelectLabel>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
-              <SelectItem value="grapes">Grapes</SelectItem>
-              <SelectItem value="pineapple">Pineapple</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <Text type="subtitle">Playground</Text>
+        <Combobox
+          nofoundText={"not report found"}
+          title={"Select report"}
+          data={["report 1", "report 2", "report 3"]}
+          id={"location"}
+          w="250px"
+          onSelect={handleChange}
+        />
       </header>
       <main className={styles.main}>
         <Textarea
@@ -75,14 +68,6 @@ const FormPlayground = ({ onSubmit }) => {
           onChange={handleChange}
         />
         <section className={styles.inputs}>
-          <div>
-            <Text>Budget ($) {input.budget}</Text>
-            <Slider id={"budget"} onChange={handleChange} />
-          </div>
-          <div>
-            <Text>Free Time (H/W){input.freeTime}</Text>
-            <Slider id={"freeTime"} onChange={handleChange} min={1} max={100} />
-          </div>
           <div>
             <Combobox
               nofoundText={"not country found"}
@@ -105,6 +90,14 @@ const FormPlayground = ({ onSubmit }) => {
                 </SelectGroup>
               </SelectContent>
             </Select> */}
+          </div>
+          <div>
+            <Text>Budget ($) {input.budget}</Text>
+            <Slider id={"budget"} onChange={handleChange} />
+          </div>
+          <div>
+            <Text>Free Time (H/W){input.freeTime}</Text>
+            <Slider id={"freeTime"} onChange={handleChange} min={1} max={100} />
           </div>
           <div>
             <TagInput

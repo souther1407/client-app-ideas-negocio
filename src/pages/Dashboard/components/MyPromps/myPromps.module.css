@@ -5,9 +5,14 @@
   position: relative;
   bottom: 14px;
 }
-.carousel {
+.list {
   width: 950px;
-  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 32px;
+  border: 1px solid var(--gray-transparent);
+  border-radius: 8px;
+  position: relative;
 }
 .element {
   display: flex;
@@ -15,9 +20,17 @@
   position: relative;
   z-index: 5;
 }
+.table {
+  padding: 16px 0;
+  flex-grow: 1;
+}
 
+.paginator {
+  display: flex;
+  justify-content: center;
+}
 @media screen and (max-width: 640px) {
-  .carousel {
+  .list {
     width: 100vw;
     padding: 0;
   }

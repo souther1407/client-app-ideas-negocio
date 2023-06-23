@@ -1,0 +1,26 @@
+.plansTable {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--gray-transparent);
+}
+
+thead:hover {
+  background-color: var(--gray-transparent);
+}
+.headColumn {
+  display: flex;
+}
+.headColumn > :first-child {
+  margin-right: 8px;
+}
+.row {
+  border-bottom: 1px solid var(--gray-transparent);
+}
+
+.row:hover {
+  background-color: var(--gray-transparent);
+}
+
+.row > * {
+  padding: 16px;
+}

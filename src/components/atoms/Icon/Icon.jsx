@@ -12,7 +12,15 @@ import {
   BsFillMegaphoneFill,
 } from "react-icons/bs";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { BiBrain, BiHelpCircle, BiBookOpen } from "react-icons/bi";
+import {
+  BiBrain,
+  BiHelpCircle,
+  BiBookOpen,
+  BiArrowFromRight,
+  BiArrowFromLeft,
+  BiLeftArrowAlt,
+  BiRightArrowAlt,
+} from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import {
   FaMoneyBillWave,
@@ -37,12 +45,15 @@ import {
 } from "react-icons/ai";
 import { GiGears, GiTakeMyMoney } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
+
 import {
   BsArrowLeft,
   BsArrowRight,
   BsImage,
   BsFillCalculatorFill,
+  BsFillTrashFill,
 } from "react-icons/bs";
+import { CgArrowsV } from "react-icons/cg";
 import { FiClock } from "react-icons/fi";
 import styles from "./icon.module.css";
 
@@ -92,6 +103,12 @@ const Icon = ({ type, size, color = "inherit" }) => {
     google: <AiOutlineGoogle {...props} />,
     facebook: <AiFillFacebook {...props} />,
     twitter: <AiOutlineTwitter {...props} />,
+    trash: <BsFillTrashFill {...props} />,
+    upDownArrows: <CgArrowsV {...props} />,
+    doubleArrowLeft: <BiArrowFromRight {...props} />,
+    doubleArrowRight: <BiArrowFromLeft {...props} />,
+    singleArrowLeft: <BiLeftArrowAlt {...props} />,
+    singleArrowRight: <BiRightArrowAlt {...props} />,
   };
   return <i>{icons[type]}</i>;
 };
