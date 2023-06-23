@@ -7,8 +7,10 @@
 }
 .list {
   width: 950px;
+  display: flex;
+  flex-direction: column;
   padding: 16px 32px;
-  border: 1px solid var(--white-transparent);
+  border: 1px solid var(--gray-transparent);
   border-radius: 8px;
   position: relative;
 }
@@ -18,11 +20,14 @@
   position: relative;
   z-index: 5;
 }
+.table {
+  padding: 16px 0;
+  flex-grow: 1;
+}
+
 .paginator {
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
 }
 @media screen and (max-width: 640px) {
   .list {

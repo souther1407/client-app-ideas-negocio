@@ -48,6 +48,7 @@ const TagInput = ({ placeholder, onAddTag, id, onRemoveTag }) => {
         onKeyDown={addTag}
         onChange={(e) => setInput(e.target.value)}
         value={input}
+        fontSize={"16px"}
         placeholder={placeholder}
         variant="borderNone"
       />

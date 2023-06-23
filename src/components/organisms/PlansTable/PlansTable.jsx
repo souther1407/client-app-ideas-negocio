@@ -42,6 +42,7 @@ const PlansTable = ({ data, onRowDelete }) => {
           <td>
             <HeadColumn name={"Views"} />
           </td>
+          <td></td>
         </tr>
       </thead>
       <tbody className={styles.section}>

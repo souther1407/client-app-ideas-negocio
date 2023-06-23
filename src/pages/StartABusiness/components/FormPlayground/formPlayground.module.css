@@ -1,5 +1,5 @@
 .formPlayground {
-  border: 1px solid var(--white-transparent);
+  border: 1px solid var(--dark-gray);
   border-radius: 8px;
   width: 800px;
 
@@ -15,7 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--white-transparent);
+  border-bottom: 1px solid var(--dark-gray);
 }
 
 .main {
