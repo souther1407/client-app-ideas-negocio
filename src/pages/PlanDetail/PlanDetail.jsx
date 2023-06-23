@@ -17,6 +17,7 @@ import imgProductMin from "../../assets/imgProductMin.svg";
 import imgTeam from "../../assets/imgTeam.svg";
 import imgTeacherMessage from "../../assets/imgTeacherMessage.svg";
 import GradientText from "../../components/molecules/GradientText/GradientText";
+import { Switch } from "../../components/atoms/Switch/Switch";
 const parts = [
   { title: "Analisis de Mercado", id: "marketAnalisis" },
   { title: "Precio", id: "prices" },
@@ -42,11 +43,18 @@ const PlanDetail = ({ response }) => {
         <LandingPageNav />
 
         <section className={styles.description}>
-          <section className={styles.info}>
-            <GradientText type="title" bold>
-              {response.title}
-            </GradientText>
-            <Text>{response.description}</Text>
+          <section className={styles.header}>
+            <div className={styles.info}>
+              <GradientText type="title" bold>
+                {response.title}
+              </GradientText>
+              <Text>{response.description}</Text>
+            </div>
+            <div className={styles.privatePublicSwitch}>
+              <Text>Private</Text>
+              <Switch />
+              <Text>Public</Text>
+            </div>
           </section>
           <section className={styles.cardsDetail}>
             <DetailCard
