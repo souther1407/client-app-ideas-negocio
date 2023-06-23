@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./plansTable.module.css";
 import Text from "../../atoms/Text/Text";
 import IconButton from "../../molecules/IconButton/IconButton";
-
-const PlanRow = ({ id, title, onDelete }) => {
-  const handleDelete = () => {
-    onDelete(id);
+import { useNavigate } from "react-router-dom";
+import { MY_PROMPTS_DETAIL } from "../../../utils/constants/routes";
+import usePromptDetail from "../../../states/prompDetail";
+import { formatStringToShort } from "../../../utils/format/formatStringToShort";
+const PlanRow = ({ plan }) => {
+  const { id, input, details } = plan;
+  const navigate = useNavigate();
+  const { setPromptDetail } = usePromptDetail((state) => state);
+  const handleDelete = () => {};
+  const goToPlanDetail = () => {
+    console.log(plan);
+    setPromptDetail({
+      ...plan.details,
+      input: plan.input,
+    });
+    navigate(MY_PROMPTS_DETAIL + `/${id}`);
   };
   return (
     <tr className={styles.row}>
       <td>
-        <Text>{title}</Text>
+        <Text onClick={goToPlanDetail}>
+          {formatStringToShort(details.description, 25)}
+        </Text>
       </td>
       <td>private</td>
       <td>26</td>
@@ -47,7 +61,7 @@ const PlansTable = ({ data, onRowDelete }) => {
       </thead>
       <tbody className={styles.section}>
         {data.map((d) => (
-          <PlanRow title={d.details.title} id={d.id} onDelete={onRowDelete} />
+          <PlanRow plan={d} />
         ))}
       </tbody>
       <tfoot></tfoot>

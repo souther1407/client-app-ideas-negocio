@@ -51,7 +51,7 @@ const FormPlayground = ({ onSubmit }) => {
       onSubmit={(e) => e.preventDefault()}
     >
       <header className={styles.header}>
-        <Text type="subtitle">Hola</Text>
+        <Text type="subtitle">Playground</Text>
         <Combobox
           nofoundText={"not report found"}
           title={"Select report"}

@@ -132,10 +132,9 @@ const StartABusiness = () => {
     <div className={styles.startABusiness}>
       <main className={styles.content}>
         <LandingPageNav />
-        {(creating || loading) && <LoadingBooks />}
-        {!loading && (
-          <section className={styles.form}>
-            {/* <section className={`${styles.field} ${field === 1 && styles.show}`}>
+
+        <section className={styles.form}>
+          {/* <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <Text type="title" textAlign="center">
               ¿Ya tienes una idea de negocios?
             </Text>
@@ -160,11 +159,18 @@ const StartABusiness = () => {
               <Text>NO</Text>
             </Button>
           </section> */}
+          {(creating || loading) && (
+            <div className={styles.loading}>
+              <LoadingBooks />
+            </div>
+          )}
+          {!loading && (
             <section className={`${styles.field} ${styles.show}`}>
               <FormPlayground onSubmit={handlerSendData} />
             </section>
-          </section>
-        )}
+          )}
+        </section>
+
         {/* <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <Text type="title" textAlign="center">
