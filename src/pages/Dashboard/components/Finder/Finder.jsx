@@ -37,6 +37,7 @@ const PlanRow = ({ plan, onToggle }) => {
         promptId: id,
       });
       alert("listo");
+      onToggle(!inMyReports);
     } catch (error) {
       alert(error.message);
     }
@@ -105,7 +106,23 @@ const Finder = () => {
                 data={getFilteredPrompsList()}
                 columns={["Title", "Country", "Budget", "adds", "Add"]}
                 renderRow={(data) => (
-                  <PlanRow plan={data} onToggle={() => {}} />
+                  <PlanRow
+                    key={data.id}
+                    plan={data}
+                    onToggle={(value) => {
+                      setPrompts(
+                        prompts.map((p) => {
+                          if (p.id == data.id) {
+                            return {
+                              ...p,
+                              inMyReports: value,
+                            };
+                          }
+                          return p;
+                        })
+                      );
+                    }}
+                  />
                 )}
               />
             </div>
