@@ -7,20 +7,39 @@ import Text from "../../../../components/atoms/Text/Text";
 import { MY_PROMPTS_DETAIL } from "../../../../utils/constants/routes";
 import usePromptDetail from "../../../../states/prompDetail";
 import { useNavigate } from "react-router-dom";
+import { Checkbox } from "../../../../components/atoms/CheckBox/CheckBox";
+import { toggleAddMyPrompts } from "../../../../services/userPrompts/toggleAddMyPrompts";
+import LandingPageNav from "../../../../components/organisms/LandingPageNav/LandingPageNav";
+import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 
-const PlanRow = ({ plan }) => {
-  const { details, input, id, userId, isPublic } = plan;
+const PlanRow = ({ plan, onToggle }) => {
+  const { details, input, id, userId, isPublic, inMyReports } = plan;
+
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const navigate = useNavigate();
+
   const goToPlanDetail = () => {
     setPromptDetail({
       id,
       userId,
       isPublic,
+      inMyReports,
       ...plan.details,
       input: plan.input,
     });
     navigate(MY_PROMPTS_DETAIL + `/${id}`);
+  };
+
+  const handleCheckBox = async () => {
+    try {
+      const done = await toggleAddMyPrompts({
+        userId: userId,
+        promptId: id,
+      });
+      alert("listo");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -38,7 +57,11 @@ const PlanRow = ({ plan }) => {
         <Text>15</Text>
       </td>
       <td>
-        <Text>algo</Text>
+        <Checkbox
+          className="border-neutral-700 w-[24px] h-[24px]"
+          defaultChecked={inMyReports}
+          onCheckedChange={handleCheckBox}
+        />
       </td>
     </>
   );
@@ -71,27 +94,33 @@ const Finder = () => {
   };
   return (
     <div className={styles.myPrompts}>
-      {loading && <Text>Cargando...</Text>}{" "}
-      {!loading && prompts.length > 0 && (
-        <div className={styles.list}>
-          <Text type="subtitle">Reports finder</Text>
-          <div className={styles.table}>
-            <PlansTable
-              data={getFilteredPrompsList()}
-              columns={["Title", "Country", "Budget", "adds", "Add"]}
-              renderRow={(data) => <PlanRow plan={data} />}
-            />
+      <LandingPageNav />
+      <section className={styles.content}>
+        {loading && <Text>Cargando...</Text>}{" "}
+        {!loading && prompts.length > 0 && (
+          <div className={styles.list}>
+            <Text type="subtitle">Reports finder</Text>
+            <div className={styles.table}>
+              <PlansTable
+                data={getFilteredPrompsList()}
+                columns={["Title", "Country", "Budget", "adds", "Add"]}
+                renderRow={(data) => (
+                  <PlanRow plan={data} onToggle={() => {}} />
+                )}
+              />
+            </div>
+            <div className={styles.paginator}>
+              <Paginator
+                elementsPerPage={rowsNumber}
+                totalElements={prompts.length}
+                onNumPageChange={(value) => setRowsNumber(value)}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
           </div>
-          <div className={styles.paginator}>
-            <Paginator
-              elementsPerPage={rowsNumber}
-              totalElements={prompts.length}
-              onNumPageChange={(value) => setRowsNumber(value)}
-              onPageChange={(page) => setCurrentPage(page)}
-            />
-          </div>
-        </div>
-      )}
+        )}
+      </section>
+      <GradientBg opacity={15} />
     </div>
   );
 };

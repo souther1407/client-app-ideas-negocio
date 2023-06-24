@@ -9,9 +9,10 @@ import usePromptDetail from "../../../../states/prompDetail";
 import { formatStringToShort } from "../../../../utils/format/formatStringToShort";
 import IconButton from "../../../../components/molecules/IconButton/IconButton";
 import { MY_PROMPTS_DETAIL } from "../../../../utils/constants/routes";
-
+import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
+import LandingPageNav from "../../../../components/organisms/LandingPageNav/LandingPageNav";
 const PlanRow = ({ plan }) => {
-  const { id, input, details, isPublic, userId } = plan;
+  const { id, input, details, isPublic, userId, inMyReports } = plan;
   const navigate = useNavigate();
   const { setPromptDetail } = usePromptDetail((state) => state);
   const handleDelete = () => {};
@@ -20,6 +21,7 @@ const PlanRow = ({ plan }) => {
       id,
       userId,
       isPublic,
+      inMyReports,
       ...plan.details,
       input: plan.input,
     });
@@ -71,27 +73,31 @@ const MyPromps = () => {
   };
   return (
     <div className={styles.myPrompts}>
-      {loading && <Text>Cargando...</Text>}{" "}
-      {!loading && prompts.length > 0 && (
-        <div className={styles.list}>
-          <Text type="subtitle">My reports</Text>
-          <div className={styles.table}>
-            <PlansTable
-              data={getFilteredPrompsList()}
-              columns={["Title", "Status", "Views", ""]}
-              renderRow={(data) => <PlanRow plan={data} />}
-            />
+      <LandingPageNav />
+      <section className={styles.content}>
+        {loading && <Text>Cargando...</Text>}{" "}
+        {!loading && prompts.length > 0 && (
+          <div className={styles.list}>
+            <Text type="subtitle">My reports</Text>
+            <div className={styles.table}>
+              <PlansTable
+                data={getFilteredPrompsList()}
+                columns={["Title", "Status", "Views", ""]}
+                renderRow={(data) => <PlanRow plan={data} />}
+              />
+            </div>
+            <div className={styles.paginator}>
+              <Paginator
+                elementsPerPage={rowsNumber}
+                totalElements={prompts.length}
+                onNumPageChange={(value) => setRowsNumber(value)}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
           </div>
-          <div className={styles.paginator}>
-            <Paginator
-              elementsPerPage={rowsNumber}
-              totalElements={prompts.length}
-              onNumPageChange={(value) => setRowsNumber(value)}
-              onPageChange={(page) => setCurrentPage(page)}
-            />
-          </div>
-        </div>
-      )}
+        )}
+      </section>
+      <GradientBg opacity={15} />
     </div>
   );
 };

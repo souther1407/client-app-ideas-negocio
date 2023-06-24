@@ -21,6 +21,8 @@ import ExpertDashboard from "./pages/ExpertDashboard/ExpertDashboard";
 import ExpertLogin from "./pages/ExpertLogin/ExpertLogin";
 import Affiliate from "./pages/Affiliate/Affiliate";
 import PlanSectionDetail from "./pages/PlanSectionDetail/PlanSectionDetail";
+import MyPromps from "./pages/Dashboard/components/MyPromps/MyPromps";
+import Finder from "./pages/Dashboard/components/Finder/Finder";
 import {
   LOGIN,
   MAIN,
@@ -55,7 +57,9 @@ function App() {
         <Route path={START_A_BUSINESS} element={<StartABusiness />} />
         <Route path={AFFILIATE} element={<Affiliate />} />
         <Route path={CHOOSE_BUSINESS} element={<ChooseBusiness />} />
-        <Route path={DASHBOARD + "/:section"} element={<Dashboard />} />
+
+        <Route path={DASHBOARD + "/ideas"} element={<MyPromps />} />
+        <Route path={DASHBOARD + "/finder"} element={<Finder />} />
         <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<MyPromptDetail />} />
         <Route path={ACTIVATE_SUCCESS} element={<Success />} />
         <Route
