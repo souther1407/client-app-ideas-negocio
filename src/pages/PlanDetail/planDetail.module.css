@@ -24,7 +24,7 @@
 .description {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-basis: 50%;
   align-items: center;
   z-index: 1;
@@ -32,6 +32,7 @@
 .header {
   text-align: center;
   width: 80%;
+  margin: 0 auto;
 }
 .inputUser {
   position: relative;
