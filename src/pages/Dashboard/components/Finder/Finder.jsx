@@ -9,12 +9,14 @@ import usePromptDetail from "../../../../states/prompDetail";
 import { useNavigate } from "react-router-dom";
 
 const PlanRow = ({ plan }) => {
-  const { details, input, id } = plan;
+  const { details, input, id, userId, isPublic } = plan;
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const navigate = useNavigate();
   const goToPlanDetail = () => {
-    console.log(plan);
     setPromptDetail({
+      id,
+      userId,
+      isPublic,
       ...plan.details,
       input: plan.input,
     });

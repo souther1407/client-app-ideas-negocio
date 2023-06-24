@@ -18,21 +18,19 @@ import imgTeam from "../../assets/imgTeam.svg";
 import imgTeacherMessage from "../../assets/imgTeacherMessage.svg";
 import GradientText from "../../components/molecules/GradientText/GradientText";
 import { Switch } from "../../components/atoms/Switch/Switch";
-const parts = [
-  { title: "Analisis de Mercado", id: "marketAnalisis" },
-  { title: "Precio", id: "prices" },
-  { title: "Ventas", id: "sales" },
-  { title: "Plan de Marketing", id: "marketingPlan" },
-  { title: "Tiempo", id: "time" },
-  { title: "Analisis de Riesgo", id: "riskAnalisis" },
-];
-
+import { Checkbox } from "../../components/atoms/CheckBox/CheckBox";
 import { useStorage } from "../../hooks/useStorage";
+
 const PlanDetail = ({ response }) => {
   const navigate = useNavigate();
-  console.log("response??", response);
-  const { isLogged } = useLogin({});
+  const { isLogged, userData } = useLogin({});
   const { save } = useStorage();
+
+  const handleSwitch = async (value) => {
+    try {
+    } catch (error) {}
+    console.log(value);
+  };
   useEffect(() => {
     save("PLAN_DETAIL_URL", window.location.pathname);
   }, []);
@@ -50,11 +48,21 @@ const PlanDetail = ({ response }) => {
               </GradientText>
               <Text>{response.description}</Text>
             </div>
-            <div className={styles.privatePublicSwitch}>
-              <Text>Private</Text>
-              <Switch />
-              <Text>Public</Text>
-            </div>
+            {userData.uid === response.userId ? (
+              <div className={styles.privatePublicSwitch}>
+                <Text>Private</Text>
+                <Switch
+                  defaultChecked={response.isPublic}
+                  onCheckedChange={handleSwitch}
+                />
+                <Text>Public</Text>
+              </div>
+            ) : (
+              <div className={styles.addToFavorites}>
+                <Checkbox className="border-neutral-700 w-[40px] h-[40px]" />
+                <Text>Add to my reports</Text>
+              </div>
+            )}
           </section>
           <section className={styles.cardsDetail}>
             <DetailCard
