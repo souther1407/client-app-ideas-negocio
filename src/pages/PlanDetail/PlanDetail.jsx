@@ -20,7 +20,7 @@ import GradientText from "../../components/molecules/GradientText/GradientText";
 import { Switch } from "../../components/atoms/Switch/Switch";
 import { Checkbox } from "../../components/atoms/CheckBox/CheckBox";
 import { useStorage } from "../../hooks/useStorage";
-
+import { changeVisibility } from "../../services/userPrompts/chageVisibily";
 const PlanDetail = ({ response }) => {
   const navigate = useNavigate();
   const { isLogged, userData } = useLogin({});
@@ -28,8 +28,12 @@ const PlanDetail = ({ response }) => {
 
   const handleSwitch = async (value) => {
     try {
-    } catch (error) {}
-    console.log(value);
+      console.log("entra aca");
+      await changeVisibility({ promptId: response.id, visibility: value });
+      alert(value ? "report set to public" : "report set to private");
+    } catch (error) {
+      alert("someting went wrong, try again");
+    }
   };
   useEffect(() => {
     save("PLAN_DETAIL_URL", window.location.pathname);
