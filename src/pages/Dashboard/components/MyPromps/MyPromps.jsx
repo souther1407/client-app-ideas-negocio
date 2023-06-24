@@ -11,13 +11,15 @@ import IconButton from "../../../../components/molecules/IconButton/IconButton";
 import { MY_PROMPTS_DETAIL } from "../../../../utils/constants/routes";
 
 const PlanRow = ({ plan }) => {
-  const { id, input, details, isPublic } = plan;
+  const { id, input, details, isPublic, userId } = plan;
   const navigate = useNavigate();
   const { setPromptDetail } = usePromptDetail((state) => state);
   const handleDelete = () => {};
   const goToPlanDetail = () => {
-    console.log(plan);
     setPromptDetail({
+      id,
+      userId,
+      isPublic,
       ...plan.details,
       input: plan.input,
     });
