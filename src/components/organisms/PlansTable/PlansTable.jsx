@@ -30,7 +30,7 @@ const PlansTable = ({ data, columns, renderRow }) => {
       </thead>
       <tbody className={styles.section}>
         {data.map((d) => (
-          <tr className={styles.row}>{renderRow(d, styles.row)}</tr>
+          <tr className={styles.row}>{renderRow(d)}</tr>
         ))}
       </tbody>
       <tfoot></tfoot>

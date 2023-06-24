@@ -20,7 +20,8 @@ import GradientText from "../../components/molecules/GradientText/GradientText";
 import { Switch } from "../../components/atoms/Switch/Switch";
 import { Checkbox } from "../../components/atoms/CheckBox/CheckBox";
 import { useStorage } from "../../hooks/useStorage";
-
+import { changeVisibility } from "../../services/userPrompts/chageVisibily";
+import { toggleAddMyPrompts } from "../../services/userPrompts/toggleAddMyPrompts";
 const PlanDetail = ({ response }) => {
   const navigate = useNavigate();
   const { isLogged, userData } = useLogin({});
@@ -28,8 +29,24 @@ const PlanDetail = ({ response }) => {
 
   const handleSwitch = async (value) => {
     try {
-    } catch (error) {}
-    console.log(value);
+      console.log("entra aca");
+      await changeVisibility({ promptId: response.id, visibility: value });
+      alert(value ? "report set to public" : "report set to private");
+    } catch (error) {
+      alert("someting went wrong, try again");
+    }
+  };
+
+  const handleCheckBox = async () => {
+    try {
+      const done = await toggleAddMyPrompts({
+        userId: response.userId,
+        promptId: response.id,
+      });
+      alert("listo");
+    } catch (error) {
+      alert(error.message);
+    }
   };
   useEffect(() => {
     save("PLAN_DETAIL_URL", window.location.pathname);
@@ -59,7 +76,11 @@ const PlanDetail = ({ response }) => {
               </div>
             ) : (
               <div className={styles.addToFavorites}>
-                <Checkbox className="border-neutral-700 w-[40px] h-[40px]" />
+                <Checkbox
+                  defaultChecked={response.inMyReports}
+                  onCheckedChange={handleCheckBox}
+                  className="border-neutral-700 w-[40px] h-[40px]"
+                />
                 <Text>Add to my reports</Text>
               </div>
             )}

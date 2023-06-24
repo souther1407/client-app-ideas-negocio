@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 const Button = ({
   w,
+  width,
   children,
   flexible,
   type = "fulled",
@@ -15,6 +16,7 @@ const Button = ({
   const { theme } = useContext(context);
   return (
     <button
+      style={{ width: width ?? "inherit" }}
       className={`${styles.button} ${styles[type]} ${styles[color]} ${
         styles[theme]
       } ${w && styles.w} ${flexible && styles.flexible}`}
