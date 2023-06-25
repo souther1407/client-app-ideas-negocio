@@ -26,14 +26,54 @@
   width: 250px;
   margin-left: 16px;
 }
-
-.inputs > * {
-  margin-bottom: 16px;
+.mobileInputs {
+  display: none;
+  width: 100%;
 }
 
+.inputs > *,
+.mobileInputs > * {
+  margin-bottom: 20px;
+}
+.inputs > * > :first-child,
+.mobileInputs > * > :first-child {
+  margin-bottom: 8px;
+}
 .footer {
   display: flex;
   justify-content: space-between;
   padding-top: 16px;
   padding-bottom: 16px;
+}
+.drawer,
+.mobileSpace {
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  .formPlayground {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .inputs {
+    display: none;
+  }
+  .mobileInputs {
+    display: block;
+  }
+  .main > :first-child {
+    height: 150px !important;
+  }
+  .header > :nth-child(3) {
+    width: 150px;
+  }
+  .mobileSpace {
+    width: 1px;
+    height: 1px;
+    display: block;
+  }
+  .drawer {
+    display: block;
+  }
 }

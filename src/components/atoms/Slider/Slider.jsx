@@ -8,13 +8,7 @@ import {
   SliderMark,
 } from "@chakra-ui/react";
 
-const Slider = ({
-  label = "",
-  id,
-  onChange = () => {},
-  min = 0,
-  max = 10000,
-}) => {
+const Slider = ({ id, onChange = () => {}, min = 0, max = 10000 }) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -23,7 +17,6 @@ const Slider = ({
 
   return (
     <div className={styles.slider}>
-      <label className={styles.label}>{label}</label>
       <ChakraSlider
         aria-label="slider-ex-2"
         defaultValue={value}

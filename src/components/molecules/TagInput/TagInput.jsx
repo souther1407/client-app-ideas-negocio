@@ -7,7 +7,7 @@ import IconButton from "../../molecules/IconButton/IconButton";
 const Tag = ({ id, input, onDelete }) => {
   return (
     <div className={styles.tag}>
-      <Text>{input}</Text>
+      <Text size={"0.6rem"}>{input}</Text>
       <IconButton
         icon={"close"}
         size={"16px"}
@@ -48,7 +48,7 @@ const TagInput = ({ placeholder, onAddTag, id, onRemoveTag }) => {
         onKeyDown={addTag}
         onChange={(e) => setInput(e.target.value)}
         value={input}
-        fontSize={"16px"}
+        fontSize={"0.6rem"}
         placeholder={placeholder}
         variant="borderNone"
       />

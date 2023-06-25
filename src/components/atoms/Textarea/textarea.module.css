@@ -5,7 +5,7 @@
   border: 1px solid var(--dark-gray);
   border-radius: 8px;
   padding: 8px;
-  font-size: var(--sm);
+  font-size: var(--ty);
 }
 
 .textarea:focus {
