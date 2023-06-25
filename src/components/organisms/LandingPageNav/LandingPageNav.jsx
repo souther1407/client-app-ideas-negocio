@@ -34,15 +34,7 @@ const LandingPageNav = () => {
 
     navigate(LOGIN);
   };
-
-  const handlerClick = (e) => {
-    if (location?.pathname !== LANDING_PAGE) navigate(LANDING_PAGE);
-    else {
-      const elementAirDrops = document.getElementById("airDropshipings");
-      elementAirDrops.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
-
+  console.log(location);
   const handleLogout = () => {
     logout();
     navigate(LANDING_PAGE);
@@ -54,81 +46,82 @@ const LandingPageNav = () => {
         stateScroll.isScrolledUp && styles.show
       }`}
     >
-      <section className={`${styles.logo} ${isLogged() && styles.positioned}`}>
-        {/* <Text>Paddawan</Text> */}
-        <Text></Text>
-      </section>
-      <section className={styles.elements}>
-        <section className={styles.buttonsAndLinks}>
-          {isLogged() && (
-            <section className={styles.links}>
-              <Link to={START_A_BUSINESS}>
-                <Text type="subtitle">New Report</Text>
-              </Link>
-              <Link to={DASHBOARD_IDEAS}>
-                <Text type="subtitle">My Reports</Text>
-              </Link>
-              <Link to={DASHBOARD_FINDER}>
-                <Text type="subtitle">Finder</Text>
-              </Link>
-            </section>
-          )}
-          <section className={styles.buttons}>
-            {/* <GradientBorder>
+      <section style={{ width: "1px", height: "1px" }}></section>
+      <section className={styles.buttonsAndLinks}>
+        {isLogged() && (
+          <section className={styles.links}>
+            <Link to={START_A_BUSINESS}>
+              <Text
+                size={"0.8rem"}
+                color={location.pathname !== START_A_BUSINESS && "soft"}
+              >
+                New Report
+              </Text>
+            </Link>
+            <Link to={DASHBOARD_IDEAS}>
+              <Text
+                size={"0.8rem"}
+                color={location.pathname !== DASHBOARD_IDEAS && "soft"}
+              >
+                My Reports
+              </Text>
+            </Link>
+            <Link to={DASHBOARD_FINDER}>
+              <Text
+                size={"0.8rem"}
+                color={location.pathname !== DASHBOARD_FINDER && "soft"}
+              >
+                Finder
+              </Text>
+            </Link>
+          </section>
+        )}
+        <section className={styles.buttons}>
+          {/* <GradientBorder>
             <ChangeLanguage />
           </GradientBorder> */}
-            {location?.pathname !== LOGIN && !isLogged() && (
-              <GradientBorder style={{ borderRadius: "16px" }}>
-                <Button
-                  type="bordered"
-                  classes={styles.loginBtn}
-                  onClick={handleUserlogin}
-                  style={{ backgroundColor: "#0B263C", borderRadius: "16px" }}
-                >
-                  <Text>{isLogged() ? "log out" : "log in"}</Text>
-                </Button>
-              </GradientBorder>
-            )}
-          </section>
+          {location?.pathname !== LOGIN && !isLogged() && (
+            <GradientBorder style={{ borderRadius: "16px" }}>
+              <Button
+                type="bordered"
+                classes={styles.loginBtn}
+                onClick={handleUserlogin}
+                style={{ backgroundColor: "#0B263C", borderRadius: "16px" }}
+              >
+                <Text>{isLogged() ? "log out" : "log in"}</Text>
+              </Button>
+            </GradientBorder>
+          )}
         </section>
-        {!isLogged() && (
-          <section className={styles.mobileMenu}>
-            <MobileMenu />
-          </section>
-        )}
-        {isLogged() && (
-          <section className={styles.usermenu}>
-            <Drawer
-              renderIcon={(onOpen, isOpen) => (
-                <div className={styles.menuIcon} onClick={onOpen}>
-                  <Icon type={"user"} />
-                  {<Icon type={isOpen ? "arrowUp" : "arrowDown"} />}
-                </div>
-              )}
-              renderContent={() => (
-                <div className={styles.usermenuContent}>
-                  <GradientBorder>
-                    <Button
-                      onClick={handleLogout}
-                      style={{ backgroundColor: "#070E21", color: "white" }}
-                    >
-                      <Text>Log out</Text>
-                    </Button>
-                  </GradientBorder>
-                  <GradientBorder>
-                    <Button
-                      onClick={() => navigate(PAYMENT_METHOD)}
-                      style={{ backgroundColor: "#070E21", color: "white" }}
-                    >
-                      <Text>Payment method</Text>
-                    </Button>
-                  </GradientBorder>
-                </div>
-              )}
-            />
-          </section>
-        )}
       </section>
+      {!isLogged() && (
+        <section className={styles.mobileMenu}>
+          <MobileMenu />
+        </section>
+      )}
+      {isLogged() && (
+        <section className={styles.usermenu}>
+          <Drawer
+            renderIcon={(onOpen, isOpen) => (
+              <div className={styles.menuIcon} onClick={onOpen}>
+                <Icon type={"user"} size={"40px"} />
+              </div>
+            )}
+            renderContent={() => (
+              <div className={styles.usermenuContent}>
+                <GradientBorder>
+                  <Button
+                    onClick={handleLogout}
+                    style={{ backgroundColor: "#070E21", color: "white" }}
+                  >
+                    <Text>Log out</Text>
+                  </Button>
+                </GradientBorder>
+              </div>
+            )}
+          />
+        </section>
+      )}
     </nav>
   );
 };

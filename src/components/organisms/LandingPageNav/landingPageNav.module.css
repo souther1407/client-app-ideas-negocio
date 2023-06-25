@@ -75,6 +75,7 @@
 .menuIcon {
   width: 80px;
   display: flex;
+  cursor: pointer;
 }
 .menuIcon > :first-child {
   width: 40px;

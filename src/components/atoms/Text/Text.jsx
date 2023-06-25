@@ -14,7 +14,7 @@ const Text = ({
     return (
       <h1
         className={`${styles.title} ${styles[color]} ${bold && styles.bold}`}
-        style={{ textAlign }}
+        style={{ textAlign, fontSize: size ?? "inherit" }}
         {...otherProps}
       >
         {children}
@@ -24,7 +24,7 @@ const Text = ({
     return (
       <p
         className={`${styles.subtitle} ${styles[color]} ${bold && styles.bold}`}
-        style={{ textAlign }}
+        style={{ textAlign, fontSize: size ?? "" }}
         {...otherProps}
       >
         {children}
@@ -34,7 +34,7 @@ const Text = ({
   return (
     <p
       className={`${styles.text} ${styles[color]} ${bold && styles.bold}`}
-      style={{ textAlign }}
+      style={{ textAlign, fontSize: size ?? "" }}
       {...otherProps}
     >
       {children}

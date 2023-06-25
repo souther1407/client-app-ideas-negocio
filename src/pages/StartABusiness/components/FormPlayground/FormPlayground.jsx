@@ -3,20 +3,14 @@ import styles from "./formPlayground.module.css";
 import Button from "../../../../components/atoms/Button/Button";
 import Textarea from "../../../../components/atoms/Textarea/Textarea";
 import Text from "../../../../components/atoms/Text/Text";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "../../../../components/atoms/StyledSelect/StyledSelect";
+
 import Slider from "../../../../components/atoms/Slider/Slider";
 import IconText from "../../../../components/molecules/IconText/IconText";
 import TagInput from "../../../../components/molecules/TagInput/TagInput";
 import { countries } from "../../../../utils/constants/countries";
 import Combobox from "../../../../components/molecules/Combobox/Combobox";
+import Sheet from "../../../../components/molecules/Sheer/Sheet";
+import IconButton from "../../../../components/molecules/IconButton/IconButton";
 const FormPlayground = ({ onSubmit }) => {
   const [input, setInput] = useState({
     budget: 0,
@@ -53,7 +47,10 @@ const FormPlayground = ({ onSubmit }) => {
       onSubmit={(e) => e.preventDefault()}
     >
       <header className={styles.header}>
-        <Text type="subtitle">Playground</Text>
+        <Text size={"1rem"} bold>
+          Business machine
+        </Text>
+        <div className={styles.mobileSpace}></div>
         <Combobox
           nofoundText={"not report found"}
           title={"Select report"}
@@ -62,6 +59,56 @@ const FormPlayground = ({ onSubmit }) => {
           w="250px"
           onSelect={handleSelectTemplate}
         />
+
+        <section className={styles.drawer}>
+          <Sheet
+            title={""}
+            description={""}
+            renderButton={() => (
+              <IconButton size="16px" color={"white"} icon={"gears"} />
+            )}
+            renderContent={() => (
+              <section className={styles.mobileInputs}>
+                <div>
+                  <Combobox
+                    nofoundText={"not country found"}
+                    title={"Country"}
+                    data={countries}
+                    id={"location"}
+                    w="250px"
+                    onSelect={handleChange}
+                  />
+                </div>
+                <div>
+                  <Text size={"0.6rem"} bold>
+                    Budget ($) {input.budget}
+                  </Text>
+                  <Slider id={"budget"} onChange={handleChange} />
+                </div>
+                <div>
+                  <Text size={"0.6rem"} bold>
+                    Free Time (H/W) {input.freeTime}
+                  </Text>
+                  <Slider
+                    id={"freeTime"}
+                    onChange={handleChange}
+                    min={1}
+                    max={100}
+                  />
+                </div>
+                <div>
+                  <TagInput
+                    placeholder={"Type yours skills"}
+                    onAddTag={handleAddSkill}
+                    onRemoveTag={handleRemoveTag}
+                    id="skills"
+                  />
+                </div>
+              </section>
+            )}
+            renderFooter={() => {}}
+          />
+        </section>
       </header>
       <main className={styles.main}>
         <Textarea
@@ -74,10 +121,10 @@ const FormPlayground = ({ onSubmit }) => {
           <div>
             <Combobox
               nofoundText={"not country found"}
-              title={"Select Country"}
+              title={"Country"}
               data={countries}
               id={"location"}
-              w="250px"
+              w="100%"
               onSelect={handleChange}
             />
             {/* <Select onValueChange={(value) => handleChange("location", value)}>
@@ -95,11 +142,15 @@ const FormPlayground = ({ onSubmit }) => {
             </Select> */}
           </div>
           <div>
-            <Text>Budget ($) {input.budget}</Text>
+            <Text size={"0.6rem"} bold>
+              Budget ($) {input.budget}
+            </Text>
             <Slider id={"budget"} onChange={handleChange} />
           </div>
           <div>
-            <Text>Free Time (H/W){input.freeTime}</Text>
+            <Text size={"0.6rem"} bold>
+              Free Time (H/W) {input.freeTime}
+            </Text>
             <Slider id={"freeTime"} onChange={handleChange} min={1} max={100} />
           </div>
           <div>
@@ -114,10 +165,12 @@ const FormPlayground = ({ onSubmit }) => {
       </main>
       <footer className={styles.footer}>
         <Button flexible type="bordered">
-          <IconText icon={"leftArrow"}>Back</IconText>
+          <IconText icon={"leftArrow"} bold>
+            Back
+          </IconText>
         </Button>
         <Button flexible type="bordered" onClick={handleSubmit}>
-          <Text>{"Generate report"}</Text>
+          <Text bold>{"Generate report"}</Text>
         </Button>
       </footer>
     </form>
