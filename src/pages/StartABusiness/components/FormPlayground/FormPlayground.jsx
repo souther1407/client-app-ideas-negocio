@@ -44,7 +44,9 @@ const FormPlayground = ({ onSubmit }) => {
   const handleSubmit = () => {
     onSubmit(input);
   };
-
+  const handleSelectTemplate = (id, value) => {
+    setInput((prev) => ({ ...prev, description: value }));
+  };
   return (
     <form
       className={styles.formPlayground}
@@ -56,9 +58,9 @@ const FormPlayground = ({ onSubmit }) => {
           nofoundText={"not report found"}
           title={"Select report"}
           data={["report 1", "report 2", "report 3"]}
-          id={"location"}
+          id={"report"}
           w="250px"
-          onSelect={handleChange}
+          onSelect={handleSelectTemplate}
         />
       </header>
       <main className={styles.main}>
@@ -66,6 +68,7 @@ const FormPlayground = ({ onSubmit }) => {
           placeholder={"Bussines description"}
           id="description"
           onChange={handleChange}
+          value={input.description}
         />
         <section className={styles.inputs}>
           <div>
