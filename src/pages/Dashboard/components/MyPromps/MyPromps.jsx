@@ -13,7 +13,7 @@ import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../../../components/organisms/LandingPageNav/LandingPageNav";
 
 const PlanRow = ({ plan }) => {
-  const { id, input, details, isPublic, userId, inMyReports } = plan;
+  const { id, input, details, isPublic, userId, inMyReports, views } = plan;
   const navigate = useNavigate();
   const { setPromptDetail } = usePromptDetail((state) => state);
   const handleDelete = () => {};
@@ -38,7 +38,9 @@ const PlanRow = ({ plan }) => {
       <td>
         <Text>{isPublic ? "public" : "private"}</Text>
       </td>
-      <td>26</td>
+      <td>
+        <Text>{views}</Text>
+      </td>
       <td>
         <IconButton size="16px" icon={"trash"} onClick={handleDelete} />
       </td>
