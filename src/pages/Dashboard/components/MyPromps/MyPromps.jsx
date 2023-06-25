@@ -83,7 +83,7 @@ const MyPromps = () => {
               <PlansTable
                 data={getFilteredPrompsList()}
                 columns={["Title", "Status", "Views", ""]}
-                renderRow={(data) => <PlanRow plan={data} />}
+                renderRow={(data) => <PlanRow key={data.id} plan={data} />}
               />
             </div>
             <div className={styles.paginator}>

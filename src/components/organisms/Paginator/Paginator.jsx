@@ -35,6 +35,7 @@ const Paginator = ({
   };
   const calculateNumPages = () => {
     setCurrentPage(1);
+    onPageChange(1);
     return Math.ceil(totalElements / elementsPerPage);
   };
 
@@ -65,6 +66,7 @@ const Paginator = ({
               size={"24px"}
               icon={"doubleArrowLeft"}
               onClick={() => {
+                if (currentPage === 1) return;
                 setCurrentPage(1);
                 onPageChange(1);
               }}
@@ -89,6 +91,7 @@ const Paginator = ({
               size={"24px"}
               icon={"doubleArrowRight"}
               onClick={() => {
+                if (currentPage === numPages) return;
                 setCurrentPage(numPages);
                 onPageChange(numPages);
               }}
