@@ -190,63 +190,59 @@ const PromptSectionDetail = () => {
               {promptDetail[section]?.planDetail}
             </ReactMarkdown>
           </section>
-          {section !== "teacherMessage" && (
-            <section className={styles.questions} ref={questionsRef}>
-              <Text type="title">Preguntas</Text>
-              <ReactMarkdown className={styles.md}>
-                {promptDetail[section]?.questions}
-              </ReactMarkdown>
-            </section>
-          )}
-          {section !== "teacherMessage" && (
-            <section className={styles.askQuestions} ref={askQuestionsRef}>
-              <Text type="title">Empieza a construir tu negocio</Text>
-              <Text color="soft">
-                ¿Tienes algún problema que no puedes resolver en tu negocio?
-                &nbsp;
-                <Mark color={"primary"}>
-                  Responde todas tus preguntas con ayuda de nuestros expertos.
-                  Ejemplo:
-                </Mark>
-              </Text>
 
-              <HorizontalCard
-                title={"Marketing"}
-                detail={promptDetail.title}
-                onClick={() =>
-                  navigate(DASHBOARD_ASK_QUESTION + "?to=Marketing")
-                }
-              />
+          <section className={styles.questions} ref={questionsRef}>
+            <Text type="title">Preguntas</Text>
+            <ReactMarkdown className={styles.md}>
+              {promptDetail[section]?.questions}
+            </ReactMarkdown>
+          </section>
 
-              <HorizontalCard
-                title={"Redes Sociales"}
-                detail={promptDetail.title}
-                onClick={() =>
-                  navigate(DASHBOARD_ASK_QUESTION + "?to=socialMedia")
-                }
-              />
+          <section className={styles.askQuestions} ref={askQuestionsRef}>
+            <Text type="title">Empieza a construir tu negocio</Text>
+            <Text color="soft">
+              ¿Tienes algún problema que no puedes resolver en tu negocio?
+              &nbsp;
+              <Mark color={"primary"}>
+                Responde todas tus preguntas con ayuda de nuestros expertos.
+                Ejemplo:
+              </Mark>
+            </Text>
 
-              <HorizontalCard
-                title={"Product Manager"}
-                detail={promptDetail.title}
-                onClick={() =>
-                  navigate(DASHBOARD_ASK_QUESTION + "?to=productManager")
-                }
-              />
+            <HorizontalCard
+              title={"Marketing"}
+              detail={promptDetail.title}
+              onClick={() => navigate(DASHBOARD_ASK_QUESTION + "?to=Marketing")}
+            />
 
-              <HorizontalCard
-                title={"Diseño Web"}
-                detail={promptDetail.title}
-                onClick={() =>
-                  navigate(DASHBOARD_ASK_QUESTION + "?to=webDesigner")
-                }
-              />
+            <HorizontalCard
+              title={"Redes Sociales"}
+              detail={promptDetail.title}
+              onClick={() =>
+                navigate(DASHBOARD_ASK_QUESTION + "?to=socialMedia")
+              }
+            />
 
-              <div className={styles.antNextBtns}>
-                <ModalNextCard onPrev={onAnt} onNext={onNext} />
-              </div>
-            </section>
-          )}
+            <HorizontalCard
+              title={"Product Manager"}
+              detail={promptDetail.title}
+              onClick={() =>
+                navigate(DASHBOARD_ASK_QUESTION + "?to=productManager")
+              }
+            />
+
+            <HorizontalCard
+              title={"Diseño Web"}
+              detail={promptDetail.title}
+              onClick={() =>
+                navigate(DASHBOARD_ASK_QUESTION + "?to=webDesigner")
+              }
+            />
+
+            <div className={styles.antNextBtns}>
+              <ModalNextCard onPrev={onAnt} onNext={onNext} />
+            </div>
+          </section>
         </main>
       </div>
       <GradientBg opacity={20} />

@@ -4,7 +4,11 @@ import Text from "../../components/atoms/Text/Text";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
 import Icon from "../../components/atoms/Icon/Icon";
 import { useNavigate } from "react-router-dom";
-import { PLAN_DETAIL, CHOOSE_BUSINESS } from "../../utils/constants/routes";
+import {
+  PLAN_DETAIL,
+  CHOOSE_BUSINESS,
+  MY_PROMPTS_DETAIL,
+} from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
 import usePromptDetail from "../../states/prompDetail";
 import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
@@ -92,7 +96,7 @@ const StartABusiness = () => {
         });
         console.log(detail);
         setPromptDetail(detail);
-        navigate(PLAN_DETAIL);
+        navigate(MY_PROMPTS_DETAIL + `/${detail.id}`);
       } catch (error) {
         alert("hubo un problema, inténtalo nuevamente");
       } finally {
