@@ -13,7 +13,9 @@ thead:hover {
 .headColumn > :first-child {
   margin-right: 8px;
 }
-
+.sectionHead {
+  display: none;
+}
 .row {
   border-bottom: 1px solid var(--gray-transparent);
 }

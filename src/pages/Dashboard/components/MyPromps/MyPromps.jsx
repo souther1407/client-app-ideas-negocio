@@ -11,6 +11,7 @@ import IconButton from "../../../../components/molecules/IconButton/IconButton";
 import { MY_PROMPTS_DETAIL } from "../../../../utils/constants/routes";
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../../../components/organisms/LandingPageNav/LandingPageNav";
+
 const PlanRow = ({ plan }) => {
   const { id, input, details, isPublic, userId, inMyReports } = plan;
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const MyPromps = () => {
   const [loading, setLoading] = useState(true);
   const [rowsNumber, setRowsNumber] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
+  const [promptsOrder, setPromptsOrder] = useState({});
   useEffect(() => {
     const initPrompts = async () => {
       try {
@@ -63,7 +65,26 @@ const MyPromps = () => {
     initPrompts();
   }, []);
 
+  const orderings = {
+    Title: (a, b) => {
+      const aTitle = a.details.title.toLowerCase();
+      const bTitle = b.details.title.toLowerCase();
+      return aTitle.localeCompare(bTitle);
+    },
+    Status: (a, b) => {
+      return a.isPublic - b.isPublic;
+    },
+    Views: (a, b) => {
+      return a.views - b.views;
+    },
+  };
   const getFilteredPrompsList = () => {
+    if (promptsOrder.name) {
+      prompts.sort(orderings[promptsOrder.name]);
+      if (promptsOrder.order === "DESC") {
+        prompts.reverse();
+      }
+    }
     const fileted = prompts.slice(
       (currentPage - 1) * rowsNumber,
       currentPage * rowsNumber
@@ -82,7 +103,15 @@ const MyPromps = () => {
             <div className={styles.table}>
               <PlansTable
                 data={getFilteredPrompsList()}
-                columns={["Title", "Status", "Views", ""]}
+                columns={[
+                  { name: "Title", ordering: true },
+                  { name: "Status", ordering: true },
+                  { name: "Views", ordering: true },
+                  { name: "", ordering: false },
+                ]}
+                onOrderClick={(name, order) => {
+                  setPromptsOrder({ name, order });
+                }}
                 renderRow={(data) => <PlanRow key={data.id} plan={data} />}
               />
             </div>
