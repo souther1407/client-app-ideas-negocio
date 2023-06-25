@@ -22,6 +22,8 @@ import { Checkbox } from "../../components/atoms/CheckBox/CheckBox";
 import { useStorage } from "../../hooks/useStorage";
 import { changeVisibility } from "../../services/userPrompts/chageVisibily";
 import { toggleAddMyPrompts } from "../../services/userPrompts/toggleAddMyPrompts";
+import { addView } from "../../services/userPrompts/addView";
+
 const PlanDetail = ({ response }) => {
   const navigate = useNavigate();
   const { isLogged, userData } = useLogin({});
@@ -48,8 +50,14 @@ const PlanDetail = ({ response }) => {
       alert(error.message);
     }
   };
+
   useEffect(() => {
     save("PLAN_DETAIL_URL", window.location.pathname);
+    try {
+      addView({ userId: response.userId, promptId: response.id });
+    } catch (error) {
+      alert(error.message);
+    }
   }, []);
 
   return (
