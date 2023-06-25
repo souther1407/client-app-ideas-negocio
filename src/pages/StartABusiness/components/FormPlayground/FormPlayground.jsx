@@ -56,7 +56,7 @@ const FormPlayground = ({ onSubmit }) => {
           title={"Select report"}
           data={["report 1", "report 2", "report 3"]}
           id={"report"}
-          w="250px"
+          w="200px"
           onSelect={handleSelectTemplate}
         />
 
@@ -69,16 +69,6 @@ const FormPlayground = ({ onSubmit }) => {
             )}
             renderContent={() => (
               <section className={styles.mobileInputs}>
-                <div>
-                  <Combobox
-                    nofoundText={"not country found"}
-                    title={"Country"}
-                    data={countries}
-                    id={"location"}
-                    w="250px"
-                    onSelect={handleChange}
-                  />
-                </div>
                 <div>
                   <Text size={"0.6rem"} bold>
                     Budget ($) {input.budget}
@@ -94,6 +84,17 @@ const FormPlayground = ({ onSubmit }) => {
                     onChange={handleChange}
                     min={1}
                     max={100}
+                  />
+                </div>
+                <div>
+                  <Combobox
+                    key={"mobile-countrt"}
+                    nofoundText={"not country found"}
+                    title={"Country"}
+                    data={countries}
+                    id={"location"}
+                    w="250px"
+                    onSelect={handleChange}
                   />
                 </div>
                 <div>
@@ -124,7 +125,7 @@ const FormPlayground = ({ onSubmit }) => {
               title={"Country"}
               data={countries}
               id={"location"}
-              w="100%"
+              w="200px"
               onSelect={handleChange}
             />
             {/* <Select onValueChange={(value) => handleChange("location", value)}>
