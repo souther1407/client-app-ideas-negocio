@@ -73,6 +73,7 @@ const Finder = () => {
   const [loading, setLoading] = useState(true);
   const [rowsNumber, setRowsNumber] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
+  const [promptsOrder, setPromptsOrder] = useState({});
   useEffect(() => {
     const initPrompts = async () => {
       try {
@@ -85,7 +86,33 @@ const Finder = () => {
     };
     initPrompts();
   }, []);
+
+  const orderings = {
+    Title: (a, b) => {
+      const aTitle = a.details.title.toLowerCase();
+      const bTitle = b.details.title.toLowerCase();
+      return aTitle.localeCompare(bTitle);
+    },
+    Country: (a, b) => {
+      const aCountry = a.input.location.toLowerCase();
+      const bCountry = b.input.location.toLowerCase();
+      return aCountry.localeCompare(bCountry);
+    },
+    Budget: (a, b) => {
+      return a.input.budget - b.input.budget;
+    },
+    Adds: (a, b) => {
+      return a.adds - b.adds;
+    },
+  };
+
   const getFilteredPrompsList = () => {
+    if (promptsOrder.name) {
+      prompts.sort(orderings[promptsOrder.name]);
+      if (promptsOrder.order === "DESC") {
+        prompts.reverse();
+      }
+    }
     const fileted = prompts.slice(
       (currentPage - 1) * rowsNumber,
       currentPage * rowsNumber
@@ -104,7 +131,16 @@ const Finder = () => {
             <div className={styles.table}>
               <PlansTable
                 data={getFilteredPrompsList()}
-                columns={["Title", "Country", "Budget", "adds", "Add"]}
+                columns={[
+                  { name: "Title", ordering: true },
+                  { name: "Country", ordering: true },
+                  { name: "Budget", ordering: true },
+                  { name: "Adds", ordering: true },
+                  { name: "Add", ordering: false },
+                ]}
+                onOrderClick={(name, order) => {
+                  setPromptsOrder({ name, order });
+                }}
                 renderRow={(data) => (
                   <PlanRow
                     key={data.id}
