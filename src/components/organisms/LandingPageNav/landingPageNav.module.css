@@ -1,7 +1,7 @@
 .landingPageNav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 16px;
   position: fixed;
   align-items: center;
   top: 0;
@@ -73,16 +73,13 @@
 }
 
 .menuIcon {
-  width: 80px;
   display: flex;
   cursor: pointer;
 }
 .menuIcon > :first-child {
   width: 40px;
-  margin-right: 4px;
 }
 .menuIcon > :last-child {
-  width: 20px;
 }
 
 .usermenuContent > * {
