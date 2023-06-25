@@ -13,7 +13,7 @@ import LandingPageNav from "../../../../components/organisms/LandingPageNav/Land
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 
 const PlanRow = ({ plan, onToggle }) => {
-  const { details, input, id, userId, isPublic, inMyReports } = plan;
+  const { details, input, id, userId, isPublic, inMyReports, adds } = plan;
 
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ const PlanRow = ({ plan, onToggle }) => {
         <Text>{input.budget}</Text>
       </td>
       <td>
-        <Text>15</Text>
+        <Text>{adds}</Text>
       </td>
       <td>
         <Checkbox
@@ -151,6 +151,7 @@ const Finder = () => {
                           if (p.id == data.id) {
                             return {
                               ...p,
+                              adds: value ? p.adds + 1 : p.adds - 1,
                               inMyReports: value,
                             };
                           }
