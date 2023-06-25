@@ -53,7 +53,7 @@ function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
   }, [value]);
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild className={`w-[${w}]`}>
         <Button
           variant="outline"
           role="combobox"
