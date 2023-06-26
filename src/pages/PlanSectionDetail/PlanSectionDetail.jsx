@@ -203,7 +203,7 @@ const PromptSectionDetail = () => {
             <ReactMarkdown className={styles.md}>
               {promptDetail[section]?.questions}
             </ReactMarkdown>
-            {results.map((r) => (
+            {results?.map((r) => (
               <Link extern to={r}>
                 <Button>
                   <Text>{r}</Text>
