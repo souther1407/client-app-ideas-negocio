@@ -117,9 +117,7 @@ const PromptSectionDetail = () => {
       }
   };
   const results = useMemo(() => {
-    const results = promptDetail[section]?.questions.match(
-      /\bhttps?:\/\/[^\n]+\b/g
-    );
+    const results = promptDetail[section]?.questions.match(/https?[^\n]+/g);
     return results;
   }, []);
   console.log(results);
