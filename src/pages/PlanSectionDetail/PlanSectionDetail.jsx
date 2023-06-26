@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import IconButton from "../../components/molecules/IconButton/IconButton";
 import ModalNextCard from "../../pages/PlanDetail/components/modalNextCard/ModalNextCard";
 import Button from "../../components/atoms/Button/Button";
 import usePromptDetail from "../../states/prompDetail";
+import Link from "../../components/atoms/Link/Link";
 import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
@@ -115,7 +116,13 @@ const PromptSectionDetail = () => {
           return `0`;
       }
   };
-
+  const results = useMemo(() => {
+    const results = promptDetail[section]?.questions.match(
+      /\bhttps?:\/\/[^\n]+\b/g
+    );
+    return results;
+  }, []);
+  console.log(results);
   useEffect(() => {
     changeSection();
   }, [scrollPos]);
@@ -196,6 +203,13 @@ const PromptSectionDetail = () => {
             <ReactMarkdown className={styles.md}>
               {promptDetail[section]?.questions}
             </ReactMarkdown>
+            {results.map((r) => (
+              <Link extern to={r}>
+                <Button>
+                  <Text>{r}</Text>
+                </Button>
+              </Link>
+            ))}
           </section>
 
           <section className={styles.askQuestions} ref={askQuestionsRef}>
