@@ -204,7 +204,7 @@ const PromptSectionDetail = () => {
               {promptDetail[section]?.questions}
             </ReactMarkdown>
             {results?.map((r) => (
-              <Link extern to={r}>
+              <Link extern to={r} target={"_blank"}>
                 <Button>
                   <Text>{r}</Text>
                 </Button>
