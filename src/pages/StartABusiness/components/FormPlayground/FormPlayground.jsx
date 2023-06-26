@@ -116,7 +116,6 @@ const FormPlayground = ({ onSubmit }) => {
           placeholder={"Bussines description"}
           id="description"
           onChange={handleChange}
-          value={input.description}
         />
         <section className={styles.inputs}>
           <div>
