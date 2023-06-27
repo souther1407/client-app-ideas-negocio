@@ -8,10 +8,15 @@ const IconText = ({
   color,
   size = "1rem",
   bold,
+  iconPos = "left",
   ...otherProps
 }) => {
   return (
-    <div className={`${styles.iconText} ${styles[color]}`} {...otherProps}>
+    <div
+      style={{ flexDirection: iconPos === "left" ? "row" : "row-reverse" }}
+      className={`${styles.iconText} ${styles[color]}`}
+      {...otherProps}
+    >
       <Icon size={size} type={icon} />
       <Text bold={bold} size={size}>
         {children}

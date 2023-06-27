@@ -55,7 +55,7 @@
   padding: 36px;
   line-height: 1.7;
   background-color: rgb(1, 1, 14);
-  margin: 32px;
+  margin: 16px;
 }
 .details {
   width: 75%;
@@ -114,9 +114,11 @@
   margin-bottom: 16px;
 }
 .antNextBtns {
-  margin-top: 32px;
-  width: 100%;
+  display: flex;
+  margin: 32px 0;
+  justify-content: space-evenly;
 }
+
 .close {
   top: 3.5%;
 }
