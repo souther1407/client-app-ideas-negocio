@@ -10,11 +10,8 @@
   font-family: "Libre Caslon Text", serif;
 }
 .close {
-  position: fixed;
   z-index: 10;
-  right: 10%;
-  top: 10%;
-  cursor: pointer;
+  margin-right: 16px;
 }
 .content {
   position: relative;
@@ -28,13 +25,11 @@
 .navigation {
   display: flex;
   border-bottom: 1px solid var(--white-transparent);
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  position: sticky;
   width: 100%;
-  top: 0;
-  left: 0;
-  padding: 8px;
+  padding: 16px;
+  background-color: rgb(1, 1, 14);
 }
 
 .options {
@@ -51,6 +46,7 @@
 }
 
 .main {
+  display: flex;
   position: relative;
   height: 80vh;
   overflow-x: hidden;
@@ -58,8 +54,13 @@
   top: 10px;
   padding: 36px;
   line-height: 1.7;
+  background-color: rgb(1, 1, 14);
+  margin: 32px;
 }
-
+.details {
+  width: 75%;
+  margin-right: 16px;
+}
 .md ol,
 .md ul {
   margin-left: 36px;
@@ -68,8 +69,27 @@
 .md h2,
 .md h3,
 .md h4 {
-  margin-top: 40px;
   font-weight: bold;
+}
+
+.btns {
+  display: flex;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.btns > * {
+  margin-right: 16px;
+}
+.md h2,
+.md h3,
+.md h4 {
+  margin-top: 40px;
+}
+.md p,
+.md li {
+  font-size: 0.9rem;
+  color: gainsboro;
 }
 .md h1 {
   font-size: var(--xxlg);
@@ -97,6 +117,16 @@
   margin-top: 32px;
   width: 100%;
 }
+.close {
+  top: 3.5%;
+}
+
+.tools {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
 @media screen and (min-width: 600px) {
   .options {
     width: auto;
@@ -104,36 +134,21 @@
   }
   .content {
     overflow: hidden;
-    flex-direction: row;
-  }
-  .navigation {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    border: none;
-    flex-shrink: 0;
-    border-right: 1px solid var(--white-transparent);
-  }
-  .navigation .options {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: fit-content;
-  }
-  .navigation .options > * {
-    margin-bottom: 16px;
-    display: flex !important;
-    flex-shrink: 0;
   }
   .planSectionName > * {
     flex-shrink: 0;
   }
+  .options > * {
+    margin-right: 8px;
+  }
   .main {
-    height: 500px;
     overflow: auto;
     padding: 80px;
   }
-  .close {
-    top: 5%;
+  .tools {
+    position: sticky;
+    top: 0;
+    width: 400px;
+    height: 100vh;
   }
 }

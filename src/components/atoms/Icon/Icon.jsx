@@ -41,6 +41,8 @@ import {
   AiOutlineTeam,
   AiOutlineGoogle,
   AiOutlineTwitter,
+  AiOutlineLink,
+  AiFillYoutube,
   AiFillFacebook,
 } from "react-icons/ai";
 import { GiGears, GiTakeMyMoney } from "react-icons/gi";
@@ -109,6 +111,8 @@ const Icon = ({ type, size, color = "inherit" }) => {
     doubleArrowRight: <BiArrowFromLeft {...props} />,
     singleArrowLeft: <BiLeftArrowAlt {...props} />,
     singleArrowRight: <BiRightArrowAlt {...props} />,
+    link: <AiOutlineLink {...props} />,
+    youtube: <AiFillYoutube {...props} />,
   };
   return <i>{icons[type]}</i>;
 };
