@@ -23,15 +23,14 @@ import { useStorage } from "../../hooks/useStorage";
 import { changeVisibility } from "../../services/userPrompts/chageVisibily";
 import { toggleAddMyPrompts } from "../../services/userPrompts/toggleAddMyPrompts";
 import { addView } from "../../services/userPrompts/addView";
-
-const PlanDetail = ({ response }) => {
+import usePromptDetail from "../../states/prompDetail";
+const PlanDetail = () => {
   const navigate = useNavigate();
   const { isLogged, userData } = useLogin({});
   const { save } = useStorage();
-
+  const response = usePromptDetail((state) => state.promptDetail);
   const handleSwitch = async (value) => {
     try {
-      console.log("entra aca");
       await changeVisibility({ promptId: response.id, visibility: value });
       alert(value ? "report set to public" : "report set to private");
     } catch (error) {
@@ -69,9 +68,9 @@ const PlanDetail = ({ response }) => {
           <section className={styles.header}>
             <div className={styles.info}>
               <GradientText type="title" bold>
-                {response.title}
+                {response.details.title}
               </GradientText>
-              <Text>{response.description}</Text>
+              <Text>{response.details.description}</Text>
             </div>
             {userData.uid === response.userId ? (
               <div className={styles.privatePublicSwitch}>

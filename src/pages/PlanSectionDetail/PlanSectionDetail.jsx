@@ -25,7 +25,6 @@ const texts = {
   teacherMessage: "Mensaje del profesor",
 };
 import { useStorage } from "../../hooks/useStorage";
-import HorizontalCard from "../../components/organisms/HorizontalCard/HorizontalCard";
 
 const PromptSectionDetail = () => {
   const { section } = useParams();
@@ -69,7 +68,7 @@ const PromptSectionDetail = () => {
         return;
     }
   };
-  const promptDetail = usePromptDetail((state) => state.promptDetail);
+  const { details } = usePromptDetail((state) => state.promptDetail);
 
   const mainRef = useRef();
   const detailRef = useRef();
@@ -121,11 +120,10 @@ const PromptSectionDetail = () => {
     changeSection();
   }, [scrollPos]);
   const tools = useMemo(() => {
-    const regex = /\{(?:[^{}]|(\{(?:[^{}]|())*\}))*\}/g;
-    const jsons = promptDetail[section]?.urlTools?.match(regex) ?? [];
-    return jsons.map((j) => JSON.parse(j));
+    const toolsList = details[section]?.urlTools.trim().split("\n\n");
+    return toolsList;
   }, []);
-  console.log(tools);
+  console.log(details[section]?.urlTools);
   return (
     <div className={styles.promptSectionDetail}>
       <div className={styles.content}>
@@ -200,14 +198,14 @@ const PromptSectionDetail = () => {
           <div className={styles.details}>
             <section className={styles.detail} ref={detailRef}>
               <ReactMarkdown className={styles.md}>
-                {promptDetail[section]?.planDetail}
+                {details[section]?.planDetail}
               </ReactMarkdown>
             </section>
 
             <section className={styles.questions} ref={questionsRef}>
               <Text type="title">Preguntas</Text>
               <ReactMarkdown className={styles.md}>
-                {promptDetail[section]?.questions}
+                {details[section]?.questions}
               </ReactMarkdown>
             </section>
 
@@ -220,13 +218,45 @@ const PromptSectionDetail = () => {
             <Text type="subtitle" bold>
               Toolkit to execute
             </Text>
+            {tools?.map((t) => {
+              const elements = t.split("\n");
+              console.log(elements);
+              return (
+                <>
+                  <Text type="subtitle">{elements[0]?.split(":")[1]}</Text>
+                  <ReactMarkdown className={styles.md}>
+                    {elements[1]?.split(":")[1]}
+                  </ReactMarkdown>
+                  <div className={styles.btns}>
+                    <Link
+                      extern
+                      to={elements[2]?.split(": ")[1].trim()}
+                      target={"_blank"}
+                    >
+                      <Button>
+                        <IconText icon={"link"}>link</IconText>
+                      </Button>
+                    </Link>
+                    <Link
+                      extern
+                      to={elements[3]?.split(": ")[1].trim()}
+                      target={"_blank"}
+                    >
+                      <Button>
+                        <IconText icon={"youtube"}>Tutorial</IconText>
+                      </Button>
+                    </Link>
+                  </div>
+                </>
+              );
+            })}
           </aside>
         </main>
 
         <div className={styles.antNextBtns}>
           <Button type="bordered" onClick={onAnt} width={"150px"}>
             <IconText bold icon={"leftArrow"}>
-              Previus
+              Previous
             </IconText>
           </Button>
           <Button type="bordered" onClick={onNext} width={"150px"}>

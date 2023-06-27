@@ -8,7 +8,6 @@ import {
   PLAN_DETAIL,
   CHOOSE_BUSINESS,
   MY_PROMPTS_DETAIL,
-  DASHBOARD_IDEAS,
 } from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
 import usePromptDetail from "../../states/prompDetail";
@@ -28,6 +27,7 @@ import Button from "../../components/atoms/Button/Button";
 import { createDetail } from "../../services/createText/createText";
 import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
 import FormPlayground from "./components/FormPlayground/FormPlayground";
+import { wait } from "../../utils/time/wait";
 const TEACHERS = {
   elonMusk: "Elon Musk",
   samAltman: "Sam Altman",
@@ -96,7 +96,8 @@ const StartABusiness = () => {
         });
 
         setPromptDetail(detail);
-        navigate(DASHBOARD_IDEAS);
+        await wait(1000);
+        navigate(MY_PROMPTS_DETAIL + `/${detail.id}`);
       } catch (error) {
         alert("hubo un problema, inténtalo nuevamente");
       } finally {

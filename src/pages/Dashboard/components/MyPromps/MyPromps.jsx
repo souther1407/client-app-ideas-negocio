@@ -11,21 +11,14 @@ import IconButton from "../../../../components/molecules/IconButton/IconButton";
 import { MY_PROMPTS_DETAIL } from "../../../../utils/constants/routes";
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../../../components/organisms/LandingPageNav/LandingPageNav";
-
+import { wait } from "../../../../utils/time/wait";
 const PlanRow = ({ plan }) => {
   const { id, input, details, isPublic, userId, inMyReports, views } = plan;
   const navigate = useNavigate();
   const { setPromptDetail } = usePromptDetail((state) => state);
   const handleDelete = () => {};
-  const goToPlanDetail = () => {
-    setPromptDetail({
-      id,
-      userId,
-      isPublic,
-      inMyReports,
-      ...plan.details,
-      input: plan.input,
-    });
+  const goToPlanDetail = async () => {
+    setPromptDetail(plan);
     navigate(MY_PROMPTS_DETAIL + `/${id}`);
   };
   return (

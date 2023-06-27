@@ -35,7 +35,7 @@ const LandingPageNav = () => {
 
     navigate(LOGIN);
   };
-  console.log(location);
+
   const handleLogout = () => {
     logout();
     navigate(LANDING_PAGE);

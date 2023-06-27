@@ -17,7 +17,7 @@ const usePromptDetail = create((set) => ({
     },
   },
   setPromptDetail(details) {
-    set((state) => ({ ...state, promptDetail: details }));
+    set((state) => ({ promptDetail: details }));
   },
 }));
 export default usePromptDetail;

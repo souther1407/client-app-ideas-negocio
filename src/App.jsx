@@ -42,6 +42,7 @@ import {
   EXPERT_DASHBOARD,
   EXPERT_LOGIN,
 } from "./utils/constants/routes";
+import PlanDetail from "./pages/PlanDetail/PlanDetail";
 function App() {
   const { theme } = useContext(context);
 
@@ -60,18 +61,18 @@ function App() {
 
         <Route path={DASHBOARD + "/ideas"} element={<MyPromps />} />
         <Route path={DASHBOARD + "/finder"} element={<Finder />} />
-        <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<MyPromptDetail />} />
+        <Route path={MY_PROMPTS_DETAIL + "/:id"} element={<PlanDetail />} />
         <Route path={ACTIVATE_SUCCESS} element={<Success />} />
         <Route
           path={PLAN_DETAIL + "/:section"}
           element={<PlanSectionDetail />}
         />
-        <Route path={PAYMENT_METHOD} element={<ConfigPaymentMethod />} />
+
         <Route
           path={AFFILIATE_LINK}
           element={<RedirectEnterByAffiliateLink />}
         />
-        <Route path={EXPERT_DASHBOARD} element={<ExpertDashboard />} />
+
         <Route path={EXPERT_LOGIN} element={<ExpertLogin />} />
         <Route path="*" element={<h1>404 not found :C</h1>} />
       </Routes>
