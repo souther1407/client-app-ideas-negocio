@@ -116,31 +116,16 @@ const PromptSectionDetail = () => {
           return `0`;
       }
   };
-  const results = useMemo(() => {
-    const results =
-      promptDetail[section]?.questions.match(/https?[^\n]+/g) ?? [];
-    const links = [];
-    for (let i = 0; i < results.length; i += 2) {
-      links.push({
-        link: results[i],
-        tutorial: results[i + 1],
-      });
-    }
-    return links;
-  }, []);
 
-  const tools = useMemo(() => {
-    let filtered = promptDetail[section]?.questions ?? "";
-    for (let result of results) {
-      filtered = filtered.replace(result.link, "");
-      filtered = filtered.replace(result.tutorial, "");
-    }
-    return filtered;
-  }, []);
-  console.log(tools.split("\n\n"));
   useEffect(() => {
     changeSection();
   }, [scrollPos]);
+  const tools = useMemo(() => {
+    const regex = /\{(?:[^{}]|(\{(?:[^{}]|())*\}))*\}/g;
+    const jsons = promptDetail[section]?.urlTools?.match(regex) ?? [];
+    return jsons.map((j) => JSON.parse(j));
+  }, []);
+  console.log(tools);
   return (
     <div className={styles.promptSectionDetail}>
       <div className={styles.content}>
@@ -219,19 +204,12 @@ const PromptSectionDetail = () => {
               </ReactMarkdown>
             </section>
 
-            {/* <section className={styles.questions} ref={questionsRef}>
+            <section className={styles.questions} ref={questionsRef}>
               <Text type="title">Preguntas</Text>
               <ReactMarkdown className={styles.md}>
                 {promptDetail[section]?.questions}
               </ReactMarkdown>
-              {results?.map((r) => (
-                <Link extern to={r} target={"_blank"}>
-                  <Button>
-                    <Text>{r}</Text>
-                  </Button>
-                </Link>
-              ))}
-            </section> */}
+            </section>
 
             <section
               className={styles.askQuestions}
@@ -242,36 +220,23 @@ const PromptSectionDetail = () => {
             <Text type="subtitle" bold>
               Toolkit to execute
             </Text>
-
-            {section === "teacherMessage" &&
-              tools.split("\n\n").map((p, i) => {
-                return (
-                  <>
-                    <ReactMarkdown key={i} className={styles.md}>
-                      {p}
-                    </ReactMarkdown>
-                    <div className={styles.btns} key={i}>
-                      <Link extern to={results[i].link} target="_blank">
-                        <Button>
-                          <IconText size="0.8rem" icon={"link"}>
-                            Link
-                          </IconText>
-                        </Button>
-                      </Link>
-                      <Link extern to={results[i].tutorial} target="_blank">
-                        <Button>
-                          <IconText size="0.8rem" icon={"youtube"}>
-                            Tutorial
-                          </IconText>
-                        </Button>
-                      </Link>
-                    </div>
-                  </>
-                );
-              })}
           </aside>
         </main>
+
+        <div className={styles.antNextBtns}>
+          <Button type="bordered" onClick={onAnt} width={"150px"}>
+            <IconText bold icon={"leftArrow"}>
+              Previus
+            </IconText>
+          </Button>
+          <Button type="bordered" onClick={onNext} width={"150px"}>
+            <IconText bold icon={"rightArrow"} iconPos="right">
+              Next
+            </IconText>
+          </Button>
+        </div>
       </div>
+
       <GradientBg opacity={15} />
     </div>
   );
