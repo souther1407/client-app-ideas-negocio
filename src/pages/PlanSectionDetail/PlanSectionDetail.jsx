@@ -272,7 +272,7 @@ const PromptSectionDetail = () => {
           </aside>
         </main>
       </div>
-      <GradientBg opacity={20} />
+      <GradientBg opacity={15} />
     </div>
   );
 };
