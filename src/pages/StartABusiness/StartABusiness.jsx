@@ -8,6 +8,7 @@ import {
   PLAN_DETAIL,
   CHOOSE_BUSINESS,
   MY_PROMPTS_DETAIL,
+  DASHBOARD_IDEAS,
 } from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
 import usePromptDetail from "../../states/prompDetail";
@@ -81,7 +82,6 @@ const StartABusiness = () => {
       skills: input.skills.join(", "),
       teacher: "Elon musk",
     };
-    console.log("input definitivo", parsedInputToMakeCompatibleWithPrompts);
     save("input", parsedInputToMakeCompatibleWithPrompts);
     if (!isLogged()) return setShowPopup(true);
     if (parsedInputToMakeCompatibleWithPrompts.description.length > 0) {
@@ -94,9 +94,9 @@ const StartABusiness = () => {
             description: parsedInputToMakeCompatibleWithPrompts.description,
           },
         });
-        console.log(detail);
+
         setPromptDetail(detail);
-        navigate(MY_PROMPTS_DETAIL + `/${detail.id}`);
+        navigate(DASHBOARD_IDEAS);
       } catch (error) {
         alert("hubo un problema, inténtalo nuevamente");
       } finally {
