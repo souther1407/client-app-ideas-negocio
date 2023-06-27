@@ -22,7 +22,8 @@ import MobileMenu from "./components/MobileMenu";
 
 import Drawer from "../../molecules/Drawer/Drawer";
 import Icon from "../../atoms/Icon/Icon";
-
+import Sheet from "../../molecules/Sheer/Sheet";
+import IconButton from "../../molecules/IconButton/IconButton";
 const LandingPageNav = () => {
   const { logout, isLogged } = useLogin({});
   const location = useLocation();
@@ -94,34 +95,74 @@ const LandingPageNav = () => {
           )}
         </section>
       </section>
-      {!isLogged() && (
-        <section className={styles.mobileMenu}>
-          <MobileMenu />
-        </section>
-      )}
-      {isLogged() && (
-        <section className={styles.usermenu}>
-          <Drawer
-            renderIcon={(onOpen, isOpen) => (
-              <div className={styles.menuIcon} onClick={onOpen}>
-                <Icon type={"user"} size={"40px"} />
-              </div>
-            )}
-            renderContent={() => (
-              <div className={styles.usermenuContent}>
-                <GradientBorder>
-                  <Button
-                    onClick={handleLogout}
-                    style={{ backgroundColor: "#070E21", color: "white" }}
-                  >
-                    <Text>Log out</Text>
-                  </Button>
-                </GradientBorder>
-              </div>
-            )}
-          />
-        </section>
-      )}
+      <div className={styles.menus}>
+        {!isLogged() && (
+          <section className={styles.mobileMenu}>
+            <MobileMenu />
+          </section>
+        )}
+        {isLogged() && (
+          <section className={styles.usermenu}>
+            <Drawer
+              renderIcon={(onOpen, isOpen) => (
+                <div className={styles.menuIcon} onClick={onOpen}>
+                  <Icon type={"user"} size={"40px"} />
+                </div>
+              )}
+              renderContent={() => (
+                <div className={styles.usermenuContent}>
+                  <GradientBorder>
+                    <Button
+                      onClick={handleLogout}
+                      style={{ backgroundColor: "#070E21", color: "white" }}
+                    >
+                      <Text>Log out</Text>
+                    </Button>
+                  </GradientBorder>
+                </div>
+              )}
+            />
+          </section>
+        )}
+        {isLogged() && (
+          <section className={styles.mobileNavMenu}>
+            <Sheet
+              renderButton={() => (
+                <IconButton size="24px" color={"white"} icon={"bars"} />
+              )}
+              renderContent={() => (
+                <section className={styles.mobileLink}>
+                  <Link to={START_A_BUSINESS}>
+                    <Text
+                      size={"1rem"}
+                      color={location.pathname !== START_A_BUSINESS && "soft"}
+                    >
+                      New Report
+                    </Text>
+                  </Link>
+                  <Link to={DASHBOARD_IDEAS}>
+                    <Text
+                      size={"1rem"}
+                      color={location.pathname !== DASHBOARD_IDEAS && "soft"}
+                    >
+                      My Reports
+                    </Text>
+                  </Link>
+                  <Link to={DASHBOARD_FINDER}>
+                    <Text
+                      size={"1rem"}
+                      color={location.pathname !== DASHBOARD_FINDER && "soft"}
+                    >
+                      Finder
+                    </Text>
+                  </Link>
+                </section>
+              )}
+              renderFooter={() => {}}
+            />
+          </section>
+        )}
+      </div>
     </nav>
   );
 };
