@@ -1,8 +1,6 @@
 .formPlayground {
   border: 1px solid var(--dark-gray);
   border-radius: 8px;
-  width: 800px;
-
   display: flex;
   flex-direction: column;
 }
@@ -21,10 +19,12 @@
 .main {
   display: flex;
 }
-
+.descriptionInput {
+  width: 500px !important;
+  margin-right: 16px;
+}
 .inputs {
   width: 250px;
-  margin-left: 16px;
 }
 .mobileInputs {
   display: none;
@@ -32,6 +32,14 @@
   padding: 8px;
 }
 
+.countryInput {
+  display: flex;
+  justify-content: flex-end;
+}
+.countryInput.movedLeft {
+  display: flex;
+  justify-content: flex-start;
+}
 .inputs > *,
 .mobileInputs > * {
   margin-bottom: 20px;
@@ -59,6 +67,9 @@
 @media screen and (max-width: 640px) {
   .inputs {
     display: none;
+  }
+  .descriptionInput {
+    width: 100%;
   }
   .mobileInputs {
     display: block;

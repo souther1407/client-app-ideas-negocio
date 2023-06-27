@@ -11,7 +11,7 @@ import { countries } from "../../../../utils/constants/countries";
 import Combobox from "../../../../components/molecules/Combobox/Combobox";
 import Sheet from "../../../../components/molecules/Sheer/Sheet";
 import IconButton from "../../../../components/molecules/IconButton/IconButton";
-const FormPlayground = ({ onSubmit }) => {
+const FormPlayground = ({ onSubmit, alreadyIdea }) => {
   const [input, setInput] = useState({
     budget: 0,
     freeTime: 1,
@@ -42,23 +42,22 @@ const FormPlayground = ({ onSubmit }) => {
     setInput((prev) => ({ ...prev, description: value }));
   };
   return (
-    <form
-      className={styles.formPlayground}
-      onSubmit={(e) => e.preventDefault()}
-    >
+    <div className={styles.formPlayground}>
       <header className={styles.header}>
         <Text size={"1rem"} bold>
           Business machine
         </Text>
         <div className={styles.mobileSpace}></div>
-        <Combobox
-          nofoundText={"not report found"}
-          title={"Select report"}
-          data={["report 1", "report 2", "report 3"]}
-          id={"report"}
-          w="200px"
-          onSelect={handleSelectTemplate}
-        />
+        {alreadyIdea && (
+          <Combobox
+            nofoundText={"not report found"}
+            title={"Select report"}
+            data={["report 1", "report 2", "report 3"]}
+            id={"report"}
+            w="200px"
+            onSelect={handleSelectTemplate}
+          />
+        )}
 
         <section className={styles.drawer}>
           <Sheet
@@ -112,13 +111,20 @@ const FormPlayground = ({ onSubmit }) => {
         </section>
       </header>
       <main className={styles.main}>
-        <Textarea
-          placeholder={"Bussines description"}
-          id="description"
-          onChange={handleChange}
-        />
+        {alreadyIdea && (
+          <Textarea
+            placeholder={"Bussines description"}
+            id="description"
+            onChange={handleChange}
+            className={styles.descriptionInput}
+          />
+        )}
         <section className={styles.inputs}>
-          <div>
+          <div
+            className={`${styles.countryInput} ${
+              !alreadyIdea && styles.movedLeft
+            }`}
+          >
             <Combobox
               nofoundText={"not country found"}
               title={"Country"}
@@ -127,19 +133,6 @@ const FormPlayground = ({ onSubmit }) => {
               w="200px"
               onSelect={handleChange}
             />
-            {/* <Select onValueChange={(value) => handleChange("location", value)}>
-              <SelectTrigger className="w-[250px]">
-                <SelectValue placeholder="Country" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Country</SelectLabel>
-                  {countries.map((c) => (
-                    <SelectItem value={c}>{c}</SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select> */}
           </div>
           <div>
             <Text size={"0.6rem"} bold>
@@ -164,16 +157,11 @@ const FormPlayground = ({ onSubmit }) => {
         </section>
       </main>
       <footer className={styles.footer}>
-        <Button flexible type="bordered">
-          <IconText icon={"leftArrow"} bold>
-            Back
-          </IconText>
-        </Button>
         <Button flexible type="bordered" onClick={handleSubmit}>
           <Text bold>{"Generate report"}</Text>
         </Button>
       </footer>
-    </form>
+    </div>
   );
 };
 

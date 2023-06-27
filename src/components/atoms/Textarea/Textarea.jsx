@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./textarea.module.css";
 const Textarea = ({
   placeholder,
-  w = "100%",
-  h = "100%",
+
   id,
+  className,
   onChange,
   ...otherProps
 }) => {
@@ -15,10 +15,9 @@ const Textarea = ({
 
   return (
     <textarea
-      className={styles.textarea}
+      className={`${styles.textarea} ${className}`}
       placeholder={placeholder}
       onChange={handleChange}
-      style={{ width: w, height: h }}
       {...otherProps}
     />
   );
