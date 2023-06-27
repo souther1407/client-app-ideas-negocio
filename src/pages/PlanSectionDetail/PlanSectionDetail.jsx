@@ -117,23 +117,35 @@ const PromptSectionDetail = () => {
       }
   };
   const results = useMemo(() => {
-    const results = promptDetail[section]?.questions.match(/https?[^\n]+/g);
-    return results;
+    const results =
+      promptDetail[section]?.questions.match(/https?[^\n]+/g) ?? [];
+    const links = [];
+    for (let i = 0; i < results.length; i += 2) {
+      links.push({
+        link: results[i],
+        tutorial: results[i + 1],
+      });
+    }
+    return links;
   }, []);
-  console.log(results);
+
+  const tools = useMemo(() => {
+    let filtered = promptDetail[section]?.questions ?? "";
+    for (let result of results) {
+      filtered = filtered.replace(result.link, "");
+      filtered = filtered.replace(result.tutorial, "");
+    }
+    return filtered;
+  }, []);
+  console.log(tools.split("\n\n"));
   useEffect(() => {
     changeSection();
   }, [scrollPos]);
   return (
     <div className={styles.promptSectionDetail}>
-      <section className={styles.close}>
-        <IconButton
-          icon={"close"}
-          onClick={() => navigate(load("PLAN_DETAIL_URL"))}
-        />
-      </section>
       <div className={styles.content}>
         <nav className={styles.navigation}>
+          <div style={{ width: "1px", height: "1px" }}></div>
           <section className={styles.options}>
             <div
               className={styles.planSectionName}
@@ -149,6 +161,7 @@ const PromptSectionDetail = () => {
               <IconText
                 icon={"case"}
                 color={currentSection !== "detail" && "soft"}
+                size="0.9rem"
               >
                 {texts[section]}
               </IconText>
@@ -163,6 +176,7 @@ const PromptSectionDetail = () => {
               <IconText
                 icon={"case"}
                 color={currentSection !== "questions" && "soft"}
+                size="0.9rem"
               >
                 Preguntas
               </IconText>
@@ -177,12 +191,20 @@ const PromptSectionDetail = () => {
               <IconText
                 icon={"case"}
                 color={currentSection !== "ask" && "soft"}
+                size="0.9rem"
               >
                 Herramientas
               </IconText>
             </div>
           </section>
+          <section className={styles.close}>
+            <IconButton
+              icon={"close"}
+              onClick={() => navigate(load("PLAN_DETAIL_URL"))}
+            />
+          </section>
         </nav>
+
         <main
           className={styles.main}
           ref={mainRef}
@@ -190,74 +212,67 @@ const PromptSectionDetail = () => {
             setScrollPos(e.currentTarget.scrollTop);
           }}
         >
-          <section className={styles.detail} ref={detailRef}>
-            <ReactMarkdown className={styles.md}>
-              {promptDetail[section]?.planDetail}
-            </ReactMarkdown>
-          </section>
+          <div className={styles.details}>
+            <section className={styles.detail} ref={detailRef}>
+              <ReactMarkdown className={styles.md}>
+                {promptDetail[section]?.planDetail}
+              </ReactMarkdown>
+            </section>
 
-          <section className={styles.questions} ref={questionsRef}>
-            <Text type="title">Preguntas</Text>
-            <ReactMarkdown className={styles.md}>
-              {promptDetail[section]?.questions}
-            </ReactMarkdown>
-            {results?.map((r) => (
-              <Link extern to={r} target={"_blank"}>
-                <Button>
-                  <Text>{r}</Text>
-                </Button>
-              </Link>
-            ))}
-          </section>
+            {/* <section className={styles.questions} ref={questionsRef}>
+              <Text type="title">Preguntas</Text>
+              <ReactMarkdown className={styles.md}>
+                {promptDetail[section]?.questions}
+              </ReactMarkdown>
+              {results?.map((r) => (
+                <Link extern to={r} target={"_blank"}>
+                  <Button>
+                    <Text>{r}</Text>
+                  </Button>
+                </Link>
+              ))}
+            </section> */}
 
-          <section className={styles.askQuestions} ref={askQuestionsRef}>
-            <Text type="title">Empieza a construir tu negocio</Text>
-            <Text color="soft">
-              ¿Tienes algún problema que no puedes resolver en tu negocio?
-              &nbsp;
-              <Mark color={"primary"}>
-                Responde todas tus preguntas con ayuda de nuestros expertos.
-                Ejemplo:
-              </Mark>
+            <section
+              className={styles.askQuestions}
+              ref={askQuestionsRef}
+            ></section>
+          </div>
+          <aside className={styles.tools}>
+            <Text type="subtitle" bold>
+              Toolkit to execute
             </Text>
 
-            <HorizontalCard
-              title={"Marketing"}
-              detail={promptDetail.title}
-              onClick={() => navigate(DASHBOARD_ASK_QUESTION + "?to=Marketing")}
-            />
-
-            <HorizontalCard
-              title={"Redes Sociales"}
-              detail={promptDetail.title}
-              onClick={() =>
-                navigate(DASHBOARD_ASK_QUESTION + "?to=socialMedia")
-              }
-            />
-
-            <HorizontalCard
-              title={"Product Manager"}
-              detail={promptDetail.title}
-              onClick={() =>
-                navigate(DASHBOARD_ASK_QUESTION + "?to=productManager")
-              }
-            />
-
-            <HorizontalCard
-              title={"Diseño Web"}
-              detail={promptDetail.title}
-              onClick={() =>
-                navigate(DASHBOARD_ASK_QUESTION + "?to=webDesigner")
-              }
-            />
-
-            <div className={styles.antNextBtns}>
-              <ModalNextCard onPrev={onAnt} onNext={onNext} />
-            </div>
-          </section>
+            {section === "teacherMessage" &&
+              tools.split("\n\n").map((p, i) => {
+                return (
+                  <>
+                    <ReactMarkdown key={i} className={styles.md}>
+                      {p}
+                    </ReactMarkdown>
+                    <div className={styles.btns} key={i}>
+                      <Link extern to={results[i].link} target="_blank">
+                        <Button>
+                          <IconText size="0.8rem" icon={"link"}>
+                            Link
+                          </IconText>
+                        </Button>
+                      </Link>
+                      <Link extern to={results[i].tutorial} target="_blank">
+                        <Button>
+                          <IconText size="0.8rem" icon={"youtube"}>
+                            Tutorial
+                          </IconText>
+                        </Button>
+                      </Link>
+                    </div>
+                  </>
+                );
+              })}
+          </aside>
         </main>
       </div>
-      <GradientBg opacity={20} />
+      <GradientBg opacity={15} />
     </div>
   );
 };
