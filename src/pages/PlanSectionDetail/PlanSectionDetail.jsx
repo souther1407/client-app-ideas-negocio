@@ -144,7 +144,7 @@ const PromptSectionDetail = () => {
               <IconText
                 icon={"case"}
                 color={currentSection !== "detail" && "soft"}
-                size="0.9rem"
+                size="0.7rem"
               >
                 {texts[section]}
               </IconText>
@@ -159,7 +159,7 @@ const PromptSectionDetail = () => {
               <IconText
                 icon={"case"}
                 color={currentSection !== "questions" && "soft"}
-                size="0.9rem"
+                size="0.7rem"
               >
                 Preguntas
               </IconText>
@@ -174,7 +174,7 @@ const PromptSectionDetail = () => {
               <IconText
                 icon={"case"}
                 color={currentSection !== "ask" && "soft"}
-                size="0.9rem"
+                size="0.7rem"
               >
                 Herramientas
               </IconText>
@@ -203,7 +203,7 @@ const PromptSectionDetail = () => {
             </section>
 
             <section className={styles.questions} ref={questionsRef}>
-              <Text type="title">Preguntas</Text>
+              <Text type="subtitle">Preguntas</Text>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.questions}
               </ReactMarkdown>
@@ -213,6 +213,23 @@ const PromptSectionDetail = () => {
               className={styles.askQuestions}
               ref={askQuestionsRef}
             ></section>
+            <div className={styles.antNextBtns}>
+              <Button type="bordered" onClick={onAnt} width={"150px"}>
+                <IconText bold icon={"leftArrow"} size="0.7rem">
+                  Previous
+                </IconText>
+              </Button>
+              <Button type="bordered" onClick={onNext} width={"150px"}>
+                <IconText
+                  size="0.7rem"
+                  bold
+                  icon={"rightArrow"}
+                  iconPos="right"
+                >
+                  Next
+                </IconText>
+              </Button>
+            </div>
           </div>
           <aside className={styles.tools}>
             <Text type="subtitle" bold>
@@ -234,7 +251,9 @@ const PromptSectionDetail = () => {
                       target={"_blank"}
                     >
                       <Button>
-                        <IconText icon={"link"}>link</IconText>
+                        <IconText icon={"link"} size="0.8rem">
+                          link
+                        </IconText>
                       </Button>
                     </Link>
                     <Link
@@ -243,7 +262,9 @@ const PromptSectionDetail = () => {
                       target={"_blank"}
                     >
                       <Button>
-                        <IconText icon={"youtube"}>Tutorial</IconText>
+                        <IconText icon={"youtube"} size="0.8rem">
+                          Tutorial
+                        </IconText>
                       </Button>
                     </Link>
                   </div>
@@ -252,19 +273,6 @@ const PromptSectionDetail = () => {
             })}
           </aside>
         </main>
-
-        <div className={styles.antNextBtns}>
-          <Button type="bordered" onClick={onAnt} width={"150px"}>
-            <IconText bold icon={"leftArrow"}>
-              Previous
-            </IconText>
-          </Button>
-          <Button type="bordered" onClick={onNext} width={"150px"}>
-            <IconText bold icon={"rightArrow"} iconPos="right">
-              Next
-            </IconText>
-          </Button>
-        </div>
       </div>
 
       <GradientBg opacity={15} />

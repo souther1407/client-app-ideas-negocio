@@ -104,7 +104,7 @@ const StartABusiness = () => {
         setLoading(false);
       }
     } else {
-      await generateOptions(input);
+      await generateOptions(parsedInputToMakeCompatibleWithPrompts);
       navigate(CHOOSE_BUSINESS);
     }
   };
@@ -139,7 +139,7 @@ const StartABusiness = () => {
         <LandingPageNav />
 
         <section className={styles.form}>
-          {/* <section className={`${styles.field} ${field === 1 && styles.show}`}>
+          <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <Text type="title" textAlign="center">
               ¿Ya tienes una idea de negocios?
             </Text>
@@ -158,20 +158,27 @@ const StartABusiness = () => {
               w
               onClick={() => {
                 setHasAnIdea(false);
-                setField(3);
+                setField(2);
               }}
             >
               <Text>NO</Text>
             </Button>
-          </section> */}
+          </section>
           {(creating || loading) && (
             <div className={styles.loading}>
               <LoadingBooks />
             </div>
           )}
-          {!loading && (
-            <section className={`${styles.field} ${styles.show}`}>
-              <FormPlayground onSubmit={handlerSendData} />
+          {!(creating || loading) && (
+            <section
+              className={`${styles.field} ${
+                field === MAX_SECTION_NUMBER && styles.show
+              }`}
+            >
+              <FormPlayground
+                onSubmit={handlerSendData}
+                alreadyIdea={hasAnIdea}
+              />
             </section>
           )}
         </section>
