@@ -135,15 +135,25 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
             />
           </div>
           <div>
-            <Text size={"0.6rem"} bold>
-              Budget ($) {input.budget}
-            </Text>
+            <div className={styles.texts}>
+              <Text size={"0.6rem"} bold>
+                Budget($)
+              </Text>
+              <Text size={"0.6rem"} bold color="soft">
+                {input.budget}
+              </Text>
+            </div>
             <Slider id={"budget"} onChange={handleChange} />
           </div>
           <div>
-            <Text size={"0.6rem"} bold>
-              Free Time (H/W) {input.freeTime}
-            </Text>
+            <div className={styles.texts}>
+              <Text size={"0.6rem"} bold>
+                Free Time (H/W)
+              </Text>
+              <Text size={"0.6rem"} bold color="soft">
+                {input.freeTime}
+              </Text>
+            </div>
             <Slider id={"freeTime"} onChange={handleChange} min={1} max={100} />
           </div>
           <div>

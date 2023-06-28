@@ -25,7 +25,7 @@ const texts = {
   teacherMessage: "Mensaje del profesor",
 };
 import { useStorage } from "../../hooks/useStorage";
-
+import MagicEffect from "../../components/atoms/MagicEffect/MagicEffect";
 const PromptSectionDetail = () => {
   const { section } = useParams();
   const navigate = useNavigate();
@@ -119,10 +119,12 @@ const PromptSectionDetail = () => {
   useEffect(() => {
     changeSection();
   }, [scrollPos]);
+
   const tools = useMemo(() => {
     const toolsList = details[section]?.urlTools.trim().split("\n\n");
     return toolsList;
   }, []);
+
   console.log(details[section]?.urlTools);
   return (
     <div className={styles.promptSectionDetail}>
@@ -196,6 +198,9 @@ const PromptSectionDetail = () => {
           }}
         >
           <div className={styles.details}>
+            <Text type="subtitle" size={"0.8rem"} bold color="soft">
+              {texts[section]}
+            </Text>
             <section className={styles.detail} ref={detailRef}>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.planDetail}
@@ -232,15 +237,17 @@ const PromptSectionDetail = () => {
             </div>
           </div>
           <aside className={styles.tools}>
-            <Text type="subtitle" bold>
-              Toolkit to execute
+            <Text type="subtitle" bold color="soft">
+              Toolbox to execute
             </Text>
             {tools?.map((t) => {
               const elements = t.split("\n");
-              console.log(elements);
+
               return (
                 <>
-                  <Text type="subtitle">{elements[0]?.split(":")[1]}</Text>
+                  <Text type="subtitle" bold>
+                    {elements[0]?.split(":")[1]}
+                  </Text>
                   <ReactMarkdown className={styles.md}>
                     {elements[1]?.split(":")[1]}
                   </ReactMarkdown>
@@ -250,7 +257,8 @@ const PromptSectionDetail = () => {
                       to={elements[2]?.split(": ")[1].trim()}
                       target={"_blank"}
                     >
-                      <Button>
+                      {" "}
+                      <Button width={"110px"}>
                         <IconText icon={"link"} size="0.8rem">
                           link
                         </IconText>
@@ -261,7 +269,7 @@ const PromptSectionDetail = () => {
                       to={elements[3]?.split(": ")[1].trim()}
                       target={"_blank"}
                     >
-                      <Button>
+                      <Button flexible>
                         <IconText icon={"youtube"} size="0.8rem">
                           Tutorial
                         </IconText>

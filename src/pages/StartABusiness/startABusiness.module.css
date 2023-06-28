@@ -29,6 +29,16 @@
   flex-grow: 1;
 }
 
+.question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+.question > * {
+  margin-bottom: 16px;
+}
+
 .field > :first-child {
   font-size: var(--xlg);
 }

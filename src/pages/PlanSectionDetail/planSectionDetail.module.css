@@ -58,7 +58,10 @@
 }
 .details {
   width: 65%;
-  margin-right: 32px;
+  margin-right: 80px;
+}
+.details > :first-child {
+  margin-bottom: 32px;
 }
 .md ol,
 .md ul {

@@ -81,18 +81,6 @@ const LandingPageNav = () => {
           {/* <GradientBorder>
             <ChangeLanguage />
           </GradientBorder> */}
-          {location?.pathname !== LOGIN && !isLogged() && (
-            <GradientBorder style={{ borderRadius: "16px" }}>
-              <Button
-                type="bordered"
-                classes={styles.loginBtn}
-                onClick={handleUserlogin}
-                style={{ backgroundColor: "#0B263C", borderRadius: "16px" }}
-              >
-                <Text>{isLogged() ? "log out" : "log in"}</Text>
-              </Button>
-            </GradientBorder>
-          )}
         </section>
       </section>
       <div className={styles.menus}>

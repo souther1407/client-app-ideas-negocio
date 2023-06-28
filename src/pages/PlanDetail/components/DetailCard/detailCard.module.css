@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--black-transparent);
-  padding: 16px;
+  padding: 24px 8px;
   position: relative;
   cursor: pointer;
   border-radius: 16px;
@@ -12,7 +12,7 @@
 .detailCard::before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    #c2c2c21c,
+    #c2c2c24f,
     transparent 40%
   );
   border-radius: inherit;
@@ -31,7 +31,7 @@
 }
 
 .img {
-  width: 150px;
+  width: 125px;
   align-self: center;
   filter: opacity(80%);
 }

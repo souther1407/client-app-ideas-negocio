@@ -5,7 +5,7 @@ import Text from "../../../../components/atoms/Text/Text";
 const InputSection = ({
   location,
   budget,
-  age,
+  freeTime,
   skills,
   teacher,
   ...otherProps
@@ -21,16 +21,12 @@ const InputSection = ({
         <Text>{budget}</Text>
       </section>
       <section className={styles.section}>
-        <Text color="soft">Edad</Text>
-        <Text>{age}</Text>
+        <Text color="soft">Freetime</Text>
+        <Text>{freeTime}</Text>
       </section>
       <section className={styles.section}>
         <Text color="soft">Habilidades</Text>
         <Text>{skills}</Text>
-      </section>
-      <section className={styles.section}>
-        <Text color="soft">Profesor</Text>
-        <Text>{teacher}</Text>
       </section>
     </div>
   );

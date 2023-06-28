@@ -26,6 +26,10 @@
 .inputs {
   width: 250px;
 }
+.texts {
+  display: flex;
+  justify-content: space-between;
+}
 .mobileInputs {
   display: none;
   width: 100%;
