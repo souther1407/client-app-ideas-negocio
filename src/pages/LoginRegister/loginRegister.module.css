@@ -29,7 +29,6 @@
 
 .loginForm,
 .registerForm {
-  border: 4px solid var(--btn-primary-border-color);
   border-radius: 8px;
   padding: 16px 40px;
   margin-top: 16px;

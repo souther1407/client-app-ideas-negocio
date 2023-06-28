@@ -140,29 +140,31 @@ const StartABusiness = () => {
 
         <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
-            <Text type="title" textAlign="center">
-              ¿Ya tienes una idea de negocios?
-            </Text>
-            <Button
-              type="bordered"
-              w
-              onClick={() => {
-                setHasAnIdea(true);
-                setField(2);
-              }}
-            >
-              <Text>SI</Text>
-            </Button>
-            <Button
-              type="bordered"
-              w
-              onClick={() => {
-                setHasAnIdea(false);
-                setField(2);
-              }}
-            >
-              <Text>NO</Text>
-            </Button>
+            <div className={styles.question}>
+              <Text type="title" textAlign="center" bold>
+                ¿Ya tienes una idea de negocios?
+              </Text>
+              <Button
+                type="bordered"
+                w
+                onClick={() => {
+                  setHasAnIdea(true);
+                  setField(2);
+                }}
+              >
+                <Text>SI</Text>
+              </Button>
+              <Button
+                type="bordered"
+                w
+                onClick={() => {
+                  setHasAnIdea(false);
+                  setField(2);
+                }}
+              >
+                <Text>NO</Text>
+              </Button>
+            </div>
           </section>
           {(creating || loading) && (
             <div className={styles.loading}>

@@ -67,9 +67,9 @@ const PlanDetail = () => {
         <section className={styles.description}>
           <section className={styles.header}>
             <div className={styles.info}>
-              <GradientText type="title" bold>
+              <Text type="title" bold size={"1.8rem"}>
                 {response.details.title}
-              </GradientText>
+              </Text>
               <Text>{response.details.description}</Text>
             </div>
             {userData.uid === response.userId ? (
@@ -150,7 +150,7 @@ const PlanDetail = () => {
         </section>
         <section className={styles.inputUser}>
           <InputSection
-            age={formatStringToShort(response?.input?.age)}
+            freeTime={formatStringToShort(response?.input?.freeTime)}
             budget={formatStringToShort(response?.input?.budget)}
             location={formatStringToShort(response?.input?.location)}
             skills={formatStringToShort(response?.input?.skills)}
