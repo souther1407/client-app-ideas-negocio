@@ -141,8 +141,8 @@ const StartABusiness = () => {
         <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <div className={styles.question}>
-              <Text type="title" textAlign="center" bold>
-                ¿Ya tienes una idea de negocios?
+              <Text type="subtitle" textAlign="center" bold>
+                Do you already have a business idea?
               </Text>
               <Button
                 type="bordered"
@@ -152,7 +152,9 @@ const StartABusiness = () => {
                   setField(2);
                 }}
               >
-                <Text>SI</Text>
+                <Text type="subtitle" bold>
+                  YES
+                </Text>
               </Button>
               <Button
                 type="bordered"
@@ -162,7 +164,9 @@ const StartABusiness = () => {
                   setField(2);
                 }}
               >
-                <Text>NO</Text>
+                <Text type="subtitle" bold>
+                  NO
+                </Text>
               </Button>
             </div>
           </section>

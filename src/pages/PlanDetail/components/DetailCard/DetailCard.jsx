@@ -31,12 +31,8 @@ const DetailCard = ({
         <img src={img} alt="imagen representativa de una seccion" />
       </div>
       <section className={styles.detail}>
-        <div className={styles.icon}>
-          <Icon size={"16px"} type={icon} />
-        </div>
         <div className={styles.nameTitle}>
-          <Text>{sectionName}</Text>
-          <Text color="soft">{title}</Text>
+          <Text size={"0.7rem"}>{sectionName}</Text>
         </div>
       </section>
     </section>

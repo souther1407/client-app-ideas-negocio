@@ -10,12 +10,12 @@ import { useLogin } from "../../hooks/useLogin";
 import InputSection from "./components/InputSection/InputSection";
 import { useNavigate } from "react-router-dom";
 import { PLAN_DETAIL } from "../../utils/constants/routes";
-import imgMarketAnalisis from "../../assets/imgMarketAnalisis.svg";
-import imgCosts from "../../assets/imgCosts.svg";
-import imgMarketingPlan from "../../assets/imgMarketingPlan.svg";
-import imgProductMin from "../../assets/imgProductMin.svg";
-import imgTeam from "../../assets/imgTeam.svg";
-import imgTeacherMessage from "../../assets/imgTeacherMessage.svg";
+import imgMarketAnalisis from "../../assets/icon4.svg";
+import imgCosts from "../../assets/icon5.svg";
+import imgMarketingPlan from "../../assets/icon3.svg";
+import imgProductMin from "../../assets/icon1.svg";
+import imgTeam from "../../assets/icon2.svg";
+import imgCompetition from "../../assets/icon6.svg";
 import GradientText from "../../components/molecules/GradientText/GradientText";
 import { Switch } from "../../components/atoms/Switch/Switch";
 import { Checkbox } from "../../components/atoms/CheckBox/CheckBox";
@@ -67,7 +67,7 @@ const PlanDetail = () => {
         <section className={styles.description}>
           <section className={styles.header}>
             <div className={styles.info}>
-              <Text type="title" bold size={"1.8rem"}>
+              <Text type="title" bold size={"1.3rem"}>
                 {response.details.title}
               </Text>
               <Text>{response.details.description}</Text>
@@ -95,17 +95,15 @@ const PlanDetail = () => {
           <section className={styles.cardsDetail}>
             <DetailCard
               title={response.title}
-              sectionName={"Mensaje el profesor"}
+              sectionName={"Competition"}
               id="marketAnalisis"
               onShowDetail={() => navigate(PLAN_DETAIL + "/teacherMessage")}
-              icon={"book"}
-              img={imgTeacherMessage}
+              img={imgCompetition}
             />
 
             <DetailCard
               title={response.title}
-              sectionName={"Analisis de mercado"}
-              icon={"search"}
+              sectionName={"Market Analysis"}
               id="marketAnalisis"
               onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
               img={imgMarketAnalisis}
@@ -113,36 +111,32 @@ const PlanDetail = () => {
 
             <DetailCard
               title={response.title}
-              sectionName={"Producto mínimo viable"}
+              sectionName={"Product Development"}
               id={"prices"}
-              icon={"gears"}
               onShowDetail={() => navigate(PLAN_DETAIL + "/productMin")}
               img={imgProductMin}
             />
 
             <DetailCard
               title={response.title}
-              sectionName={"Equipo"}
+              sectionName={"Team"}
               id={"sales"}
-              icon={"team"}
               onShowDetail={() => navigate(PLAN_DETAIL + "/team")}
               img={imgTeam}
             />
 
             <DetailCard
               title={response.title}
-              sectionName={"Plan de Marketing"}
+              sectionName={"Marketing Plan"}
               id={"marketingPlan"}
-              icon={"megaphone"}
               onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
               img={imgMarketingPlan}
             />
 
             <DetailCard
               title={response.title}
-              sectionName={"Costos"}
+              sectionName={"Costs"}
               id={"riskAnalisis"}
-              icon={"money"}
               onShowDetail={() => navigate(PLAN_DETAIL + "/costs")}
               img={imgCosts}
             />
