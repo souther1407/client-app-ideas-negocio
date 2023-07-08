@@ -111,12 +111,12 @@ const ChooseBusiness = () => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         renderFooter={() => (
-          <Button color="secondary" disabled={loading} onClick={handleClick}>
+          <Button disabled={loading} onClick={handleClick}>
             <Text>{loading ? "creating..." : "Elegir opcion"}</Text>
           </Button>
         )}
       >
-        <section>{options[option].description}</section>
+        <Text color="soft">{options[option].description}</Text>
       </InfoModal>
       <GradientBg opacity={15} />
     </div>

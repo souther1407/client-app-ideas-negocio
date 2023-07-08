@@ -13,20 +13,28 @@ const InputSection = ({
   return (
     <div className={styles.inputSection} {...otherProps}>
       <section className={styles.section}>
-        <Text color="soft">Ubicación</Text>
-        <Text>{location}</Text>
+        <Text color="soft" size={"0.6rem"}>
+          Ubicación
+        </Text>
+        <Text bold>{location}</Text>
       </section>
       <section className={styles.section}>
-        <Text color="soft">Presupuesto</Text>
-        <Text>{budget}</Text>
+        <Text color="soft" size={"0.6rem"}>
+          Presupuesto
+        </Text>
+        <Text bold>{budget}</Text>
       </section>
       <section className={styles.section}>
-        <Text color="soft">Freetime</Text>
-        <Text>{freeTime}</Text>
+        <Text color="soft" size={"0.6rem"}>
+          Freetime
+        </Text>
+        <Text bold>{freeTime}</Text>
       </section>
       <section className={styles.section}>
-        <Text color="soft">Habilidades</Text>
-        <Text>{skills}</Text>
+        <Text color="soft" size={"0.6rem"}>
+          Habilidades
+        </Text>
+        <Text bold>{skills}</Text>
       </section>
     </div>
   );

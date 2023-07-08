@@ -13,16 +13,17 @@ import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
 } from "../../utils/constants/routes";
-import Mark from "../../components/atoms/Mark/Mark";
+
 import ReactMarkdown from "react-markdown";
+import EffectButton from "../../components/atoms/EffectButton/EffectButton";
 
 const texts = {
-  marketAnalisis: "Análisis de mercado",
-  team: "Equipo",
-  productMin: "Producto mínimo viable",
-  marketingPlan: "Plan de Marketing",
-  costs: "Costes",
-  teacherMessage: "Mensaje del profesor",
+  marketAnalisis: "Market analysis",
+  team: "Team",
+  productMin: "Product development",
+  marketingPlan: "Marketing plan",
+  costs: "Costs",
+  teacherMessage: "Competition",
 };
 import { useStorage } from "../../hooks/useStorage";
 import MagicEffect from "../../components/atoms/MagicEffect/MagicEffect";
@@ -198,7 +199,7 @@ const PromptSectionDetail = () => {
           }}
         >
           <div className={styles.details}>
-            <Text type="subtitle" size={"0.8rem"} bold color="soft">
+            <Text type="subtitle" size={"1.2rem"} bold color="soft">
               {texts[section]}
             </Text>
             <section className={styles.detail} ref={detailRef}>
@@ -257,23 +258,14 @@ const PromptSectionDetail = () => {
                       to={elements[2]?.split(": ")[1].trim()}
                       target={"_blank"}
                     >
-                      {" "}
-                      <Button width={"110px"}>
-                        <IconText icon={"link"} size="0.8rem">
-                          link
-                        </IconText>
-                      </Button>
+                      <EffectButton text={"link"} icon={"link"} />
                     </Link>
                     <Link
                       extern
                       to={elements[3]?.split(": ")[1].trim()}
                       target={"_blank"}
                     >
-                      <Button flexible>
-                        <IconText icon={"youtube"} size="0.8rem">
-                          Tutorial
-                        </IconText>
-                      </Button>
+                      <EffectButton text={"tutorial"} icon={"youtube"} />
                     </Link>
                   </div>
                 </>

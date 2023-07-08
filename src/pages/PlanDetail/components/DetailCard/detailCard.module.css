@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   background-color: var(--black-transparent);
-  padding: 24px 8px;
+  padding: 24px;
   position: relative;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   border-radius: 16px;
   border: 1px solid var(--gray-transparent);
@@ -34,10 +36,17 @@
   width: 125px;
   align-self: center;
   filter: opacity(80%);
+  margin-bottom: 16px;
+}
+.img > * {
+  width: 100%;
+  height: 100%;
+  transform: scale(350%);
 }
 
 .detail {
   display: flex;
+  justify-content: center;
 }
 
 .icon {
@@ -49,10 +58,6 @@
 .nameTitle > :first-child {
   font-weight: bold;
   font-size: var(--sm);
-}
-
-.nameTitle > :last-child {
-  font-size: var(--ty);
 }
 
 @media screen and (max-width: 700px) {

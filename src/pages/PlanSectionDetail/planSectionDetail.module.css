@@ -50,14 +50,14 @@
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
-
-  padding: 36px;
+  flex-direction: column;
+  padding: 32px;
   line-height: 1.7;
   background-color: var(--black);
   margin: 16px 16px 0 16px;
 }
 .details {
-  width: 65%;
+  width: 100%;
   margin-right: 80px;
 }
 .details > :first-child {
@@ -146,6 +146,9 @@
   .content {
     overflow: hidden;
   }
+  .details {
+    width: 65%;
+  }
   .planSectionName > * {
     flex-shrink: 0;
   }
@@ -153,8 +156,15 @@
     margin-right: 8px;
   }
   .main {
-    overflow: auto;
+    display: flex;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-direction: row;
     padding: 80px;
+    line-height: 1.7;
+    background-color: var(--black);
+    margin: 16px 16px 0 16px;
   }
   .tools {
     position: sticky;

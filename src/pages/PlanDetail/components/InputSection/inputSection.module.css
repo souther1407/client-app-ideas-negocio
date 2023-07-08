@@ -1,35 +1,31 @@
 .inputSection {
   display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(3, auto);
-  padding: 16px;
+  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(2, auto);
   border: 1px solid var(--gray-transparent);
   border-radius: 16px;
-  gap: 16px;
-  width: 100%;
+  padding: 16px;
+  width: 500px;
+  height: 200px;
+  justify-items: center;
   background-color: var(--black-transparent);
 }
-.section {
-  margin-bottom: 32px;
-}
 
-.section > :first-child {
-  margin-bottom: 4px;
-  font-size: var(--ty);
+.inputSection > :nth-child(2) {
+  position: relative;
+  right: 16px;
 }
-
-.section > :last-child {
-  font-size: var(--sm);
-  font-weight: bold;
-}
-
 @media screen and (max-width: 600px) {
   .inputSection {
     display: grid;
     grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
     padding: 16px;
     gap: 16px;
+  }
+  .inputSection > :nth-child(2) {
+    position: relative;
+    right: 12px;
   }
   .section {
     margin-bottom: 0;

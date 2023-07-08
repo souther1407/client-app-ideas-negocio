@@ -17,9 +17,9 @@
 
 .cardsDetail {
   display: grid;
-  grid-template-columns: repeat(3, 325px);
-  grid-template-rows: repeat(2, auto);
-  gap: 16px;
+  grid-template-columns: repeat(3, 260px);
+  grid-template-rows: repeat(2, 200px);
+  gap: 20px;
 }
 .description {
   display: flex;
@@ -31,8 +31,9 @@
 }
 .header {
   text-align: center;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
+  margin-bottom: 16px;
 }
 .inputUser {
   position: relative;
@@ -85,7 +86,9 @@
 .img {
   width: 280px;
 }
-
+.inputUser {
+  margin-bottom: 16px;
+}
 .details {
   font-size: 16px;
 }
