@@ -26,11 +26,11 @@ const InfoModal = ({ title = "", children, isOpen, onClose, renderFooter }) => {
     >
       <ModalOverlay />
       <ModalContent
-        backgroundImage={"linear-gradient(#061e32, #0d4572, #061e32)"}
-        color={"aliceblue"}
+        backgroundColor={"#060B12"}
         border={"1px solid aliceblue"}
         maxHeight={"none"}
         h={"100vh"}
+        color={"white"}
         marginTop={"0"}
       >
         <ModalCloseButton />
