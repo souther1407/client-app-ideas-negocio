@@ -5,18 +5,16 @@ import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPag
 import DetailCard from "./components/DetailCard/DetailCard";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
-import VerticalLoginNav from "../../components/organisms/VerticalLoginNav/VerticalLoginNav";
 import { useLogin } from "../../hooks/useLogin";
 import InputSection from "./components/InputSection/InputSection";
-import { useNavigate } from "react-router-dom";
-import { PLAN_DETAIL } from "../../utils/constants/routes";
+import { useNavigate, useParams } from "react-router-dom";
+import { PLAN_DETAIL, LANDING_PAGE } from "../../utils/constants/routes";
 import imgMarketAnalisis from "../../assets/icon4.svg";
 import imgCosts from "../../assets/icon5.svg";
 import imgMarketingPlan from "../../assets/icon3.svg";
 import imgProductMin from "../../assets/icon1.svg";
 import imgTeam from "../../assets/icon2.svg";
 import imgCompetition from "../../assets/icon6.svg";
-import GradientText from "../../components/molecules/GradientText/GradientText";
 import { Switch } from "../../components/atoms/Switch/Switch";
 import { Checkbox } from "../../components/atoms/CheckBox/CheckBox";
 import { useStorage } from "../../hooks/useStorage";
@@ -24,14 +22,34 @@ import { changeVisibility } from "../../services/userPrompts/chageVisibily";
 import { toggleAddMyPrompts } from "../../services/userPrompts/toggleAddMyPrompts";
 import { addView } from "../../services/userPrompts/addView";
 import usePromptDetail from "../../states/prompDetail";
+import { getById } from "../../services/userPrompts/getPrompts";
+import IconButton from "../../components/molecules/IconButton/IconButton";
+import Link from "../../components/atoms/Link/Link";
+
 const PlanDetail = () => {
   const navigate = useNavigate();
   const { isLogged, userData } = useLogin({});
   const { save } = useStorage();
-  const response = usePromptDetail((state) => state.promptDetail);
+  const { id, user } = useParams();
+  const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
+  const [response, setResponse] = useState({});
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    getById(id, user)
+      .then((prompt) => {
+        if (!isLogged() && !prompt.isPublic) {
+          return navigate(LANDING_PAGE);
+        }
+        setPromptDetail(prompt);
+        setResponse(prompt);
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => setLoading(false));
+  }, []);
   const handleSwitch = async (value) => {
     try {
       await changeVisibility({ promptId: response.id, visibility: value });
+      setResponse((prev) => ({ ...prev, isPublic: value }));
       alert(value ? "report set to public" : "report set to private");
     } catch (error) {
       alert("someting went wrong, try again");
@@ -61,97 +79,123 @@ const PlanDetail = () => {
 
   return (
     <div className={styles.planDetail}>
-      <section className={styles.content}>
-        <LandingPageNav />
+      {!loading && (
+        <section className={styles.content}>
+          <LandingPageNav />
 
-        <section className={styles.description}>
-          <section className={styles.header}>
-            <div className={styles.info}>
-              <Text type="title" bold size={"1.3rem"}>
-                {response.details.title}
-              </Text>
-              <Text>{response.details.description}</Text>
-            </div>
-            {userData.uid === response.userId ? (
-              <div className={styles.privatePublicSwitch}>
-                <Text>Private</Text>
-                <Switch
-                  defaultChecked={response.isPublic}
-                  onCheckedChange={handleSwitch}
-                />
-                <Text>Public</Text>
+          <section className={styles.description}>
+            <section className={styles.header}>
+              <div className={styles.info}>
+                <Text type="title" bold size={"1.3rem"}>
+                  {response.details.title}
+                </Text>
+                <Text>{response.details.description}</Text>
               </div>
-            ) : (
-              <div className={styles.addToFavorites}>
-                <Checkbox
-                  defaultChecked={response.inMyReports}
-                  onCheckedChange={handleCheckBox}
-                  className="border-neutral-700 w-[40px] h-[40px]"
-                />
-                <Text>Add to my reports</Text>
-              </div>
-            )}
+              {isLogged() && (
+                <div style={{ alignSelf: "start" }}>
+                  {userData.uid === response.userId ? (
+                    <div>
+                      <div className={styles.privatePublicSwitch}>
+                        <Text>Private</Text>
+                        <Switch
+                          defaultChecked={response.isPublic}
+                          onCheckedChange={handleSwitch}
+                        />
+                        <Text>Public</Text>
+                      </div>
+                      {response.isPublic && (
+                        <div className={styles.shareLinks}>
+                          <Link
+                            to={`https://twitter.com/intent/tweet?url=${window.location.href}&text=mira`}
+                            extern
+                            target="_blank"
+                          >
+                            <IconButton icon={"twitter"} size="1.2rem" />
+                          </Link>
+                          <Link
+                            to={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                            extern
+                            target="_blank"
+                          >
+                            <IconButton icon={"facebook"} size="1.2rem" />
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className={styles.addToFavorites}>
+                      <Checkbox
+                        defaultChecked={response.inMyReports}
+                        onCheckedChange={handleCheckBox}
+                        className="border-neutral-700 w-[40px] h-[40px]"
+                      />
+                      <Text>Add to my reports</Text>
+                    </div>
+                  )}
+                </div>
+              )}
+            </section>
+            <section className={styles.cardsDetail}>
+              <DetailCard
+                title={response.title}
+                sectionName={"Competition"}
+                id="marketAnalisis"
+                onShowDetail={() => navigate(PLAN_DETAIL + "/teacherMessage")}
+                img={imgCompetition}
+              />
+
+              <DetailCard
+                title={response.title}
+                sectionName={"Market Analysis"}
+                id="marketAnalisis"
+                onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
+                img={imgMarketAnalisis}
+              />
+
+              <DetailCard
+                title={response.title}
+                sectionName={"Product Development"}
+                id={"prices"}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/productMin")}
+                img={imgProductMin}
+              />
+
+              <DetailCard
+                title={response.title}
+                sectionName={"Team"}
+                id={"sales"}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/team")}
+                img={imgTeam}
+              />
+
+              <DetailCard
+                title={response.title}
+                sectionName={"Marketing Plan"}
+                id={"marketingPlan"}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
+                img={imgMarketingPlan}
+              />
+
+              <DetailCard
+                title={response.title}
+                sectionName={"Costs"}
+                id={"riskAnalisis"}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/costs")}
+                img={imgCosts}
+              />
+            </section>
           </section>
-          <section className={styles.cardsDetail}>
-            <DetailCard
-              title={response.title}
-              sectionName={"Competition"}
-              id="marketAnalisis"
-              onShowDetail={() => navigate(PLAN_DETAIL + "/teacherMessage")}
-              img={imgCompetition}
-            />
-
-            <DetailCard
-              title={response.title}
-              sectionName={"Market Analysis"}
-              id="marketAnalisis"
-              onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
-              img={imgMarketAnalisis}
-            />
-
-            <DetailCard
-              title={response.title}
-              sectionName={"Product Development"}
-              id={"prices"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/productMin")}
-              img={imgProductMin}
-            />
-
-            <DetailCard
-              title={response.title}
-              sectionName={"Team"}
-              id={"sales"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/team")}
-              img={imgTeam}
-            />
-
-            <DetailCard
-              title={response.title}
-              sectionName={"Marketing Plan"}
-              id={"marketingPlan"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
-              img={imgMarketingPlan}
-            />
-
-            <DetailCard
-              title={response.title}
-              sectionName={"Costs"}
-              id={"riskAnalisis"}
-              onShowDetail={() => navigate(PLAN_DETAIL + "/costs")}
-              img={imgCosts}
+          <section className={styles.inputUser}>
+            <InputSection
+              freeTime={formatStringToShort(response?.input?.freeTime)}
+              budget={formatStringToShort(response?.input?.budget)}
+              location={formatStringToShort(response?.input?.location)}
+              skills={formatStringToShort(response?.input?.skills)}
+              teacher={formatStringToShort(response?.input?.teacher)}
             />
           </section>
         </section>
-        <section className={styles.inputUser}>
-          <InputSection
-            freeTime={formatStringToShort(response?.input?.freeTime)}
-            budget={formatStringToShort(response?.input?.budget)}
-            location={formatStringToShort(response?.input?.location)}
-            skills={formatStringToShort(response?.input?.skills)}
-            teacher={formatStringToShort(response?.input?.teacher)}
-          />
-        </section>
-      </section>
+      )}
       <GradientBg opacity={16} />
     </div>
   );

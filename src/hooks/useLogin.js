@@ -4,13 +4,13 @@ import AuthUserData from "../services/authentication/auth.js";
 import { decodeToken } from "react-jwt";
 import useLoginData from "../states/userLoginData.js";
 import { signOut, signInWithPopup } from "firebase/auth";
+
 export const useLogin = ({
   onLogin = () => {},
   onLogout = () => {},
   type = "users",
 }) => {
   const { setData, resetData, userData } = useLoginData((state) => state);
-
   useEffect(() => {
     if (localStorage.getItem("token") && !userData.email) {
       const payload = decodeToken(localStorage.getItem("token"));

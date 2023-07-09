@@ -23,3 +23,12 @@ export const getPublicPrompts = async () => {
   const body = await response.json();
   return body;
 };
+
+export const getById = async (id, userId) => {
+  const response = await fetch(
+    URL + `/text/prompts/getById?id=${id}&user=${userId}`
+  );
+  if (response.status >= 400) throw new Error("Error, intente nuevamente");
+  const body = await response.json();
+  return body;
+};
