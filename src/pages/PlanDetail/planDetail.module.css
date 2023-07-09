@@ -54,7 +54,11 @@
   align-self: flex-start;
   margin-bottom: 16px;
 }
-
+.shareLinks {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
 .info {
   width: 80%;
 }

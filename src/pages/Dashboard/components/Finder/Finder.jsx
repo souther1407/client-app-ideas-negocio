@@ -15,19 +15,12 @@ import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 const PlanRow = ({ plan, onToggle }) => {
   const { details, input, id, userId, isPublic, inMyReports, adds } = plan;
 
-  const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const navigate = useNavigate();
+  const { setPromptDetail } = usePromptDetail((state) => state);
 
   const goToPlanDetail = () => {
-    setPromptDetail({
-      id,
-      userId,
-      isPublic,
-      inMyReports,
-      ...plan.details,
-      input: plan.input,
-    });
-    navigate(MY_PROMPTS_DETAIL + `/${id}`);
+    setPromptDetail(plan);
+    navigate(MY_PROMPTS_DETAIL + `/${id}/${userId}`);
   };
 
   const handleCheckBox = async () => {
@@ -81,8 +74,9 @@ const Finder = () => {
         setPrompts(data);
       } catch (error) {
         alert(error.message);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     initPrompts();
   }, []);
@@ -124,7 +118,7 @@ const Finder = () => {
     <div className={styles.myPrompts}>
       <LandingPageNav />
       <section className={styles.content}>
-        {loading && <Text>Cargando...</Text>}{" "}
+        {loading && <Text>Loading...</Text>}
         {!loading && prompts.length > 0 && (
           <div className={styles.list}>
             <Text type="subtitle">Reports finder</Text>

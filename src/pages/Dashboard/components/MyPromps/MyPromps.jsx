@@ -11,7 +11,6 @@ import IconButton from "../../../../components/molecules/IconButton/IconButton";
 import { MY_PROMPTS_DETAIL } from "../../../../utils/constants/routes";
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 import LandingPageNav from "../../../../components/organisms/LandingPageNav/LandingPageNav";
-import { wait } from "../../../../utils/time/wait";
 const PlanRow = ({ plan }) => {
   const { id, input, details, isPublic, userId, inMyReports, views } = plan;
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ const PlanRow = ({ plan }) => {
   const handleDelete = () => {};
   const goToPlanDetail = async () => {
     setPromptDetail(plan);
-    navigate(MY_PROMPTS_DETAIL + `/${id}`);
+    navigate(MY_PROMPTS_DETAIL + `/${id}/${userId}`);
   };
   return (
     <>
@@ -91,7 +90,7 @@ const MyPromps = () => {
     <div className={styles.myPrompts}>
       <LandingPageNav />
       <section className={styles.content}>
-        {loading && <Text>Cargando...</Text>}{" "}
+        {loading && <Text>Loading</Text>}{" "}
         {!loading && prompts.length > 0 && (
           <div className={styles.list}>
             <Text type="subtitle">My reports</Text>
