@@ -42,12 +42,22 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
     setInput((prev) => ({ ...prev, description: value }));
   };
   return (
-    <div className={styles.formPlayground}>
-      <header className={styles.header}>
+    <div
+      className={`${styles.formPlayground} ${
+        alreadyIdea && styles.alreadyIdea
+      }`}
+    >
+      <header
+        className={`${styles.header} ${alreadyIdea && styles.alreadyIdea}`}
+      >
         <Text size={"1rem"} bold>
           Business machine
         </Text>
-        <div className={styles.mobileSpace}></div>
+        <div
+          className={`${styles.mobileSpace} ${
+            alreadyIdea && styles.alreadyIdea
+          }`}
+        ></div>
         {alreadyIdea && (
           <Combobox
             nofoundText={"not report found"}
@@ -59,7 +69,9 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
           />
         )}
 
-        <section className={styles.drawer}>
+        <section
+          className={`${styles.drawer} ${alreadyIdea && styles.alreadyIdea}`}
+        >
           <Sheet
             title={""}
             description={""}
@@ -67,7 +79,11 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
               <IconButton size="16px" color={"white"} icon={"gears"} />
             )}
             renderContent={() => (
-              <section className={styles.mobileInputs}>
+              <section
+                className={`${styles.mobileInputs} ${
+                  alreadyIdea && styles.alreadyIdea
+                }`}
+              >
                 <div>
                   <Text size={"0.6rem"} bold>
                     Budget ($) {input.budget}
@@ -110,16 +126,20 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
           />
         </section>
       </header>
-      <main className={styles.main}>
+      <main className={`${styles.main} ${alreadyIdea && styles.alreadyIdea}`}>
         {alreadyIdea && (
           <Textarea
             placeholder={"Bussines description"}
             id="description"
             onChange={handleChange}
-            className={styles.descriptionInput}
+            className={`${styles.descriptionInput} ${
+              alreadyIdea && styles.alreadyIdea
+            }`}
           />
         )}
-        <section className={styles.inputs}>
+        <section
+          className={`${styles.inputs} ${alreadyIdea && styles.alreadyIdea}`}
+        >
           <div
             className={`${styles.countryInput} ${
               !alreadyIdea && styles.movedLeft

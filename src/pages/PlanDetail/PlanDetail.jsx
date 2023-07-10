@@ -92,13 +92,14 @@ const PlanDetail = () => {
                 <Text>{response.details.description}</Text>
               </div>
               {isLogged() && (
-                <div style={{ alignSelf: "start" }}>
+                <div className={styles.inputsHeader}>
                   {userData.uid === response.userId ? (
                     <div>
                       <div className={styles.privatePublicSwitch}>
                         <Text>Private</Text>
                         <Switch
                           defaultChecked={response.isPublic}
+                          className="data-[state=checked]:bg-neutral-400"
                           onCheckedChange={handleSwitch}
                         />
                         <Text>Public</Text>
@@ -119,6 +120,23 @@ const PlanDetail = () => {
                           >
                             <IconButton icon={"facebook"} size="1.2rem" />
                           </Link>
+                          <Link
+                            to={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+                            extern
+                            target="_blank"
+                          >
+                            <IconButton icon={"linkedin"} size="1.2rem" />
+                          </Link>
+                          <IconButton
+                            icon={"clip"}
+                            size="1.2rem"
+                            onClick={async () => {
+                              await navigator.clipboard.writeText(
+                                window.location.href
+                              );
+                              alert("copiado");
+                            }}
+                          />
                         </div>
                       )}
                     </div>

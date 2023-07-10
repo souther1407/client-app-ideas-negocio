@@ -63,33 +63,33 @@
   display: none;
 }
 @media screen and (max-width: 800px) {
-  .formPlayground {
+  .formPlayground.alreadyIdea {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .inputs {
+  .inputs.alreadyIdea {
     display: none;
   }
-  .descriptionInput {
+  .descriptionInput.alreadyIdea {
     width: 100%;
   }
-  .mobileInputs {
+  .mobileInputs.alreadyIdea {
     display: block;
   }
-  .main > :first-child {
+  .main.alreadyIdea > :first-child {
     height: 150px !important;
   }
-  .header > :nth-child(3) {
+  .header.alreadyIdea > :nth-child(3) {
     width: 150px;
   }
-  .mobileSpace {
+  .mobileSpace.alreadyIdea {
     width: 1px;
     height: 1px;
     display: block;
   }
-  .drawer {
+  .drawer.alreadyIdea {
     display: block;
   }
 }

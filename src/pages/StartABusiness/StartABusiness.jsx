@@ -90,7 +90,7 @@ const StartABusiness = () => {
         const detail = await createDetail({
           input: parsedInputToMakeCompatibleWithPrompts,
           header: {
-            title: "Mi idea de negocio",
+            title: "My business idea",
             description: parsedInputToMakeCompatibleWithPrompts.description,
           },
         });
