@@ -91,24 +91,23 @@ const LandingPageNav = () => {
         )}
         {isLogged() && (
           <section className={styles.usermenu}>
-            <Drawer
-              renderIcon={(onOpen, isOpen) => (
-                <div className={styles.menuIcon} onClick={onOpen}>
-                  <Icon type={"user"} size={"40px"} />
+            <Sheet
+              renderButton={() => (
+                <div className={styles.menuIcon}>
+                  <Icon type={"user"} size={"32px"} />
                 </div>
               )}
               renderContent={() => (
                 <div className={styles.usermenuContent}>
-                  <GradientBorder>
-                    <Button
-                      onClick={handleLogout}
-                      style={{ backgroundColor: "#070E21", color: "white" }}
-                    >
-                      <Text>Log out</Text>
-                    </Button>
-                  </GradientBorder>
+                  <Button
+                    onClick={handleLogout}
+                    style={{ backgroundColor: "#070E21", color: "white" }}
+                  >
+                    <Text>Log out</Text>
+                  </Button>
                 </div>
               )}
+              renderFooter={() => {}}
             />
           </section>
         )}

@@ -9,7 +9,7 @@ const EffectButton = ({ children, text, icon }) => {
           <i style={{ marginRight: "8px" }}>
             <Icon size={"16px"} type={icon} color="black" />
           </i>
-          <p style={{ fontSize: "0.8rem" }}>{text}</p>
+          <p style={{ fontSize: "0.6rem" }}>{text}</p>
         </span>
         <button id="work" type="button" name="Hover">
           <i style={{ marginRight: "8px" }}>

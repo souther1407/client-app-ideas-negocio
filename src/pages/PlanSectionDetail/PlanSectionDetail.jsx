@@ -219,7 +219,7 @@ const PromptSectionDetail = () => {
               className={styles.askQuestions}
               ref={askQuestionsRef}
             ></section>
-            <div className={styles.antNextBtns}>
+            <div className={`${styles.antNextBtns} ${styles.desktop}`}>
               <Button type="bordered" onClick={onAnt} width={"150px"}>
                 <IconText bold icon={"leftArrow"} size="0.7rem">
                   Previous
@@ -272,6 +272,18 @@ const PromptSectionDetail = () => {
               );
             })}
           </aside>
+          <div className={`${styles.antNextBtns} ${styles.mobile}`}>
+            <Button type="bordered" onClick={onAnt} width={"150px"}>
+              <IconText bold icon={"leftArrow"} size="0.7rem">
+                Previous
+              </IconText>
+            </Button>
+            <Button type="bordered" onClick={onNext} width={"150px"}>
+              <IconText size="0.7rem" bold icon={"rightArrow"} iconPos="right">
+                Next
+              </IconText>
+            </Button>
+          </div>
         </main>
       </div>
 
