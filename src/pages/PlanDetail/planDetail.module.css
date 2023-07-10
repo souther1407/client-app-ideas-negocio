@@ -18,14 +18,15 @@
 .cardsDetail {
   display: grid;
   grid-template-columns: repeat(3, 260px);
-  grid-template-rows: repeat(2, 200px);
+  width: 100%;
+  justify-content: center;
   gap: 20px;
 }
 .description {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-basis: 50%;
+  flex-basis: 80%;
   align-items: center;
   z-index: 1;
 }
@@ -54,7 +55,14 @@
   align-self: flex-start;
   margin-bottom: 16px;
 }
+.title {
+  display: flex;
+}
+.title > :first-child {
+  margin-right: 32px;
+}
 .inputsHeader {
+  display: flex;
   align-self: start;
 }
 .shareLinks {
@@ -63,7 +71,7 @@
   margin-top: 16px;
 }
 .info {
-  width: 80%;
+  width: 100%;
 }
 
 .info > :first-child {
@@ -103,13 +111,24 @@
 @media screen and (max-width: 1050px) {
   .cardsDetail {
     grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    justify-content: stretch;
+    width: 80%;
+  }
+  .description {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .title {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .content {
     flex-direction: column;
-
     padding: 32px;
     padding-top: 70px;
   }
@@ -120,7 +139,10 @@
     margin-top: 32px;
     grid-template-columns: repeat(1, auto);
     grid-auto-rows: max-content;
-    width: 80%;
+    width: 100%;
+  }
+  .header {
+    width: 100%;
   }
 
   .inputUser {
@@ -132,7 +154,6 @@
 @media screen and (max-width: 500px) {
   .header {
     flex-direction: column;
-    align-items: center;
   }
   .description {
     margin-right: 0;
@@ -142,8 +163,5 @@
   }
   .info {
     margin: 0;
-  }
-  .inputsHeader {
-    align-self: center;
   }
 }
