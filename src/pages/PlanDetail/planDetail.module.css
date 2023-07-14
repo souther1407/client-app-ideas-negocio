@@ -17,23 +17,24 @@
 
 .cardsDetail {
   display: grid;
-  grid-template-columns: repeat(3, 260px);
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, 200px);
   width: 100%;
-  justify-content: center;
+
   gap: 20px;
 }
 .description {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-basis: 80%;
+  width: 75%;
   align-items: center;
   z-index: 1;
 }
 .header {
-  text-align: center;
-  width: 60%;
-  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
   margin-bottom: 16px;
 }
 .inputUser {
@@ -57,9 +58,11 @@
 }
 .title {
   display: flex;
+  justify-content: space-between;
 }
 .title > :first-child {
   margin-right: 32px;
+  flex-basis: 50%;
 }
 .inputsHeader {
   display: flex;
@@ -71,6 +74,8 @@
   margin-top: 16px;
 }
 .info {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -88,9 +93,13 @@
   display: flex;
   align-self: flex-start;
   margin-top: 16px;
+  align-items: center;
 }
 .privatePublicSwitch > * {
-  margin-right: 8px;
+  margin-right: 16px;
+}
+.privatePublicSwitch > :last-child {
+  margin-left: 4px;
 }
 .addToFavorites {
   align-items: center;
@@ -113,10 +122,10 @@
     grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(3, auto);
     justify-content: stretch;
-    width: 80%;
   }
-  .description {
-    width: 100%;
+  .title {
+    display: flex;
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 950px) {
@@ -131,6 +140,9 @@
     flex-direction: column;
     padding: 32px;
     padding-top: 70px;
+  }
+  .description {
+    width: 100%;
   }
   .planDetail {
     flex-direction: column;
@@ -158,7 +170,7 @@
   .description {
     margin-right: 0;
   }
-  .cardsDetail {
+  loader .cardsDetail {
     align-items: start;
   }
   .info {
