@@ -97,7 +97,7 @@ const StartABusiness = () => {
 
         setPromptDetail(detail);
         await wait(1000);
-        navigate(MY_PROMPTS_DETAIL + `/${detail.id}`);
+        navigate(MY_PROMPTS_DETAIL + `/${detail.id}/${detail.userId}`);
       } catch (error) {
         alert("hubo un problema, inténtalo nuevamente");
       } finally {

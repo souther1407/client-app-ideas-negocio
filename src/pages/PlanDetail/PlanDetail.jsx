@@ -160,15 +160,15 @@ const PlanDetail = () => {
                 title={response.title}
                 sectionName={"Competition"}
                 id="marketAnalisis"
-                onShowDetail={() => navigate(PLAN_DETAIL + "/teacherMessage")}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/competitions")}
                 img={imgCompetition}
               />
 
               <DetailCard
                 title={response.title}
-                sectionName={"Market Analysis"}
+                sectionName={"Target customer"}
                 id="marketAnalisis"
-                onShowDetail={() => navigate(PLAN_DETAIL + "/marketAnalisis")}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/targetCustomer")}
                 img={imgMarketAnalisis}
               />
 
@@ -176,7 +176,7 @@ const PlanDetail = () => {
                 title={response.title}
                 sectionName={"Product Development"}
                 id={"prices"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/productMin")}
+                onShowDetail={() => navigate(PLAN_DETAIL + "/mvp")}
                 img={imgProductMin}
               />
 

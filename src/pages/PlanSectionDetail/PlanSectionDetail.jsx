@@ -18,12 +18,12 @@ import ReactMarkdown from "react-markdown";
 import EffectButton from "../../components/atoms/EffectButton/EffectButton";
 
 const texts = {
-  marketAnalisis: "Market analysis",
+  targetCustomer: "Target Customer",
   team: "Team",
-  productMin: "Product development",
+  mvp: "Product development",
   marketingPlan: "Marketing plan",
   costs: "Costs",
-  teacherMessage: "Competition",
+  competitions: "Competition",
 };
 import { useStorage } from "../../hooks/useStorage";
 import MagicEffect from "../../components/atoms/MagicEffect/MagicEffect";
@@ -122,11 +122,10 @@ const PromptSectionDetail = () => {
   }, [scrollPos]);
 
   const tools = useMemo(() => {
-    const toolsList = details[section]?.urlTools.trim().split("\n\n");
+    const toolsList = details[section]?.toolsList.trim().split("\n\n");
     return toolsList;
   }, []);
 
-  console.log(details[section]?.urlTools);
   return (
     <div className={styles.promptSectionDetail}>
       <div className={styles.content}>
@@ -149,7 +148,7 @@ const PromptSectionDetail = () => {
                 color={currentSection !== "detail" && "soft"}
                 size="0.7rem"
               >
-                {texts[section]}
+                {"Overview"}
               </IconText>
             </div>
             <div
@@ -164,7 +163,7 @@ const PromptSectionDetail = () => {
                 color={currentSection !== "questions" && "soft"}
                 size="0.7rem"
               >
-                Preguntas
+                Objetives
               </IconText>
             </div>
             <div
@@ -179,7 +178,7 @@ const PromptSectionDetail = () => {
                 color={currentSection !== "ask" && "soft"}
                 size="0.7rem"
               >
-                Herramientas
+                Plan
               </IconText>
             </div>
           </section>
@@ -204,14 +203,21 @@ const PromptSectionDetail = () => {
             </Text>
             <section className={styles.detail} ref={detailRef}>
               <ReactMarkdown className={styles.md}>
-                {details[section]?.planDetail}
+                {details[section]?.overview}
               </ReactMarkdown>
             </section>
 
             <section className={styles.questions} ref={questionsRef}>
-              <Text type="subtitle">Preguntas</Text>
+              <Text type="subtitle">Objetives</Text>
               <ReactMarkdown className={styles.md}>
-                {details[section]?.questions}
+                {details[section]?.objetives}
+              </ReactMarkdown>
+            </section>
+
+            <section className={styles.questions} ref={askQuestionsRef}>
+              <Text type="subtitle">Plan</Text>
+              <ReactMarkdown className={styles.md}>
+                {details[section]?.plan}
               </ReactMarkdown>
             </section>
 
@@ -243,28 +249,20 @@ const PromptSectionDetail = () => {
             </Text>
             {tools?.map((t) => {
               const elements = t.split("\n");
-
+              console.log(elements);
               return (
                 <>
                   <Text type="subtitle" bold>
-                    {elements[0]?.split(":")[1]}
+                    {elements[0]}
                   </Text>
                   <ReactMarkdown className={styles.md}>
-                    {elements[1]?.split(":")[1]}
+                    {elements[1]}
                   </ReactMarkdown>
                   <div className={styles.btns}>
-                    <Link
-                      extern
-                      to={elements[2]?.split(": ")[1].trim()}
-                      target={"_blank"}
-                    >
+                    <Link extern to={elements[2]} target={"_blank"}>
                       <EffectButton text={"link"} icon={"link"} />
                     </Link>
-                    <Link
-                      extern
-                      to={elements[3]?.split(": ")[1].trim()}
-                      target={"_blank"}
-                    >
+                    <Link extern to={elements[3]} target={"_blank"}>
                       <EffectButton text={"tutorial"} icon={"youtube"} />
                     </Link>
                   </div>
