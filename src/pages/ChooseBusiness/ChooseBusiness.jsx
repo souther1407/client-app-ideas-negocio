@@ -36,7 +36,7 @@ const ChooseBusiness = () => {
       console.log("choose busines, detail", { input, header: options[option] });
       const detail = await createDetail({ input, header: options[option] });
       setPromptDetail(detail);
-      navitagte(MY_PROMPTS_DETAIL + `/${detail.id}`);
+      navitagte(MY_PROMPTS_DETAIL + `/${detail.id}/${detail.userId}`);
     } catch (error) {
       alert("hubo un inconveniente, por favor inténtalo nuevamente");
       navitagte(START_A_BUSINESS);
