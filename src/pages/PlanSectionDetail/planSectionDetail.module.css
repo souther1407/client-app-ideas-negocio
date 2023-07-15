@@ -142,6 +142,7 @@
 .tools {
   height: 100vh;
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
 }
 .tools > :first-child {
