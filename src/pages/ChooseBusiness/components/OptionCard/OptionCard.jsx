@@ -1,12 +1,7 @@
 import React from "react";
 import styles from "./optionCard.module.css";
 import Text from "../../../../components/atoms/Text/Text";
-import bg from "../../../../assets/gradient-card.svg";
-import Avatar from "../../../../components/atoms/Avatar/Avatar";
-import { formatStringToShort } from "../../../../utils/format/formatStringToShort";
-import bussinessMan from "../../../../assets/bussinessman.svg";
 import Icon from "../../../../components/atoms/Icon/Icon";
-import IMG from "../../../../assets/imgProductMin.svg";
 
 const IconDesc = ({ icon, title, desc }) => {
   return (
@@ -26,22 +21,22 @@ const OptionCard = ({
   estimatedCost,
   onShowDetail,
   totalCost,
+  img,
 }) => {
-  console.log(estimatedTime);
   return (
     <div className={styles.optionCard} onClick={onShowDetail}>
       <div className={styles.img}>
-        <img src={IMG} alt="imagen" />
+        <img src={img} alt="imagen" />
       </div>
       <div className={styles.title}>
         <Text bold>{title}</Text>
       </div>
 
       <div className={styles.details}>
-        <IconDesc icon={"calc"} title={"Coste estimado"} desc={estimatedCost} />
+        <IconDesc icon={"calc"} title={"Estimated cost"} desc={estimatedCost} />
         <IconDesc
           icon={"clock"}
-          title={"Tiempo estimado"}
+          title={"Estimated time"}
           desc={estimatedTime}
         />
       </div>

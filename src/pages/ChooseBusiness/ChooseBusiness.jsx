@@ -18,6 +18,10 @@ import OptionCard from "./components/OptionCard/OptionCard";
 import { createDetail } from "../../services/createText/createText";
 import ShineEffect from "../../components/molecules/ShineEffect/ShineEffect";
 import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
+import imgOptions1 from "../../assets/imgOptions1.svg";
+import imgOptions2 from "../../assets/imgOptions2.svg";
+import imgOptions3 from "../../assets/imgOptions3.svg";
+import imgOptions4 from "../../assets/imgOptions4.svg";
 const ChooseBusiness = () => {
   const { load } = useStorage();
 
@@ -44,7 +48,6 @@ const ChooseBusiness = () => {
       setLoading(false);
     }
   };
-  console.log(options);
 
   return (
     <div className={styles.chooseBusiness}>
@@ -62,6 +65,7 @@ const ChooseBusiness = () => {
               totalCost={input.budget}
               estimatedTime={options[0].estimatedTime}
               estimatedCost={options[0].estimatedCost}
+              img={imgOptions1}
               onShowDetail={() => {
                 setOption(0);
                 setIsOpen(true);
@@ -74,6 +78,7 @@ const ChooseBusiness = () => {
               totalCost={input.budget}
               estimatedTime={options[1].estimatedTime}
               estimatedCost={options[1].estimatedCost}
+              img={imgOptions2}
               onShowDetail={() => {
                 setOption(1);
                 setIsOpen(true);
@@ -86,6 +91,7 @@ const ChooseBusiness = () => {
               totalCost={input.budget}
               estimatedTime={options[2].estimatedTime}
               estimatedCost={options[2].estimatedCost}
+              img={imgOptions3}
               onShowDetail={() => {
                 setOption(2);
                 setIsOpen(true);
@@ -98,6 +104,7 @@ const ChooseBusiness = () => {
               totalCost={input.budget}
               estimatedTime={options[3].estimatedTime}
               estimatedCost={options[3].estimatedCost}
+              img={imgOptions4}
               onShowDetail={() => {
                 setOption(3);
                 setIsOpen(true);

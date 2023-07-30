@@ -5,8 +5,6 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
-import ModalNextCard from "../../pages/PlanDetail/components/modalNextCard/ModalNextCard";
-import Button from "../../components/atoms/Button/Button";
 import usePromptDetail from "../../states/prompDetail";
 import Link from "../../components/atoms/Link/Link";
 import {
@@ -34,18 +32,18 @@ const PromptSectionDetail = () => {
   const { load } = useStorage();
 
   const onAnt = () => {
-    if (section !== "marketAnalisis") mainRef.current.scrollTo({ top: 0 });
+    if (section !== "competitions") mainRef.current.scrollTo({ top: 0 });
     switch (section) {
-      case "marketAnalisis":
-        return navigate(PLAN_DETAIL + "/teacherMessage");
-      case "team":
-        return navigate(PLAN_DETAIL + "/marketAnalisis");
-      case "productMin":
-        return navigate(PLAN_DETAIL + "/team");
       case "marketingPlan":
-        return navigate(PLAN_DETAIL + "/marketingPlan");
-      case "costs":
-        return navigate(PLAN_DETAIL + "/productMin");
+        return navigate(PLAN_DETAIL + "/mvp");
+      case "mvp":
+        return navigate(PLAN_DETAIL + "/team");
+      case "team":
+        return navigate(PLAN_DETAIL + "/targetCustomer");
+      case "targetCustomer":
+        return navigate(PLAN_DETAIL + "/competitions");
+      case "competitions":
+        return;
       default:
         return;
     }
@@ -55,16 +53,16 @@ const PromptSectionDetail = () => {
     if (section !== "costs") mainRef.current.scrollTo({ top: 0 });
 
     switch (section) {
-      case "teacherMessage":
-        return navigate(PLAN_DETAIL + "/marketAnalisis");
-      case "marketAnalisis":
+      case "competitions":
+        return navigate(PLAN_DETAIL + "/targetCustomer");
+      case "targetCustomer":
         return navigate(PLAN_DETAIL + "/team");
       case "team":
-        return navigate(PLAN_DETAIL + "/productMin");
-      case "productMin":
+        return navigate(PLAN_DETAIL + "/mvp");
+      case "mvp":
         return navigate(PLAN_DETAIL + "/marketingPlan");
       case "marketingPlan":
-        return navigate(PLAN_DETAIL + "/costs");
+        return;
       default:
         return;
     }
@@ -123,6 +121,7 @@ const PromptSectionDetail = () => {
 
   const tools = useMemo(() => {
     const toolsList = details[section]?.toolsList.trim().split("\n\n");
+    console.log("tools", toolsList);
     return toolsList;
   }, []);
 
@@ -198,9 +197,23 @@ const PromptSectionDetail = () => {
           }}
         >
           <div className={styles.details}>
-            <Text type="subtitle" size={"1.2rem"} bold color="soft">
-              {texts[section]}
-            </Text>
+            <div className={styles.header}>
+              <Text type="subtitle" size={"1rem"} bold color="soft">
+                {texts[section]}
+              </Text>
+              <div className={styles.prevNextBtns}>
+                <IconButton
+                  icon={"singleArrowLeft"}
+                  size="2rem"
+                  onClick={onAnt}
+                />
+                <IconButton
+                  icon={"singleArrowRight"}
+                  size="2rem"
+                  onClick={onNext}
+                />
+              </div>
+            </div>
             <section className={styles.detail} ref={detailRef}>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.overview}
@@ -208,14 +221,12 @@ const PromptSectionDetail = () => {
             </section>
 
             <section className={styles.questions} ref={questionsRef}>
-              <Text type="subtitle">Objetives</Text>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.objetives}
               </ReactMarkdown>
             </section>
 
             <section className={styles.questions} ref={askQuestionsRef}>
-              <Text type="subtitle">Plan</Text>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.plan}
               </ReactMarkdown>
@@ -225,44 +236,27 @@ const PromptSectionDetail = () => {
               className={styles.askQuestions}
               ref={askQuestionsRef}
             ></section>
-            <div className={`${styles.antNextBtns} ${styles.desktop}`}>
-              <Button type="bordered" onClick={onAnt} width={"150px"}>
-                <IconText bold icon={"leftArrow"} size="0.7rem">
-                  Previous
-                </IconText>
-              </Button>
-              <Button type="bordered" onClick={onNext} width={"150px"}>
-                <IconText
-                  size="0.7rem"
-                  bold
-                  icon={"rightArrow"}
-                  iconPos="right"
-                >
-                  Next
-                </IconText>
-              </Button>
-            </div>
           </div>
           <aside className={styles.tools}>
-            <Text type="subtitle" bold color="soft">
+            <Text type="subtitle" size={"1rem"} bold color="soft">
               Toolbox to execute
             </Text>
             {tools?.map((t) => {
-              const elements = t.split("\n");
-              console.log(elements);
+              const element = JSON.parse(t);
+              console.log(element);
               return (
                 <>
                   <Text type="subtitle" bold>
-                    {elements[0]}
+                    {element.toolName}
                   </Text>
                   <ReactMarkdown className={styles.md}>
-                    {elements[1]}
+                    {element.description}
                   </ReactMarkdown>
                   <div className={styles.btns}>
-                    <Link extern to={elements[2]} target={"_blank"}>
+                    <Link extern to={element.url} target={"_blank"}>
                       <EffectButton text={"link"} icon={"link"} />
                     </Link>
-                    <Link extern to={elements[3]} target={"_blank"}>
+                    <Link extern to={element.tutorial} target={"_blank"}>
                       <EffectButton text={"tutorial"} icon={"youtube"} />
                     </Link>
                   </div>
@@ -270,18 +264,6 @@ const PromptSectionDetail = () => {
               );
             })}
           </aside>
-          <div className={`${styles.antNextBtns} ${styles.mobile}`}>
-            <Button type="bordered" onClick={onAnt} width={"150px"}>
-              <IconText bold icon={"leftArrow"} size="0.7rem">
-                Previous
-              </IconText>
-            </Button>
-            <Button type="bordered" onClick={onNext} width={"150px"}>
-              <IconText size="0.7rem" bold icon={"rightArrow"} iconPos="right">
-                Next
-              </IconText>
-            </Button>
-          </div>
         </main>
       </div>
 
