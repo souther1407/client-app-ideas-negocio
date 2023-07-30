@@ -15,6 +15,7 @@
 .img {
   width: 150px;
   filter: opacity(80%);
+  transform: scale(2);
   align-self: center;
 }
 

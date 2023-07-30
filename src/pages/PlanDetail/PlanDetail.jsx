@@ -198,9 +198,9 @@ const PlanDetail = () => {
 
               <DetailCard
                 title={response.title}
-                sectionName={"Costs"}
+                sectionName={"Coming soon"}
                 id={"riskAnalisis"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/costs")}
+                onShowDetail={() => {}}
                 img={imgCosts}
               />
             </section>

@@ -9,6 +9,13 @@
 .promptSectionDetail > * {
   font-family: "Libre Caslon Text", serif;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.prevNextBtns {
+  display: flex;
+}
 .close {
   z-index: 10;
   margin-right: 16px;
@@ -66,6 +73,30 @@
 .md ol,
 .md ul {
   margin-left: 36px;
+  list-style: none;
+}
+.md ul li::before,
+.md ol li::before {
+  content: "\2022";
+  color: var(--white);
+  font-weight: bold;
+  display: inline-block;
+  font-size: 1rem;
+  position: absolute;
+  margin-left: -1em;
+}
+.md li {
+  position: relative;
+  margin-bottom: 16px;
+}
+.md h1 {
+  font-size: 2rem;
+}
+.md h2,
+.md h3,
+.md h4 {
+  font-weight: bold;
+  font-size: 1rem !important;
 }
 .md h1,
 .md h2,
@@ -88,15 +119,16 @@
 .md h4 {
   font-size: 1rem;
   margin-top: 40px;
+  margin-bottom: 8px;
   font-weight: bold;
 }
 .md h3 {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 .md p,
 .md li {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: gainsboro;
 }
 .md h1 {

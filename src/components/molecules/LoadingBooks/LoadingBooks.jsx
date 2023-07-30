@@ -18,7 +18,7 @@ const LoadingBooks = () => {
         </div>
       </div>
       <div className={styles.msg}>
-        <Text textAlign="center">Esto puede tardar 3-4 minutos</Text>
+        <Text textAlign="center">This may take several minutes</Text>
       </div>
     </div>
   );
