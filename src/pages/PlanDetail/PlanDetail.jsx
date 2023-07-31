@@ -204,15 +204,15 @@ const PlanDetail = () => {
                 img={imgCosts}
               />
             </section>
-          </section>
-          <section className={styles.inputUser}>
-            <InputSection
-              freeTime={formatStringToShort(response?.input?.freeTime)}
-              budget={formatStringToShort(response?.input?.budget)}
-              location={formatStringToShort(response?.input?.location)}
-              skills={formatStringToShort(response?.input?.skills)}
-              teacher={formatStringToShort(response?.input?.teacher)}
-            />
+            <section className={styles.inputUser}>
+              <InputSection
+                freeTime={formatStringToShort(response?.input?.freeTime)}
+                budget={formatStringToShort(response?.input?.budget)}
+                location={formatStringToShort(response?.input?.location)}
+                skills={formatStringToShort(response?.input?.skills)}
+                teacher={formatStringToShort(response?.input?.teacher)}
+              />
+            </section>
           </section>
         </section>
       )}

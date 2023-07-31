@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./inputSection.module.css";
 import Text from "../../../../components/atoms/Text/Text";
-
+import Link from "../../../../components/atoms/Link/Link";
+import Icon from "../../../../components/atoms/Icon/Icon";
 const InputSection = ({
   location,
   budget,
@@ -12,30 +13,20 @@ const InputSection = ({
 }) => {
   return (
     <div className={styles.inputSection} {...otherProps}>
-      <section className={styles.section}>
-        <Text color="soft" size={"0.6rem"}>
-          Location
+      <div className={styles.text}>
+        <Text>
+          Discover similar Business plan:
+          <span style={{ color: "gainsboro" }}>Location</span>
+          <strong>{location}</strong>,
+          <span style={{ color: "gainsboro" }}>Budget:</span>
+          <strong>{budget}</strong>
         </Text>
-        <Text bold>{location}</Text>
-      </section>
-      <section className={styles.section}>
-        <Text color="soft" size={"0.6rem"}>
-          Budget
-        </Text>
-        <Text bold>{budget}</Text>
-      </section>
-      <section className={styles.section}>
-        <Text color="soft" size={"0.6rem"}>
-          Freetime
-        </Text>
-        <Text bold>{freeTime}</Text>
-      </section>
-      <section className={styles.section}>
-        <Text color="soft" size={"0.6rem"}>
-          Skills
-        </Text>
-        <Text bold>{skills}</Text>
-      </section>
+      </div>
+      <div>
+        <Link to={"/"}>
+          <Icon color="white" type={"singleArrowRight"} size={30} />
+        </Link>
+      </div>
     </div>
   );
 };

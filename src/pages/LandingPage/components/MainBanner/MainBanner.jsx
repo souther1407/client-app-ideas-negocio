@@ -20,13 +20,13 @@ const MainBanner = () => {
       <section className={styles.info}>
         <div className={styles.title}>
           <Text type="title">
-            Explora el <Mark>Futuro</Mark> del emprendimiento con AI
+            Explore the <Mark>Future</Mark> of entrepreneurship with AI
           </Text>
         </div>
         <div className={styles.details}>
           <Text>
-            Empieza tu primer negocio con ayuda de nuestra herramienta de
-            Inteligencia Artificial, y nuestro equipo de expertos
+            Generate an easy-to-follow business plan in under 5 minutes with our
+            GPT-3.5 fueled tool
           </Text>
           <div className={styles.buttons}>
             <ShineEffect>
