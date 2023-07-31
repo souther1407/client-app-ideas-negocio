@@ -123,7 +123,7 @@ const PromptSectionDetail = () => {
     const toolsList = details[section]?.toolsList.trim().split("\n\n");
     console.log("tools", toolsList);
     return toolsList;
-  }, []);
+  }, [section]);
 
   return (
     <div className={styles.promptSectionDetail}>
