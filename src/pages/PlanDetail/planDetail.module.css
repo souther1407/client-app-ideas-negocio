@@ -5,6 +5,7 @@
   background-color: black;
   color: var(--white);
   position: relative;
+  justify-content: center;
 }
 .content {
   display: flex;
