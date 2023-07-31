@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, XIcon } from "lucide-react";
 
 import { cn } from "../../../lib/utils";
 import { Button } from "../../atoms/ShadcnButton/ShadcdButton";
@@ -48,6 +48,7 @@ function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
     () => data.map((d) => ({ value: d, label: d })),
     []
   );
+
   React.useEffect(() => {
     onSelect(id, value);
   }, [value]);
@@ -66,7 +67,14 @@ function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
                 (c) => c.value.toLowerCase() === value.toLowerCase()
               )?.label
             : title}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          {!value ? (
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          ) : (
+            <XIcon
+              className="ml-2 h-4 w-4 shrink-0 opacity-50 hover:opacity-70"
+              onClick={() => setValue("")}
+            />
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] h-[300px] border-neutral-700 p-0 overflow-auto bg-transparent">
@@ -76,6 +84,7 @@ function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
             style={{ fontSize: "0.6rem" }}
             className={"placeholder:text-neutral-400"}
           />
+
           <CommandEmpty style={{ fontSize: "0.6rem" }}>
             {nofoundText}
           </CommandEmpty>
