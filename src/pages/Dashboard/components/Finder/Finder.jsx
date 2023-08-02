@@ -13,6 +13,7 @@ import LandingPageNav from "../../../../components/organisms/LandingPageNav/Land
 import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 import Combobox from "../../../../components/molecules/Combobox/Combobox";
 import { countries } from "../../../../utils/constants/countries";
+import Menu from "../../../../components/molecules/Menu/Menu";
 const PlanRow = ({ plan, onToggle }) => {
   const { details, input, id, userId, isPublic, inMyReports, adds } = plan;
 
@@ -150,6 +151,9 @@ const Finder = () => {
                   setFilters((prev) => ({ ...prev, byCountry: country }));
                 }}
               />
+              <div>
+                <Menu title={"budget"} elements={[]} />
+              </div>
             </div>
             <div className={styles.table}>
               <PlansTable
