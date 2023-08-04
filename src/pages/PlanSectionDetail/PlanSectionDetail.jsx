@@ -150,21 +150,7 @@ const PromptSectionDetail = () => {
                 {"Overview"}
               </IconText>
             </div>
-            <div
-              style={{ transform: `translateX(${getTransitionValue()})` }}
-              ref={menuQuestionRef}
-              onClick={() =>
-                questionsRef.current.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              <IconText
-                icon={"case"}
-                color={currentSection !== "questions" && "soft"}
-                size="0.7rem"
-              >
-                Objetives
-              </IconText>
-            </div>
+
             <div
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuAskRef}
@@ -217,12 +203,6 @@ const PromptSectionDetail = () => {
             <section className={styles.detail} ref={detailRef}>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.overview}
-              </ReactMarkdown>
-            </section>
-
-            <section className={styles.questions} ref={questionsRef}>
-              <ReactMarkdown className={styles.md}>
-                {details[section]?.objetives}
               </ReactMarkdown>
             </section>
 
