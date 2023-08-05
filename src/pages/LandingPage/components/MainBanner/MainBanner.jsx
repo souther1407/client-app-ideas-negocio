@@ -30,28 +30,10 @@ const MainBanner = () => {
           </Text>
           <div className={styles.buttons}>
             <ShineEffect>
-              <Button
-                color="secondary"
-                onClick={() => navigate(START_A_BUSINESS)}
-              >
-                <Text>Test for free</Text>
+              <Button color="secondary" onClick={() => navigate(LOGIN)}>
+                <Text>Login</Text>
               </Button>
             </ShineEffect>
-            <GradientBorder
-              style={{
-                borderRadius: "16px",
-                position: "relative",
-                bottom: "2px",
-              }}
-            >
-              <Button
-                type="bordered"
-                onClick={handleClick}
-                style={{ backgroundColor: "#0F1E2F", borderRadius: "16px" }}
-              >
-                <Text>Log in</Text>
-              </Button>
-            </GradientBorder>
           </div>
         </div>
       </section>

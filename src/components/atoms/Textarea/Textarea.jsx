@@ -9,7 +9,7 @@ const Textarea = ({
   ...otherProps
 }) => {
   const handleChange = (e) => {
-    const trimmed = e.target.value.trim();
+    const trimmed = e.target.value;
     onChange(id, trimmed);
   };
 

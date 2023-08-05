@@ -38,10 +38,6 @@
   display: flex;
 }
 
-.buttons > :first-child {
-  margin-right: 64px;
-}
-
 .boxImg {
   width: 1000px;
   z-index: 1;
