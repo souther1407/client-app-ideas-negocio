@@ -105,11 +105,7 @@ const PromptSectionDetail = () => {
       switch (currentSection) {
         case "questions":
           return `-${menuTitleRef.current.offsetWidth}px`;
-        case "ask":
-          return `-${
-            menuTitleRef.current.offsetWidth +
-            menuQuestionRef.current.offsetWidth
-          }px`;
+
         default:
           return `0`;
       }
@@ -154,17 +150,34 @@ const PromptSectionDetail = () => {
               style={{ transform: `translateX(${getTransitionValue()})` }}
               ref={menuAskRef}
               onClick={() =>
-                askQuestionsRef.current.scrollIntoView({ behavior: "smooth" })
+                questionsRef.current.scrollIntoView({ behavior: "smooth" })
               }
             >
               <IconText
                 icon={"case"}
-                color={currentSection !== "ask" && "soft"}
+                color={currentSection !== "questions" && "soft"}
                 size="0.7rem"
               >
                 Plan
               </IconText>
             </div>
+            {section === "mvp" && (
+              <div
+                style={{ transform: `translateX(${getTransitionValue()})` }}
+                ref={menuQuestionRef}
+                onClick={() =>
+                  askQuestionsRef.current.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                <IconText
+                  icon={"case"}
+                  color={currentSection !== "ask" && "soft"}
+                  size="0.7rem"
+                >
+                  Plan 2
+                </IconText>
+              </div>
+            )}
           </section>
           <section className={styles.close}>
             <IconButton
@@ -205,44 +218,24 @@ const PromptSectionDetail = () => {
               </ReactMarkdown>
             </section>
 
-            <section className={styles.questions} ref={askQuestionsRef}>
+            <section className={styles.questions} ref={questionsRef}>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.plan}
               </ReactMarkdown>
             </section>
-
-            <section
-              className={styles.askQuestions}
-              ref={askQuestionsRef}
-            ></section>
+            {section === "mvp" && (
+              <section className={styles.questions} ref={askQuestionsRef}>
+                <ReactMarkdown className={styles.md}>
+                  {details[section]?.plan2}
+                </ReactMarkdown>
+              </section>
+            )}
           </div>
           <aside className={styles.tools}>
             <Text type="subtitle" size={"1rem"} bold color="soft">
               Toolbox to execute
             </Text>
             <ToolPaginator prompts={tools} />
-            {/*  {tools?.map((t) => {
-              const element = JSON.parse(t);
-              console.log(element);
-              return (
-                <>
-                  <Text type="subtitle" bold>
-                    {element.toolName}
-                  </Text>
-                  <ReactMarkdown className={styles.md}>
-                    {element.description}
-                  </ReactMarkdown>
-                  <div className={styles.btns}>
-                    <Link extern to={element.url} target={"_blank"}>
-                      <EffectButton text={"link"} icon={"link"} />
-                    </Link>
-                    <Link extern to={element.tutorial} target={"_blank"}>
-                      <EffectButton text={"tutorial"} icon={"youtube"} />
-                    </Link>
-                  </div>
-                </>
-              );
-            })} */}
           </aside>
         </main>
       </div>

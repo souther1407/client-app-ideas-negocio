@@ -41,20 +41,18 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
   const handleSelectTemplate = (id, value) => {
     const reports = {
       "ai automation agency": `Business Idea: Artificial Intelligence Automation Agency
-      Product Description: Our agency proposes a revolutionary support bot, powered by
-      ChatGPT, specifically designed to cater to the needs of Real Estate Businesses and Airbnb
-      hosts. This advanced bot will be available 24/7 to provide exceptional client support,
-      allowing the human agents to focus on more important tasks. To ensure its effectiveness,
-      the bot will be trained on customized data, enabling it to handle a wide range of inquiries.
-      And in case it encounters a question it hasn't seen before, it will smoothly transfer the
-      client to a human agent for a seamless resolution.`,
+Product Description: Our agency proposes a revolutionary support bot, powered by
+ChatGPT, specifically designed to cater to the needs of Real Estate Businesses and Airbnb
+hosts. This advanced bot will be available 24/7 to provide exceptional client support,
+allowing the human agents to focus on more important tasks. To ensure its effectiveness,
+the bot will be trained on customized data, enabling it to handle a wide range of inquiries.
+And in case it encounters a question it hasn't seen before, it will smoothly transfer the
+client to a human agent for a seamless resolution.`,
       "2 influencers": `We are two friends who have a considerable number of followers on Instagram and TikTok.
-      We would like to start an online clothing store and leverage our social media presence to
-      boost sales.
-      Challenges:
-      - Neither of us has programming knowledge, which might pose difficulties in dealing with
-      the technical aspects of the business.
-      - This is our first time venturing into entrepreneurship,`,
+We would like to start an online clothing store and leverage our social media presence to boost sales.
+Challenges:
+ - Neither of us has programming knowledge, which might pose difficulties in dealing with the technical aspects of the business.
+ - This is our first time venturing into entrepreneurship,`,
       "bike service":
         "Mobile bike repair and maintenance services for cyclists",
     };
