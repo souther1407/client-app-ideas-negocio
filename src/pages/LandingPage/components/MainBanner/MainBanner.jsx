@@ -34,7 +34,7 @@ const MainBanner = () => {
                 color="secondary"
                 onClick={() => navigate(START_A_BUSINESS)}
               >
-                <Text>Prueba Gratis</Text>
+                <Text>Test for free</Text>
               </Button>
             </ShineEffect>
             <GradientBorder
