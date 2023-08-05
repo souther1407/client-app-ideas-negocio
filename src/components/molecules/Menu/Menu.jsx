@@ -13,18 +13,18 @@ import React from "react";
 
 const Menu = ({ title, elements }) => {
   return (
-    <ChakraMenu>
+    <ChakraMenu closeOnSelect={false}>
       <MenuButton sx={{ border: "1px solid rgba(128, 128, 128, 0.226)" }}>
         {title}
       </MenuButton>
       <MenuList
         sx={{
           border: "1px solid rgba(128, 128, 128, 0.226)",
-          background: "none",
+          background: "#06080e",
         }}
       >
-        {elements.map((renderProp) => (
-          <MenuItem>{renderProp()}</MenuItem>
+        {elements.map((cb) => (
+          <MenuItem sx={{ background: "" }}>{cb()}</MenuItem>
         ))}
       </MenuList>
     </ChakraMenu>

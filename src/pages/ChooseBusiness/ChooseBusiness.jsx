@@ -119,7 +119,7 @@ const ChooseBusiness = () => {
         onClose={() => setIsOpen(false)}
         renderFooter={() => (
           <Button disabled={loading} onClick={handleClick}>
-            <Text>{loading ? "creating..." : "Elegir opcion"}</Text>
+            <Text>{loading ? "creating..." : "Choose option"}</Text>
           </Button>
         )}
       >
