@@ -14,7 +14,7 @@ import {
 
 import ReactMarkdown from "react-markdown";
 import EffectButton from "../../components/atoms/EffectButton/EffectButton";
-
+import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
 const texts = {
   targetCustomer: "Target Customer",
   team: "Team",
@@ -121,8 +121,7 @@ const PromptSectionDetail = () => {
 
   const tools = useMemo(() => {
     const toolsList = details[section]?.toolsList.trim().split("\n\n");
-    console.log("tools", toolsList);
-    return toolsList;
+    return toolsList.map((t) => JSON.parse(t));
   }, [section]);
 
   return (
@@ -221,7 +220,8 @@ const PromptSectionDetail = () => {
             <Text type="subtitle" size={"1rem"} bold color="soft">
               Toolbox to execute
             </Text>
-            {tools?.map((t) => {
+            <ToolPaginator prompts={tools} />
+            {/*  {tools?.map((t) => {
               const element = JSON.parse(t);
               console.log(element);
               return (
@@ -242,7 +242,7 @@ const PromptSectionDetail = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </aside>
         </main>
       </div>

@@ -14,6 +14,7 @@ import GradientBg from "../../../../components/atoms/GradientBg/GradientBg";
 import Combobox from "../../../../components/molecules/Combobox/Combobox";
 import { countries } from "../../../../utils/constants/countries";
 import Menu from "../../../../components/molecules/Menu/Menu";
+
 const PlanRow = ({ plan, onToggle }) => {
   const { details, input, id, userId, isPublic, inMyReports, adds } = plan;
 
@@ -71,7 +72,11 @@ const Finder = () => {
   const [promptsOrder, setPromptsOrder] = useState({});
   const [filters, setFilters] = useState({
     byCountry: "",
-    byBudget: "",
+    byBudget: {
+      lessThan100: false,
+      between100and500: false,
+      greaterThan500: false,
+    },
   });
   useEffect(() => {
     const initPrompts = async () => {
@@ -126,9 +131,31 @@ const Finder = () => {
         (p) =>
           p.input.location.toLowerCase() === filters.byCountry.toLowerCase()
       );
+    const byBudgetFilter =
+      filters.byBudget.between100and500 ||
+      filters.byBudget.greaterThan500 ||
+      filters.byBudget.lessThan100;
+    if (byBudgetFilter) {
+      ordereds = ordereds.filter((p) => {
+        const lessThan100 =
+          filters.byBudget.lessThan100 && p.input.budget < 100;
+        const between100and500 =
+          filters.byBudget.between100and500 &&
+          p.input.budget >= 100 &&
+          p.input.budget <= 500;
+        const greaterThan500 =
+          filters.byBudget.greaterThan500 && p.input.budget > 500;
+        return lessThan100 || between100and500 || greaterThan500;
+      });
+    }
     return ordereds;
   };
-
+  const toggleBudgetFilter = (filterName) => {
+    setFilters((prev) => ({
+      ...prev,
+      byBudget: { ...prev.byBudget, [filterName]: !prev.byBudget[filterName] },
+    }));
+  };
   return (
     <div className={styles.myPrompts}>
       <LandingPageNav />
@@ -152,7 +179,45 @@ const Finder = () => {
                 }}
               />
               <div>
-                <Menu title={"budget"} elements={[]} />
+                <Menu
+                  title={"budget"}
+                  elements={[
+                    () => (
+                      <div className={styles.budgetFilterItem}>
+                        <Checkbox
+                          className="border-neutral-700 w-[24px] h-[24px]"
+                          onCheckedChange={() =>
+                            toggleBudgetFilter("lessThan100")
+                          }
+                        />
+                        <Text>{"< $100"}</Text>
+                      </div>
+                    ),
+                    () => (
+                      <div className={styles.budgetFilterItem}>
+                        <Checkbox
+                          className="border-neutral-700 w-[24px] h-[24px]"
+                          onCheckedChange={() =>
+                            toggleBudgetFilter("between100and500")
+                          }
+                        />
+
+                        <Text>{"$100 - $500"}</Text>
+                      </div>
+                    ),
+                    () => (
+                      <div className={styles.budgetFilterItem}>
+                        <Checkbox
+                          className="border-neutral-700 w-[24px] h-[24px]"
+                          onCheckedChange={() =>
+                            toggleBudgetFilter("greaterThan500")
+                          }
+                        />
+                        <Text>{"> $500"}</Text>
+                      </div>
+                    ),
+                  ]}
+                />
               </div>
             </div>
             <div className={styles.table}>

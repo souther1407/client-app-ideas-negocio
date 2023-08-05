@@ -1,0 +1,16 @@
+.btns {
+  display: flex;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+.btns > :first-child {
+  margin-right: 8px;
+}
+.paginatorBtns {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.paginatorBtns > * {
+  margin-right: 4px;
+}
