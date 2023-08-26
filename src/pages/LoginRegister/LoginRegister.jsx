@@ -8,7 +8,7 @@ import IconText from "../../components/molecules/IconText/IconText";
 import { useLogin } from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import { useStorage } from "../../hooks/useStorage";
-import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
+import { DASHBOARD_IDEAS,START_A_BUSINESS } from "../../utils/constants/routes";
 import { analytics } from "../../segment.js";
 import { auth } from "../../firebase";
 import {
@@ -75,7 +75,7 @@ const LoginRegister = () => {
   const handlerLogin = async (provider, getCredentialsMethod) => {
     try {
       await loginWithProvider(provider, getCredentialsMethod);
-      navigate(DASHBOARD_IDEAS);
+      navigate(START_A_BUSINESS);
     } catch (error) {
       alert(error.message);
     } finally {
