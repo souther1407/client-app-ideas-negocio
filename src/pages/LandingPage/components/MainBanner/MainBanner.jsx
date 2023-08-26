@@ -9,15 +9,20 @@ import Mark from "../../../../components/atoms/Mark/Mark";
 import bg from "../../../../assets/bg.webp";
 import GradientBorder from "../../../../components/atoms/GradientBorder/GradientBorder";
 import ShineEffect from "../../../../components/atoms/ShineEffect/ShineEffect";
+import YesNoQuestion from "../../../../components/organisms/YesNoQuestion/YesNoQuestion";
 const MainBanner = () => {
   const navigate = useNavigate();
-  const handleClick = (e) => {
+  const handleClick = () => {
     navigate(LOGIN);
   };
+
   return (
     <div className={styles.mainBanner}>
       <img src={bg} className={styles.imgbg} />
-      <section className={styles.info}>
+      <div className={styles.container}>
+        <YesNoQuestion onNo={handleClick} onYes={handleClick} />
+      </div>
+      {/* <section className={styles.info}>
         <div className={styles.title}>
           <Text type="title">
             Explore the <Mark>Future</Mark> of entrepreneurship with AI
@@ -39,7 +44,7 @@ const MainBanner = () => {
       </section>
       <section className={styles.boxImg}>
         <img src={Box} />
-      </section>
+      </section> */}
     </div>
   );
 };

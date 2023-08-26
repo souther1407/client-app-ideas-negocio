@@ -1,0 +1,16 @@
+.yesNoQuestion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  .yesNoQuestion > * {
+    margin-bottom: 20px;
+  }
+  
+  .yesNoQuestion > :last-child {
+    margin-bottom: 60px;
+  }
+  .field > :first-child {
+    font-size: var(--xlg);
+  }

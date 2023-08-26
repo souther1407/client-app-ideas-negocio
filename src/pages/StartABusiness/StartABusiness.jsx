@@ -27,6 +27,7 @@ import Button from "../../components/atoms/Button/Button";
 import { createDetail } from "../../services/createText/createText";
 import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
 import FormPlayground from "./components/FormPlayground/FormPlayground";
+import YesNoQuestion from "../../components/organisms/YesNoQuestion/YesNoQuestion";
 import { wait } from "../../utils/time/wait";
 const TEACHERS = {
   elonMusk: "Elon Musk",
@@ -140,7 +141,7 @@ const StartABusiness = () => {
 
         <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
-            <div className={styles.question}>
+            {/* <div className={styles.question}>
               <Text type="subtitle" textAlign="center" bold>
                 Do you already have a business idea?
               </Text>
@@ -168,7 +169,17 @@ const StartABusiness = () => {
                   NO
                 </Text>
               </Button>
-            </div>
+            </div> */}
+            <YesNoQuestion
+              onNo={() => {
+                setHasAnIdea(false);
+                setField(2);
+              }}
+              onYes={() => {
+                setHasAnIdea(true);
+                setField(2);
+              }}
+            />
           </section>
           {(creating || loading) && (
             <div className={styles.loading}>
