@@ -163,7 +163,6 @@ const PlanDetail = () => {
                 onShowDetail={() => navigate(PLAN_DETAIL + "/competitions")}
                 img={imgCompetition}
               />
-
               <DetailCard
                 title={response.title}
                 sectionName={"Target customer"}
@@ -171,7 +170,6 @@ const PlanDetail = () => {
                 onShowDetail={() => navigate(PLAN_DETAIL + "/targetCustomer")}
                 img={imgMarketAnalisis}
               />
-
               <DetailCard
                 title={response.title}
                 sectionName={"Product Development"}
@@ -179,29 +177,12 @@ const PlanDetail = () => {
                 onShowDetail={() => navigate(PLAN_DETAIL + "/mvp")}
                 img={imgProductMin}
               />
-
-              <DetailCard
-                title={response.title}
-                sectionName={"Team"}
-                id={"sales"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/team")}
-                img={imgTeam}
-              />
-
               <DetailCard
                 title={response.title}
                 sectionName={"Marketing Plan"}
                 id={"marketingPlan"}
                 onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
                 img={imgMarketingPlan}
-              />
-
-              <DetailCard
-                title={response.title}
-                sectionName={"Coming soon"}
-                id={"riskAnalisis"}
-                onShowDetail={() => {}}
-                img={imgCosts}
               />
             </section>
             <section className={styles.inputUser}>

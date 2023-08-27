@@ -5,6 +5,8 @@ import Link from "../../../../components/atoms/Link/Link";
 import ReactMarkdown from "react-markdown";
 import EffectButton from "../../../../components/atoms/EffectButton/EffectButton";
 import Text from "../../../../components/atoms/Text/Text";
+import ImgLinkBtn from "../../../../components/molecules/ImgLinkBtn/ImgLinkBtn";
+import imgBanner from "../../../../assets/MPV_Banner.svg";
 const ToolPaginator = ({ prompts }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const handleChangePage = (newPage) => {
@@ -50,12 +52,18 @@ const ToolPaginator = ({ prompts }) => {
           {prompts[currentPage].description}
         </ReactMarkdown>
         <div className={styles.btns}>
-          <Link extern to={prompts[currentPage].url} target={"_blank"}>
-            <EffectButton text={"link"} icon={"link"} />
-          </Link>
-          <Link extern to={prompts[currentPage].tutorial} target={"_blank"}>
-            <EffectButton text={"tutorial"} icon={"youtube"} />
-          </Link>
+          <ImgLinkBtn
+            extern
+            src={imgBanner}
+            to={prompts[currentPage].url}
+            size={{ w: "100%", h: "120px" }}
+          />
+          <ImgLinkBtn
+            extern
+            src={imgBanner}
+            to={prompts[currentPage].tutorial}
+            size={{ w: "100%", h: "120px" }}
+          />
         </div>
       </>
     </div>

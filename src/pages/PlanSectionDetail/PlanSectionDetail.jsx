@@ -6,14 +6,13 @@ import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import usePromptDetail from "../../states/prompDetail";
-import Link from "../../components/atoms/Link/Link";
+
 import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
 } from "../../utils/constants/routes";
 
 import ReactMarkdown from "react-markdown";
-import EffectButton from "../../components/atoms/EffectButton/EffectButton";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
 const texts = {
   targetCustomer: "Target Customer",
@@ -24,7 +23,6 @@ const texts = {
   competitions: "Competition",
 };
 import { useStorage } from "../../hooks/useStorage";
-import MagicEffect from "../../components/atoms/MagicEffect/MagicEffect";
 const PromptSectionDetail = () => {
   const { section } = useParams();
   const navigate = useNavigate();
@@ -232,9 +230,6 @@ const PromptSectionDetail = () => {
             )}
           </div>
           <aside className={styles.tools}>
-            <Text type="subtitle" size={"1rem"} bold color="soft">
-              Toolbox to execute
-            </Text>
             <ToolPaginator prompts={tools} />
           </aside>
         </main>
