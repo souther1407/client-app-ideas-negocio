@@ -25,6 +25,7 @@ import usePromptDetail from "../../states/prompDetail";
 import { getById } from "../../services/userPrompts/getPrompts";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import Link from "../../components/atoms/Link/Link";
+import { useReportUrl } from "../../states/reportUrl";
 
 const PlanDetail = () => {
   const navigate = useNavigate();
@@ -34,7 +35,10 @@ const PlanDetail = () => {
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
+  const setUrl = useReportUrl((state) => state.setUrl);
+
   useEffect(() => {
+    setUrl(window.location.href);
     getById(id, user)
       .then((prompt) => {
         if (!isLogged() && !prompt.isPublic) {

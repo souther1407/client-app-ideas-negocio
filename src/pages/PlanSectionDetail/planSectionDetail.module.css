@@ -24,8 +24,15 @@
 .askQuestions {
   background-color: var(--linkedin-bluegray);
   border-radius: var(--base-border-radius);
+}
+.questions,
+.askQuestions {
   padding: 16px;
 }
+.detail > *:not(.banner) {
+  padding: 16px;
+}
+
 .prevNextBtns {
   position: absolute;
   right: 2%;
@@ -54,7 +61,26 @@
   padding: 16px;
   background-color: var(--linkedin-bluegray);
 }
-
+.socialMedia {
+  background-color: var(--linkedin-bluegray);
+  border-radius: var(--base-border-radius);
+  width: fit-content;
+  height: fit-content;
+  flex-basis: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: var(--base-margin);
+  padding: 16px;
+  position: sticky;
+  top: 0;
+}
+.socialMedia > :first-child {
+  margin-bottom: 8px;
+}
+.socialMedia .icons > * {
+  margin-bottom: 8px;
+}
 .options {
   display: flex;
   width: 300px;
@@ -85,9 +111,17 @@
   flex-direction: column;
   padding: 8px 8px 24px 8px;
 }
+
 .details {
   width: 100%;
   margin-right: var(--base-margin);
+}
+.banner > :first-child {
+  padding: 40px 16px 16px 16px;
+}
+.bannerImg {
+  width: 100%;
+  height: 240px;
 }
 .details > :first-child {
   margin-bottom: 32px;

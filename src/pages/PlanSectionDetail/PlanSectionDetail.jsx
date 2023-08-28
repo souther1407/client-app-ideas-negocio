@@ -8,6 +8,7 @@ import IconButton from "../../components/molecules/IconButton/IconButton";
 import usePromptDetail from "../../states/prompDetail";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
+
 import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
@@ -24,12 +25,12 @@ const texts = {
   competitions: "Competition",
 };
 import { useStorage } from "../../hooks/useStorage";
+import { useReportUrl } from "../../states/reportUrl";
 const PromptSectionDetail = () => {
   const { section } = useParams();
   const navigate = useNavigate();
-
+  const url = useReportUrl((state) => state.url);
   const { load } = useStorage();
-
   const onAnt = () => {
     if (section !== "competitions") mainRef.current.scrollTo({ top: 0 });
     switch (section) {
@@ -193,7 +194,32 @@ const PromptSectionDetail = () => {
             setScrollPos(e.currentTarget.scrollTop);
           }}
         >
-          <div className={styles.socialMedia}></div>
+          <div className={styles.socialMedia}>
+            <Text color="soft">Share your plan</Text>
+            <div className={styles.icons}>
+              <IconButton
+                icon={"twitter"}
+                color={"#BDBDBD"}
+                size="24px"
+                onClick={() => {}}
+              />
+              <IconButton
+                icon={"linkedin"}
+                color={"#BDBDBD"}
+                size="24px"
+                onClick={() => {}}
+              />
+              <IconButton
+                icon={"clip"}
+                color={"#BDBDBD"}
+                size="24px"
+                onClick={async () => {
+                  await window.navigator.clipboard.writeText(url);
+                  alert("copied!");
+                }}
+              />
+            </div>
+          </div>
           <div className={styles.details}>
             <div className={styles.welcomeBanner}>
               <Avatar
@@ -220,6 +246,12 @@ const PromptSectionDetail = () => {
             </div>
 
             <section className={styles.detail} ref={detailRef}>
+              <div className={styles.banner}>
+                <Text type="title" bold>
+                  Developing a MVP
+                </Text>
+                <img src={MVPImage} className={styles.bannerImg} />
+              </div>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.overview}
               </ReactMarkdown>
