@@ -1,0 +1,22 @@
+.imgLinkBtn {
+    position: relative;
+}
+.view {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.543);
+    transition: all 0.3s;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.imgLinkBtn:hover .view {
+    z-index: 1;
+    opacity: 1;
+}

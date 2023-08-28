@@ -25,6 +25,7 @@ import usePromptDetail from "../../states/prompDetail";
 import { getById } from "../../services/userPrompts/getPrompts";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import Link from "../../components/atoms/Link/Link";
+import { useReportUrl } from "../../states/reportUrl";
 
 const PlanDetail = () => {
   const navigate = useNavigate();
@@ -34,7 +35,10 @@ const PlanDetail = () => {
   const setPromptDetail = usePromptDetail((state) => state.setPromptDetail);
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
+  const setUrl = useReportUrl((state) => state.setUrl);
+
   useEffect(() => {
+    setUrl(window.location.href);
     getById(id, user)
       .then((prompt) => {
         if (!isLogged() && !prompt.isPublic) {
@@ -163,7 +167,6 @@ const PlanDetail = () => {
                 onShowDetail={() => navigate(PLAN_DETAIL + "/competitions")}
                 img={imgCompetition}
               />
-
               <DetailCard
                 title={response.title}
                 sectionName={"Target customer"}
@@ -171,7 +174,6 @@ const PlanDetail = () => {
                 onShowDetail={() => navigate(PLAN_DETAIL + "/targetCustomer")}
                 img={imgMarketAnalisis}
               />
-
               <DetailCard
                 title={response.title}
                 sectionName={"Product Development"}
@@ -179,29 +181,12 @@ const PlanDetail = () => {
                 onShowDetail={() => navigate(PLAN_DETAIL + "/mvp")}
                 img={imgProductMin}
               />
-
-              <DetailCard
-                title={response.title}
-                sectionName={"Team"}
-                id={"sales"}
-                onShowDetail={() => navigate(PLAN_DETAIL + "/team")}
-                img={imgTeam}
-              />
-
               <DetailCard
                 title={response.title}
                 sectionName={"Marketing Plan"}
                 id={"marketingPlan"}
                 onShowDetail={() => navigate(PLAN_DETAIL + "/marketingPlan")}
                 img={imgMarketingPlan}
-              />
-
-              <DetailCard
-                title={response.title}
-                sectionName={"Coming soon"}
-                id={"riskAnalisis"}
-                onShowDetail={() => {}}
-                img={imgCosts}
               />
             </section>
             <section className={styles.inputUser}>

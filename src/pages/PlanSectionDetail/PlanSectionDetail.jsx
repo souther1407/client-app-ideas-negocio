@@ -1,19 +1,20 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import usePromptDetail from "../../states/prompDetail";
-import Link from "../../components/atoms/Link/Link";
+import Avatar from "../../components/atoms/Avatar/Avatar";
+import MVPImage from "../../assets/MPV_Banner.svg";
+
 import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
 } from "../../utils/constants/routes";
 
 import ReactMarkdown from "react-markdown";
-import EffectButton from "../../components/atoms/EffectButton/EffectButton";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
 const texts = {
   targetCustomer: "Target Customer",
@@ -24,13 +25,12 @@ const texts = {
   competitions: "Competition",
 };
 import { useStorage } from "../../hooks/useStorage";
-import MagicEffect from "../../components/atoms/MagicEffect/MagicEffect";
+import { useReportUrl } from "../../states/reportUrl";
 const PromptSectionDetail = () => {
   const { section } = useParams();
   const navigate = useNavigate();
-
+  const url = useReportUrl((state) => state.url);
   const { load } = useStorage();
-
   const onAnt = () => {
     if (section !== "competitions") mainRef.current.scrollTo({ top: 0 });
     switch (section) {
@@ -194,10 +194,42 @@ const PromptSectionDetail = () => {
             setScrollPos(e.currentTarget.scrollTop);
           }}
         >
+          <div className={styles.socialMedia}>
+            <Text color="soft">Share your plan</Text>
+            <div className={styles.icons}>
+              <IconButton
+                icon={"twitter"}
+                color={"#BDBDBD"}
+                size="24px"
+                onClick={() => {}}
+              />
+              <IconButton
+                icon={"linkedin"}
+                color={"#BDBDBD"}
+                size="24px"
+                onClick={() => {}}
+              />
+              <IconButton
+                icon={"clip"}
+                color={"#BDBDBD"}
+                size="24px"
+                onClick={async () => {
+                  await window.navigator.clipboard.writeText(url);
+                  alert("copied!");
+                }}
+              />
+            </div>
+          </div>
           <div className={styles.details}>
-            <div className={styles.header}>
-              <Text type="subtitle" size={"1rem"} bold color="soft">
-                {texts[section]}
+            <div className={styles.welcomeBanner}>
+              <Avatar
+                src={MVPImage}
+                alt="avatar"
+                size={{ w: "80px", h: "80px" }}
+              />
+              <Text type="subtitle">Hello Human!</Text>
+              <Text color="soft">
+                Do you need a Product Development Strategy?
               </Text>
               <div className={styles.prevNextBtns}>
                 <IconButton
@@ -212,7 +244,14 @@ const PromptSectionDetail = () => {
                 />
               </div>
             </div>
+
             <section className={styles.detail} ref={detailRef}>
+              <div className={styles.banner}>
+                <Text type="title" bold>
+                  Developing a MVP
+                </Text>
+                <img src={MVPImage} className={styles.bannerImg} />
+              </div>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.overview}
               </ReactMarkdown>
@@ -232,9 +271,6 @@ const PromptSectionDetail = () => {
             )}
           </div>
           <aside className={styles.tools}>
-            <Text type="subtitle" size={"1rem"} bold color="soft">
-              Toolbox to execute
-            </Text>
             <ToolPaginator prompts={tools} />
           </aside>
         </main>

@@ -18,8 +18,8 @@
 
 .cardsDetail {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(2, 200px);
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, 240px);
   width: 100%;
 
   gap: 20px;
@@ -116,7 +116,7 @@
 
 @media screen and (max-width: 1050px) {
   .cardsDetail {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(2, auto);
     justify-content: stretch;
   }
