@@ -10,11 +10,11 @@
 }
 
 .title {
-  font-size: var(--xxxlg);
+  font-size: 2rem;
 }
 
 .subtitle {
-  font-size: var(--lg);
+  font-size: calc(2rem - 12px);
 }
 .inherit {
   color: inherit;
