@@ -4,21 +4,32 @@
   height: 100vh;
   background-color: var(--black);
   color: var(--white);
+  --base-margin: 24px;
+  --base-border-radius: 16px;
   position: relative;
 }
 .promptSectionDetail > * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 .header {
   display: flex;
   justify-content: space-between;
 }
-.header,
 .detail,
 .questions {
-  margin-bottom: 128px;
+  margin-bottom: var(--base-margin);
+}
+.questions,
+.detail,
+.askQuestions {
+  background-color: var(--linkedin-bluegray);
+  border-radius: var(--base-border-radius);
+  padding: 16px;
 }
 .prevNextBtns {
+  position: absolute;
+  right: 2%;
+  top: 4%;
   display: flex;
 }
 .close {
@@ -62,13 +73,21 @@
   position: relative;
   overflow-y: auto;
   flex-direction: column;
-  padding: 32px;
+  padding: var(--base-margin) calc(var(--base-margin) * 3);
   line-height: 1.7;
-  margin: 16px 16px 0 16px;
+}
+.welcomeBanner {
+  display: flex;
+  border-radius: var(--base-border-radius);
+  background-color: var(--linkedin-bluegray);
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  padding: 8px 8px 24px 8px;
 }
 .details {
   width: 100%;
-  margin-right: 80px;
+  margin-right: var(--base-margin);
 }
 .details > :first-child {
   margin-bottom: 32px;
@@ -99,7 +118,6 @@
 .md h3,
 .md h4 {
   font-weight: bold;
-  font-size: 1rem !important;
 }
 .md h1,
 .md h2,
@@ -125,6 +143,9 @@
   margin-bottom: 8px;
   font-weight: bold;
 }
+.md h2 {
+  font-size: calc(2rem - 4px);
+}
 .md h3 {
   font-size: 1rem;
   font-weight: bold;
@@ -135,13 +156,14 @@
   color: gainsboro;
 }
 .md h1 {
-  font-size: var(--lg);
+  font-size: 2rem;
   font-weight: bold;
 }
 .main > section:not(:last-child) {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--white-transparent);
 }
+
 .detail > :first-child {
   margin-bottom: 16px;
 }
@@ -178,7 +200,7 @@
   background-color: var(--linkedin-bluegray);
   padding: 16px;
   height: 100vh;
-  border-radius: 16px;
+  border-radius: var(--base-border-radius);
   display: flex;
 
   flex-direction: column;
@@ -210,7 +232,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     flex-direction: row;
- 
+
     line-height: 1.7;
     background-color: var(--black);
     margin: 16px 16px 0 16px;

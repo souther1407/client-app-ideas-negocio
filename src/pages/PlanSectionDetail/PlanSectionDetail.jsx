@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import usePromptDetail from "../../states/prompDetail";
-
+import Avatar from "../../components/atoms/Avatar/Avatar";
+import MVPImage from "../../assets/MPV_Banner.svg";
 import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
@@ -192,10 +193,17 @@ const PromptSectionDetail = () => {
             setScrollPos(e.currentTarget.scrollTop);
           }}
         >
+          <div className={styles.socialMedia}></div>
           <div className={styles.details}>
-            <div className={styles.header}>
-              <Text type="subtitle" size={"1rem"} bold color="soft">
-                {texts[section]}
+            <div className={styles.welcomeBanner}>
+              <Avatar
+                src={MVPImage}
+                alt="avatar"
+                size={{ w: "80px", h: "80px" }}
+              />
+              <Text type="subtitle">Hello Human!</Text>
+              <Text color="soft">
+                Do you need a Product Development Strategy?
               </Text>
               <div className={styles.prevNextBtns}>
                 <IconButton
@@ -210,6 +218,7 @@ const PromptSectionDetail = () => {
                 />
               </div>
             </div>
+
             <section className={styles.detail} ref={detailRef}>
               <ReactMarkdown className={styles.md}>
                 {details[section]?.overview}
