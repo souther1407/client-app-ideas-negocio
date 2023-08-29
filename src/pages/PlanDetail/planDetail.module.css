@@ -18,8 +18,8 @@
 
 .cardsDetail {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, 240px);
+  grid-template-columns: repeat(2, 400px);
+  grid-template-rows: repeat(2, 170px);
   width: 100%;
 
   gap: 20px;

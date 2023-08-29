@@ -113,7 +113,7 @@ input:-webkit-autofill {
   --white: aliceblue;
   --bg-dark-green: #10323e;
   --text-dark: black;
-  --black: #0D0D0D;
+  --black: #0d0d0d;
   --black-transparent: rgba(41, 41, 41, 0.377);
   --bg-dark: #1e1c24;
   --gradien-blue: #0d2a3d;
@@ -126,7 +126,7 @@ input:-webkit-autofill {
   --dark-blue: rgb(12, 28, 47);
   --dark-green: #0e3541bb;
   --light-green: #8da9b3;
-  --linkedin-bluegray:#1E2226;
+  --linkedin-bluegray: #1e2226;
   --mobile-w: 840px;
   --md: 1rem;
   --sm: 0.8rem;
@@ -139,9 +139,6 @@ input:-webkit-autofill {
   --superlg: 3rem;
 }
 
-p {
-  font-size: 1.1rem;
-}
 img {
   height: auto;
   object-fit: cover;

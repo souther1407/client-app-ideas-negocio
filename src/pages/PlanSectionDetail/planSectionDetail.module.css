@@ -178,7 +178,7 @@
   font-weight: bold;
 }
 .md h2 {
-  font-size: calc(2rem - 4px);
+  font-size: calc(2rem - 12px);
 }
 .md h3 {
   font-size: 1rem;

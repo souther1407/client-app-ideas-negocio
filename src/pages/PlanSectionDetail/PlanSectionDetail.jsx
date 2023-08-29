@@ -8,7 +8,7 @@ import IconButton from "../../components/molecules/IconButton/IconButton";
 import usePromptDetail from "../../states/prompDetail";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
-
+import RobotImg from "../../assets/robot.svg";
 import {
   PLAN_DETAIL,
   DASHBOARD_ASK_QUESTION,
@@ -119,7 +119,13 @@ const PromptSectionDetail = () => {
     const toolsList = details[section]?.toolsList.trim().split("\n\n");
     return toolsList.map((t) => JSON.parse(t));
   }, [section]);
-
+  const overviewTitle = useMemo(() => {
+    const regex = /^#[a-zA-Z\s:,.';]*\n\n/g;
+    const results = details[section]?.overview.match(regex);
+    const title = results ? results[0] : "";
+    details[section].overview = details[section].overview.replace(title, "");
+    return title;
+  }, [section]);
   return (
     <div className={styles.promptSectionDetail}>
       <div className={styles.content}>
@@ -223,7 +229,7 @@ const PromptSectionDetail = () => {
           <div className={styles.details}>
             <div className={styles.welcomeBanner}>
               <Avatar
-                src={MVPImage}
+                src={RobotImg}
                 alt="avatar"
                 size={{ w: "80px", h: "80px" }}
               />
@@ -247,9 +253,9 @@ const PromptSectionDetail = () => {
 
             <section className={styles.detail} ref={detailRef}>
               <div className={styles.banner}>
-                <Text type="title" bold>
-                  Developing a MVP
-                </Text>
+                <ReactMarkdown className={styles.md}>
+                  {overviewTitle}
+                </ReactMarkdown>
                 <img src={MVPImage} className={styles.bannerImg} />
               </div>
               <ReactMarkdown className={styles.md}>
