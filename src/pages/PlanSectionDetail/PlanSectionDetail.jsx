@@ -26,6 +26,7 @@ const texts = {
 };
 import { useStorage } from "../../hooks/useStorage";
 import { useReportUrl } from "../../states/reportUrl";
+
 const PromptSectionDetail = () => {
   const { section } = useParams();
   const navigate = useNavigate();

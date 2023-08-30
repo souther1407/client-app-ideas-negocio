@@ -23,8 +23,6 @@ import { toggleAddMyPrompts } from "../../services/userPrompts/toggleAddMyPrompt
 import { addView } from "../../services/userPrompts/addView";
 import usePromptDetail from "../../states/prompDetail";
 import { getById } from "../../services/userPrompts/getPrompts";
-import IconButton from "../../components/molecules/IconButton/IconButton";
-import Link from "../../components/atoms/Link/Link";
 import { useReportUrl } from "../../states/reportUrl";
 
 const PlanDetail = () => {
@@ -107,41 +105,6 @@ const PlanDetail = () => {
                             />
                             <Text>Public</Text>
                           </div>
-                          {response.isPublic && (
-                            <div className={styles.shareLinks}>
-                              <Link
-                                to={`https://twitter.com/intent/tweet?url=${window.location.href}&text=mira`}
-                                extern
-                                target="_blank"
-                              >
-                                <IconButton icon={"twitter"} size="1.2rem" />
-                              </Link>
-                              <Link
-                                to={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
-                                extern
-                                target="_blank"
-                              >
-                                <IconButton icon={"facebook"} size="1.2rem" />
-                              </Link>
-                              <Link
-                                to={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
-                                extern
-                                target="_blank"
-                              >
-                                <IconButton icon={"linkedin"} size="1.2rem" />
-                              </Link>
-                              <IconButton
-                                icon={"clip"}
-                                size="1.2rem"
-                                onClick={async () => {
-                                  await navigator.clipboard.writeText(
-                                    window.location.href
-                                  );
-                                  alert("copiado");
-                                }}
-                              />
-                            </div>
-                          )}
                         </div>
                       ) : (
                         <div className={styles.addToFavorites}>
