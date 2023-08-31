@@ -24,6 +24,9 @@
   margin-right: 16px;
 }
 .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 250px;
 }
 .texts {
@@ -44,8 +47,8 @@
   display: flex;
   justify-content: flex-start;
 }
-.inputs > *,
-.mobileInputs > * {
+.inputs > *:not(:last-child),
+.mobileInputs > *:not(:last-child) {
   margin-bottom: 20px;
 }
 .inputs > * > :first-child,

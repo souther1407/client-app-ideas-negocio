@@ -34,7 +34,9 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
       [id]: prev.skills.filter((t) => t !== tag),
     }));
   };
-
+  const isButtonDisabled = () => {
+    return input.skills.length === 0;
+  };
   const handleSubmit = () => {
     onSubmit(input);
   };
@@ -176,40 +178,63 @@ Challenges:
               onSelect={handleChange}
             />
           </div>
-          <div>
-            <div className={styles.texts}>
-              <Text size={"0.6rem"} bold>
-                Budget($)
-              </Text>
-              <Text size={"0.6rem"} bold color="soft">
-                {input.budget}
-              </Text>
-            </div>
-            <Slider id={"budget"} onChange={handleChange} />
-          </div>
-          <div>
-            <div className={styles.texts}>
-              <Text size={"0.6rem"} bold>
-                Free Time (H/W)
-              </Text>
-              <Text size={"0.6rem"} bold color="soft">
-                {input.freeTime}
-              </Text>
-            </div>
-            <Slider id={"freeTime"} onChange={handleChange} min={1} max={100} />
-          </div>
+          {!alreadyIdea && (
+            <>
+              <div>
+                <div className={styles.texts}>
+                  <Text size={"0.6rem"} bold>
+                    Budget($)
+                  </Text>
+                  <Text size={"0.6rem"} bold color="soft">
+                    {input.budget}
+                  </Text>
+                </div>
+                <Slider id={"budget"} onChange={handleChange} />
+              </div>
+              <div>
+                <div className={styles.texts}>
+                  <Text size={"0.6rem"} bold>
+                    Free Time (H/W)
+                  </Text>
+                  <Text size={"0.6rem"} bold color="soft">
+                    {input.freeTime}
+                  </Text>
+                </div>
+                <Slider
+                  id={"freeTime"}
+                  onChange={handleChange}
+                  min={1}
+                  max={100}
+                />
+              </div>
+            </>
+          )}
           <div>
             <TagInput
-              placeholder={"Type yours skills"}
+              placeholder={"Type more skills"}
               onAddTag={handleAddSkill}
               onRemoveTag={handleRemoveTag}
+              predefinedTags={[
+                "Coding",
+                "Social Media",
+                "Marketing",
+                "Design",
+                "Sales",
+                "Data Analysis",
+              ]}
+              alreadyIdea={alreadyIdea}
               id="skills"
             />
           </div>
         </section>
       </main>
       <footer className={styles.footer}>
-        <Button flexible type="bordered" onClick={handleSubmit}>
+        <Button
+          flexible
+          type="bordered"
+          disabled={isButtonDisabled()}
+          onClick={handleSubmit}
+        >
           <Text bold>{"Generate report"}</Text>
         </Button>
       </footer>

@@ -18,7 +18,14 @@ const Tag = ({ id, input, onDelete }) => {
   );
 };
 
-const TagInput = ({ placeholder, onAddTag, id, onRemoveTag }) => {
+const TagInput = ({
+  placeholder,
+  onAddTag,
+  predefinedTags = [],
+  id,
+  onRemoveTag,
+  alreadyIdea,
+}) => {
   const [tags, setTags] = useState([]);
   const [input, setInput] = useState("");
 
@@ -37,21 +44,48 @@ const TagInput = ({ placeholder, onAddTag, id, onRemoveTag }) => {
     onRemoveTag(id, input);
     setTags(tags.filter((t) => t !== input));
   };
+  const onTogglePredefinedTag = (tagName) => {
+    if (!tags.includes(tagName)) {
+      setTags([...tags, tagName]);
+      onAddTag(id, tagName);
+    } else {
+      setTags([...tags.filter((t) => t !== tagName)]);
+      onRemoveTag(id, tagName);
+    }
+  };
   return (
-    <div className={styles.tagInput}>
-      <section className={styles.tags}>
-        {tags.map((t, index) => (
-          <Tag id={index} input={t} onDelete={deleteTag} />
-        ))}
-      </section>
-      <Input
-        onKeyDown={addTag}
-        onChange={(e) => setInput(e.target.value)}
-        value={input}
-        fontSize={"0.6rem"}
-        placeholder={placeholder}
-        variant="borderNone"
-      />
+    <div className={styles.tagInputContainer}>
+      {alreadyIdea && (
+        <section className={styles.predefinedTags}>
+          {predefinedTags.map((pt) => (
+            <div
+              className={`${styles.predefinedTag} ${
+                tags.includes(pt) && styles.included
+              }`}
+              onClick={() => onTogglePredefinedTag(pt)}
+            >
+              <Text bold color={!tags.includes(pt) ? "soft" : "inherit"}>
+                {pt}
+              </Text>
+            </div>
+          ))}
+        </section>
+      )}
+      <div className={styles.tagInput}>
+        <section className={styles.tags}>
+          {tags.map((t, index) => (
+            <Tag id={index} input={t} onDelete={deleteTag} />
+          ))}
+        </section>
+        <Input
+          onKeyDown={addTag}
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
+          fontSize={"0.6rem"}
+          placeholder={placeholder}
+          variant="borderNone"
+        />
+      </div>
     </div>
   );
 };
