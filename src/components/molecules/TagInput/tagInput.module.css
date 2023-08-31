@@ -1,9 +1,31 @@
+.tagInputContainer {
+  --base-border-radius: 8px;
+}
 .tagInput {
   height: 100px;
   padding: 4px;
   border: 1px solid var(--dark-gray);
   overflow: auto;
-  border-radius: 8px;
+  border-radius: var(--base-border-radius);
+}
+.predefinedTags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+  border: 1px solid var(--dark-gray);
+  border-radius: var(--base-border-radius);
+  margin-bottom: 8px;
+}
+.predefinedTag {
+  padding: 8px;
+  border-radius: calc(var(--base-border-radius) / 2);
+  margin: 2px;
+  border: 1px solid var(--dark-gray);
+  cursor: pointer;
+}
+.predefinedTag.included {
+  background-color: var(--white);
+  color: var(--dark-gray);
 }
 
 .tagInput:has(input:focus) {
