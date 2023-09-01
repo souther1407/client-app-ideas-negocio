@@ -4,6 +4,17 @@
   margin-top: 24px;
   margin-bottom: 40px;
 }
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+.toolCost {
+  background-color: var(--transparent-blue);
+  padding: 8px;
+  border-radius: 16px;
+}
 .btns > :first-child {
   margin-bottom: 8px;
 }
