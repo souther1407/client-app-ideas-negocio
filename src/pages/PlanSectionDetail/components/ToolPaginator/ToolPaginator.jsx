@@ -9,6 +9,8 @@ import ImgLinkBtn from "../../../../components/molecules/ImgLinkBtn/ImgLinkBtn";
 import imgBanner from "../../../../assets/MPV_Banner.svg";
 // imgs links y tutoriales
 import alibabaTutorialImg from "../../../../assets/Alibaba Tutorial.svg";
+import canvaLinkImg from "../../../../assets/Canva Link.svg";
+import canvaTutorialImg from "../../../../assets/Canva Tutorial.svg";
 import capcutLinkImg from "../../../../assets/Capcut Tutorial.svg";
 import capcutTutorialImg from "../../../../assets/Capcut Link.svg";
 import chatgptLinkImg from "../../../../assets/ChatGPT Link.svg";
@@ -25,6 +27,8 @@ import hostingerLinkImg from "../../../../assets/Hostinger Link.svg";
 import hostingerTutorialImg from "../../../../assets/Hostinger Tutorial.svg";
 import mailerliteLinkImg from "../../../../assets/MailerLite Link.svg";
 import mailerliteTutorialImg from "../../../../assets/MailerLite Tutorial.svg";
+import midjourneyLinkImg from "../../../../assets/Midjourney Link.svg";
+import midjourneyTutorialImg from "../../../../assets/Midjourney Tutorial.svg";
 import notionLinkImg from "../../../../assets/Notion Link.svg";
 import notionTutorialImg from "../../../../assets/Notion  Tutorial.svg";
 import semrushLinkImg from "../../../../assets/SemRush Link.svg";
@@ -45,74 +49,102 @@ const imgLinks = {
   Alibaba: {
     link: alibabaTutorialImg,
     tutorial: alibabaTutorialImg,
+    cost: "Free",
+  },
+  Canva: {
+    link: canvaLinkImg,
+    tutorial: canvaTutorialImg,
+    cost: "Freemium",
   },
   Capcut: {
     link: capcutLinkImg,
     tutorial: capcutTutorialImg,
+    cost: "Freemium",
   },
   ChatGPT: {
     link: chatgptLinkImg,
     tutorial: chatgptTutorialImg,
+    cost: "Freemium",
   },
   "Facebook Ads": {
     link: facebookadsLinkImg,
     tutorial: facebookadsTutorialImg,
+    cost: "Pay-as-you-go",
   },
   Figma: {
     link: figmaLinkImg,
     tutorial: figmaTutorialImg,
+    cost: "Freemium",
   },
   "Google Analytics": {
     link: googleanalyticsLinkImg,
     tutorial: googleanalyticsTutorialImg,
+    cost: "Freemium",
   },
   HootSuite: {
     link: hootsuiteLinkImg,
     tutorial: hootsuiteTutorialImg,
+    cost: "Freemium",
   },
   Hostinger: {
     link: hostingerLinkImg,
     tutorial: hostingerTutorialImg,
+    hostinger: "$1.99+",
   },
   MailerLite: {
     link: mailerliteLinkImg,
     tutorial: mailerliteTutorialImg,
+    cost: "Freemium",
+  },
+  Midjourney: {
+    link: midjourneyLinkImg,
+    tutorial: midjourneyTutorialImg,
+    cost: "$10+",
   },
   Notion: {
     link: notionLinkImg,
     tutorial: notionTutorialImg,
+    cost: "Freemium",
   },
   Semrush: {
     link: semrushLinkImg,
     tutorial: semrushTutorialImg,
+    cost: "Freemium",
   },
   Shopify: {
     link: shopifyLinkImg,
     tutorial: shopifyTutorialImg,
+    cost: "$25+",
   },
   Stripe: {
     link: stripeLinkImg,
     tutorial: stripeTutorialImg,
+    cost: "Pay-as-you-go",
   },
   SurveyMonkey: {
     link: surveymonkeyTutorialImg,
     tutorial: surveymonkeyTutorialImg,
+    cost: "Freemium",
   },
   Webflow: {
     link: webflowLinkImg,
     tutorial: webflowTutorialImg,
+    cost: "Freemium",
   },
   WordPress: {
     link: wordpressLinkImg,
     tutorial: wordpressTutorialImg,
+    cost: "Freemium",
   },
   Zapier: {
     link: zapierLinkImg,
     tutorial: zapierLinkImg,
+    cost: "Freemium",
   },
   Zoom: {
     link: zoomLinkImg,
     tutorial: zoomTutorialImg,
+    cost: "Freemium",
   },
 };
 const ToolPaginator = ({ prompts }) => {
@@ -153,9 +185,14 @@ const ToolPaginator = ({ prompts }) => {
         ))}
       </div>
       <>
-        <Text type="subtitle" bold>
-          {prompts[currentPage].toolName}
-        </Text>
+        <div className={styles.title}>
+          <Text type="subtitle" bold>
+            {prompts[currentPage].toolName}
+          </Text>
+          <div className={styles.toolCost}>
+            <Text bold>{imgLinks[prompts[currentPage].toolName]?.cost}</Text>
+          </div>
+        </div>
         <ReactMarkdown className={styles.md}>
           {prompts[currentPage].description}
         </ReactMarkdown>
