@@ -170,16 +170,20 @@ const StartABusiness = () => {
                 </Text>
               </Button>
             </div> */}
-            <YesNoQuestion
-              onNo={() => {
-                setHasAnIdea(false);
-                setField(2);
-              }}
-              onYes={() => {
-                setHasAnIdea(true);
-                setField(2);
-              }}
-            />
+            <div className={styles.yesNoQuestionContainer}>
+              <div className={styles.yesNoQuestion}>
+                <YesNoQuestion
+                  onNo={() => {
+                    setHasAnIdea(false);
+                    setField(2);
+                  }}
+                  onYes={() => {
+                    setHasAnIdea(true);
+                    setField(2);
+                  }}
+                />
+              </div>
+            </div>
           </section>
           {(creating || loading) && (
             <div className={styles.loading}>

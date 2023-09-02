@@ -41,7 +41,15 @@ const frameworks = [
   },
 ];
 
-function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
+function Combobox({
+  id,
+  data,
+  w = "100%",
+  h = "100%",
+  title,
+  nofoundText,
+  onSelect,
+}) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const formated = React.useMemo(
@@ -54,13 +62,13 @@ function Combobox({ id, data, w = "100%", title, nofoundText, onSelect }) {
   }, [value]);
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className={`w-[${w}]`}>
+      <PopoverTrigger asChild className={`w-[${w}] h-[${h}]`}>
         <Button
           variant="outline"
           role="combobox"
           aria-expanded={open}
           style={{ fontSize: "0.6rem" }}
-          className={`w-[${w}] h-[40px] justify-between  border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
+          className={`w-[${w}] h-[${h}] justify-between  border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
         >
           {value
             ? formated.find(

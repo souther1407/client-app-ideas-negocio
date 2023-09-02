@@ -4,7 +4,7 @@
   background: none;
   border: 1px solid var(--dark-gray);
   border-radius: 8px;
-  padding: 8px;
+  padding: 16px;
   font-size: var(--ty);
 }
 
