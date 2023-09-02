@@ -35,7 +35,10 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
     }));
   };
   const isButtonDisabled = () => {
-    return input.skills.length === 0;
+    const isSkillsEmpty = input.skills.length === 0;
+    const isDescriptionEmpty = alreadyIdea && input.description.length === 0;
+    const isLocationEmpty = input.location.length === 0;
+    return isSkillsEmpty || isDescriptionEmpty || isLocationEmpty;
   };
   const handleSubmit = () => {
     onSubmit(input);
@@ -58,7 +61,6 @@ Challenges:
       "bike service":
         "Mobile bike repair and maintenance services for cyclists",
     };
-    console.log(value);
     setInput((prev) => ({
       ...prev,
       description: value ? reports[value] : "",
@@ -151,65 +153,70 @@ Challenges:
       </header>
       <main className={`${styles.main} ${alreadyIdea && styles.alreadyIdea}`}>
         {alreadyIdea && (
-          <Textarea
-            placeholder={"Bussines description"}
-            id="description"
-            value={input.description}
-            onChange={handleChange}
-            className={`${styles.descriptionInput} ${
-              alreadyIdea && styles.alreadyIdea
-            }`}
-          />
+          <div className={styles.textareaDescription}>
+            <Textarea
+              placeholder={"Bussines description"}
+              id="description"
+              value={input.description}
+              onChange={handleChange}
+              className={`${styles.descriptionInput} ${
+                alreadyIdea && styles.alreadyIdea
+              }`}
+            />
+          </div>
         )}
         <section
           className={`${styles.inputs} ${alreadyIdea && styles.alreadyIdea}`}
         >
-          <div
-            className={`${styles.countryInput} ${
-              !alreadyIdea && styles.movedLeft
-            }`}
-          >
-            <Combobox
-              nofoundText={"not country found"}
-              title={"Country"}
-              data={countries}
-              id={"location"}
-              w="200px"
-              onSelect={handleChange}
-            />
+          <div className={styles.sliders}>
+            {!alreadyIdea && (
+              <>
+                <div className={styles.slider}>
+                  <div className={styles.texts}>
+                    <Text size={"0.6rem"} bold>
+                      Budget($)
+                    </Text>
+                    <Text size={"0.6rem"} bold color="soft">
+                      {input.budget}
+                    </Text>
+                  </div>
+                  <Slider id={"budget"} onChange={handleChange} />
+                </div>
+                <div className={styles.slider}>
+                  <div className={styles.texts}>
+                    <Text size={"0.6rem"} bold>
+                      Free Time (H/W)
+                    </Text>
+                    <Text size={"0.6rem"} bold color="soft">
+                      {input.freeTime}
+                    </Text>
+                  </div>
+                  <Slider
+                    id={"freeTime"}
+                    onChange={handleChange}
+                    min={1}
+                    max={100}
+                  />
+                </div>
+              </>
+            )}
+            <div
+              className={`${styles.countryInput} ${
+                !alreadyIdea && styles.movedLeft
+              }`}
+            >
+              <Combobox
+                nofoundText={"not country found"}
+                title={"Country"}
+                data={countries}
+                id={"location"}
+                w="200px"
+                h="90px"
+                onSelect={handleChange}
+              />
+            </div>
           </div>
-          {!alreadyIdea && (
-            <>
-              <div>
-                <div className={styles.texts}>
-                  <Text size={"0.6rem"} bold>
-                    Budget($)
-                  </Text>
-                  <Text size={"0.6rem"} bold color="soft">
-                    {input.budget}
-                  </Text>
-                </div>
-                <Slider id={"budget"} onChange={handleChange} />
-              </div>
-              <div>
-                <div className={styles.texts}>
-                  <Text size={"0.6rem"} bold>
-                    Free Time (H/W)
-                  </Text>
-                  <Text size={"0.6rem"} bold color="soft">
-                    {input.freeTime}
-                  </Text>
-                </div>
-                <Slider
-                  id={"freeTime"}
-                  onChange={handleChange}
-                  min={1}
-                  max={100}
-                />
-              </div>
-            </>
-          )}
-          <div>
+          <div className={styles.tagsInput}>
             <TagInput
               placeholder={"Type more skills"}
               onAddTag={handleAddSkill}
@@ -222,7 +229,7 @@ Challenges:
                 "Sales",
                 "Data Analysis",
               ]}
-              alreadyIdea={alreadyIdea}
+              alreadyIdea={true}
               id="skills"
             />
           </div>

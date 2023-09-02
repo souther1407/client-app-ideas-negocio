@@ -1,8 +1,12 @@
 .formPlayground {
-  border: 1px solid var(--dark-gray);
   border-radius: 8px;
   display: flex;
+  background-color: var(--linkedin-bluegray);
   flex-direction: column;
+  width: 100%;
+  margin: var(--base-margin);
+  margin-bottom: calc(var(--base-margin) * 2);
+  padding: 16px;
 }
 .header,
 .main,
@@ -13,21 +17,38 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--dark-gray);
+  border-bottom: 2px solid var(--dark-gray);
 }
 
 .main {
   display: flex;
+  flex-direction: column;
+}
+.textareaDescription {
+  width: 100%;
+}
+.textareaDescription > :first-child {
+  height: 80px;
 }
 .descriptionInput {
-  width: 500px !important;
   margin-right: 16px;
 }
 .inputs {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 250px;
+}
+.sliders {
+  display: flex;
+  margin: 16px 0;
+  justify-content: space-between;
+}
+
+.slider {
+  padding: 4px 8px;
+  border: 1px solid var(--dark-gray);
+  flex-basis: 40%;
+  border-radius: 8px;
 }
 .texts {
   display: flex;
@@ -43,23 +64,20 @@
   display: flex;
   justify-content: flex-end;
 }
+.tagsInput {
+  width: 100%;
+}
 .countryInput.movedLeft {
   display: flex;
   justify-content: flex-start;
 }
-.inputs > *:not(:last-child),
-.mobileInputs > *:not(:last-child) {
-  margin-bottom: 20px;
-}
-.inputs > * > :first-child,
+
 .mobileInputs > * > :first-child {
   margin-bottom: 8px;
 }
 .footer {
   display: flex;
   justify-content: space-between;
-  padding-top: 16px;
-  padding-bottom: 16px;
 }
 .drawer,
 .mobileSpace {
