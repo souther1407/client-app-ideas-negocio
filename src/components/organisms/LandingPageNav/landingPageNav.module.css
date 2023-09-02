@@ -81,7 +81,11 @@
 }
 .menuIcon > :last-child {
 }
-
+.usermenuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .usermenuContent > * {
   margin-bottom: 16px;
 }
@@ -91,7 +95,7 @@
   margin-left: 16px;
 }
 .mobileLink {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -107,6 +111,10 @@
     display: block;
   }
   .mobileNavMenu {
+    display: flex;
+    display: flex;
+  }
+  .mobileLink {
     display: flex;
   }
 }

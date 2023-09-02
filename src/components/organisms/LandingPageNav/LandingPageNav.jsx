@@ -77,11 +77,6 @@ const LandingPageNav = () => {
             </Link>
           </section>
         )}
-        <section className={styles.buttons}>
-          {/* <GradientBorder>
-            <ChangeLanguage />
-          </GradientBorder> */}
-        </section>
       </section>
       <div className={styles.menus}>
         {!isLogged() && (
@@ -105,45 +100,33 @@ const LandingPageNav = () => {
                   >
                     <Text>Log out</Text>
                   </Button>
+                  <section className={styles.mobileLink}>
+                    <Link to={START_A_BUSINESS}>
+                      <Text
+                        size={"1rem"}
+                        color={location.pathname !== START_A_BUSINESS && "soft"}
+                      >
+                        New Report
+                      </Text>
+                    </Link>
+                    <Link to={DASHBOARD_IDEAS}>
+                      <Text
+                        size={"1rem"}
+                        color={location.pathname !== DASHBOARD_IDEAS && "soft"}
+                      >
+                        My Reports
+                      </Text>
+                    </Link>
+                    <Link to={DASHBOARD_FINDER}>
+                      <Text
+                        size={"1rem"}
+                        color={location.pathname !== DASHBOARD_FINDER && "soft"}
+                      >
+                        Finder
+                      </Text>
+                    </Link>
+                  </section>
                 </div>
-              )}
-              renderFooter={() => {}}
-            />
-          </section>
-        )}
-        {isLogged() && (
-          <section className={styles.mobileNavMenu}>
-            <Sheet
-              renderButton={() => (
-                <IconButton size="24px" color={"white"} icon={"bars"} />
-              )}
-              renderContent={() => (
-                <section className={styles.mobileLink}>
-                  <Link to={START_A_BUSINESS}>
-                    <Text
-                      size={"1rem"}
-                      color={location.pathname !== START_A_BUSINESS && "soft"}
-                    >
-                      New Report
-                    </Text>
-                  </Link>
-                  <Link to={DASHBOARD_IDEAS}>
-                    <Text
-                      size={"1rem"}
-                      color={location.pathname !== DASHBOARD_IDEAS && "soft"}
-                    >
-                      My Reports
-                    </Text>
-                  </Link>
-                  <Link to={DASHBOARD_FINDER}>
-                    <Text
-                      size={"1rem"}
-                      color={location.pathname !== DASHBOARD_FINDER && "soft"}
-                    >
-                      Finder
-                    </Text>
-                  </Link>
-                </section>
               )}
               renderFooter={() => {}}
             />
