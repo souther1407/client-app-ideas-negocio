@@ -79,8 +79,7 @@
 .menuIcon > :first-child {
   width: 40px;
 }
-.menuIcon > :last-child {
-}
+
 .usermenuContent {
   display: flex;
   flex-direction: column;
