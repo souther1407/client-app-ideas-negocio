@@ -192,6 +192,7 @@
 .md h1 {
   font-size: 2rem;
   font-weight: bold;
+  line-height: 1.4;
 }
 .main > section:not(:last-child) {
   padding-bottom: 24px;

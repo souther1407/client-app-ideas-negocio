@@ -10,6 +10,7 @@
   transition: all 0.3s ease-in;
   transform: translateY(-100%);
   z-index: 5;
+  background-color: var(--linkedin-bluegray);
 }
 .landingPageNav > * {
   margin: 0 16px;
@@ -79,8 +80,7 @@
 .menuIcon > :first-child {
   width: 40px;
 }
-.menuIcon > :last-child {
-}
+
 .usermenuContent {
   display: flex;
   flex-direction: column;
