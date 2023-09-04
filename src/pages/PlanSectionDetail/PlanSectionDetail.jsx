@@ -202,8 +202,28 @@ const PromptSectionDetail = () => {
           }}
         >
           <div className={styles.socialMedia}>
-            <Text color="soft">Share your plan</Text>
-            <div className={styles.icons}>
+            <section className={styles.banner}>
+              <Avatar size={"80px"} src={RobotImg} alt="robot-padda" />
+              <Text type="subtitle" bold>
+                Padda
+              </Text>
+              <Text>IA Marketing Expert</Text>
+            </section>
+            <section className={styles.stats}>
+              <div className={styles.stat}>
+                <Text>Words</Text>
+                <Text>≈1000</Text>
+              </div>
+              <div className={styles.stat}>
+                <Text>Impressions</Text>
+                <Text>10</Text>
+              </div>
+              <div className={styles.stat}>
+                <Text>Shares</Text>
+                <Text>5</Text>
+              </div>
+            </section>
+            <section className={styles.shareLinks}>
               <IconButton
                 icon={"twitter"}
                 color={"#BDBDBD"}
@@ -225,33 +245,9 @@ const PromptSectionDetail = () => {
                   alert("copied!");
                 }}
               />
-            </div>
+            </section>
           </div>
           <div className={styles.details}>
-            <div className={styles.welcomeBanner}>
-              <Avatar
-                src={RobotImg}
-                alt="avatar"
-                size={{ w: "80px", h: "80px" }}
-              />
-              <Text type="subtitle">Hello Human!</Text>
-              <Text color="soft">
-                Do you need a Product Development Strategy?
-              </Text>
-              <div className={styles.prevNextBtns}>
-                <IconButton
-                  icon={"singleArrowLeft"}
-                  size="2rem"
-                  onClick={onAnt}
-                />
-                <IconButton
-                  icon={"singleArrowRight"}
-                  size="2rem"
-                  onClick={onNext}
-                />
-              </div>
-            </div>
-
             <section className={styles.detail} ref={detailRef}>
               <div className={styles.banner}>
                 <ReactMarkdown className={styles.md}>

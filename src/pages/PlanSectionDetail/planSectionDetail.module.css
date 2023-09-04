@@ -29,7 +29,7 @@
 .askQuestions {
   padding: 16px;
 }
-.detail > *:not(.banner) {
+.detail > * {
   padding: 16px;
 }
 
@@ -69,17 +69,32 @@
   flex-basis: 240px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-right: var(--base-margin);
-  padding: 16px;
   position: sticky;
   top: 0;
 }
-.socialMedia > :first-child {
-  margin-bottom: 8px;
+
+.shareLinks {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: space-around;
 }
-.socialMedia .icons > * {
-  margin-bottom: 8px;
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--white-transparent);
+  border-bottom: 1px solid var(--white-transparent);
+  padding: 16px 8px;
+  margin: 16px 0;
+}
+.stat {
+  display: flex;
+  justify-content: space-between;
 }
 .options {
   display: flex;
@@ -116,9 +131,7 @@
   width: 100%;
   margin-right: var(--base-margin);
 }
-.banner > :first-child {
-  padding: 40px 16px 16px 16px;
-}
+
 .bannerImg {
   width: 100%;
   height: 240px;
