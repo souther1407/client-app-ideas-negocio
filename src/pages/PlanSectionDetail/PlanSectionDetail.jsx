@@ -131,66 +131,78 @@ const PromptSectionDetail = () => {
     <div className={styles.promptSectionDetail}>
       <div className={styles.content}>
         <nav className={styles.navigation}>
-          <div style={{ width: "1px", height: "1px" }}></div>
-          <section className={styles.options}>
-            <div
-              className={styles.planSectionName}
-              style={{
-                transform: `translateX(${getTransitionValue()})`,
-                flexShrink: "0",
-              }}
-              ref={menuTitleRef}
-              onClick={() =>
-                detailRef.current.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              <IconText
-                icon={"case"}
-                color={currentSection !== "detail" && "soft"}
-                size="0.7rem"
-              >
-                {"Overview"}
-              </IconText>
-            </div>
-
-            <div
-              style={{ transform: `translateX(${getTransitionValue()})` }}
-              ref={menuAskRef}
-              onClick={() =>
-                questionsRef.current.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              <IconText
-                icon={"case"}
-                color={currentSection !== "questions" && "soft"}
-                size="0.7rem"
-              >
-                Plan
-              </IconText>
-            </div>
-            {section === "mvp" && (
+          <section className={styles.navigationReport}>
+            <div style={{ width: "1px", height: "1px" }}></div>
+            <section className={styles.options}>
+              <Text>Target Customer</Text>
+              <Text>Competitions</Text>
+              <Text>Product</Text>
+              <Text>Marketing</Text>
+            </section>
+            <section className={styles.close}>
+              <IconButton
+                icon={"close"}
+                onClick={() => navigate(load("PLAN_DETAIL_URL"))}
+              />
+            </section>
+          </section>
+          <section className={`${styles.navigationReport} ${styles.submenu}`}>
+            <section className={styles.options}>
               <div
-                style={{ transform: `translateX(${getTransitionValue()})` }}
-                ref={menuQuestionRef}
+                className={styles.planSectionName}
+                style={{
+                  transform: `translateX(${getTransitionValue()})`,
+                  flexShrink: "0",
+                }}
+                ref={menuTitleRef}
                 onClick={() =>
-                  askQuestionsRef.current.scrollIntoView({ behavior: "smooth" })
+                  detailRef.current.scrollIntoView({ behavior: "smooth" })
                 }
               >
                 <IconText
                   icon={"case"}
-                  color={currentSection !== "ask" && "soft"}
+                  color={currentSection !== "detail" && "soft"}
                   size="0.7rem"
                 >
-                  Plan 2
+                  {"Overview"}
                 </IconText>
               </div>
-            )}
-          </section>
-          <section className={styles.close}>
-            <IconButton
-              icon={"close"}
-              onClick={() => navigate(load("PLAN_DETAIL_URL"))}
-            />
+
+              <div
+                style={{ transform: `translateX(${getTransitionValue()})` }}
+                ref={menuAskRef}
+                onClick={() =>
+                  questionsRef.current.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                <IconText
+                  icon={"case"}
+                  color={currentSection !== "questions" && "soft"}
+                  size="0.7rem"
+                >
+                  Plan
+                </IconText>
+              </div>
+              {section === "mvp" && (
+                <div
+                  style={{ transform: `translateX(${getTransitionValue()})` }}
+                  ref={menuQuestionRef}
+                  onClick={() =>
+                    askQuestionsRef.current.scrollIntoView({
+                      behavior: "smooth",
+                    })
+                  }
+                >
+                  <IconText
+                    icon={"case"}
+                    color={currentSection !== "ask" && "soft"}
+                    size="0.7rem"
+                  >
+                    Plan 2
+                  </IconText>
+                </div>
+              )}
+            </section>
           </section>
         </nav>
 
