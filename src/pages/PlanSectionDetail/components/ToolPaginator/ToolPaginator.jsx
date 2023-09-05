@@ -81,7 +81,7 @@ const imgLinks = {
     tutorial: googleanalyticsTutorialImg,
     cost: "Freemium",
   },
-  HootSuite: {
+  Hootsuite: {
     link: hootsuiteLinkImg,
     tutorial: hootsuiteTutorialImg,
     cost: "Freemium",
@@ -106,7 +106,7 @@ const imgLinks = {
     tutorial: notionTutorialImg,
     cost: "Freemium",
   },
-  Semrush: {
+  SEMrush: {
     link: semrushLinkImg,
     tutorial: semrushTutorialImg,
     cost: "Freemium",

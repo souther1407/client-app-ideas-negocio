@@ -63,13 +63,9 @@ function App() {
         <Route path={DASHBOARD + "/finder"} element={<Finder />} />
         <Route
           path={MY_PROMPTS_DETAIL + "/:id/:user"}
-          element={<PlanDetail />}
-        />
-        <Route path={ACTIVATE_SUCCESS} element={<Success />} />
-        <Route
-          path={PLAN_DETAIL + "/:section"}
           element={<PlanSectionDetail />}
         />
+        <Route path={ACTIVATE_SUCCESS} element={<Success />} />
 
         <Route
           path={AFFILIATE_LINK}
