@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
 
-export const useScroll = () => {
+export const useScroll = (element = window) => {
   const [scrollState, setScrollState] = useState({
-    scrollPosition: window.scrollY,
-    isBegin: window.scrollY === 0,
-    isEnd: window.scrollY === document.body.scrollHeight - window.innerHeight,
+    scrollPosition: element.scrollY,
+    isBegin: element.scrollY === 0,
+    isEnd: element.scrollY === document.body.scrollHeight - element.innerHeight,
     isScrolledDown: false,
     isScrolledUp: true,
   });
 
   useEffect(() => {
-    window.addEventListener("scroll", (e) => {
+    element.addEventListener("scroll", (e) => {
       setScrollState((prev) => {
-        const scrolledDown = prev.scrollPosition < window.scrollY;
-        const scrolledUp = prev.scrollPosition > window.scrollY;
+        const scrolledDown = prev.scrollPosition < element.scrollY;
+        const scrolledUp = prev.scrollPosition > element.scrollY;
 
         return {
           isScrolledDown: scrolledDown,
           isScrolledUp: scrolledUp,
-          isBegin: window.scrollY === 0,
+          isBegin: element.scrollY === 0,
           isEnd:
-            window.scrollY === document.body.scrollHeight - window.innerHeight,
-          scrollPosition: window.scrollY,
+            element.scrollY ===
+            document.body.scrollHeight - element.innerHeight,
+          scrollPosition: element.scrollY,
         };
       });
     });
-    return () => window.removeEventListener("scroll", () => {});
   }, []);
 
   return scrollState;
