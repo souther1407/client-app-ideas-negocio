@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./toolPaginator.module.css";
 import Button from "../../../../components/atoms/Button/Button";
 import Link from "../../../../components/atoms/Link/Link";
@@ -154,6 +154,9 @@ const ToolPaginator = ({ prompts }) => {
       setCurrentPage(newPage);
     }
   };
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [prompts]);
   return (
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
@@ -187,26 +190,28 @@ const ToolPaginator = ({ prompts }) => {
       <>
         <div className={styles.title}>
           <Text type="subtitle" bold>
-            {prompts[currentPage].toolName}
+            {prompts[currentPage]?.toolName}
           </Text>
           <div className={styles.toolCost}>
-            <Text bold>{imgLinks[prompts[currentPage].toolName]?.cost}</Text>
+            <Text bold>{imgLinks[prompts[currentPage]?.toolName]?.cost}</Text>
           </div>
         </div>
         <ReactMarkdown className={styles.md}>
-          {prompts[currentPage].description}
+          {prompts[currentPage]?.description}
         </ReactMarkdown>
         <div className={styles.btns}>
           <ImgLinkBtn
             extern
-            src={imgLinks[prompts[currentPage].toolName]?.link ?? imgBanner}
-            to={prompts[currentPage].url}
+            src={imgLinks[prompts[currentPage]?.toolName]?.link ?? imgBanner}
+            to={prompts[currentPage]?.url}
             size={{ w: "100%", h: "120px" }}
           />
           <ImgLinkBtn
             extern
-            src={imgLinks[prompts[currentPage].toolName]?.tutorial ?? imgBanner}
-            to={prompts[currentPage].tutorial}
+            src={
+              imgLinks[prompts[currentPage]?.toolName]?.tutorial ?? imgBanner
+            }
+            to={prompts[currentPage]?.tutorial}
             size={{ w: "100%", h: "120px" }}
           />
         </div>

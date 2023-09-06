@@ -9,11 +9,7 @@ import usePromptDetail from "../../states/prompDetail";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
 import RobotImg from "../../assets/robot.svg";
-import {
-  PLAN_DETAIL,
-  DASHBOARD_ASK_QUESTION,
-  DASHBOARD_IDEAS,
-} from "../../utils/constants/routes";
+import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
 
 import ReactMarkdown from "react-markdown";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
@@ -21,13 +17,13 @@ import { useStorage } from "../../hooks/useStorage";
 import { useReportUrl } from "../../states/reportUrl";
 import { getById } from "../../services/userPrompts/getPrompts";
 import { useLogin } from "../../hooks/useLogin";
-
+import { useScroll } from "../../hooks/useScroll";
 const PromptSectionDetail = () => {
   const { id, user } = useParams();
   const navigate = useNavigate();
   const url = useReportUrl((state) => state.url);
-  const { load } = useStorage();
   const [reportSection, setReportSection] = useState("targetCustomer");
+
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
   const [titles, setTitles] = useState({
@@ -55,21 +51,25 @@ const PromptSectionDetail = () => {
   const questionsRef = useRef();
   const askQuestionsRef = useRef();
 
-  const [scrollPos, setScrollPos] = useState(0);
+  const [scrollPos, setScrollPos] = useState({
+    scrolledDown: false,
+    scrolledUp: false,
+    pos: 0,
+  });
   const [currentSection, setCurrentSection] = useState("detail");
   const changeSection = () => {
     const isInDetail =
-      mainRef.current?.clientHeight + scrollPos <
-        detailRef.current?.clientHeight || scrollPos === 0;
+      mainRef.current?.clientHeight + scrollPos.pos <
+        detailRef.current?.clientHeight || scrollPos.pos === 0;
 
     const isQuestion =
-      mainRef.current?.clientHeight + scrollPos >=
+      mainRef.current?.clientHeight + scrollPos.pos >=
         detailRef.current?.clientHeight &&
-      mainRef.current?.clientHeight + scrollPos <
+      mainRef.current?.clientHeight + scrollPos.pos <
         detailRef.current?.clientHeight + questionsRef.current?.clientHeight;
 
     const isAsk =
-      mainRef.current?.clientHeight + scrollPos >=
+      mainRef.current?.clientHeight + scrollPos.pos >=
       detailRef.current?.clientHeight + questionsRef.current?.clientHeight;
 
     if (isInDetail) setCurrentSection("detail");
@@ -92,8 +92,14 @@ const PromptSectionDetail = () => {
       }
   };
 
+  const handleChangeSection = (section) => {
+    setReportSection(section);
+    setCurrentSection("detail");
+    mainRef.current.scrollTop = 0;
+  };
   useEffect(() => {
     changeSection();
+    console.log(scrollPos);
   }, [scrollPos]);
 
   const tools = useMemo(() => {
@@ -127,18 +133,36 @@ const PromptSectionDetail = () => {
     <div className={styles.promptSectionDetail}>
       {!loading && (
         <div className={styles.content}>
-          <nav className={styles.navigation}>
+          <nav
+            className={`${styles.navigation} ${
+              scrollPos.scrolledDown && styles.scrolledDown
+            }`}
+          >
             <section className={styles.navigationReport}>
               <div style={{ width: "1px", height: "1px" }}></div>
               <section className={styles.options}>
-                <Text onClick={() => setReportSection("targetCustomer")}>
+                <Text
+                  color={reportSection !== "targetCustomer" ? "soft" : ""}
+                  onClick={() => handleChangeSection("targetCustomer")}
+                >
                   Target Customer
                 </Text>
-                <Text onClick={() => setReportSection("competitions")}>
+                <Text
+                  color={reportSection !== "competitions" ? "soft" : ""}
+                  onClick={() => handleChangeSection("competitions")}
+                >
                   Competitions
                 </Text>
-                <Text onClick={() => setReportSection("mvp")}>Product</Text>
-                <Text onClick={() => setReportSection("marketingPlan")}>
+                <Text
+                  color={reportSection !== "mvp" ? "soft" : ""}
+                  onClick={() => handleChangeSection("mvp")}
+                >
+                  Product
+                </Text>
+                <Text
+                  color={reportSection !== "marketingPlan" ? "soft" : ""}
+                  onClick={() => handleChangeSection("marketingPlan")}
+                >
                   Marketing
                 </Text>
               </section>
@@ -162,13 +186,9 @@ const PromptSectionDetail = () => {
                     detailRef.current.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <IconText
-                    icon={"case"}
-                    color={currentSection !== "detail" && "soft"}
-                    size="0.7rem"
-                  >
+                  <Text color={currentSection !== "detail" ? "soft" : ""}>
                     {"Overview"}
-                  </IconText>
+                  </Text>
                 </div>
 
                 <div
@@ -178,13 +198,9 @@ const PromptSectionDetail = () => {
                     questionsRef.current.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <IconText
-                    icon={"case"}
-                    color={currentSection !== "questions" && "soft"}
-                    size="0.7rem"
-                  >
+                  <Text color={currentSection !== "questions" ? "soft" : ""}>
                     Plan
-                  </IconText>
+                  </Text>
                 </div>
                 {reportSection === "mvp" && (
                   <div
@@ -196,13 +212,9 @@ const PromptSectionDetail = () => {
                       })
                     }
                   >
-                    <IconText
-                      icon={"case"}
-                      color={currentSection !== "ask" && "soft"}
-                      size="0.7rem"
-                    >
+                    <Text color={currentSection !== "ask" ? "soft" : ""}>
                       Plan 2
-                    </IconText>
+                    </Text>
                   </div>
                 )}
               </section>
@@ -212,8 +224,14 @@ const PromptSectionDetail = () => {
           <main
             className={styles.main}
             ref={mainRef}
+            id="main"
             onScroll={(e) => {
-              setScrollPos(e.currentTarget.scrollTop);
+              const newPos = e.currentTarget.scrollTop;
+              setScrollPos((prev) => ({
+                scrolledDown: prev.pos < newPos,
+                scrolledUp: prev.pos >= newPos,
+                pos: newPos,
+              }));
             }}
           >
             <div className={styles.socialMedia}>
