@@ -8,16 +8,23 @@ import IconButton from "../../components/molecules/IconButton/IconButton";
 import usePromptDetail from "../../states/prompDetail";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
+import CompetitionsImage from "../../assets/Competition.svg";
+import MarketingImage from "../../assets/Marketing.svg";
+import TargetcustomerImage from "../../assets/Target Customer.svg";
 import RobotImg from "../../assets/robot.svg";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
-
 import ReactMarkdown from "react-markdown";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
-import { useStorage } from "../../hooks/useStorage";
 import { useReportUrl } from "../../states/reportUrl";
 import { getById } from "../../services/userPrompts/getPrompts";
 import { useLogin } from "../../hooks/useLogin";
-import { useScroll } from "../../hooks/useScroll";
+
+const banners = {
+  targetCustomer: TargetcustomerImage,
+  mvp: MVPImage,
+  competitions: CompetitionsImage,
+  marketingPlan: MarketingImage,
+};
 const PromptSectionDetail = () => {
   const { id, user } = useParams();
   const navigate = useNavigate();
@@ -286,7 +293,10 @@ const PromptSectionDetail = () => {
                   <ReactMarkdown className={styles.md}>
                     {titles[reportSection]}
                   </ReactMarkdown>
-                  <img src={MVPImage} className={styles.bannerImg} />
+                  <img
+                    src={banners[reportSection]}
+                    className={styles.bannerImg}
+                  />
                 </div>
                 <ReactMarkdown className={styles.md}>
                   {response?.details[reportSection]?.overview}
