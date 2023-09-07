@@ -7,11 +7,11 @@ import IconButton from "../../molecules/IconButton/IconButton";
 const Tag = ({ id, input, onDelete }) => {
   return (
     <div className={styles.tag}>
-      <Text size={"0.6rem"}>{input}</Text>
+      <Text size={"1rem"}>{input}</Text>
       <IconButton
         icon={"close"}
         size={"16px"}
-        color="black"
+        color="white"
         onClick={() => onDelete(input)}
       />
     </div>
@@ -25,6 +25,7 @@ const TagInput = ({
   id,
   onRemoveTag,
   alreadyIdea,
+  children,
 }) => {
   const [tags, setTags] = useState([]);
   const [input, setInput] = useState("");
@@ -55,22 +56,25 @@ const TagInput = ({
   };
   return (
     <div className={styles.tagInputContainer}>
-      {alreadyIdea && (
-        <section className={styles.predefinedTags}>
-          {predefinedTags.map((pt) => (
-            <div
-              className={`${styles.predefinedTag} ${
-                tags.includes(pt) && styles.included
-              }`}
-              onClick={() => onTogglePredefinedTag(pt)}
-            >
-              <Text bold color={!tags.includes(pt) ? "soft" : "inherit"}>
-                {pt}
-              </Text>
-            </div>
-          ))}
-        </section>
-      )}
+      <div className={styles.header}>
+        {alreadyIdea && (
+          <section className={styles.predefinedTags}>
+            {predefinedTags.map((pt) => (
+              <div
+                className={`${styles.predefinedTag} ${
+                  tags.includes(pt) && styles.included
+                }`}
+                onClick={() => onTogglePredefinedTag(pt)}
+              >
+                <Text bold color={!tags.includes(pt) ? "soft" : "inherit"}>
+                  {pt}
+                </Text>
+              </div>
+            ))}
+          </section>
+        )}
+        <div>{children}</div>
+      </div>
       <div className={styles.tagInput}>
         <section className={styles.tags}>
           {tags.map((t, index) => (
@@ -81,7 +85,7 @@ const TagInput = ({
           onKeyDown={addTag}
           onChange={(e) => setInput(e.target.value)}
           value={input}
-          fontSize={"0.6rem"}
+          fontSize={"1rem"}
           placeholder={placeholder}
           variant="borderNone"
         />

@@ -67,7 +67,7 @@ function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          style={{ fontSize: "0.6rem" }}
+          style={{ fontSize: "1rem", height: h }}
           className={`w-[${w}] h-[${h}] justify-between  border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
         >
           {value
@@ -89,18 +89,18 @@ function Combobox({
         <Command className="bg-neutral-950 text-white">
           <CommandInput
             placeholder={title}
-            style={{ fontSize: "0.6rem" }}
+            style={{ fontSize: "1rem" }}
             className={"placeholder:text-neutral-400"}
           />
 
-          <CommandEmpty style={{ fontSize: "0.6rem" }}>
+          <CommandEmpty style={{ fontSize: "1rem" }}>
             {nofoundText}
           </CommandEmpty>
           <CommandGroup className="overflow-auto">
             {formated.map((framework) => (
               <CommandItem
                 key={framework.value}
-                style={{ fontSize: "0.6rem" }}
+                style={{ fontSize: "1rem" }}
                 className={"text-white"}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue);

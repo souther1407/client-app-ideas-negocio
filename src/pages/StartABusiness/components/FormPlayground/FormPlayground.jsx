@@ -168,54 +168,58 @@ Challenges:
         <section
           className={`${styles.inputs} ${alreadyIdea && styles.alreadyIdea}`}
         >
-          <div className={styles.sliders}>
-            {!alreadyIdea && (
-              <>
-                <div className={styles.slider}>
-                  <div className={styles.texts}>
-                    <Text size={"0.6rem"} bold>
-                      Budget($)
-                    </Text>
-                    <Text size={"0.6rem"} bold color="soft">
-                      {input.budget}
-                    </Text>
+          {!alreadyIdea && (
+            <div className={styles.sliders}>
+              {!alreadyIdea && (
+                <>
+                  <div className={styles.slider}>
+                    <div className={styles.texts}>
+                      <Text size={"1rem"} bold>
+                        Budget($)
+                      </Text>
+                      <Text size={"1rem"} bold color="soft">
+                        {input.budget}
+                      </Text>
+                    </div>
+                    <Slider id={"budget"} onChange={handleChange} />
                   </div>
-                  <Slider id={"budget"} onChange={handleChange} />
-                </div>
-                <div className={styles.slider}>
-                  <div className={styles.texts}>
-                    <Text size={"0.6rem"} bold>
-                      Free Time (H/W)
-                    </Text>
-                    <Text size={"0.6rem"} bold color="soft">
-                      {input.freeTime}
-                    </Text>
+                  <div className={styles.slider}>
+                    <div className={styles.texts}>
+                      <Text size={"1rem"} bold>
+                        Free Time (H/W)
+                      </Text>
+                      <Text size={"1rem"} bold color="soft">
+                        {input.freeTime}
+                      </Text>
+                    </div>
+                    <Slider
+                      id={"freeTime"}
+                      onChange={handleChange}
+                      min={1}
+                      max={100}
+                    />
                   </div>
-                  <Slider
-                    id={"freeTime"}
-                    onChange={handleChange}
-                    min={1}
-                    max={100}
+                </>
+              )}
+              {!alreadyIdea && (
+                <div
+                  className={`${styles.countryInput} ${
+                    !alreadyIdea && styles.movedLeft
+                  }`}
+                >
+                  <Combobox
+                    nofoundText={"not country found"}
+                    title={"Country"}
+                    data={countries}
+                    id={"location"}
+                    w="200px"
+                    h="100%"
+                    onSelect={handleChange}
                   />
                 </div>
-              </>
-            )}
-            <div
-              className={`${styles.countryInput} ${
-                !alreadyIdea && styles.movedLeft
-              }`}
-            >
-              <Combobox
-                nofoundText={"not country found"}
-                title={"Country"}
-                data={countries}
-                id={"location"}
-                w="200px"
-                h="90px"
-                onSelect={handleChange}
-              />
+              )}
             </div>
-          </div>
+          )}
           <div className={styles.tagsInput}>
             <TagInput
               placeholder={"Type more skills"}
@@ -231,14 +235,26 @@ Challenges:
               ]}
               alreadyIdea={true}
               id="skills"
-            />
+            >
+              {alreadyIdea && (
+                <Combobox
+                  nofoundText={"not country found"}
+                  title={"Country"}
+                  data={countries}
+                  id={"location"}
+                  w="200px"
+                  h="100%"
+                  onSelect={handleChange}
+                />
+              )}
+            </TagInput>
           </div>
         </section>
       </main>
       <footer className={styles.footer}>
         <Button
           flexible
-          type="bordered"
+          color="secondary"
           disabled={isButtonDisabled()}
           onClick={handleSubmit}
         >

@@ -1,8 +1,13 @@
 .tagInputContainer {
   --base-border-radius: 8px;
 }
+.header {
+  display: flex;
+  margin-bottom: 8px;
+}
 .tagInput {
-  height: 100px;
+  height: 68px;
+  display: flex;
   padding: 4px;
   border: 1px solid var(--dark-gray);
   overflow: auto;
@@ -10,12 +15,16 @@
 }
 .predefinedTags {
   display: flex;
-  flex-wrap: wrap;
-  padding: 8px;
+  padding: 4px;
+  flex-grow: 1;
+  margin-right: 8px;
   border: 1px solid var(--dark-gray);
   border-radius: var(--base-border-radius);
-  margin-bottom: 8px;
 }
+.listPredefinedTags {
+  display: flex;
+}
+
 .predefinedTag {
   padding: 8px;
   border-radius: calc(var(--base-border-radius) / 2);
@@ -24,8 +33,8 @@
   cursor: pointer;
 }
 .predefinedTag.included {
-  background-color: var(--white);
-  color: var(--dark-gray);
+  background-color: var(--orange);
+  color: var(--white);
 }
 
 .tagInput:has(input:focus) {
@@ -33,16 +42,22 @@
 }
 .tags {
   display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  max-width: 70%;
   flex-wrap: wrap;
 }
 
 .tag {
   display: flex;
-  background-color: var(--white);
-  width: fit-content;
-  color: var(--black);
+  background-color: var(--orange);
+  color: var(--white);
   justify-content: center;
   align-self: center;
   border-radius: 8px;
-  padding: 4px;
+  padding: 8px;
+  margin: 2px;
+}
+.tag > :first-child {
+  flex-shrink: 0;
 }
