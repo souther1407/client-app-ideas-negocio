@@ -24,8 +24,8 @@
 }
 
 .fulled.secondary.light {
-  background-color: var(--secondary-light);
-  color: var(--text-light);
+  background-color: var(--orange);
+  color: var(--white);
 }
 
 .bordered.primary.light {

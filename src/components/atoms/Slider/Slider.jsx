@@ -25,7 +25,7 @@ const Slider = ({ id, onChange = () => {}, min = 0, max = 10000 }) => {
         onChange={(val) => setValue(val)}
       >
         <SliderTrack bg={"gray.700"}>
-          <SliderFilledTrack bg={"white"} />
+          <SliderFilledTrack bg={"var(--orange)"} />
         </SliderTrack>
 
         <SliderThumb />
