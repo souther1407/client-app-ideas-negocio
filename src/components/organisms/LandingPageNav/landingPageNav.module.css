@@ -12,9 +12,7 @@
   z-index: 5;
   background-color: var(--linkedin-bluegray);
 }
-.landingPageNav > * {
-  margin: 0 16px;
-}
+
 .elements {
   display: flex;
   align-items: center;
@@ -27,6 +25,7 @@
 }
 .buttonsAndLinks {
   display: flex;
+  transform: translateX(-25%);
 }
 .links {
   margin-right: 16px;

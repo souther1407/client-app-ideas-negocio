@@ -16,11 +16,8 @@ import {
 } from "../../../utils/constants/routes";
 import { useLogin } from "../../../hooks/useLogin";
 import Button from "../../atoms/Button/Button";
-import GradientBorder from "../../../components/atoms/GradientBorder/GradientBorder";
-import ShineEffect from "../../atoms/ShineEffect/ShineEffect";
 import MobileMenu from "./components/MobileMenu";
-
-import Drawer from "../../molecules/Drawer/Drawer";
+import Logo from "../../atoms/Logo/Logo";
 import Icon from "../../atoms/Icon/Icon";
 import Sheet from "../../molecules/Sheer/Sheet";
 import IconButton from "../../molecules/IconButton/IconButton";
@@ -47,7 +44,7 @@ const LandingPageNav = () => {
         stateScroll.isScrolledUp && styles.show
       }`}
     >
-      <section style={{ width: "1px", height: "1px" }}></section>
+      <Logo />
       <section className={styles.buttonsAndLinks}>
         {isLogged() && (
           <section className={styles.links}>

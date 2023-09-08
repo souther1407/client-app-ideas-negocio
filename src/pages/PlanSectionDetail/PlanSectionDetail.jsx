@@ -12,6 +12,7 @@ import CompetitionsImage from "../../assets/Competition.svg";
 import MarketingImage from "../../assets/Marketing.svg";
 import TargetcustomerImage from "../../assets/Target Customer.svg";
 import RobotImg from "../../assets/robot.svg";
+import Logo from "../../components/atoms/Logo/Logo";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
 import ReactMarkdown from "react-markdown";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
@@ -146,20 +147,20 @@ const PromptSectionDetail = () => {
             }`}
           >
             <section className={styles.navigationReport}>
-              <div style={{ width: "1px", height: "1px" }}></div>
-              <section className={styles.options}>
+              <Logo />
+              <section className={`${styles.options} ${styles.topOptions}`}>
                 <Text
                   color={reportSection !== "targetCustomer" ? "soft" : ""}
                   onClick={() => handleChangeSection("targetCustomer")}
                 >
-                  Target Customer
+                  Customer
                 </Text>
-                <Text
+                {/* <Text
                   color={reportSection !== "competitions" ? "soft" : ""}
                   onClick={() => handleChangeSection("competitions")}
                 >
                   Competitions
-                </Text>
+                </Text> */}
                 <Text
                   color={reportSection !== "mvp" ? "soft" : ""}
                   onClick={() => handleChangeSection("mvp")}
@@ -268,13 +269,29 @@ const PromptSectionDetail = () => {
                   icon={"twitter"}
                   color={"#BDBDBD"}
                   size="24px"
-                  onClick={() => {}}
+                  onClick={() => {
+                    const a = document.createElement("a");
+                    a.setAttribute(
+                      "href",
+                      `https://www.linkedin.com/shareArticle?url=${window.location.href}`
+                    );
+                    a.setAttribute("target", `_blank`);
+                    a.click();
+                  }}
                 />
                 <IconButton
                   icon={"linkedin"}
                   color={"#BDBDBD"}
                   size="24px"
-                  onClick={() => {}}
+                  onClick={() => {
+                    const a = document.createElement("a");
+                    a.setAttribute(
+                      "href",
+                      `https://twitter.com/intent/tweet?url=${window.location.href}`
+                    );
+                    a.setAttribute("target", `_blank`);
+                    a.click();
+                  }}
                 />
                 <IconButton
                   icon={"clip"}

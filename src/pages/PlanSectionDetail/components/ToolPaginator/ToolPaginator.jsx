@@ -160,22 +160,6 @@ const ToolPaginator = ({ prompts }) => {
   return (
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
-        <Button
-          key={"ant"}
-          type="bordered"
-          style={{ borderRadius: "0", height: "auto", width: "auto" }}
-          onClick={() => handleChangePage(currentPage - 1)}
-        >
-          <Text>{"<"}</Text>
-        </Button>
-        <Button
-          key={"next"}
-          type="bordered"
-          style={{ borderRadius: "0", height: "auto", width: "auto" }}
-          onClick={() => handleChangePage(currentPage + 1)}
-        >
-          <Text>{">"}</Text>
-        </Button>
         {prompts.map((e, index) => (
           <Button
             key={index}
