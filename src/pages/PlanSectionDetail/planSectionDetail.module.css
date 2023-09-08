@@ -63,12 +63,12 @@
 }
 .navigation.scrolledDown {
   position: relative;
-  transform: translateY(-50%);
+  transform: translateY(-56%);
 }
 .navigation.scrolledDown ~ .main {
   transition: all 0.2s ease-in;
   position: relative;
-  bottom: 24px;
+  bottom: 32px;
 }
 .navigationReport {
   display: flex;
@@ -117,9 +117,11 @@
 }
 .options {
   display: flex;
-  width: 300px;
   overflow: hidden;
   justify-content: space-between;
+}
+.topOptions {
+  transform: translateX(-50%);
 }
 .options > * {
   transition: all 0.3s ease-in;
@@ -157,7 +159,7 @@
   margin-top: 24px;
 }
 .details > :first-child {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 .md ol,
 .md ul {
@@ -273,7 +275,7 @@
   height: 100vh;
   border-radius: var(--base-border-radius);
   display: flex;
-
+  flex-basis: 25%;
   flex-direction: column;
 }
 .tools > :first-child {
@@ -283,7 +285,7 @@
 @media screen and (min-width: 600px) {
   .options {
     width: auto;
-    justify-content: space-between;
+    justify-content: center;
   }
   .content {
     overflow: hidden;
@@ -306,7 +308,7 @@
 
     line-height: 1.7;
     background-color: var(--black);
-    margin: 16px 16px 0 16px;
+    margin-top: 16px;
   }
   .tools {
     position: sticky;
