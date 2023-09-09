@@ -3,9 +3,7 @@ import styles from "./planSectionDetail.module.css";
 import Text from "../../components/atoms/Text/Text";
 import { useNavigate, useParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
-import IconText from "../../components/molecules/IconText/IconText";
 import IconButton from "../../components/molecules/IconButton/IconButton";
-import usePromptDetail from "../../states/prompDetail";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
 import CompetitionsImage from "../../assets/Competition.svg";
@@ -19,11 +17,10 @@ import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
 import { useReportUrl } from "../../states/reportUrl";
 import { getById } from "../../services/userPrompts/getPrompts";
 import { useLogin } from "../../hooks/useLogin";
-
+import { addShare, addView } from "../../services/userPrompts/userPromts";
 const banners = {
   targetCustomer: TargetcustomerImage,
   mvp: MVPImage,
-  competitions: CompetitionsImage,
   marketingPlan: MarketingImage,
 };
 const PromptSectionDetail = () => {
@@ -38,21 +35,46 @@ const PromptSectionDetail = () => {
     targetCustomer: "",
     mvp: "",
     marketingPlan: "",
-    competitions: "",
   });
-  const { isLogged } = useLogin({});
 
   useEffect(() => {
-    getById(id, user)
+    (async () => {
+      try {
+        const prompt = await getById(id, user);
+        const newView = prompt.views ?? 0;
+        await addView({
+          reportId: id,
+          userId: user,
+          views: newView + 1,
+        });
+        setResponse({ ...prompt, views: newView + 1 });
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        setLoading(false);
+      }
+    })();
+    /*   getById(id, user)
       .then((prompt) => {
         if (!isLogged() && !prompt.isPublic) {
           return navigate(LANDING_PAGE);
         }
-
         setResponse(prompt);
+        addView({
+          reportId: id,
+          userId: user,
+          views: prompt?.views ? prompt.views + 1 : 1,
+        })
+          .then((_) => {
+            setResponse((prev) => ({
+              ...prev,
+              views: prompt?.views ? prompt.views + 1 : 1,
+            }));
+          })
+          .catch((err) => alert(err));
       })
       .catch((err) => alert(err.message))
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(false)); */
   }, []);
   const mainRef = useRef();
   const detailRef = useRef();
@@ -99,7 +121,10 @@ const PromptSectionDetail = () => {
           return `0`;
       }
   };
-
+  const handleAddShare = () => {
+    const newShare = response.shares ?? 0;
+    addShare({ reportId: id, userId: user, shares: newShare + 1 });
+  };
   const handleChangeSection = (section) => {
     setReportSection(section);
     setCurrentSection("detail");
@@ -107,7 +132,6 @@ const PromptSectionDetail = () => {
   };
   useEffect(() => {
     changeSection();
-    console.log(scrollPos);
   }, [scrollPos]);
 
   const tools = useMemo(() => {
@@ -123,6 +147,7 @@ const PromptSectionDetail = () => {
   }, [reportSection, response]);
 
   useEffect(() => {
+    console.log(response.details);
     if (response.details) {
       let loadedTitles = { ...titles };
       for (let section in loadedTitles) {
@@ -257,11 +282,11 @@ const PromptSectionDetail = () => {
                 </div>
                 <div className={styles.stat}>
                   <Text>Impressions</Text>
-                  <Text>10</Text>
+                  <Text>{response.views}</Text>
                 </div>
                 <div className={styles.stat}>
                   <Text>Shares</Text>
-                  <Text>5</Text>
+                  <Text>{response.shares ?? 0}</Text>
                 </div>
               </section>
               <section className={styles.shareLinks}>
@@ -277,6 +302,7 @@ const PromptSectionDetail = () => {
                     );
                     a.setAttribute("target", `_blank`);
                     a.click();
+                    handleAddShare();
                   }}
                 />
                 <IconButton
@@ -291,6 +317,7 @@ const PromptSectionDetail = () => {
                     );
                     a.setAttribute("target", `_blank`);
                     a.click();
+                    handleAddShare();
                   }}
                 />
                 <IconButton
@@ -300,6 +327,7 @@ const PromptSectionDetail = () => {
                   onClick={async () => {
                     await window.navigator.clipboard.writeText(url);
                     alert("copied!");
+                    handleAddShare();
                   }}
                 />
               </section>

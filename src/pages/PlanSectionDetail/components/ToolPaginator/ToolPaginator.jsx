@@ -45,6 +45,27 @@ import wordpressTutorialImg from "../../../../assets/Wordpress Tutorial.svg";
 import zapierLinkImg from "../../../../assets/Zapier Link.svg";
 import zoomLinkImg from "../../../../assets/Zoom Link.svg";
 import zoomTutorialImg from "../../../../assets/Zoom Tutorial.svg";
+import statistaLinkImg from "../../../../assets/Statista Link.svg";
+import statistaTutorialImg from "../../../../assets/Statista Tutorial.svg";
+import producthuntLinkImg from "../../../../assets/Product Hunt Link.svg";
+import producthuntTutorialImg from "../../../../assets/Product Hunt Tutorial.svg";
+import tlvdLinkImg from "../../../../assets/TLDV  Link.svg";
+import tldvTutorialImg from "../../../../assets/TLDV  Tutorial.svg";
+import startupschoolLinkImg from "../../../../assets/Startup School Link.svg";
+import startupschoolTutorialImg from "../../../../assets/Startup School Tutorial.svg";
+import indiehackersLinkImg from "../../../../assets/Indie Hackers Link.svg";
+import indiehackersTutorialImg from "../../../../assets/Indie Hackers Tutorial.svg";
+import huggingfaceLinkImg from "../../../../assets/HuggingFace Link.svg";
+import huggingfaceTutorialImg from "../../../../assets/HuggingFace Tutorial.svg";
+import optimizelyLinkImg from "../../../../assets/Optimizely Link.svg";
+import optimizelyTutorialImg from "../../../../assets/Optimizely Tutorial.svg";
+import excelLinkImg from "../../../../assets/Excel Link.svg";
+import excelTutorialImg from "../../../../assets/Excel Tutorial.svg";
+import junglescoutLinkImg from "../../../../assets/JungleScout Link.svg";
+import junglescoutTutorialImg from "../../../../assets/JungleScout Tutorial.svg";
+import amazonLinkImg from "../../../../assets/Amazon Link.svg";
+import amazonTutorialImg from "../../../../assets/Amazon Tutorial.svg";
+
 const imgLinks = {
   Alibaba: {
     link: alibabaTutorialImg,
@@ -145,6 +166,56 @@ const imgLinks = {
     link: zoomLinkImg,
     tutorial: zoomTutorialImg,
     cost: "Freemium",
+  },
+  Statista: {
+    link: statistaLinkImg,
+    tutorial: statistaTutorialImg,
+    cost: "Freemium",
+  },
+  ProductHunt: {
+    link: producthuntLinkImg,
+    tutorial: producthuntTutorialImg,
+    cost: "Free",
+  },
+  tldv: {
+    link: tlvdLinkImg,
+    tutorial: tldvTutorialImg,
+    cost: "Freemium",
+  },
+  Startupschool: {
+    link: startupschoolLinkImg,
+    tutorial: startupschoolTutorialImg,
+    cost: "Free",
+  },
+  Indiehackers: {
+    link: indiehackersLinkImg,
+    tutorial: indiehackersTutorialImg,
+    cost: "Free",
+  },
+  HuggingFace: {
+    link: huggingfaceLinkImg,
+    tutorial: huggingfaceTutorialImg,
+    cost: "Free",
+  },
+  Optimizely: {
+    link: optimizelyLinkImg,
+    tutorial: optimizelyTutorialImg,
+    cost: "Flexible",
+  },
+  Excel: {
+    link: excelLinkImg,
+    tutorial: excelTutorialImg,
+    cost: "Free",
+  },
+  "Jungle Scout": {
+    link: junglescoutLinkImg,
+    tutorial: junglescoutTutorialImg,
+    cost: "$29+",
+  },
+  Amazon: {
+    link: amazonLinkImg,
+    tutorial: amazonTutorialImg,
+    cost: "Free",
   },
 };
 const ToolPaginator = ({ prompts }) => {
