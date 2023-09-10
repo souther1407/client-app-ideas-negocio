@@ -1,16 +1,15 @@
 .yesNoQuestion {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
-  }
-  .yesNoQuestion > * {
-    margin-bottom: 20px;
-  }
-  
-  .yesNoQuestion > :last-child {
-    margin-bottom: 60px;
-  }
-  .field > :first-child {
-    font-size: var(--xlg);
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--linkedin-bluegray);
+}
+.yesNoQuestion > * {
+  margin-bottom: 20px;
+}
+
+.field > :first-child {
+  font-size: var(--xlg);
+}
