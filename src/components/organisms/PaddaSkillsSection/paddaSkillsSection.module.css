@@ -1,0 +1,62 @@
+.paddaSkillsSection {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: var(--linkedin-bluegray);
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--white-transparent);
+}
+
+.paddaSkillsSection main {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px;
+  padding: 16px;
+}
+.skill {
+  padding: 8px;
+  border: 1px solid var(--white-transparent);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.skill::before {
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    #c2c2c24f,
+    transparent 40%
+  );
+  border-radius: inherit;
+  content: "";
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.skill:hover::before {
+  opacity: 1;
+}
+.skill img {
+  width: 80px;
+  height: auto;
+}

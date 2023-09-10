@@ -1,8 +1,4 @@
 .mark {
   font-weight: bold;
-  color: #00fbf8;
-}
-
-.primary {
-  color: var(--white);
+  color: var(--orange);
 }

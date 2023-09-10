@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./startABusiness.module.css";
 import Text from "../../components/atoms/Text/Text";
 import LandingPageNav from "../../components/organisms/LandingPageNav/LandingPageNav";
-import Icon from "../../components/atoms/Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import {
   PLAN_DETAIL,
@@ -11,23 +10,14 @@ import {
 } from "../../utils/constants/routes";
 import useOptions from "../../states/useOptions";
 import usePromptDetail from "../../states/prompDetail";
-import NeedLoginOrPayWindow from "../../components/organisms/NeedLoginOrPayWindow/NeedLoginOrPayWindow";
 import { useLogin } from "../../hooks/useLogin";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import { useStorage } from "../../hooks/useStorage";
-import ShineGradientInput from "../../components/organisms/ShineGradientInput/ShineGradientInput";
-import elomMuskImg from "../../assets/elon_musk.png";
-import jeffBezosImg from "../../assets/jeff_bezos.png";
-import markZuckerbergImg from "../../assets/mark_zuckerberg.png";
-import samAltmanImg from "../../assets/sam_altman.png";
-import steveJobsImg from "../../assets/steve_jobs.webp";
-import warrenBuffetImg from "../../assets/warren_buffet.png";
-import Avatar from "../../components/atoms/Avatar/Avatar";
-import Button from "../../components/atoms/Button/Button";
 import { createDetail } from "../../services/createText/createText";
 import LoadingBooks from "../../components/molecules/LoadingBooks/LoadingBooks";
 import FormPlayground from "./components/FormPlayground/FormPlayground";
 import YesNoQuestion from "../../components/organisms/YesNoQuestion/YesNoQuestion";
+import PaddaSkillsSection from "../../components/organisms/PaddaSkillsSection/PaddaSkillsSection";
 import { wait } from "../../utils/time/wait";
 const TEACHERS = {
   elonMusk: "Elon Musk",
@@ -141,48 +131,19 @@ const StartABusiness = () => {
 
         <section className={styles.form}>
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
-            {/* <div className={styles.question}>
-              <Text type="subtitle" textAlign="center" bold>
-                Do you already have a business idea?
-              </Text>
-              <Button
-                type="bordered"
-                w
-                onClick={() => {
-                  setHasAnIdea(true);
-                  setField(2);
-                }}
-              >
-                <Text type="subtitle" bold>
-                  YES
-                </Text>
-              </Button>
-              <Button
-                type="bordered"
-                w
-                onClick={() => {
+            <div className={styles.yesNoQuestionContainer}>
+              <PaddaSkillsSection />
+
+              <YesNoQuestion
+                onNo={() => {
                   setHasAnIdea(false);
                   setField(2);
                 }}
-              >
-                <Text type="subtitle" bold>
-                  NO
-                </Text>
-              </Button>
-            </div> */}
-            <div className={styles.yesNoQuestionContainer}>
-              <div className={styles.yesNoQuestion}>
-                <YesNoQuestion
-                  onNo={() => {
-                    setHasAnIdea(false);
-                    setField(2);
-                  }}
-                  onYes={() => {
-                    setHasAnIdea(true);
-                    setField(2);
-                  }}
-                />
-              </div>
+                onYes={() => {
+                  setHasAnIdea(true);
+                  setField(2);
+                }}
+              />
             </div>
           </section>
           {(creating || loading) && (

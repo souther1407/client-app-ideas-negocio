@@ -25,7 +25,7 @@
 }
 .buttonsAndLinks {
   display: flex;
-  transform: translateX(-25%);
+  transform: translateX(-50%);
 }
 .links {
   margin-right: 16px;
