@@ -61,3 +61,6 @@
 .tag > :first-child {
   flex-shrink: 0;
 }
+.header {
+  width: 100%;
+}

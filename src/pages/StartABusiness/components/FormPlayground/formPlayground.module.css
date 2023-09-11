@@ -4,8 +4,6 @@
   background-color: var(--linkedin-bluegray);
   flex-direction: column;
   width: 100%;
-  margin: var(--base-margin);
-  margin-bottom: calc(var(--base-margin) * 2);
   padding: 16px;
 }
 .header,
@@ -17,7 +15,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--dark-gray);
 }
 
 .main {
@@ -27,8 +24,17 @@
 .textareaDescription {
   width: 100%;
 }
-.textareaDescription > :first-child {
+.textareaDescription > :last-child {
+  margin-top: 8px;
   height: 120px;
+}
+.countryInput {
+  display: flex;
+  margin-top: 16px;
+  flex-direction: column;
+}
+.countryInput > :first-child {
+  margin-bottom: 8px;
 }
 .descriptionInput {
   margin-right: 16px;
@@ -45,7 +51,7 @@
 }
 
 .slider {
-  padding: 4px 8px;
+  padding: 8px 16px;
   border: 1px solid var(--dark-gray);
   flex-basis: 40%;
   border-radius: 8px;
@@ -66,6 +72,10 @@
 }
 .tagsInput {
   width: 100%;
+  margin-top: 16px;
+}
+.tagsInput > :first-child {
+  margin-bottom: 8px;
 }
 .countryInput.movedLeft {
   display: flex;
@@ -78,6 +88,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  margin-top: 16px;
 }
 .drawer,
 .mobileSpace {

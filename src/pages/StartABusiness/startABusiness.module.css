@@ -16,12 +16,15 @@
 
 .form {
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
   width: 100%;
+  padding: 24px;
   z-index: 1;
 }
-
+.form > :first-child {
+  flex-shrink: 0;
+  margin-right: 24px;
+}
 .field {
   display: none;
   width: 100%;
@@ -66,12 +69,11 @@
 .yesNoQuestionContainer {
   width: 100%;
   display: flex;
-  padding: 24px;
 }
-.yesNoQuestionContainer > :last-child {
-  flex-grow: 1;
-  margin-left: 32px;
+.yesNoQuestionContainer > :first-child {
+  width: 100%;
 }
+
 .teachersField {
   position: relative;
   bottom: 40px;

@@ -130,10 +130,10 @@ const StartABusiness = () => {
         <LandingPageNav />
 
         <section className={styles.form}>
+          <PaddaSkillsSection />
+
           <section className={`${styles.field} ${field === 1 && styles.show}`}>
             <div className={styles.yesNoQuestionContainer}>
-              <PaddaSkillsSection />
-
               <YesNoQuestion
                 onNo={() => {
                   setHasAnIdea(false);
