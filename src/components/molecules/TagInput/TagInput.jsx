@@ -3,7 +3,7 @@ import Input from "../../atoms/Input/Input";
 import styles from "./tagInput.module.css";
 import Text from "../../atoms/Text/Text";
 import IconButton from "../../molecules/IconButton/IconButton";
-
+import Combobox from "../../molecules/Combobox/Combobox";
 const Tag = ({ id, input, onDelete }) => {
   return (
     <div className={styles.tag}>
@@ -57,23 +57,16 @@ const TagInput = ({
   return (
     <div className={styles.tagInputContainer}>
       <div className={styles.header}>
-        {alreadyIdea && (
-          <section className={styles.predefinedTags}>
-            {predefinedTags.map((pt) => (
-              <div
-                className={`${styles.predefinedTag} ${
-                  tags.includes(pt) && styles.included
-                }`}
-                onClick={() => onTogglePredefinedTag(pt)}
-              >
-                <Text bold color={!tags.includes(pt) ? "soft" : "inherit"}>
-                  {pt}
-                </Text>
-              </div>
-            ))}
-          </section>
-        )}
-        <div>{children}</div>
+        <Combobox
+          nofoundText={"not skill found"}
+          title={"Select..."}
+          data={predefinedTags}
+          id={"skill"}
+          h="44px"
+          onSelect={(id, skill) => {
+            if (skill) onTogglePredefinedTag(skill);
+          }}
+        />
       </div>
       <div className={styles.tagInput}>
         <section className={styles.tags}>

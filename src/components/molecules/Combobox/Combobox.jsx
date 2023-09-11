@@ -18,29 +18,6 @@ import {
   PopoverTrigger,
 } from "../../atoms/Popover/Popover";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
-
 function Combobox({
   id,
   data,
@@ -67,7 +44,7 @@ function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          style={{ fontSize: "1rem", height: h }}
+          style={{ fontSize: "1rem", height: h, width: w }}
           className={`w-[${w}] h-[${h}] justify-between  border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
         >
           {value
@@ -85,7 +62,9 @@ function Combobox({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] h-[300px] border-neutral-700 p-0 overflow-auto bg-transparent">
+      <PopoverContent
+        className={`w-[200px] h-[280px] border-neutral-700 p-0 overflow-auto bg-transparent`}
+      >
         <Command className="bg-neutral-950 text-white">
           <CommandInput
             placeholder={title}
