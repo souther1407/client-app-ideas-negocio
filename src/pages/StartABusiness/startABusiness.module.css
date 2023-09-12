@@ -166,6 +166,11 @@
   }
   .form {
     width: 100%;
+    flex-direction: column;
+  }
+  .form > :first-child {
+    margin: 0;
+    margin-bottom: 16px;
   }
   .teacher {
     width: 80px;

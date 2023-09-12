@@ -24,8 +24,10 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
     setInput((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleAddSkill = (id, tag) => {
-    setInput((prev) => ({ ...prev, [id]: [...prev.skills, tag] }));
+  const handleAddSkill = (id, tags) => {
+    const tagsConst = tags;
+    console.log(tagsConst);
+    if (tags) setInput((prev) => ({ ...prev, skills: tagsConst }));
   };
 
   const handleRemoveTag = (id, tag) => {
@@ -87,6 +89,7 @@ Challenges:
             title={"Select report"}
             data={["AI Automation Agency", "2 Influencers", "Bike Service"]}
             id={"report"}
+            h="48px"
             w="200px"
             onSelect={handleSelectTemplate}
           />
@@ -210,7 +213,7 @@ Challenges:
               data={countries}
               id={"location"}
               w="100%"
-              h="44px"
+              h="48px"
               onSelect={handleChange}
             />
           </div>

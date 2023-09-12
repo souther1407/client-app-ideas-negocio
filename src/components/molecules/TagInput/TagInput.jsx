@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Input from "../../atoms/Input/Input";
 import styles from "./tagInput.module.css";
 import Text from "../../atoms/Text/Text";
 import IconButton from "../../molecules/IconButton/IconButton";
-import Combobox from "../../molecules/Combobox/Combobox";
 const Tag = ({ id, input, onDelete }) => {
   return (
     <div className={styles.tag}>
@@ -29,7 +28,7 @@ const TagInput = ({
 }) => {
   const [tags, setTags] = useState([]);
   const [input, setInput] = useState("");
-
+  const [showSelectList, setShowSelectList] = useState(false);
   const addTag = (e) => {
     const { key } = e;
     if (key === "Enter") {
@@ -37,37 +36,32 @@ const TagInput = ({
       if (trimmedInput.length > 0 && !tags.includes(trimmedInput)) {
         setTags([...tags, trimmedInput]);
         setInput("");
-        onAddTag(id, trimmedInput);
       }
     }
   };
+  const filteredPredefinedTags = useMemo(() => {
+    return predefinedTags.filter((t) => !tags.includes(t));
+  }, [tags]);
   const deleteTag = (input) => {
-    onRemoveTag(id, input);
     setTags(tags.filter((t) => t !== input));
+  };
+
+  const clearTags = (input) => {
+    setTags([]);
+    setShowSelectList(false);
   };
   const onTogglePredefinedTag = (tagName) => {
     if (!tags.includes(tagName)) {
       setTags([...tags, tagName]);
-      onAddTag(id, tagName);
     } else {
       setTags([...tags.filter((t) => t !== tagName)]);
-      onRemoveTag(id, tagName);
     }
   };
+  useEffect(() => {
+    onAddTag(id, tags);
+  }, [tags]);
   return (
     <div className={styles.tagInputContainer}>
-      <div className={styles.header}>
-        <Combobox
-          nofoundText={"not skill found"}
-          title={"Select..."}
-          data={predefinedTags}
-          id={"skill"}
-          h="44px"
-          onSelect={(id, skill) => {
-            if (skill) onTogglePredefinedTag(skill);
-          }}
-        />
-      </div>
       <div className={styles.tagInput}>
         <section className={styles.tags}>
           {tags.map((t, index) => (
@@ -82,6 +76,23 @@ const TagInput = ({
           placeholder={placeholder}
           variant="borderNone"
         />
+        <div className={styles.selectBtns}>
+          <div style={{ visibility: tags.length ? "visible" : "hidden" }}>
+            <IconButton icon={"close"} size="16px" onClick={clearTags} />
+          </div>
+          <IconButton
+            icon={"upDownArrows"}
+            size="16px"
+            onClick={() => setShowSelectList((prev) => !prev)}
+          />
+        </div>
+        {showSelectList && (
+          <div className={styles.select}>
+            {filteredPredefinedTags.map((p) => (
+              <Text onClick={() => onTogglePredefinedTag(p)}>{p}</Text>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

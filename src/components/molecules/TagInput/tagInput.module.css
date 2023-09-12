@@ -6,12 +6,15 @@
   margin-bottom: 8px;
 }
 .tagInput {
-  height: 68px;
+  min-height: 44px;
   display: flex;
-  padding: 4px;
+
   border: 1px solid var(--dark-gray);
-  overflow: auto;
+  position: relative;
   border-radius: var(--base-border-radius);
+}
+.tagInput:hover {
+  background-color: rgba(210, 210, 210, 0.119);
 }
 .predefinedTags {
   display: flex;
@@ -61,6 +64,28 @@
 .tag > :first-child {
   flex-shrink: 0;
 }
-.header {
+
+.selectBtns {
+  position: absolute;
+  left: 92.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+}
+.selectBtns > :first-child {
+  margin-right: 4px;
+}
+.select {
+  position: absolute;
   width: 100%;
+  left: 0;
+  max-height: 120px;
+  background-color: var(--linkedin-bluegray);
+  top: 99%;
+  padding: 8px;
+  overflow: auto;
+  border: 1px solid var(--dark-gray);
+}
+.select > * {
+  cursor: pointer;
 }
