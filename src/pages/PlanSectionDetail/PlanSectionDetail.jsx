@@ -174,30 +174,45 @@ const PromptSectionDetail = () => {
             <section className={styles.navigationReport}>
               <Logo />
               <section className={`${styles.options} ${styles.topOptions}`}>
-                <Text
-                  color={reportSection !== "targetCustomer" ? "soft" : ""}
-                  onClick={() => handleChangeSection("targetCustomer")}
+                <div
+                  className={`${styles.hoverBg} ${
+                    reportSection === "targetCustomer" && styles.showBg
+                  }`}
                 >
-                  Customer
-                </Text>
-                {/* <Text
-                  color={reportSection !== "competitions" ? "soft" : ""}
-                  onClick={() => handleChangeSection("competitions")}
+                  <Text
+                    bold
+                    color={reportSection !== "targetCustomer" ? "soft" : ""}
+                    onClick={() => handleChangeSection("targetCustomer")}
+                  >
+                    Customer
+                  </Text>
+                </div>
+                <div
+                  className={`${styles.hoverBg} ${
+                    reportSection === "mvp" && styles.showBg
+                  }`}
                 >
-                  Competitions
-                </Text> */}
-                <Text
-                  color={reportSection !== "mvp" ? "soft" : ""}
-                  onClick={() => handleChangeSection("mvp")}
+                  <Text
+                    bold
+                    color={reportSection !== "mvp" ? "soft" : ""}
+                    onClick={() => handleChangeSection("mvp")}
+                  >
+                    Product
+                  </Text>
+                </div>
+                <div
+                  className={`${styles.hoverBg} ${
+                    reportSection === "marketingPlan" && styles.showBg
+                  }`}
                 >
-                  Product
-                </Text>
-                <Text
-                  color={reportSection !== "marketingPlan" ? "soft" : ""}
-                  onClick={() => handleChangeSection("marketingPlan")}
-                >
-                  Marketing
-                </Text>
+                  <Text
+                    bold
+                    color={reportSection !== "marketingPlan" ? "soft" : ""}
+                    onClick={() => handleChangeSection("marketingPlan")}
+                  >
+                    Marketing
+                  </Text>
+                </div>
               </section>
               <section className={styles.close}>
                 <IconButton
@@ -219,9 +234,18 @@ const PromptSectionDetail = () => {
                     detailRef.current.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <Text color={currentSection !== "detail" ? "soft" : ""}>
-                    {"Overview"}
-                  </Text>
+                  <div
+                    className={`${styles.hoverBg} ${
+                      currentSection === "detail" && styles.showBg
+                    }`}
+                  >
+                    <Text
+                      bold
+                      color={currentSection !== "detail" ? "soft" : ""}
+                    >
+                      {"Overview"}
+                    </Text>
+                  </div>
                 </div>
 
                 <div
@@ -231,9 +255,18 @@ const PromptSectionDetail = () => {
                     questionsRef.current.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <Text color={currentSection !== "questions" ? "soft" : ""}>
-                    Plan
-                  </Text>
+                  <div
+                    className={`${styles.hoverBg} ${
+                      currentSection === "questions" && styles.showBg
+                    }`}
+                  >
+                    <Text
+                      bold
+                      color={currentSection !== "questions" ? "soft" : ""}
+                    >
+                      Plan
+                    </Text>
+                  </div>
                 </div>
                 {reportSection === "mvp" && (
                   <div
@@ -245,9 +278,15 @@ const PromptSectionDetail = () => {
                       })
                     }
                   >
-                    <Text color={currentSection !== "ask" ? "soft" : ""}>
-                      Plan 2
-                    </Text>
+                    <div
+                      className={`${styles.hoverBg} ${
+                        currentSection === "ask" && styles.showBg
+                      }`}
+                    >
+                      <Text bold color={currentSection !== "ask" ? "soft" : ""}>
+                        Plan 2
+                      </Text>
+                    </div>
                   </div>
                 )}
               </section>

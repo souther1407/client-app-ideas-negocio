@@ -15,6 +15,7 @@
   padding: 8px;
   border-radius: 16px;
 }
+
 .btns > :first-child {
   margin-bottom: 8px;
 }
@@ -24,5 +25,5 @@
 }
 
 .paginatorBtns > * {
-  margin-right: 4px;
+  margin-right: 8px;
 }
