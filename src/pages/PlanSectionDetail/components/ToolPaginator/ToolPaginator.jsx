@@ -65,7 +65,7 @@ import junglescoutLinkImg from "../../../../assets/JungleScout Link.svg";
 import junglescoutTutorialImg from "../../../../assets/JungleScout Tutorial.svg";
 import amazonLinkImg from "../../../../assets/Amazon Link.svg";
 import amazonTutorialImg from "../../../../assets/Amazon Tutorial.svg";
-
+import { toolsIcons } from "../../../../utils/constants/toolsIcons";
 const imgLinks = {
   Alibaba: {
     link: alibabaTutorialImg,
@@ -225,6 +225,7 @@ const ToolPaginator = ({ prompts }) => {
       setCurrentPage(newPage);
     }
   };
+
   useEffect(() => {
     setCurrentPage(0);
   }, [prompts]);
@@ -232,14 +233,27 @@ const ToolPaginator = ({ prompts }) => {
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
         {prompts.map((e, index) => (
-          <Button
-            key={index}
-            type="bordered"
-            style={{ borderRadius: "0", height: "auto", width: "auto" }}
-            onClick={() => handleChangePage(index)}
-          >
-            <Text>{index + 1}</Text>
-          </Button>
+          <div className={styles.iconBtn}>
+            <Button
+              key={index}
+              style={{
+                borderRadius: "0",
+                height: "28px",
+                width: "28px",
+              }}
+              onClick={() => handleChangePage(index)}
+            >
+              <img
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  background: "var(--linkedin-bluegray)",
+                }}
+                src={toolsIcons[e?.toolName]}
+                alt="tool icon"
+              />
+            </Button>
+          </div>
         ))}
       </div>
       <>

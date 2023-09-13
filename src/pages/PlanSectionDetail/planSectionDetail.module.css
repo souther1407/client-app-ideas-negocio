@@ -70,6 +70,17 @@
   position: relative;
   bottom: 32px;
 }
+.hoverBg {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  padding: 4px 0;
+  border-radius: 8px;
+  background-color: transparent;
+}
+.hoverBg.showBg {
+  background-color: rgb(66, 65, 72);
+}
 .navigationReport {
   display: flex;
   width: 100%;
@@ -80,6 +91,7 @@
 .navigationReport.submenu {
   justify-content: center;
   border-top: 1px solid var(--white-transparent);
+  transform: translateX(2%);
 }
 .socialMedia {
   background-color: var(--linkedin-bluegray);
@@ -120,14 +132,15 @@
   overflow: hidden;
   justify-content: space-between;
 }
-.topOptions {
-  transform: translateX(-50%);
+.options.topOptions {
+  flex-grow: 1;
+  display: flex;
+  transform: translateX(-10%);
 }
 .options > * {
   transition: all 0.3s ease-in;
   flex-shrink: 0;
   cursor: pointer;
-  padding-right: 8px;
 }
 
 .main {
