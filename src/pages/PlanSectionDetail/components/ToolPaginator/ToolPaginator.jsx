@@ -3,7 +3,7 @@ import styles from "./toolPaginator.module.css";
 import Button from "../../../../components/atoms/Button/Button";
 import Link from "../../../../components/atoms/Link/Link";
 import ReactMarkdown from "react-markdown";
-import EffectButton from "../../../../components/atoms/EffectButton/EffectButton";
+import HoverEffect from "../../../../components/atoms/HoverEffect/HoverEffect";
 import Text from "../../../../components/atoms/Text/Text";
 import ImgLinkBtn from "../../../../components/molecules/ImgLinkBtn/ImgLinkBtn";
 import imgBanner from "../../../../assets/MPV_Banner.svg";
@@ -233,26 +233,21 @@ const ToolPaginator = ({ prompts }) => {
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
         {prompts.map((e, index) => (
-          <div className={styles.iconBtn}>
-            <Button
-              key={index}
-              style={{
-                borderRadius: "0",
-                height: "28px",
-                width: "28px",
-              }}
-              onClick={() => handleChangePage(index)}
-            >
+          <div
+            className={styles.iconBtn}
+            onClick={() => handleChangePage(index)}
+          >
+            <HoverEffect>
               <img
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: "20px",
+                  width: "20px",
                   background: "var(--linkedin-bluegray)",
                 }}
                 src={toolsIcons[e?.toolName]}
                 alt="tool icon"
               />
-            </Button>
+            </HoverEffect>
           </div>
         ))}
       </div>

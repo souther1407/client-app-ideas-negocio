@@ -128,6 +128,8 @@ input:-webkit-autofill {
   --light-green: #8da9b3;
   --orange: #fd4b5a;
   --linkedin-bluegray: #1e2226;
+  --gray-blue: rgb(66, 65, 72);
+  --gray-blue-light: rgb(79, 78, 85);
   --mobile-w: 840px;
   --base-margin: 24px;
   --md: 1rem;

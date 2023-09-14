@@ -79,7 +79,7 @@
   background-color: transparent;
 }
 .hoverBg.showBg {
-  background-color: rgb(66, 65, 72);
+  background-color: var(--gray-blue);
 }
 .navigationReport {
   display: flex;
@@ -288,7 +288,7 @@
   height: 100vh;
   border-radius: var(--base-border-radius);
   display: flex;
-  flex-basis: 25%;
+  flex-basis: 28%;
   flex-direction: column;
 }
 .tools > :first-child {
