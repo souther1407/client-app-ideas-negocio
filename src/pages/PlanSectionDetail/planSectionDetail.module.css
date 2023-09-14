@@ -142,6 +142,28 @@
   flex-shrink: 0;
   cursor: pointer;
 }
+.toolsList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.tool {
+  border-radius: 8px;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  gap: 8px;
+  margin-right: 8px;
+  display: flex;
+}
+.tool.showBg {
+  background-color: var(--gray-blue);
+}
+.toolIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
 
 .main {
   display: flex;

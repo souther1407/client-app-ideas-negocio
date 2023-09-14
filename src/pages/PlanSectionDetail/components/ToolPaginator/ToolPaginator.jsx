@@ -218,25 +218,21 @@ const imgLinks = {
     cost: "Free",
   },
 };
-const ToolPaginator = ({ prompts }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+const ToolPaginator = ({ prompts, currentTool = 0, onChangeTool }) => {
   const handleChangePage = (newPage) => {
     if (newPage >= 0 && newPage < prompts.length) {
-      setCurrentPage(newPage);
+      onChangeTool(newPage);
     }
   };
 
-  useEffect(() => {
-    setCurrentPage(0);
-  }, [prompts]);
+  /* useEffect(() => {
+    onChangeTool(currentTool);
+  }, [prompts]); */
   return (
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
         {prompts.map((e, index) => (
-          <div
-            className={styles.iconBtn}
-            onClick={() => handleChangePage(index)}
-          >
+          <div className={styles.iconBtn} onClick={() => onChangeTool(index)}>
             <HoverEffect>
               <img
                 style={{
@@ -254,28 +250,28 @@ const ToolPaginator = ({ prompts }) => {
       <>
         <div className={styles.title}>
           <Text type="subtitle" bold>
-            {prompts[currentPage]?.toolName}
+            {prompts[currentTool]?.toolName}
           </Text>
           <div className={styles.toolCost}>
-            <Text bold>{imgLinks[prompts[currentPage]?.toolName]?.cost}</Text>
+            <Text bold>{imgLinks[prompts[currentTool]?.toolName]?.cost}</Text>
           </div>
         </div>
         <ReactMarkdown className={styles.md}>
-          {prompts[currentPage]?.description}
+          {prompts[currentTool]?.description}
         </ReactMarkdown>
         <div className={styles.btns}>
           <ImgLinkBtn
             extern
-            src={imgLinks[prompts[currentPage]?.toolName]?.link ?? imgBanner}
-            to={prompts[currentPage]?.url}
+            src={imgLinks[prompts[currentTool]?.toolName]?.link ?? imgBanner}
+            to={prompts[currentTool]?.url}
             size={{ w: "100%", h: "120px" }}
           />
           <ImgLinkBtn
             extern
             src={
-              imgLinks[prompts[currentPage]?.toolName]?.tutorial ?? imgBanner
+              imgLinks[prompts[currentTool]?.toolName]?.tutorial ?? imgBanner
             }
-            to={prompts[currentPage]?.tutorial}
+            to={prompts[currentTool]?.tutorial}
             size={{ w: "100%", h: "120px" }}
           />
         </div>

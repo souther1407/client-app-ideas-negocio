@@ -32,10 +32,21 @@ const PromptSectionDetail = () => {
 
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
+  const [currentTool, setCurrentTool] = useState(0);
   const [titles, setTitles] = useState({
-    targetCustomer: "",
-    mvp: "",
-    marketingPlan: "",
+    targetCustomer: {
+      overview: "",
+      plan: "",
+    },
+    mvp: {
+      overview: "",
+      plan: "",
+      plan2: "",
+    },
+    marketingPlan: {
+      overview: "",
+      plan: "",
+    },
   });
 
   useEffect(() => {
@@ -148,21 +159,32 @@ const PromptSectionDetail = () => {
   }, [reportSection, response]);
 
   useEffect(() => {
-    console.log(response.details);
+    const getTitlesSection = (section) => {
+      const regex = /^#[a-zA-Z\s\{\}\(\):,.';-]*\n{1,2}/g;
+      const resultOverview = response?.details[section]?.overview.match(regex);
+      const resultPlan = response?.details[section]?.plan.match(regex);
+      return {
+        overview: resultOverview ? resultOverview[0] : "",
+        plan: resultPlan ? resultPlan[0] : "",
+      };
+    };
     if (response.details) {
       let loadedTitles = { ...titles };
       for (let section in loadedTitles) {
-        const regex = /^#[a-zA-Z\s:,.';]*\n\n/g;
-        const results = response?.details[section]?.overview.match(regex);
-        const title = results ? results[0] : "";
+        const titles = getTitlesSection(section);
+        console.log(response?.details[section].plan);
         response.details[section].overview = response?.details[
           section
-        ].overview.replace(title, "");
-        loadedTitles[section] = title;
+        ].overview.replace(titles.overview, "");
+        response.details[section].plan = response?.details[
+          section
+        ].plan.replace(titles.plan, "");
+        loadedTitles[section] = titles;
       }
       setTitles(loadedTitles);
     }
   }, [response]);
+  console.log(titles);
   return (
     <div className={styles.promptSectionDetail}>
       {!loading && (
@@ -399,7 +421,7 @@ const PromptSectionDetail = () => {
               <section className={styles.detail} ref={detailRef}>
                 <div className={styles.banner}>
                   <ReactMarkdown className={styles.md}>
-                    {titles[reportSection]}
+                    {titles[reportSection].overview}
                   </ReactMarkdown>
                   <img
                     src={banners[reportSection]}
@@ -412,10 +434,24 @@ const PromptSectionDetail = () => {
               </section>
 
               <section className={styles.questions} ref={questionsRef}>
+                <ReactMarkdown className={styles.md}>
+                  {titles[reportSection].plan}
+                </ReactMarkdown>
                 <div className={styles.toolsList}>
-                  {tools?.map((t) => (
+                  {tools?.map((t, index) => (
                     <HoverEffect>
-                      <div className={styles.tool}></div>
+                      <div
+                        className={`${styles.tool} ${
+                          currentTool === index && styles.showBg
+                        }`}
+                        onClick={() => setCurrentTool(index)}
+                      >
+                        <img
+                          className={styles.toolIcon}
+                          src={toolsIcons[t?.toolName] ?? ""}
+                        />
+                        <Text>{t.toolName}</Text>
+                      </div>
                     </HoverEffect>
                   ))}
                 </div>
@@ -432,7 +468,11 @@ const PromptSectionDetail = () => {
               )}
             </div>
             <aside className={styles.tools}>
-              <ToolPaginator prompts={tools} />
+              <ToolPaginator
+                prompts={tools}
+                currentTool={currentTool}
+                onChangeTool={(newTool) => setCurrentTool(newTool)}
+              />
             </aside>
           </main>
         </div>
