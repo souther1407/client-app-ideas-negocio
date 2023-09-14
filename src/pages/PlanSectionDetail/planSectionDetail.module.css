@@ -79,7 +79,7 @@
   background-color: transparent;
 }
 .hoverBg.showBg {
-  background-color: rgb(66, 65, 72);
+  background-color: var(--gray-blue);
 }
 .navigationReport {
   display: flex;
@@ -141,6 +141,28 @@
   transition: all 0.3s ease-in;
   flex-shrink: 0;
   cursor: pointer;
+}
+.toolsList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.tool {
+  border-radius: 8px;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  gap: 8px;
+  margin-right: 8px;
+  display: flex;
+}
+.tool.showBg {
+  background-color: var(--gray-blue);
+}
+.toolIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
 .main {
@@ -288,7 +310,7 @@
   height: 100vh;
   border-radius: var(--base-border-radius);
   display: flex;
-  flex-basis: 25%;
+  flex-basis: 28%;
   flex-direction: column;
 }
 .tools > :first-child {

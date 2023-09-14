@@ -11,19 +11,17 @@
   margin: 8px 0;
 }
 .toolCost {
-  background-color: var(--transparent-blue);
+  background-color: var(--gray-blue);
   padding: 8px;
   border-radius: 16px;
 }
 
-.btns > :first-child {
-  margin-bottom: 8px;
-}
-.paginatorBtns {
-  display: flex;
-  margin-bottom: 8px;
+.iconBtn img {
+  cursor: pointer;
 }
 
-.paginatorBtns > * {
-  margin-right: 8px;
+.paginatorBtns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }

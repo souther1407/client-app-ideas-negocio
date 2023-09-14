@@ -3,7 +3,7 @@ import styles from "./toolPaginator.module.css";
 import Button from "../../../../components/atoms/Button/Button";
 import Link from "../../../../components/atoms/Link/Link";
 import ReactMarkdown from "react-markdown";
-import EffectButton from "../../../../components/atoms/EffectButton/EffectButton";
+import HoverEffect from "../../../../components/atoms/HoverEffect/HoverEffect";
 import Text from "../../../../components/atoms/Text/Text";
 import ImgLinkBtn from "../../../../components/molecules/ImgLinkBtn/ImgLinkBtn";
 import imgBanner from "../../../../assets/MPV_Banner.svg";
@@ -218,69 +218,60 @@ const imgLinks = {
     cost: "Free",
   },
 };
-const ToolPaginator = ({ prompts }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+const ToolPaginator = ({ prompts, currentTool = 0, onChangeTool }) => {
   const handleChangePage = (newPage) => {
     if (newPage >= 0 && newPage < prompts.length) {
-      setCurrentPage(newPage);
+      onChangeTool(newPage);
     }
   };
 
-  useEffect(() => {
-    setCurrentPage(0);
-  }, [prompts]);
+  /* useEffect(() => {
+    onChangeTool(currentTool);
+  }, [prompts]); */
   return (
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
         {prompts.map((e, index) => (
-          <div className={styles.iconBtn}>
-            <Button
-              key={index}
-              style={{
-                borderRadius: "0",
-                height: "28px",
-                width: "28px",
-              }}
-              onClick={() => handleChangePage(index)}
-            >
+          <div className={styles.iconBtn} onClick={() => onChangeTool(index)}>
+            <HoverEffect>
               <img
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: "20px",
+                  width: "20px",
                   background: "var(--linkedin-bluegray)",
                 }}
                 src={toolsIcons[e?.toolName]}
                 alt="tool icon"
               />
-            </Button>
+            </HoverEffect>
           </div>
         ))}
       </div>
       <>
         <div className={styles.title}>
           <Text type="subtitle" bold>
-            {prompts[currentPage]?.toolName}
+            {prompts[currentTool]?.toolName}
           </Text>
           <div className={styles.toolCost}>
-            <Text bold>{imgLinks[prompts[currentPage]?.toolName]?.cost}</Text>
+            <Text bold>{imgLinks[prompts[currentTool]?.toolName]?.cost}</Text>
           </div>
         </div>
         <ReactMarkdown className={styles.md}>
-          {prompts[currentPage]?.description}
+          {prompts[currentTool]?.description}
         </ReactMarkdown>
         <div className={styles.btns}>
           <ImgLinkBtn
             extern
-            src={imgLinks[prompts[currentPage]?.toolName]?.link ?? imgBanner}
-            to={prompts[currentPage]?.url}
+            src={imgLinks[prompts[currentTool]?.toolName]?.link ?? imgBanner}
+            to={prompts[currentTool]?.url}
             size={{ w: "100%", h: "120px" }}
           />
           <ImgLinkBtn
             extern
             src={
-              imgLinks[prompts[currentPage]?.toolName]?.tutorial ?? imgBanner
+              imgLinks[prompts[currentTool]?.toolName]?.tutorial ?? imgBanner
             }
-            to={prompts[currentPage]?.tutorial}
+            to={prompts[currentTool]?.tutorial}
             size={{ w: "100%", h: "120px" }}
           />
         </div>

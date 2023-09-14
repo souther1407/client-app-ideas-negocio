@@ -6,7 +6,6 @@ import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
-import CompetitionsImage from "../../assets/Competition.svg";
 import MarketingImage from "../../assets/Marketing.svg";
 import TargetcustomerImage from "../../assets/Target Customer.svg";
 import RobotImg from "../../assets/robot.svg";
@@ -16,8 +15,10 @@ import ReactMarkdown from "react-markdown";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
 import { useReportUrl } from "../../states/reportUrl";
 import { getById } from "../../services/userPrompts/getPrompts";
-import { useLogin } from "../../hooks/useLogin";
+
 import { addShare, addView } from "../../services/userPrompts/userPromts";
+import HoverEffect from "../../components/atoms/HoverEffect/HoverEffect";
+import { toolsIcons } from "../../utils/constants/toolsIcons";
 const banners = {
   targetCustomer: TargetcustomerImage,
   mvp: MVPImage,
@@ -31,10 +32,21 @@ const PromptSectionDetail = () => {
 
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
+  const [currentTool, setCurrentTool] = useState(0);
   const [titles, setTitles] = useState({
-    targetCustomer: "",
-    mvp: "",
-    marketingPlan: "",
+    targetCustomer: {
+      overview: "",
+      plan: "",
+    },
+    mvp: {
+      overview: "",
+      plan: "",
+      plan2: "",
+    },
+    marketingPlan: {
+      overview: "",
+      plan: "",
+    },
   });
 
   useEffect(() => {
@@ -147,21 +159,32 @@ const PromptSectionDetail = () => {
   }, [reportSection, response]);
 
   useEffect(() => {
-    console.log(response.details);
+    const getTitlesSection = (section) => {
+      const regex = /^#[a-zA-Z\s\{\}\(\):,.';-]*\n{1,2}/g;
+      const resultOverview = response?.details[section]?.overview.match(regex);
+      const resultPlan = response?.details[section]?.plan.match(regex);
+      return {
+        overview: resultOverview ? resultOverview[0] : "",
+        plan: resultPlan ? resultPlan[0] : "",
+      };
+    };
     if (response.details) {
       let loadedTitles = { ...titles };
       for (let section in loadedTitles) {
-        const regex = /^#[a-zA-Z\s:,.';]*\n\n/g;
-        const results = response?.details[section]?.overview.match(regex);
-        const title = results ? results[0] : "";
+        const titles = getTitlesSection(section);
+        console.log(response?.details[section].plan);
         response.details[section].overview = response?.details[
           section
-        ].overview.replace(title, "");
-        loadedTitles[section] = title;
+        ].overview.replace(titles.overview, "");
+        response.details[section].plan = response?.details[
+          section
+        ].plan.replace(titles.plan, "");
+        loadedTitles[section] = titles;
       }
       setTitles(loadedTitles);
     }
   }, [response]);
+  console.log(titles);
   return (
     <div className={styles.promptSectionDetail}>
       {!loading && (
@@ -174,51 +197,59 @@ const PromptSectionDetail = () => {
             <section className={styles.navigationReport}>
               <Logo />
               <section className={`${styles.options} ${styles.topOptions}`}>
-                <div
-                  className={`${styles.hoverBg} ${
-                    reportSection === "targetCustomer" && styles.showBg
-                  }`}
-                >
-                  <Text
-                    bold
-                    color={reportSection !== "targetCustomer" ? "soft" : ""}
-                    onClick={() => handleChangeSection("targetCustomer")}
+                <HoverEffect>
+                  <div
+                    className={`${styles.hoverBg} ${
+                      reportSection === "targetCustomer" && styles.showBg
+                    }`}
                   >
-                    Customer
-                  </Text>
-                </div>
-                <div
-                  className={`${styles.hoverBg} ${
-                    reportSection === "mvp" && styles.showBg
-                  }`}
-                >
-                  <Text
-                    bold
-                    color={reportSection !== "mvp" ? "soft" : ""}
-                    onClick={() => handleChangeSection("mvp")}
+                    <Text
+                      bold
+                      color={reportSection !== "targetCustomer" ? "soft" : ""}
+                      onClick={() => handleChangeSection("targetCustomer")}
+                    >
+                      Customer
+                    </Text>
+                  </div>
+                </HoverEffect>
+                <HoverEffect>
+                  <div
+                    className={`${styles.hoverBg} ${
+                      reportSection === "mvp" && styles.showBg
+                    }`}
                   >
-                    Product
-                  </Text>
-                </div>
-                <div
-                  className={`${styles.hoverBg} ${
-                    reportSection === "marketingPlan" && styles.showBg
-                  }`}
-                >
-                  <Text
-                    bold
-                    color={reportSection !== "marketingPlan" ? "soft" : ""}
-                    onClick={() => handleChangeSection("marketingPlan")}
+                    <Text
+                      bold
+                      color={reportSection !== "mvp" ? "soft" : ""}
+                      onClick={() => handleChangeSection("mvp")}
+                    >
+                      Product
+                    </Text>
+                  </div>
+                </HoverEffect>
+                <HoverEffect>
+                  <div
+                    className={`${styles.hoverBg} ${
+                      reportSection === "marketingPlan" && styles.showBg
+                    }`}
                   >
-                    Marketing
-                  </Text>
-                </div>
+                    <Text
+                      bold
+                      color={reportSection !== "marketingPlan" ? "soft" : ""}
+                      onClick={() => handleChangeSection("marketingPlan")}
+                    >
+                      Marketing
+                    </Text>
+                  </div>
+                </HoverEffect>
               </section>
               <section className={styles.close}>
-                <IconButton
-                  icon={"close"}
-                  onClick={() => navigate(DASHBOARD_IDEAS)}
-                />
+                <HoverEffect>
+                  <IconButton
+                    icon={"close"}
+                    onClick={() => navigate(DASHBOARD_IDEAS)}
+                  />
+                </HoverEffect>
               </section>
             </section>
             <section className={`${styles.navigationReport} ${styles.submenu}`}>
@@ -234,18 +265,20 @@ const PromptSectionDetail = () => {
                     detailRef.current.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <div
-                    className={`${styles.hoverBg} ${
-                      currentSection === "detail" && styles.showBg
-                    }`}
-                  >
-                    <Text
-                      bold
-                      color={currentSection !== "detail" ? "soft" : ""}
+                  <HoverEffect>
+                    <div
+                      className={`${styles.hoverBg} ${
+                        currentSection === "detail" && styles.showBg
+                      }`}
                     >
-                      {"Overview"}
-                    </Text>
-                  </div>
+                      <Text
+                        bold
+                        color={currentSection !== "detail" ? "soft" : ""}
+                      >
+                        {"Overview"}
+                      </Text>
+                    </div>
+                  </HoverEffect>
                 </div>
 
                 <div
@@ -255,18 +288,20 @@ const PromptSectionDetail = () => {
                     questionsRef.current.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <div
-                    className={`${styles.hoverBg} ${
-                      currentSection === "questions" && styles.showBg
-                    }`}
-                  >
-                    <Text
-                      bold
-                      color={currentSection !== "questions" ? "soft" : ""}
+                  <HoverEffect>
+                    <div
+                      className={`${styles.hoverBg} ${
+                        currentSection === "questions" && styles.showBg
+                      }`}
                     >
-                      Plan
-                    </Text>
-                  </div>
+                      <Text
+                        bold
+                        color={currentSection !== "questions" ? "soft" : ""}
+                      >
+                        Plan
+                      </Text>
+                    </div>
+                  </HoverEffect>
                 </div>
                 {reportSection === "mvp" && (
                   <div
@@ -278,15 +313,20 @@ const PromptSectionDetail = () => {
                       })
                     }
                   >
-                    <div
-                      className={`${styles.hoverBg} ${
-                        currentSection === "ask" && styles.showBg
-                      }`}
-                    >
-                      <Text bold color={currentSection !== "ask" ? "soft" : ""}>
-                        Plan 2
-                      </Text>
-                    </div>
+                    <HoverEffect>
+                      <div
+                        className={`${styles.hoverBg} ${
+                          currentSection === "ask" && styles.showBg
+                        }`}
+                      >
+                        <Text
+                          bold
+                          color={currentSection !== "ask" ? "soft" : ""}
+                        >
+                          Plan 2
+                        </Text>
+                      </div>
+                    </HoverEffect>
                   </div>
                 )}
               </section>
@@ -329,53 +369,59 @@ const PromptSectionDetail = () => {
                 </div>
               </section>
               <section className={styles.shareLinks}>
-                <IconButton
-                  icon={"twitter"}
-                  color={"#BDBDBD"}
-                  size="24px"
-                  onClick={() => {
-                    const a = document.createElement("a");
-                    a.setAttribute(
-                      "href",
-                      `https://www.linkedin.com/shareArticle?url=${window.location.href}`
-                    );
-                    a.setAttribute("target", `_blank`);
-                    a.click();
-                    handleAddShare();
-                  }}
-                />
-                <IconButton
-                  icon={"linkedin"}
-                  color={"#BDBDBD"}
-                  size="24px"
-                  onClick={() => {
-                    const a = document.createElement("a");
-                    a.setAttribute(
-                      "href",
-                      `https://twitter.com/intent/tweet?url=${window.location.href}`
-                    );
-                    a.setAttribute("target", `_blank`);
-                    a.click();
-                    handleAddShare();
-                  }}
-                />
-                <IconButton
-                  icon={"clip"}
-                  color={"#BDBDBD"}
-                  size="24px"
-                  onClick={async () => {
-                    await window.navigator.clipboard.writeText(url);
-                    alert("copied!");
-                    handleAddShare();
-                  }}
-                />
+                <HoverEffect>
+                  <IconButton
+                    icon={"twitter"}
+                    color={"#BDBDBD"}
+                    size="24px"
+                    onClick={() => {
+                      const a = document.createElement("a");
+                      a.setAttribute(
+                        "href",
+                        `https://www.linkedin.com/shareArticle?url=${window.location.href}`
+                      );
+                      a.setAttribute("target", `_blank`);
+                      a.click();
+                      handleAddShare();
+                    }}
+                  />
+                </HoverEffect>
+                <HoverEffect>
+                  <IconButton
+                    icon={"linkedin"}
+                    color={"#BDBDBD"}
+                    size="24px"
+                    onClick={() => {
+                      const a = document.createElement("a");
+                      a.setAttribute(
+                        "href",
+                        `https://twitter.com/intent/tweet?url=${window.location.href}`
+                      );
+                      a.setAttribute("target", `_blank`);
+                      a.click();
+                      handleAddShare();
+                    }}
+                  />
+                </HoverEffect>
+                <HoverEffect>
+                  <IconButton
+                    icon={"clip"}
+                    color={"#BDBDBD"}
+                    size="24px"
+                    onClick={async () => {
+                      await window.navigator.clipboard.writeText(url);
+                      alert("copied!");
+                      handleAddShare();
+                    }}
+                  />
+                </HoverEffect>
               </section>
             </div>
             <div className={styles.details}>
               <section className={styles.detail} ref={detailRef}>
                 <div className={styles.banner}>
                   <ReactMarkdown className={styles.md}>
-                    {titles[reportSection]}
+                    {titles[reportSection].overview}
                   </ReactMarkdown>
                   <img
                     src={banners[reportSection]}
@@ -389,6 +435,27 @@ const PromptSectionDetail = () => {
 
               <section className={styles.questions} ref={questionsRef}>
                 <ReactMarkdown className={styles.md}>
+                  {titles[reportSection].plan}
+                </ReactMarkdown>
+                <div className={styles.toolsList}>
+                  {tools?.map((t, index) => (
+                    <HoverEffect>
+                      <div
+                        className={`${styles.tool} ${
+                          currentTool === index && styles.showBg
+                        }`}
+                        onClick={() => setCurrentTool(index)}
+                      >
+                        <img
+                          className={styles.toolIcon}
+                          src={toolsIcons[t?.toolName] ?? ""}
+                        />
+                        <Text>{t.toolName}</Text>
+                      </div>
+                    </HoverEffect>
+                  ))}
+                </div>
+                <ReactMarkdown className={styles.md}>
                   {response?.details[reportSection]?.plan}
                 </ReactMarkdown>
               </section>
@@ -401,7 +468,11 @@ const PromptSectionDetail = () => {
               )}
             </div>
             <aside className={styles.tools}>
-              <ToolPaginator prompts={tools} />
+              <ToolPaginator
+                prompts={tools}
+                currentTool={currentTool}
+                onChangeTool={(newTool) => setCurrentTool(newTool)}
+              />
             </aside>
           </main>
         </div>
