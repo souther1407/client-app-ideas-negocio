@@ -191,7 +191,8 @@ const PromptSectionDetail = () => {
         <div className={styles.content}>
           <nav
             className={`${styles.navigation} ${
-              scrollPos.scrolledDown && styles.scrolledDown
+              (scrollPos.scrolledDown || scrollPos.pos > 200) &&
+              styles.scrolledDown
             }`}
           >
             <section className={styles.navigationReport}>
