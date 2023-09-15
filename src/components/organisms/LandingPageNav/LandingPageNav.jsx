@@ -20,7 +20,8 @@ import MobileMenu from "./components/MobileMenu";
 import Logo from "../../atoms/Logo/Logo";
 import Icon from "../../atoms/Icon/Icon";
 import Sheet from "../../molecules/Sheer/Sheet";
-import IconButton from "../../molecules/IconButton/IconButton";
+import HoverEffect from "../../atoms/HoverEffect/HoverEffect";
+
 const LandingPageNav = () => {
   const { logout, isLogged } = useLogin({});
   const location = useLocation();
@@ -48,22 +49,40 @@ const LandingPageNav = () => {
       <section className={styles.buttonsAndLinks}>
         {isLogged() && (
           <section className={styles.links}>
-            <Link to={START_A_BUSINESS}>
-              <Text
-                size={"0.8rem"}
-                color={location.pathname !== START_A_BUSINESS && "soft"}
+            <HoverEffect>
+              <div
+                className={`${styles.link} ${
+                  location.pathname === START_A_BUSINESS && styles.showBg
+                }`}
               >
-                New Report
-              </Text>
-            </Link>
-            <Link to={DASHBOARD_IDEAS}>
-              <Text
-                size={"0.8rem"}
-                color={location.pathname !== DASHBOARD_IDEAS && "soft"}
+                <Link to={START_A_BUSINESS}>
+                  <Text
+                    size={"1rem"}
+                    color={location.pathname !== START_A_BUSINESS && "soft"}
+                    bold
+                  >
+                    New Report
+                  </Text>
+                </Link>
+              </div>
+            </HoverEffect>
+            <HoverEffect>
+              <div
+                className={`${styles.link} ${
+                  location.pathname === DASHBOARD_IDEAS && styles.showBg
+                }`}
               >
-                My Reports
-              </Text>
-            </Link>
+                <Link to={DASHBOARD_IDEAS}>
+                  <Text
+                    size={"1rem"}
+                    color={location.pathname !== DASHBOARD_IDEAS && "soft"}
+                    bold
+                  >
+                    My Reports
+                  </Text>
+                </Link>
+              </div>
+            </HoverEffect>
             {/* <Link to={DASHBOARD_FINDER}>
               <Text
                 size={"0.8rem"}

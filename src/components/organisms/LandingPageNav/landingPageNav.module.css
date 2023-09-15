@@ -28,7 +28,18 @@
   transform: translateX(-50%);
 }
 .links {
+  position: relative;
+  left: 16px;
+}
+.links > :first-child {
   margin-right: 16px;
+}
+.link {
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+.link.showBg {
+  background-color: var(--gray-blue);
 }
 .links,
 .buttons {
