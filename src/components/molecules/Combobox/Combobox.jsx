@@ -33,13 +33,13 @@ function Combobox({
     () => data.map((d) => ({ value: d, label: d })),
     []
   );
-
+  const contentRef = React.useRef();
   React.useEffect(() => {
     onSelect(id, value);
   }, [value]);
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className={`w-[${w}] h-[${h}]`}>
+      <PopoverTrigger ref={contentRef} asChild className={`w-[${w}] h-[${h}]`}>
         <Button
           variant="outline"
           role="combobox"
@@ -63,7 +63,7 @@ function Combobox({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        style={""}
+        style={{ width: `${contentRef.current.clientWidth}px` }}
         className={`w-[100%] h-[280px] p-0 overflow-auto `}
       >
         <Command
