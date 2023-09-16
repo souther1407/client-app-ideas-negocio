@@ -45,7 +45,9 @@ const LandingPageNav = () => {
         stateScroll.isScrolledUp && styles.show
       }`}
     >
-      <Logo />
+      <div className={styles.logo}>
+        <Logo />
+      </div>
       <section className={styles.buttonsAndLinks}>
         {isLogged() && (
           <section className={styles.links}>
@@ -95,11 +97,6 @@ const LandingPageNav = () => {
         )}
       </section>
       <div className={styles.menus}>
-        {!isLogged() && (
-          <section className={styles.mobileMenu}>
-            <MobileMenu />
-          </section>
-        )}
         {isLogged() && (
           <section className={styles.usermenu}>
             <Sheet
@@ -116,32 +113,6 @@ const LandingPageNav = () => {
                   >
                     <Text>Log out</Text>
                   </Button>
-                  <section className={styles.mobileLink}>
-                    <Link to={START_A_BUSINESS}>
-                      <Text
-                        size={"1rem"}
-                        color={location.pathname !== START_A_BUSINESS && "soft"}
-                      >
-                        New Report
-                      </Text>
-                    </Link>
-                    <Link to={DASHBOARD_IDEAS}>
-                      <Text
-                        size={"1rem"}
-                        color={location.pathname !== DASHBOARD_IDEAS && "soft"}
-                      >
-                        My Reports
-                      </Text>
-                    </Link>
-                    {/* <Link to={DASHBOARD_FINDER}>
-                      <Text
-                        size={"1rem"}
-                        color={location.pathname !== DASHBOARD_FINDER && "soft"}
-                      >
-                        Finder
-                      </Text>
-                    </Link> */}
-                  </section>
                 </div>
               )}
               renderFooter={() => {}}

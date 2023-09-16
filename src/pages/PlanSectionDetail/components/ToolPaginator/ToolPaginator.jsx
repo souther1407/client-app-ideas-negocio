@@ -225,24 +225,27 @@ const ToolPaginator = ({ prompts, currentTool = 0, onChangeTool }) => {
     }
   };
 
-  /* useEffect(() => {
-    onChangeTool(currentTool);
-  }, [prompts]); */
   return (
     <div className={styles.paginator}>
       <div className={styles.paginatorBtns}>
         {prompts.map((e, index) => (
           <div className={styles.iconBtn} onClick={() => onChangeTool(index)}>
             <HoverEffect>
-              <img
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  background: "var(--linkedin-bluegray)",
-                }}
-                src={toolsIcons[e?.toolName]}
-                alt="tool icon"
-              />
+              <div
+                className={`${styles.iconBg} ${
+                  currentTool === index && styles.selected
+                }`}
+              >
+                <img
+                  style={{
+                    height: "20px",
+                    width: "20px",
+                    background: "transparent",
+                  }}
+                  src={toolsIcons[e?.toolName]}
+                  alt="tool icon"
+                />
+              </div>
             </HoverEffect>
           </div>
         ))}

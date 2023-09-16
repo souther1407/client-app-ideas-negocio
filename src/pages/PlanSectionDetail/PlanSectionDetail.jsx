@@ -196,7 +196,10 @@ const PromptSectionDetail = () => {
             }`}
           >
             <section className={styles.navigationReport}>
-              <Logo />
+              <div className={styles.logo}>
+                <Logo />
+              </div>
+
               <section className={`${styles.options} ${styles.topOptions}`}>
                 <HoverEffect>
                   <div
@@ -257,10 +260,6 @@ const PromptSectionDetail = () => {
               <section className={styles.options}>
                 <div
                   className={styles.planSectionName}
-                  style={{
-                    transform: `translateX(${getTransitionValue()})`,
-                    flexShrink: "0",
-                  }}
                   ref={menuTitleRef}
                   onClick={() =>
                     detailRef.current.scrollIntoView({ behavior: "smooth" })
@@ -283,7 +282,6 @@ const PromptSectionDetail = () => {
                 </div>
 
                 <div
-                  style={{ transform: `translateX(${getTransitionValue()})` }}
                   ref={menuAskRef}
                   onClick={() =>
                     questionsRef.current.scrollIntoView({ behavior: "smooth" })
@@ -306,7 +304,6 @@ const PromptSectionDetail = () => {
                 </div>
                 {reportSection === "mvp" && (
                   <div
-                    style={{ transform: `translateX(${getTransitionValue()})` }}
                     ref={menuQuestionRef}
                     onClick={() =>
                       askQuestionsRef.current.scrollIntoView({
@@ -371,50 +368,57 @@ const PromptSectionDetail = () => {
               </section>
               <section className={styles.shareLinks}>
                 <HoverEffect>
-                  <IconButton
-                    icon={"twitter"}
-                    color={"#BDBDBD"}
-                    size="24px"
-                    onClick={() => {
-                      const a = document.createElement("a");
-                      a.setAttribute(
-                        "href",
-                        `https://www.linkedin.com/shareArticle?url=${window.location.href}`
-                      );
-                      a.setAttribute("target", `_blank`);
-                      a.click();
-                      handleAddShare();
-                    }}
-                  />
+                  <div className={styles.iconBg}>
+                    <IconButton
+                      icon={"twitter"}
+                      color={"#BDBDBD"}
+                      size="24px"
+                      onClick={() => {
+                        const a = document.createElement("a");
+                        a.setAttribute(
+                          "href",
+                          `https://www.linkedin.com/shareArticle?url=${window.location.href}`
+                        );
+                        a.setAttribute("target", `_blank`);
+                        a.click();
+                        handleAddShare();
+                      }}
+                    />
+                  </div>
                 </HoverEffect>
                 <HoverEffect>
-                  <IconButton
-                    icon={"linkedin"}
-                    color={"#BDBDBD"}
-                    size="24px"
-                    onClick={() => {
-                      const a = document.createElement("a");
-                      a.setAttribute(
-                        "href",
-                        `https://twitter.com/intent/tweet?url=${window.location.href}`
-                      );
-                      a.setAttribute("target", `_blank`);
-                      a.click();
-                      handleAddShare();
-                    }}
-                  />
+                  <div className={styles.iconBg}>
+                    <IconButton
+                      icon={"linkedin"}
+                      color={"#BDBDBD"}
+                      size="24px"
+                      onClick={() => {
+                        const a = document.createElement("a");
+                        a.setAttribute(
+                          "href",
+                          `https://twitter.com/intent/tweet?url=${window.location.href}`
+                        );
+                        a.setAttribute("target", `_blank`);
+                        a.click();
+                        handleAddShare();
+                      }}
+                    />
+                  </div>
                 </HoverEffect>
+
                 <HoverEffect>
-                  <IconButton
-                    icon={"clip"}
-                    color={"#BDBDBD"}
-                    size="24px"
-                    onClick={async () => {
-                      await window.navigator.clipboard.writeText(url);
-                      alert("copied!");
-                      handleAddShare();
-                    }}
-                  />
+                  <div className={styles.iconBg}>
+                    <IconButton
+                      icon={"clip"}
+                      color={"#BDBDBD"}
+                      size="24px"
+                      onClick={async () => {
+                        await window.navigator.clipboard.writeText(url);
+                        alert("copied!");
+                        handleAddShare();
+                      }}
+                    />
+                  </div>
                 </HoverEffect>
               </section>
             </div>

@@ -20,8 +20,20 @@
   cursor: pointer;
 }
 
+.iconBg {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.iconBg.selected {
+  background-color: var(--gray-blue);
+}
+
 .paginatorBtns {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 16px;
+}
+.paginatorBtns > :first-child {
   margin-bottom: 16px;
 }
