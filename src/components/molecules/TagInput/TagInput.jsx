@@ -69,7 +69,6 @@ const TagInput = ({ placeholder, onAddTag, predefinedTags = [], id }) => {
           fontSize={"1rem"}
           placeholder={placeholder}
           onFocus={() => setShowSelectList(true)}
-          onBlur={() => setShowSelectList(false)}
           variant="borderNone"
         />
         <div className={styles.selectBtns}>
