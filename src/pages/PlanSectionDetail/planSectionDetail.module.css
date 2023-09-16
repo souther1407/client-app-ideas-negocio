@@ -386,6 +386,12 @@
   .logo {
     display: none;
   }
+  .tools {
+    display: flex;
+    position: relative;
+    overflow-y: visible;
+    width: 100%;
+  }
   .navigationReport.submenu {
     transform: translateX(0);
     justify-content: flex-start;
