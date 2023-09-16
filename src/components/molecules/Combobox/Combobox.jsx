@@ -63,7 +63,7 @@ function Combobox({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        style={{ width: `${contentRef.current.clientWidth}px` }}
+        style={{ width: `${contentRef.current?.clientWidth}px` }}
         className={`w-[100%] h-[280px] p-0 overflow-auto `}
       >
         <Command

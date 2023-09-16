@@ -5,6 +5,7 @@ import Avatar from "../../../components/atoms/Avatar/Avatar";
 import Text from "../../../components/atoms/Text/Text";
 import skillImg from "../../../assets/imgCosts.svg";
 import Mark from "../../../components/atoms/Mark/Mark";
+
 const PaddaSkillsSection = () => {
   const handleShineEffect = (e) => {
     const target = e.currentTarget;
@@ -23,29 +24,20 @@ const PaddaSkillsSection = () => {
           Padda
         </Text>
         <Text>
-          Hello Human! I will generate a <Mark>tool-based </Mark>plan for you.
+          Padda is a business-trained AI, whose mission is to<br></br> find the{" "}
+          <Mark>optimal tools</Mark> to execute any business idea.
         </Text>
       </header>
       <main>
-        <Text bold>Padda skills</Text>
-        <section className={styles.skills}>
-          <div className={styles.skill} onMouseMove={handleShineEffect}>
-            <img src={skillImg} alt="skills" className={styles.imgSkill} />
-            <Text>Psychology</Text>
-          </div>
-          <div className={styles.skill} onMouseMove={handleShineEffect}>
-            <img src={skillImg} alt="skills" className={styles.imgSkill} />
-            <Text>Psychology</Text>
-          </div>
-          <div className={styles.skill} onMouseMove={handleShineEffect}>
-            <img src={skillImg} alt="skills" className={styles.imgSkill} />
-            <Text>Design</Text>
-          </div>
-          <div className={styles.skill} onMouseMove={handleShineEffect}>
-            <img src={skillImg} alt="skills" className={styles.imgSkill} />
-            <Text>Social Media</Text>
-          </div>
-        </section>
+        <Text bold>How to use Padda:</Text>
+        <Text>1. Select your business settings</Text>
+        <Text>
+          2. Let Padda cook for <Mark>≈10 minutes</Mark>. Do not close<br></br>{" "}
+          your tab 2.
+        </Text>
+        <Text>
+          3. Enjoy an <Mark>actionable</Mark> business plan.
+        </Text>
       </main>
     </div>
   );
