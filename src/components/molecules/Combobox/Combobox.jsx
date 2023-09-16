@@ -63,9 +63,16 @@ function Combobox({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className={`w-[200px] h-[280px] border-neutral-700 p-0 overflow-auto bg-transparent`}
+        style={""}
+        className={`w-[100%] h-[280px] p-0 overflow-auto `}
       >
-        <Command className="bg-neutral-950 text-white">
+        <Command
+          style={{
+            background: "var(--linkedin-bluegray)",
+            border: "1px solid var(--dark-green)",
+          }}
+          className=" text-white"
+        >
           <CommandInput
             placeholder={title}
             style={{ fontSize: "1rem" }}

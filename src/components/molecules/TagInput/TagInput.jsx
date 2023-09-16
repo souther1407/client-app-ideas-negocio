@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Input from "../../atoms/Input/Input";
 import styles from "./tagInput.module.css";
 import Text from "../../atoms/Text/Text";
@@ -17,18 +17,11 @@ const Tag = ({ id, input, onDelete }) => {
   );
 };
 
-const TagInput = ({
-  placeholder,
-  onAddTag,
-  predefinedTags = [],
-  id,
-  onRemoveTag,
-  alreadyIdea,
-  children,
-}) => {
+const TagInput = ({ placeholder, onAddTag, predefinedTags = [], id }) => {
   const [tags, setTags] = useState([]);
   const [input, setInput] = useState("");
   const [showSelectList, setShowSelectList] = useState(false);
+  const btnArrowsRef = useRef();
   const addTag = (e) => {
     const { key } = e;
     if (key === "Enter") {
@@ -51,6 +44,7 @@ const TagInput = ({
     setShowSelectList(false);
   };
   const onTogglePredefinedTag = (tagName) => {
+    setShowSelectList(false);
     if (!tags.includes(tagName)) {
       setTags([...tags, tagName]);
     } else {
@@ -74,6 +68,8 @@ const TagInput = ({
           value={input}
           fontSize={"1rem"}
           placeholder={placeholder}
+          onFocus={() => setShowSelectList(true)}
+          onBlur={() => setShowSelectList(false)}
           variant="borderNone"
         />
         <div className={styles.selectBtns}>
@@ -81,6 +77,7 @@ const TagInput = ({
             <IconButton icon={"close"} size="16px" onClick={clearTags} />
           </div>
           <IconButton
+            ref={btnArrowsRef}
             icon={"upDownArrows"}
             size="16px"
             onClick={() => setShowSelectList((prev) => !prev)}

@@ -114,8 +114,11 @@
 }
 
 @media screen and (max-width: 840px) {
-  .buttonsAndLinks {
+  .logo {
     display: none;
+  }
+  .buttonsAndLinks {
+    transform: translateX(0);
   }
   .mobileMenu {
     display: block;
