@@ -127,7 +127,7 @@ const imgLinks = {
     tutorial: notionTutorialImg,
     cost: "Freemium",
   },
-  SEMrush: {
+  Semrush: {
     link: semrushLinkImg,
     tutorial: semrushTutorialImg,
     cost: "Freemium",
