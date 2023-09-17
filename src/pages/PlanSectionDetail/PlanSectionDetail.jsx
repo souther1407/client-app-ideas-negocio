@@ -15,14 +15,26 @@ import ReactMarkdown from "react-markdown";
 import ToolPaginator from "./components/ToolPaginator/ToolPaginator";
 import { useReportUrl } from "../../states/reportUrl";
 import { getById } from "../../services/userPrompts/getPrompts";
-
 import { addShare, addView } from "../../services/userPrompts/userPromts";
 import HoverEffect from "../../components/atoms/HoverEffect/HoverEffect";
 import { toolsIcons } from "../../utils/constants/toolsIcons";
+import createProductImg from "../../assets/crear seccion icono1.svg";
+import createMarketingPlanImg from "../../assets/crear seccion icono 2.svg";
+import { generateReportSection } from "../../services/userPrompts/generateReportSection";
 const banners = {
   targetCustomer: TargetcustomerImage,
   mvp: MVPImage,
   marketingPlan: MarketingImage,
+};
+const createSectionBtnData = {
+  mvp: {
+    title: "Generate Product Strategy",
+    img: createProductImg,
+  },
+  marketingPlan: {
+    title: "Generate Marketing Plan",
+    img: createMarketingPlanImg,
+  },
 };
 const PromptSectionDetail = () => {
   const { id, user } = useParams();
@@ -123,16 +135,6 @@ const PromptSectionDetail = () => {
   const menuQuestionRef = useRef();
   const menuAskRef = useRef();
 
-  const getTransitionValue = () => {
-    if (window.innerWidth <= 600)
-      switch (currentSection) {
-        case "questions":
-          return `-${menuTitleRef.current.offsetWidth}px`;
-
-        default:
-          return `0`;
-      }
-  };
   const handleAddShare = () => {
     const newShare = response.shares ?? 0;
     addShare({ reportId: id, userId: user, shares: newShare + 1 });
@@ -147,8 +149,7 @@ const PromptSectionDetail = () => {
   }, [scrollPos]);
 
   const tools = useMemo(() => {
-    if (response.details) {
-      console.log(response.details);
+    if (response.details && response.details[reportSection]) {
       const toolsList = response.details[reportSection]?.toolsList
         .trim()
         .split("\n\n");
@@ -161,8 +162,8 @@ const PromptSectionDetail = () => {
   useEffect(() => {
     const getTitlesSection = (section) => {
       const regex = /^#[a-zA-Z\s\{\}\(\):,.';-]*\n{1,2}/g;
-      const resultOverview = response?.details[section]?.overview.match(regex);
-      const resultPlan = response?.details[section]?.plan.match(regex);
+      const resultOverview = response?.details[section]?.overview?.match(regex);
+      const resultPlan = response?.details[section]?.plan?.match(regex);
       return {
         overview: resultOverview ? resultOverview[0] : "",
         plan: resultPlan ? resultPlan[0] : "",
@@ -171,20 +172,38 @@ const PromptSectionDetail = () => {
     if (response.details) {
       let loadedTitles = { ...titles };
       for (let section in loadedTitles) {
+        if (!response.details[section]) continue;
         const titles = getTitlesSection(section);
-        console.log(response?.details[section].plan);
         response.details[section].overview = response?.details[
           section
-        ].overview.replace(titles.overview, "");
+        ]?.overview?.replace(titles.overview, "");
         response.details[section].plan = response?.details[
           section
-        ].plan.replace(titles.plan, "");
+        ]?.plan?.replace(titles.plan, "");
         loadedTitles[section] = titles;
       }
       setTitles(loadedTitles);
     }
   }, [response]);
-  console.log(titles);
+
+  const handleGenerateReportSection = async () => {
+    try {
+      setLoading(true);
+      const updateResponse = await generateReportSection({
+        reportId: id,
+        userId: user,
+        sectionName: reportSection,
+        description: response.details.description,
+        title: response.details.title,
+        input: response.input,
+      });
+      setResponse(updateResponse);
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className={styles.promptSectionDetail}>
       {!loading && (
@@ -331,158 +350,180 @@ const PromptSectionDetail = () => {
             </section>
           </nav>
 
-          <main
-            className={styles.main}
-            ref={mainRef}
-            id="main"
-            onScroll={(e) => {
-              const newPos = e.currentTarget.scrollTop;
-              setScrollPos((prev) => ({
-                scrolledDown: prev.pos < newPos,
-                scrolledUp: prev.pos >= newPos,
-                pos: newPos,
-              }));
-            }}
-          >
-            <div className={styles.socialMedia}>
-              <section className={styles.banner}>
-                <Avatar size={"80px"} src={RobotImg} alt="robot-padda" />
-                <Text type="subtitle" bold>
-                  Padda
-                </Text>
-                <Text>IA Marketing Expert</Text>
-              </section>
-              <section className={styles.stats}>
-                <div className={styles.stat}>
-                  <Text>Words</Text>
-                  <Text>≈1000</Text>
-                </div>
-                <div className={styles.stat}>
-                  <Text>Impressions</Text>
-                  <Text>{response.views}</Text>
-                </div>
-                <div className={styles.stat}>
-                  <Text>Shares</Text>
-                  <Text>{response.shares ?? 0}</Text>
-                </div>
-              </section>
-              <section className={styles.shareLinks}>
-                <HoverEffect>
-                  <div className={styles.iconBg}>
-                    <IconButton
-                      icon={"twitter"}
-                      color={"#BDBDBD"}
-                      size="24px"
-                      onClick={() => {
-                        const a = document.createElement("a");
-                        a.setAttribute(
-                          "href",
-                          `https://www.linkedin.com/shareArticle?url=${window.location.href}`
-                        );
-                        a.setAttribute("target", `_blank`);
-                        a.click();
-                        handleAddShare();
-                      }}
-                    />
+          {response.details[reportSection] ? (
+            <main
+              className={styles.main}
+              ref={mainRef}
+              id="main"
+              onScroll={(e) => {
+                const newPos = e.currentTarget.scrollTop;
+                setScrollPos((prev) => ({
+                  scrolledDown: prev.pos < newPos,
+                  scrolledUp: prev.pos >= newPos,
+                  pos: newPos,
+                }));
+              }}
+            >
+              <div className={styles.socialMedia}>
+                <section className={styles.banner}>
+                  <Avatar size={"80px"} src={RobotImg} alt="robot-padda" />
+                  <Text type="subtitle" bold>
+                    Padda
+                  </Text>
+                  <Text>IA Marketing Expert</Text>
+                </section>
+                <section className={styles.stats}>
+                  <div className={styles.stat}>
+                    <Text>Words</Text>
+                    <Text>≈1000</Text>
                   </div>
-                </HoverEffect>
-                <HoverEffect>
-                  <div className={styles.iconBg}>
-                    <IconButton
-                      icon={"linkedin"}
-                      color={"#BDBDBD"}
-                      size="24px"
-                      onClick={() => {
-                        const a = document.createElement("a");
-                        a.setAttribute(
-                          "href",
-                          `https://twitter.com/intent/tweet?url=${window.location.href}`
-                        );
-                        a.setAttribute("target", `_blank`);
-                        a.click();
-                        handleAddShare();
-                      }}
-                    />
+                  <div className={styles.stat}>
+                    <Text>Impressions</Text>
+                    <Text>{response.views}</Text>
                   </div>
-                </HoverEffect>
+                  <div className={styles.stat}>
+                    <Text>Shares</Text>
+                    <Text>{response.shares ?? 0}</Text>
+                  </div>
+                </section>
+                <section className={styles.shareLinks}>
+                  <HoverEffect>
+                    <div className={styles.iconBg}>
+                      <IconButton
+                        icon={"twitter"}
+                        color={"#BDBDBD"}
+                        size="24px"
+                        onClick={() => {
+                          const a = document.createElement("a");
+                          a.setAttribute(
+                            "href",
+                            `https://www.linkedin.com/shareArticle?url=${window.location.href}`
+                          );
+                          a.setAttribute("target", `_blank`);
+                          a.click();
+                          handleAddShare();
+                        }}
+                      />
+                    </div>
+                  </HoverEffect>
+                  <HoverEffect>
+                    <div className={styles.iconBg}>
+                      <IconButton
+                        icon={"linkedin"}
+                        color={"#BDBDBD"}
+                        size="24px"
+                        onClick={() => {
+                          const a = document.createElement("a");
+                          a.setAttribute(
+                            "href",
+                            `https://twitter.com/intent/tweet?url=${window.location.href}`
+                          );
+                          a.setAttribute("target", `_blank`);
+                          a.click();
+                          handleAddShare();
+                        }}
+                      />
+                    </div>
+                  </HoverEffect>
 
-                <HoverEffect>
-                  <div className={styles.iconBg}>
-                    <IconButton
-                      icon={"clip"}
-                      color={"#BDBDBD"}
-                      size="24px"
-                      onClick={async () => {
-                        await window.navigator.clipboard.writeText(url);
-                        alert("copied!");
-                        handleAddShare();
-                      }}
+                  <HoverEffect>
+                    <div className={styles.iconBg}>
+                      <IconButton
+                        icon={"clip"}
+                        color={"#BDBDBD"}
+                        size="24px"
+                        onClick={async () => {
+                          await window.navigator.clipboard.writeText(url);
+                          alert("copied!");
+                          handleAddShare();
+                        }}
+                      />
+                    </div>
+                  </HoverEffect>
+                </section>
+              </div>
+
+              <div className={styles.details}>
+                <section className={styles.detail} ref={detailRef}>
+                  <div className={styles.banner}>
+                    <ReactMarkdown className={styles.md}>
+                      {titles[reportSection].overview}
+                    </ReactMarkdown>
+                    <img
+                      src={banners[reportSection]}
+                      className={styles.bannerImg}
                     />
                   </div>
-                </HoverEffect>
-              </section>
-            </div>
-            <div className={styles.details}>
-              <section className={styles.detail} ref={detailRef}>
-                <div className={styles.banner}>
                   <ReactMarkdown className={styles.md}>
-                    {titles[reportSection].overview}
-                  </ReactMarkdown>
-                  <img
-                    src={banners[reportSection]}
-                    className={styles.bannerImg}
-                  />
-                </div>
-                <ReactMarkdown className={styles.md}>
-                  {response?.details[reportSection]?.overview}
-                </ReactMarkdown>
-              </section>
-
-              <section className={styles.questions} ref={questionsRef}>
-                <ReactMarkdown className={styles.md}>
-                  {titles[reportSection].plan}
-                </ReactMarkdown>
-                <div className={styles.toolsList}>
-                  {tools?.map((t, index) => (
-                    <HoverEffect>
-                      <div
-                        className={`${styles.tool} ${
-                          currentTool === index && styles.showBg
-                        }`}
-                        onClick={() => setCurrentTool(index)}
-                      >
-                        <img
-                          className={styles.toolIcon}
-                          src={toolsIcons[t?.toolName] ?? ""}
-                        />
-                        <Text>{t.toolName}</Text>
-                      </div>
-                    </HoverEffect>
-                  ))}
-                </div>
-                <ReactMarkdown className={styles.md}>
-                  {response?.details[reportSection]?.plan}
-                </ReactMarkdown>
-              </section>
-              {reportSection === "mvp" && (
-                <section className={styles.questions} ref={askQuestionsRef}>
-                  <ReactMarkdown className={styles.md}>
-                    {response?.details[reportSection]?.plan2}
+                    {response?.details[reportSection]?.overview}
                   </ReactMarkdown>
                 </section>
-              )}
-            </div>
-            <aside className={styles.tools}>
-              <ToolPaginator
-                prompts={tools}
-                currentTool={currentTool}
-                onChangeTool={(newTool) => setCurrentTool(newTool)}
-              />
-            </aside>
-          </main>
+
+                <section className={styles.questions} ref={questionsRef}>
+                  <ReactMarkdown className={styles.md}>
+                    {titles[reportSection].plan}
+                  </ReactMarkdown>
+                  <div className={styles.toolsList}>
+                    {tools?.map((t, index) => (
+                      <HoverEffect>
+                        <div
+                          className={`${styles.tool} ${
+                            currentTool === index && styles.showBg
+                          }`}
+                          onClick={() => setCurrentTool(index)}
+                        >
+                          <img
+                            className={styles.toolIcon}
+                            src={toolsIcons[t?.toolName] ?? ""}
+                          />
+                          <Text>{t.toolName}</Text>
+                        </div>
+                      </HoverEffect>
+                    ))}
+                  </div>
+                  <ReactMarkdown className={styles.md}>
+                    {response?.details[reportSection]?.plan}
+                  </ReactMarkdown>
+                </section>
+                {reportSection === "mvp" && (
+                  <section className={styles.questions} ref={askQuestionsRef}>
+                    <ReactMarkdown className={styles.md}>
+                      {response?.details[reportSection]?.plan2}
+                    </ReactMarkdown>
+                  </section>
+                )}
+              </div>
+              <aside className={styles.tools}>
+                <ToolPaginator
+                  prompts={tools}
+                  currentTool={currentTool}
+                  onChangeTool={(newTool) => setCurrentTool(newTool)}
+                />
+              </aside>
+            </main>
+          ) : (
+            <main className={styles.generateSectionContainer}>
+              <div
+                className={styles.createSectionBtn}
+                onClick={handleGenerateReportSection}
+              >
+                <Text bold type="subtitle">
+                  {createSectionBtnData[reportSection].title}
+                </Text>
+                <img
+                  className={styles.createSectionImg}
+                  src={createSectionBtnData[reportSection].img}
+                />
+              </div>
+            </main>
+          )}
         </div>
       )}
-
+      {loading && (
+        <div className={styles.loadingScreen}>
+          <Text>Please wait...</Text>
+        </div>
+      )}
       <GradientBg opacity={15} />
     </div>
   );

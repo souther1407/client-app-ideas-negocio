@@ -8,8 +8,15 @@
   --base-border-radius: 16px;
   position: relative;
 }
+
 .promptSectionDetail > * {
   font-family: "Inter", sans-serif;
+}
+.loadingScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .header {
   display: flex;
@@ -54,6 +61,32 @@
 }
 .empty {
   display: none;
+}
+.generateSectionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.createSectionBtn {
+  background-color: var(--linkedin-bluegray);
+  border-radius: 16px;
+  width: 400px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease-in;
+}
+.createSectionBtn:hover {
+  background-color: var(--linkedin-bluegray-light);
+}
+.createSectionImg {
+  width: 100%;
+  height: 40px;
+  object-fit: cover;
 }
 .navigation {
   display: flex;
@@ -375,8 +408,13 @@
 }
 
 @media screen and (max-width: 1130px) {
+  .main {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
   .tools {
-    display: none;
+    flex-basis: 50%;
+    margin-right: 20px;
   }
   .details {
     flex-grow: 1;
@@ -402,8 +440,11 @@
 
   .main {
     flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
   }
   .details {
+    flex-grow: 1;
     width: 100%;
   }
   .topOptions {

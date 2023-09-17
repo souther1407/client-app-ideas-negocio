@@ -43,7 +43,7 @@ export const toolsIcons = {
   MailerLite: mailerliteIcon,
   Midjourney: midjourneyIcon,
   Notion: notionIcon,
-  SEMrush: semrushIcon,
+  Semrush: semrushIcon,
   Shopify: shopifyIcon,
   Stripe: stripeIcon,
   SurveyMonkey: surveymonkeyIcon,
