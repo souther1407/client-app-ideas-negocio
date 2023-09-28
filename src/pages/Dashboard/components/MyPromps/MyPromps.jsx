@@ -24,17 +24,12 @@ const PlanRow = ({ plan }) => {
     <>
       <td>
         <Text onClick={goToPlanDetail}>
-          {formatStringToShort(details.description, 25)}
+          {formatStringToShort(details.description, 120)}
         </Text>
       </td>
-      <td>
-        <Text>{isPublic ? "public" : "private"}</Text>
-      </td>
+
       <td>
         <Text>{views}</Text>
-      </td>
-      <td>
-        <IconButton size="16px" icon={"trash"} onClick={handleDelete} />
       </td>
     </>
   );
@@ -99,9 +94,8 @@ const MyPromps = () => {
                 data={getFilteredPrompsList()}
                 columns={[
                   { name: "Title", ordering: true },
-                  { name: "Status", ordering: true },
+
                   { name: "Views", ordering: true },
-                  { name: "", ordering: false },
                 ]}
                 onOrderClick={(name, order) => {
                   setPromptsOrder({ name, order });

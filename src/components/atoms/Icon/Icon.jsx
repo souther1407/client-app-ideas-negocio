@@ -4,6 +4,7 @@ import {
   AiFillCreditCard,
   AiOutlineCheckCircle,
   AiOutlineSearch,
+  AiOutlineInfoCircle,
 } from "react-icons/ai";
 import {
   BsFillSunFill,
@@ -117,6 +118,7 @@ const Icon = ({ type, size, color = "inherit" }) => {
     youtube: <AiFillYoutube {...props} />,
     linkedin: <AiFillLinkedin {...props} />,
     clip: <AiOutlinePaperClip {...props} />,
+    info: <AiOutlineInfoCircle {...props} />,
   };
   return <i>{icons[type]}</i>;
 };
