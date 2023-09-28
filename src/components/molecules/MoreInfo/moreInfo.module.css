@@ -1,0 +1,17 @@
+.moreInfo {
+  position: relative;
+}
+
+.detailContainer {
+  display: none;
+  position: absolute;
+  background-color: var(--black);
+  border-radius: 16px;
+  z-index: 1000;
+  padding: 16px;
+  top: 100%;
+}
+
+.moreInfo:hover .detailContainer {
+  display: flex;
+}

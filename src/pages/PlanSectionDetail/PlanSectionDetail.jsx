@@ -21,6 +21,8 @@ import { toolsIcons } from "../../utils/constants/toolsIcons";
 import createProductImg from "../../assets/crear seccion icono1.svg";
 import createMarketingPlanImg from "../../assets/crear seccion icono 2.svg";
 import { generateReportSection } from "../../services/userPrompts/generateReportSection";
+import MoreInfo from "../../components/molecules/MoreInfo/MoreInfo";
+import Icon from "../../components/atoms/Icon/Icon";
 const banners = {
   targetCustomer: TargetcustomerImage,
   mvp: MVPImage,
@@ -366,17 +368,22 @@ const PromptSectionDetail = () => {
             >
               <div className={styles.socialMedia}>
                 <section className={styles.banner}>
-                  <Avatar size={"80px"} src={RobotImg} alt="robot-padda" />
+                  <Avatar
+                    size={{ w: "80px", h: "80px" }}
+                    src={RobotImg}
+                    alt="robot-padda"
+                  />
                   <Text type="subtitle" bold>
                     Padda
                   </Text>
-                  <Text>IA Marketing Expert</Text>
+                  <div className={styles.infoBtn}>
+                    <MoreInfo message={"IA Marketing Expert"}>
+                      <Icon size={"16px"} type={"info"} />
+                    </MoreInfo>
+                  </div>
+                  {/* <Text>IA Marketing Expert</Text> */}
                 </section>
                 <section className={styles.stats}>
-                  <div className={styles.stat}>
-                    <Text>Words</Text>
-                    <Text>≈1000</Text>
-                  </div>
                   <div className={styles.stat}>
                     <Text>Impressions</Text>
                     <Text>{response.views}</Text>
