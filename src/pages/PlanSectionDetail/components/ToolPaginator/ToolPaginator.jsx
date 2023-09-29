@@ -7,6 +7,7 @@ import HoverEffect from "../../../../components/atoms/HoverEffect/HoverEffect";
 import Text from "../../../../components/atoms/Text/Text";
 import ImgLinkBtn from "../../../../components/molecules/ImgLinkBtn/ImgLinkBtn";
 import imgBanner from "../../../../assets/MPV_Banner.svg";
+import IconButton from "../../../../components/molecules/IconButton/IconButton";
 // imgs links y tutoriales
 import alibabaTutorialImg from "../../../../assets/Alibaba Tutorial.svg";
 import canvaLinkImg from "../../../../assets/Canva Link.svg";
@@ -66,6 +67,7 @@ import junglescoutTutorialImg from "../../../../assets/JungleScout Tutorial.svg"
 import amazonLinkImg from "../../../../assets/Amazon Link.svg";
 import amazonTutorialImg from "../../../../assets/Amazon Tutorial.svg";
 import { toolsIcons } from "../../../../utils/constants/toolsIcons";
+
 const imgLinks = {
   Alibaba: {
     link: alibabaTutorialImg,
@@ -218,67 +220,70 @@ const imgLinks = {
     cost: "Free",
   },
 };
-const ToolPaginator = ({ prompts, currentTool = 0, onChangeTool }) => {
-  const handleChangePage = (newPage) => {
-    if (newPage >= 0 && newPage < prompts.length) {
-      onChangeTool(newPage);
-    }
-  };
 
+const ToolDropdown = ({ prompt }) => {
+  const [desplegado, setDesplegado] = useState(false);
+  const handleCloseMenu = (e) => {
+    setDesplegado(false);
+  };
+  return (
+    <div key={prompt.toolName} className={styles.tool}>
+      <HoverEffect>
+        <header
+          className={styles.header}
+          onClick={() => setDesplegado((prev) => !prev)}
+        >
+          <div className={styles.headerDetails}>
+            <img
+              className={styles.iconTool}
+              src={toolsIcons[prompt?.toolName]}
+            />
+            <div className={styles.title}>
+              <Text bold>{prompt?.toolName}</Text>
+              <Text size={"1rem"} color="soft">
+                {imgLinks[prompt.toolName]?.cost}
+              </Text>
+            </div>
+          </div>
+          <div className={styles.iconDropDown}>
+            {desplegado && (
+              <Link extern to={prompt.tutorial} target="_blank">
+                <IconButton size={"2rem"} icon={"youtube"} />
+              </Link>
+            )}
+            <IconButton icon={"upDownArrows"} />
+          </div>
+        </header>
+      </HoverEffect>
+      {desplegado && (
+        <section className={styles.menu}>
+          <Text color="soft">{prompt?.description}</Text>
+          <ImgLinkBtn
+            extern
+            src={imgLinks[prompt.toolName]?.link}
+            to={prompt.url}
+          />
+          <HoverEffect>
+            <IconButton icon={"arrowUp"} onClick={() => setDesplegado(false)} />
+          </HoverEffect>
+        </section>
+      )}
+    </div>
+  );
+};
+
+const ToolPaginator = ({ prompts, currentTool = 0, onChangeTool }) => {
+  console.log(prompts);
   return (
     <div className={styles.paginator}>
-      <div className={styles.paginatorBtns}>
-        {prompts.map((e, index) => (
-          <div className={styles.iconBtn} onClick={() => onChangeTool(index)}>
-            <HoverEffect>
-              <div
-                className={`${styles.iconBg} ${
-                  currentTool === index && styles.selected
-                }`}
-              >
-                <img
-                  style={{
-                    height: "20px",
-                    width: "20px",
-                    background: "transparent",
-                  }}
-                  src={toolsIcons[e?.toolName]}
-                  alt="tool icon"
-                />
-              </div>
-            </HoverEffect>
-          </div>
+      <Text bold type="subtitle">
+        Used tools in this plan
+      </Text>
+      <div className={styles.tools}>
+        {prompts.map((p) => (
+          <ToolDropdown prompt={p} />
         ))}
       </div>
-      <>
-        <div className={styles.title}>
-          <Text type="subtitle" bold>
-            {prompts[currentTool]?.toolName}
-          </Text>
-          <div className={styles.toolCost}>
-            <Text bold>{imgLinks[prompts[currentTool]?.toolName]?.cost}</Text>
-          </div>
-        </div>
-        <ReactMarkdown className={styles.md}>
-          {prompts[currentTool]?.description}
-        </ReactMarkdown>
-        <div className={styles.btns}>
-          <ImgLinkBtn
-            extern
-            src={imgLinks[prompts[currentTool]?.toolName]?.link ?? imgBanner}
-            to={prompts[currentTool]?.url}
-            size={{ w: "100%", h: "120px" }}
-          />
-          <ImgLinkBtn
-            extern
-            src={
-              imgLinks[prompts[currentTool]?.toolName]?.tutorial ?? imgBanner
-            }
-            to={prompts[currentTool]?.tutorial}
-            size={{ w: "100%", h: "120px" }}
-          />
-        </div>
-      </>
     </div>
   );
 };
