@@ -1,39 +1,38 @@
-.btns {
+.paginator {
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
-  margin-bottom: 40px;
-}
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 8px 0;
-}
-.toolCost {
-  background-color: var(--gray-blue);
-  padding: 8px;
-  border-radius: 16px;
 }
 
-.iconBtn img {
+.tool {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   cursor: pointer;
 }
 
-.iconBg {
-  padding: 8px;
-  border-radius: 8px;
-}
-
-.iconBg.selected {
-  background-color: var(--gray-blue);
-}
-
-.paginatorBtns {
+.header {
   display: flex;
+  padding: 4px;
   justify-content: space-between;
+  align-items: center;
+}
+.headerDetails {
+  display: flex;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu > *:not(:last-child) {
   margin-bottom: 16px;
 }
-.paginatorBtns > :first-child {
-  margin-bottom: 16px;
+.iconDropDown {
+  display: flex;
+}
+
+.iconTool {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
 }
