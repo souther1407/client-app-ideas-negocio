@@ -23,6 +23,7 @@ import createMarketingPlanImg from "../../assets/crear seccion icono 2.svg";
 import { generateReportSection } from "../../services/userPrompts/generateReportSection";
 import MoreInfo from "../../components/molecules/MoreInfo/MoreInfo";
 import Icon from "../../components/atoms/Icon/Icon";
+import { formatStringToShort } from "../../utils/format/formatStringToShort";
 const banners = {
   targetCustomer: TargetcustomerImage,
   mvp: MVPImage,
@@ -43,6 +44,22 @@ const PromptSectionDetail = () => {
   const navigate = useNavigate();
   const url = useReportUrl((state) => state.url);
   const [reportSection, setReportSection] = useState("targetCustomer");
+
+  const [reportSectionCollapsables, setReportSectionCollapsables] = useState({
+    targetCustomer: {
+      overview: false,
+      plan: false,
+    },
+    mvp: {
+      overview: false,
+      plan: false,
+      plan2: false,
+    },
+    marketingPlan: {
+      overview: false,
+      plan: false,
+    },
+  });
 
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
@@ -205,6 +222,12 @@ const PromptSectionDetail = () => {
     } finally {
       setLoading(false);
     }
+  };
+  const handleSeeMoreClick = (section) => {
+    setReportSectionCollapsables((prev) => ({
+      ...prev,
+      [reportSection]: { ...prev[reportSection], [section]: true },
+    }));
   };
   return (
     <div className={styles.promptSectionDetail}>
@@ -456,20 +479,53 @@ const PromptSectionDetail = () => {
                     <ReactMarkdown className={styles.md}>
                       {titles[reportSection].overview}
                     </ReactMarkdown>
-                    <img
-                      src={banners[reportSection]}
-                      className={styles.bannerImg}
-                    />
                   </div>
                   <ReactMarkdown className={styles.md}>
-                    {response?.details[reportSection]?.overview}
+                    {formatStringToShort(
+                      response?.details[reportSection]?.overview,
+                      !reportSectionCollapsables[reportSection].overview
+                        ? 120
+                        : -1
+                    )}
                   </ReactMarkdown>
+                  {!reportSectionCollapsables[reportSection].overview && (
+                    <HoverEffect>
+                      <span
+                        className={styles.seeMore}
+                        onClick={() => handleSeeMoreClick("overview")}
+                      >
+                        See more
+                      </span>
+                    </HoverEffect>
+                  )}
+                  <img
+                    src={banners[reportSection]}
+                    className={styles.bannerImg}
+                  />
                 </section>
 
                 <section className={styles.questions} ref={questionsRef}>
                   <ReactMarkdown className={styles.md}>
                     {titles[reportSection].plan}
                   </ReactMarkdown>
+
+                  <ReactMarkdown className={styles.md}>
+                    {formatStringToShort(
+                      response?.details[reportSection]?.plan,
+                      !reportSectionCollapsables[reportSection].plan ? 120 : -1
+                    )}
+                  </ReactMarkdown>
+                  {!reportSectionCollapsables[reportSection].plan && (
+                    <HoverEffect>
+                      <span
+                        className={styles.seeMore}
+                        onClick={() => handleSeeMoreClick("plan")}
+                      >
+                        See more
+                      </span>
+                    </HoverEffect>
+                  )}
+
                   <div className={styles.toolsList}>
                     {tools?.map((t, index) => (
                       <HoverEffect>
@@ -488,15 +544,27 @@ const PromptSectionDetail = () => {
                       </HoverEffect>
                     ))}
                   </div>
-                  <ReactMarkdown className={styles.md}>
-                    {response?.details[reportSection]?.plan}
-                  </ReactMarkdown>
                 </section>
                 {reportSection === "mvp" && (
                   <section className={styles.questions} ref={askQuestionsRef}>
                     <ReactMarkdown className={styles.md}>
-                      {response?.details[reportSection]?.plan2}
+                      {formatStringToShort(
+                        response?.details[reportSection]?.plan2,
+                        !reportSectionCollapsables[reportSection].plan2
+                          ? 120
+                          : -1
+                      )}
                     </ReactMarkdown>
+                    {!reportSectionCollapsables[reportSection].plan2 && (
+                      <HoverEffect>
+                        <span
+                          className={styles.seeMore}
+                          onClick={() => handleSeeMoreClick("plan2")}
+                        >
+                          See more
+                        </span>
+                      </HoverEffect>
+                    )}
                   </section>
                 )}
               </div>
