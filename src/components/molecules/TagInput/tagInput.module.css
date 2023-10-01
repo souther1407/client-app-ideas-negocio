@@ -8,7 +8,6 @@
 .tagInput {
   min-height: 44px;
   display: flex;
-
   border: 1px solid var(--dark-gray);
   position: relative;
   border-radius: var(--base-border-radius);
@@ -79,11 +78,12 @@
   position: absolute;
   width: 100%;
   left: 0;
-  max-height: 120px;
+  max-height: 160px;
   background-color: var(--linkedin-bluegray);
   top: 99%;
   padding: 8px;
   overflow: auto;
+  z-index: 100;
   border: 1px solid var(--dark-gray);
 }
 .select > * {

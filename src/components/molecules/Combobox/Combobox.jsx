@@ -44,8 +44,14 @@ function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          style={{ fontSize: "1rem", height: h, width: w }}
-          className={`w-[${w}] h-[${h}] justify-between  border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
+          style={{
+            fontSize: "1rem",
+            height: h,
+            width: w,
+            color: !value && "var(--light-green)",
+            fontWeight: !value && "400",
+          }}
+          className={`w-[${w}] h-[${h}] justify-between border-neutral-700 hover:bg-neutral-700/[.5] hover:text-white`}
         >
           {value
             ? formated.find(

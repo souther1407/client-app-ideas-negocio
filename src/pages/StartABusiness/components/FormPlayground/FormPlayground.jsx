@@ -11,7 +11,11 @@ import { countries } from "../../../../utils/constants/countries";
 import Combobox from "../../../../components/molecules/Combobox/Combobox";
 import Sheet from "../../../../components/molecules/Sheer/Sheet";
 import IconButton from "../../../../components/molecules/IconButton/IconButton";
-const FormPlayground = ({ onSubmit, alreadyIdea }) => {
+const FormPlayground = ({
+  onSubmit,
+  alreadyIdea,
+  onClickElement = () => {},
+}) => {
   const [input, setInput] = useState({
     budget: 0,
     freeTime: 1,
@@ -21,6 +25,7 @@ const FormPlayground = ({ onSubmit, alreadyIdea }) => {
   });
 
   const handleChange = (id, value) => {
+    onClickElement();
     setInput((prev) => ({ ...prev, [id]: value }));
   };
 
@@ -86,7 +91,7 @@ Challenges:
         {alreadyIdea && (
           <Combobox
             nofoundText={"not report found"}
-            title={"Select report"}
+            title={"Load an example..."}
             data={["AI Automation Agency", "2 Influencers", "Bike Service"]}
             id={"report"}
             h="48px"
@@ -157,7 +162,7 @@ Challenges:
           <div className={styles.textareaDescription}>
             <Text bold>Describe your bussines idea</Text>
             <Textarea
-              placeholder={"Bussines description"}
+              placeholder={"Example: Online Bookstore"}
               id="description"
               value={input.description}
               onChange={handleChange}
@@ -204,24 +209,10 @@ Challenges:
               </div>
             </div>
           )}
-
-          <div className={styles.countryInput}>
-            <Text bold>Choose business location</Text>
-            <Combobox
-              nofoundText={"not country found"}
-              title={"Select..."}
-              data={countries}
-              id={"location"}
-              w="100%"
-              h="48px"
-              onSelect={handleChange}
-            />
-          </div>
-
           <div className={styles.tagsInput}>
             <Text bold>Choose your skills</Text>
             <TagInput
-              placeholder={"Type more skills"}
+              placeholder={"Social Media Marketing"}
               onAddTag={handleAddSkill}
               onRemoveTag={handleRemoveTag}
               predefinedTags={[
@@ -234,6 +225,18 @@ Challenges:
               ]}
               alreadyIdea={true}
               id="skills"
+            />
+          </div>
+          <div className={styles.countryInput}>
+            <Text bold>Choose business location</Text>
+            <Combobox
+              nofoundText={"not country found"}
+              title={"United States"}
+              data={countries}
+              id={"location"}
+              w="100%"
+              h="48px"
+              onSelect={handleChange}
             />
           </div>
         </section>

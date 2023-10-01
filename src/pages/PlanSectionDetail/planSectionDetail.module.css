@@ -26,6 +26,12 @@
 .questions {
   margin-bottom: var(--base-margin);
 }
+.questions > :first-child,
+.askQuestions > :first-child,
+.detail > :first-child {
+  margin-bottom: 32px;
+}
+
 .questions,
 .detail,
 .askQuestions {
@@ -36,8 +42,14 @@
 .askQuestions {
   padding: 16px;
 }
-.detail > *:not(.banner) {
-  padding: 16px;
+.detail > :first-child {
+  padding-top: 16px;
+}
+.detail > *:not(img) {
+  padding: 0 16px 0 16px;
+}
+.detail > img {
+  margin-top: 10px;
 }
 
 .prevNextBtns {
@@ -274,6 +286,7 @@
 .md h3,
 .md h4 {
   font-weight: bold;
+  margin-top: 8px;
 }
 .md h1,
 .md h2,
@@ -295,7 +308,7 @@
 .md h3,
 .md h4 {
   font-size: 1rem;
-  margin-top: 40px;
+
   margin-bottom: 8px;
   font-weight: bold;
 }
@@ -324,6 +337,10 @@
   cursor: pointer;
   padding: 8px;
 }
+.seeMore:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
 .askQuestions {
   display: flex;
   flex-direction: column;
@@ -332,6 +349,7 @@
 }
 .askQuestions > :first-child {
   align-self: flex-start;
+  margin-bottom: 16px;
 }
 .askQuestions > * {
   margin-bottom: 16px;
