@@ -373,7 +373,7 @@
 
 .tools {
   background-color: var(--linkedin-bluegray);
-  padding: 16px;
+
   height: 100vh;
   border-radius: var(--base-border-radius);
   display: flex;
