@@ -20,7 +20,11 @@ const MainBanner = () => {
       <img src={bg} className={styles.imgbg} />
       <div className={styles.container}>
         <PaddaSkillsSection />
-        <FormPlayground alreadyIdea={true} onSubmit={handleClick} />
+        <FormPlayground
+          alreadyIdea={true}
+          onSubmit={handleClick}
+          onClickElement={handleClick}
+        />
       </div>
     </div>
   );
