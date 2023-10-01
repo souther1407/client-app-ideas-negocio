@@ -23,7 +23,7 @@ const PlanRow = ({ plan }) => {
   return (
     <>
       <td>
-        <Text onClick={goToPlanDetail}>
+        <Text onClick={goToPlanDetail} bold>
           {formatStringToShort(details.description, 120)}
         </Text>
       </td>
@@ -88,7 +88,9 @@ const MyPromps = () => {
         {loading && <Text>Loading</Text>}{" "}
         {!loading && prompts.length > 0 && (
           <div className={styles.list}>
-            <Text type="subtitle">My reports</Text>
+            <Text type="subtitle" bold>
+              My reports
+            </Text>
             <div className={styles.table}>
               <PlansTable
                 data={getFilteredPrompsList()}

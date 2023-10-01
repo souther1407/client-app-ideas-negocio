@@ -7,6 +7,7 @@ import Button from "../../../../components/atoms/Button/Button";
 import { START_A_BUSINESS, LOGIN } from "../../../../utils/constants/routes";
 import bg from "../../../../assets/bg.webp";
 import YesNoQuestion from "../../../../components/organisms/YesNoQuestion/YesNoQuestion";
+import FormPlayground from "../../../StartABusiness/components/FormPlayground/FormPlayground";
 import PaddaSkillsSection from "../../../../components/organisms/PaddaSkillsSection/PaddaSkillsSection";
 const MainBanner = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const MainBanner = () => {
       <img src={bg} className={styles.imgbg} />
       <div className={styles.container}>
         <PaddaSkillsSection />
-        <YesNoQuestion onNo={handleClick} onYes={handleClick} />
+        <FormPlayground alreadyIdea={true} onSubmit={handleClick} />
       </div>
     </div>
   );

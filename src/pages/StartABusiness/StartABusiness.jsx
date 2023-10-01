@@ -27,7 +27,7 @@ const TEACHERS = {
   markZuckerberg: "Mark Zuckerberg",
   warrenBuffet: "Warren Buffet",
 };
-const MAX_SECTION_NUMBER = 2;
+const MAX_SECTION_NUMBER = 1;
 const StartABusiness = () => {
   const { load, save } = useStorage();
   const [input, setInput] = useState({
@@ -44,14 +44,7 @@ const StartABusiness = () => {
   const navigate = useNavigate();
 
   const [field, setField] = useState(1);
-  const [shine, setShine] = useState({
-    description: false,
-    budget: false,
-    age: false,
-    skills: false,
-    location: false,
-    teacher: false,
-  });
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     return () => {
@@ -100,30 +93,6 @@ const StartABusiness = () => {
     }
   };
 
-  /* const handleTeacherSelect = (teacher) => {
-    setShine((prev) => ({ ...prev, teacher: true }));
-    setInput((prev) => ({ ...prev, teacher: teacher }));
-  }; */
-  /* 
-  const isMustShine = () => {
-    switch (field) {
-      case 2:
-        return shine.description;
-      case 3:
-        return shine.location;
-      case 4:
-        return shine.age;
-      case 5:
-        return shine.skills;
-      case 6:
-        return shine.budget;
-      case 7:
-        return shine.teacher;
-      default:
-        return false;
-    }
-  };
- */
   return (
     <div className={styles.startABusiness}>
       <main className={styles.content}>
@@ -132,20 +101,6 @@ const StartABusiness = () => {
         <section className={styles.form}>
           <PaddaSkillsSection />
 
-          <section className={`${styles.field} ${field === 1 && styles.show}`}>
-            <div className={styles.yesNoQuestionContainer}>
-              <YesNoQuestion
-                onNo={() => {
-                  setHasAnIdea(false);
-                  setField(2);
-                }}
-                onYes={() => {
-                  setHasAnIdea(true);
-                  setField(2);
-                }}
-              />
-            </div>
-          </section>
           {(creating || loading) && (
             <div className={styles.loading}>
               <LoadingBooks />
@@ -153,14 +108,9 @@ const StartABusiness = () => {
           )}
           {!(creating || loading) && (
             <section
-              className={`${styles.field} ${
-                field === MAX_SECTION_NUMBER && styles.show
-              }`}
+              className={`${styles.field} ${field === 1 && styles.show}`}
             >
-              <FormPlayground
-                onSubmit={handlerSendData}
-                alreadyIdea={hasAnIdea}
-              />
+              <FormPlayground onSubmit={handlerSendData} alreadyIdea={true} />
             </section>
           )}
         </section>

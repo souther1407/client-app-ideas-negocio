@@ -228,11 +228,8 @@ const ToolDropdown = ({ prompt }) => {
   };
   return (
     <div key={prompt.toolName} className={styles.tool}>
-      <HoverEffect>
-        <header
-          className={styles.header}
-          onClick={() => setDesplegado((prev) => !prev)}
-        >
+      <HoverEffect disabled={desplegado}>
+        <header className={styles.header} onClick={() => setDesplegado(true)}>
           <div className={styles.headerDetails}>
             <img
               className={styles.iconTool}
@@ -248,10 +245,12 @@ const ToolDropdown = ({ prompt }) => {
           <div className={styles.iconDropDown}>
             {desplegado && (
               <Link extern to={prompt.tutorial} target="_blank">
-                <IconButton size={"2rem"} icon={"youtube"} />
+                <HoverEffect>
+                  <IconButton size={"2rem"} icon={"youtube"} />
+                </HoverEffect>
               </Link>
             )}
-            <IconButton icon={"upDownArrows"} />
+            {!desplegado && <IconButton icon={"upDownArrows"} />}
           </div>
         </header>
       </HoverEffect>
@@ -264,7 +263,13 @@ const ToolDropdown = ({ prompt }) => {
             to={prompt.url}
           />
           <HoverEffect>
-            <IconButton icon={"arrowUp"} onClick={() => setDesplegado(false)} />
+            <div
+              className={styles.showLessBtn}
+              onClick={() => setDesplegado(false)}
+            >
+              <Text>Show less</Text>
+              <IconButton icon={"arrowUp"} />
+            </div>
           </HoverEffect>
         </section>
       )}

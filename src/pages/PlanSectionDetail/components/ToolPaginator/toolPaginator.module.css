@@ -2,14 +2,22 @@
   display: flex;
   flex-direction: column;
 }
+.paginator > :first-child {
+  margin-bottom: 16px;
+}
 
 .tool {
   display: flex;
   flex-direction: column;
   position: relative;
-  cursor: pointer;
 }
-
+.showLessBtn {
+  display: flex;
+  padding: 0 8px;
+}
+.showLessBtn > :first-child {
+  margin-right: 8px;
+}
 .header {
   display: flex;
   padding: 4px;

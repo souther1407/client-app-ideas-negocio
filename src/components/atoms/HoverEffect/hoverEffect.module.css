@@ -1,4 +1,5 @@
 .hoverEffect > *:hover {
   background-color: var(--gray-blue-light) !important;
   transition: all 0.2s ease-in;
+  cursor: pointer;
 }
