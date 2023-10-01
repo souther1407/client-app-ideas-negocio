@@ -278,7 +278,6 @@ const ToolDropdown = ({ prompt }) => {
 };
 
 const ToolPaginator = ({ prompts, currentTool = 0, onChangeTool }) => {
-  console.log(prompts);
   return (
     <div className={styles.paginator}>
       <Text bold type="subtitle">

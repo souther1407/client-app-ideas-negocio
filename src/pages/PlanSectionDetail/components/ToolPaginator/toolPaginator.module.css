@@ -4,6 +4,7 @@
 }
 .paginator > :first-child {
   margin-bottom: 16px;
+  padding: 16px;
 }
 
 .tool {
@@ -23,6 +24,7 @@
   padding: 4px;
   justify-content: space-between;
   align-items: center;
+  padding: 8px 16px;
 }
 .headerDetails {
   display: flex;
@@ -31,6 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 16px;
 }
 .menu > *:not(:last-child) {
   margin-bottom: 16px;
