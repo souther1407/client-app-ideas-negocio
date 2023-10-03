@@ -29,7 +29,12 @@ import webflowIcon from "../../assets/webflow ícono.svg";
 import wordpressIcon from "../../assets/Wordpress ícono.svg";
 import zapierIcon from "../../assets/zapier ícono.svg";
 import zoomIcon from "../../assets/zoom Ícono.svg";
-
+import instagramshopIcon from "../../assets/Instagram Shop Icon.svg";
+import linkedinsalesIcon from "../../assets/linkedin sales navigator icon.svg";
+import linktreeIcon from "../../assets/linktree icon.svg";
+import manychatsIcon from "../../assets/Manychats Icon.svg";
+import facebookshopIcon from "../../assets/Facebook Shop Icon.svg";
+import facebookadslibraryIcon from "../../assets/Facebook Ads Icon.svg";
 export const toolsIcons = {
   Alibaba: alibabaIcon,
   Canva: canvaIcon,
@@ -61,4 +66,10 @@ export const toolsIcons = {
   Excel: excelIcon,
   "Jungle Scout": junglescoutIcon,
   Amazon: amazonIcon,
+  "Instagram Shops": instagramshopIcon,
+  Linktree: linktreeIcon,
+  "Facebook Ads Library": facebookadslibraryIcon,
+  ManyChats: manychatsIcon,
+  "Facebook Shops": facebookshopIcon,
+  "Linkedin Sales Navigator": linkedinsalesIcon,
 };
