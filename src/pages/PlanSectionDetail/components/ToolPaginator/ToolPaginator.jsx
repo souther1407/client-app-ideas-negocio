@@ -66,6 +66,12 @@ import junglescoutLinkImg from "../../../../assets/JungleScout Link.svg";
 import junglescoutTutorialImg from "../../../../assets/JungleScout Tutorial.svg";
 import amazonLinkImg from "../../../../assets/Amazon Link.svg";
 import amazonTutorialImg from "../../../../assets/Amazon Tutorial.svg";
+import facebookadslibraryImg from "../../../../assets/Facebook Ads Library.svg";
+import facebookshopsImg from "../../../../assets/Facebook Shops.svg";
+import instagramshopImg from "../../../../assets/Instagram Shops.svg";
+import linkedinsalesImg from "../../../../assets/Linkedin Sales.svg";
+import linktreeImg from "../../../../assets/Linktree.svg";
+import manychatsImg from "../../../../assets/Manychats.svg";
 import { toolsIcons } from "../../../../utils/constants/toolsIcons";
 
 const imgLinks = {
@@ -218,6 +224,36 @@ const imgLinks = {
     link: amazonLinkImg,
     tutorial: amazonTutorialImg,
     cost: "Free",
+  },
+  "Instagram Shops": {
+    link: instagramshopImg,
+    tutorial: instagramshopImg,
+    cost: "Free",
+  },
+  Linktree: {
+    link: linktreeImg,
+    tutorial: linktreeImg,
+    cost: "Freemium",
+  },
+  "Facebook Ads Library": {
+    link: facebookadslibraryImg,
+    tutorial: facebookadslibraryImg,
+    cost: "Free",
+  },
+  ManyChats: {
+    link: manychatsImg,
+    tutorial: manychatsImg,
+    cost: "Freemium",
+  },
+  "Facebook Shops": {
+    link: facebookshopsImg,
+    tutorial: facebookshopsImg,
+    cost: "Free",
+  },
+  "Linkedin Sales Navigator": {
+    link: linkedinsalesImg,
+    tutorial: linkedinsalesImg,
+    cost: "Pay-as-you-go",
   },
 };
 
