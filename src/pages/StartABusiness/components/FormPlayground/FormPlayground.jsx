@@ -3,14 +3,15 @@ import styles from "./formPlayground.module.css";
 import Button from "../../../../components/atoms/Button/Button";
 import Textarea from "../../../../components/atoms/Textarea/Textarea";
 import Text from "../../../../components/atoms/Text/Text";
-
 import Slider from "../../../../components/atoms/Slider/Slider";
-import IconText from "../../../../components/molecules/IconText/IconText";
 import TagInput from "../../../../components/molecules/TagInput/TagInput";
 import { countries } from "../../../../utils/constants/countries";
 import Combobox from "../../../../components/molecules/Combobox/Combobox";
 import Sheet from "../../../../components/molecules/Sheer/Sheet";
 import IconButton from "../../../../components/molecules/IconButton/IconButton";
+import Icon from "../../../../components/atoms/Icon/Icon";
+import MoreInfo from "../../../../components/molecules/MoreInfo/MoreInfo";
+import HoverEffect from "../../../../components/atoms/HoverEffect/HoverEffect";
 const FormPlayground = ({
   onSubmit,
   alreadyIdea,
@@ -175,58 +176,6 @@ Challenges:
         <section
           className={`${styles.inputs} ${alreadyIdea && styles.alreadyIdea}`}
         >
-          {!alreadyIdea && (
-            <div className={styles.slidersSection}>
-              <Text bold>Business Constraints</Text>
-              <div className={styles.sliders}>
-                <div className={styles.slider}>
-                  <div className={styles.texts}>
-                    <Text size={"1rem"} bold>
-                      Budget($)
-                    </Text>
-                    <Text size={"1rem"} bold color="soft">
-                      {input.budget}
-                    </Text>
-                  </div>
-                  <Slider id={"budget"} onChange={handleChange} />
-                </div>
-                <div className={styles.slider}>
-                  <div className={styles.texts}>
-                    <Text size={"1rem"} bold>
-                      Free Time (H/W)
-                    </Text>
-                    <Text size={"1rem"} bold color="soft">
-                      {input.freeTime}
-                    </Text>
-                  </div>
-                  <Slider
-                    id={"freeTime"}
-                    onChange={handleChange}
-                    min={1}
-                    max={100}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-          <div className={styles.tagsInput}>
-            <Text bold>Choose your skills</Text>
-            <TagInput
-              placeholder={"Social Media Marketing"}
-              onAddTag={handleAddSkill}
-              onRemoveTag={handleRemoveTag}
-              predefinedTags={[
-                "Coding",
-                "Social Media",
-                "Marketing",
-                "Design",
-                "Sales",
-                "Data Analysis",
-              ]}
-              alreadyIdea={true}
-              id="skills"
-            />
-          </div>
           <div className={styles.countryInput}>
             <Text bold>Choose business location</Text>
             <Combobox
@@ -238,6 +187,29 @@ Challenges:
               h="48px"
               onSelect={handleChange}
             />
+          </div>
+
+          <div className={styles.selectPhilosofy}>
+            <div className={styles.label}>
+              <Text bold>Bussines plan settings </Text>
+              <MoreInfo message={"Settings"}>
+                <Icon size={"1rem"} type={"info"} />
+              </MoreInfo>
+            </div>
+            <div className={styles.settings}>
+              <HoverEffect>
+                <div className={styles.settingBtn}>
+                  <Icon type={"humanDecides"} size={"6rem"} />
+                  <Text bold>Human decides</Text>
+                </div>
+              </HoverEffect>
+              <HoverEffect>
+                <div className={styles.settingBtn}>
+                  <Icon type={"aiDecides"} size={"6rem"} />
+                  <Text bold>AI decides</Text>
+                </div>
+              </HoverEffect>
+            </div>
           </div>
         </section>
       </main>

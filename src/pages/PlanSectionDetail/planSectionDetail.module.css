@@ -171,6 +171,7 @@
 
 .banner > :first-child {
   position: relative;
+  right: 16px;
 }
 
 .infoBtn {
@@ -247,7 +248,7 @@
 }
 
 .details {
-  width: 50%;
+  flex-grow: 1;
   flex-shrink: 0;
   margin-right: var(--base-margin);
 }
@@ -373,11 +374,10 @@
 
 .tools {
   background-color: var(--linkedin-bluegray);
-
   height: 100vh;
   border-radius: var(--base-border-radius);
   display: flex;
-  flex-basis: 28%;
+  flex-basis: 23%;
   flex-shrink: 0;
   flex-direction: column;
 }

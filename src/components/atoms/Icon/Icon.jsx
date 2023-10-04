@@ -50,7 +50,8 @@ import {
 } from "react-icons/ai";
 import { GiGears, GiTakeMyMoney } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
-
+import humandecidesIcon from "../../../assets/Human Decides.svg";
+import aiDecides from "../../../assets/AI Decides.svg";
 import {
   BsArrowLeft,
   BsArrowRight,
@@ -119,6 +120,10 @@ const Icon = ({ type, size, color = "inherit" }) => {
     linkedin: <AiFillLinkedin {...props} />,
     clip: <AiOutlinePaperClip {...props} />,
     info: <AiOutlineInfoCircle {...props} />,
+    humanDecides: (
+      <img src={humandecidesIcon} style={{ width: size, height: size }} />
+    ),
+    aiDecides: <img src={aiDecides} style={{ width: size, height: size }} />,
   };
   return <i>{icons[type]}</i>;
 };
