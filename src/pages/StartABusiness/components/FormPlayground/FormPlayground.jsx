@@ -23,6 +23,7 @@ const FormPlayground = ({
     location: "",
     description: "",
     skills: [],
+    decides: "",
   });
 
   const handleChange = (id, value) => {
@@ -30,6 +31,9 @@ const FormPlayground = ({
     setInput((prev) => ({ ...prev, [id]: value }));
   };
 
+  const handleSelectSetting = (value) => {
+    handleChange("decides", value);
+  };
   const handleAddSkill = (id, tags) => {
     const tagsConst = tags;
     console.log(tagsConst);
@@ -43,10 +47,10 @@ const FormPlayground = ({
     }));
   };
   const isButtonDisabled = () => {
-    const isSkillsEmpty = input.skills.length === 0;
-    const isDescriptionEmpty = alreadyIdea && input.description.length === 0;
+    const decidesIsEmpty = input.decides.length === 0;
+    const isDescriptionEmpty = input.description.length === 0;
     const isLocationEmpty = input.location.length === 0;
-    return isSkillsEmpty || isDescriptionEmpty || isLocationEmpty;
+    return decidesIsEmpty || isDescriptionEmpty || isLocationEmpty;
   };
   const handleSubmit = () => {
     onSubmit(input);
@@ -198,13 +202,23 @@ Challenges:
             </div>
             <div className={styles.settings}>
               <HoverEffect>
-                <div className={styles.settingBtn}>
+                <div
+                  className={`${styles.settingBtn} ${
+                    input.decides === "humanDecides" && styles.selected
+                  }`}
+                  onClick={() => handleSelectSetting("humanDecides")}
+                >
                   <Icon type={"humanDecides"} size={"6rem"} />
                   <Text bold>Human decides</Text>
                 </div>
               </HoverEffect>
               <HoverEffect>
-                <div className={styles.settingBtn}>
+                <div
+                  className={`${styles.settingBtn} ${
+                    input.decides === "aiDecides" && styles.selected
+                  }`}
+                  onClick={() => handleSelectSetting("aiDecides")}
+                >
                   <Icon type={"aiDecides"} size={"6rem"} />
                   <Text bold>AI decides</Text>
                 </div>
