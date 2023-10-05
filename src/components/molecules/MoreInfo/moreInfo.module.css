@@ -1,5 +1,6 @@
 .moreInfo {
   position: relative;
+  width: fit-content;
 }
 
 .detailContainer {

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./paddaSkillsSection.module.css";
-import paddaImg from "../../../assets/robot.svg";
+import paddaImg from "../../../assets/Padda Image.svg";
 import Avatar from "../../../components/atoms/Avatar/Avatar";
 import Text from "../../../components/atoms/Text/Text";
 import Mark from "../../../components/atoms/Mark/Mark";
@@ -10,7 +10,7 @@ const PaddaSkillsSection = () => {
   return (
     <div className={styles.paddaSkillsSection}>
       <header className={styles.header}>
-        <Avatar size={{ w: "3rem", h: "3rem" }} src={paddaImg} />
+        <Avatar size={{ w: "4rem", h: "4rem" }} src={paddaImg} />
         <Text bold type="subtitle">
           Padda
         </Text>

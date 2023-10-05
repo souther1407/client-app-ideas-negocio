@@ -8,7 +8,7 @@ import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
 import MarketingImage from "../../assets/Marketing.svg";
 import TargetcustomerImage from "../../assets/Target Customer.svg";
-import RobotImg from "../../assets/robot.svg";
+import RobotImg from "../../assets/Padda Image.svg";
 import Logo from "../../components/atoms/Logo/Logo";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
 import ReactMarkdown from "react-markdown";
@@ -523,7 +523,7 @@ const PromptSectionDetail = () => {
                         return (
                           <span
                             className={styles.seeMore}
-                            onClick={() => handleSeeMoreClick("overview")}
+                            onClick={() => handleSeeMoreClick("plan")}
                           >
                             ...{props.children}
                           </span>
@@ -548,7 +548,7 @@ const PromptSectionDetail = () => {
                           return (
                             <span
                               className={styles.seeMore}
-                              onClick={() => handleSeeMoreClick("overview")}
+                              onClick={() => handleSeeMoreClick("plan2")}
                             >
                               ...{props.children}
                             </span>
@@ -563,16 +563,6 @@ const PromptSectionDetail = () => {
                           )}\n**See more**`
                         : response?.details[reportSection]?.plan2}
                     </ReactMarkdown>
-                    {!reportSectionCollapsables[reportSection].plan2 && (
-                      <HoverEffect>
-                        <span
-                          className={styles.seeMore}
-                          onClick={() => handleSeeMoreClick("plan2")}
-                        >
-                          See more
-                        </span>
-                      </HoverEffect>
-                    )}
                   </section>
                 )}
               </div>

@@ -82,7 +82,36 @@
   display: flex;
   justify-content: flex-start;
 }
-
+.selectPhilosofy {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+.selectPhilosofy .label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.selectPhilosofy .settings {
+  display: flex;
+}
+.selectPhilosofy .settings > :first-child {
+  margin-right: 32px;
+}
+.selectPhilosofy .settingBtn {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 8px 16px;
+  width: 250px;
+  border-radius: 8px;
+}
+.selectPhilosofy .selected {
+  background-color: var(--gray-blue-light);
+}
+.selectPhilosofy .label > :first-child {
+  margin-right: 8px;
+}
 .mobileInputs > * > :first-child {
   margin-bottom: 8px;
 }
