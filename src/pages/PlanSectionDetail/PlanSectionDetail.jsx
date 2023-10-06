@@ -24,10 +24,22 @@ import { generateReportSection } from "../../services/userPrompts/generateReport
 import MoreInfo from "../../components/molecules/MoreInfo/MoreInfo";
 import Icon from "../../components/atoms/Icon/Icon";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
+import customerPlanImg from "../../assets/customerPlan.svg";
+import customerDecidesImg from "../../assets/customerDecides.svg";
 const banners = {
-  targetCustomer: TargetcustomerImage,
-  mvp: MVPImage,
-  marketingPlan: MarketingImage,
+  targetCustomer: {
+    overview: TargetcustomerImage,
+    plan: customerPlanImg,
+    decides: customerDecidesImg,
+  },
+  mvp: {
+    overview: MVPImage,
+    plan: "",
+  },
+  marketingPlan: {
+    overview: MarketingImage,
+    plan: "",
+  },
 };
 const createSectionBtnData = {
   mvp: {
@@ -49,6 +61,7 @@ const PromptSectionDetail = () => {
     targetCustomer: {
       overview: false,
       plan: false,
+      decides: false,
     },
     mvp: {
       overview: false,
@@ -346,6 +359,31 @@ const PromptSectionDetail = () => {
                     </div>
                   </HoverEffect>
                 </div>
+                {reportSection === "targetCustomer" && (
+                  <div
+                    ref={menuQuestionRef}
+                    onClick={() =>
+                      askQuestionsRef.current.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    }
+                  >
+                    <HoverEffect>
+                      <div
+                        className={`${styles.hoverBg} ${
+                          currentSection === "ask" && styles.showBg
+                        }`}
+                      >
+                        <Text
+                          bold
+                          color={currentSection !== "ask" ? "soft" : ""}
+                        >
+                          Decides
+                        </Text>
+                      </div>
+                    </HoverEffect>
+                  </div>
+                )}
                 {reportSection === "mvp" && (
                   <div
                     ref={menuQuestionRef}
@@ -506,7 +544,7 @@ const PromptSectionDetail = () => {
                       : response?.details[reportSection]?.overview}
                   </ReactMarkdown>
                   <img
-                    src={banners[reportSection]}
+                    src={banners[reportSection].overview}
                     className={styles.bannerImg}
                   />
                 </section>
@@ -538,7 +576,45 @@ const PromptSectionDetail = () => {
                         )}\n**See more**`
                       : response?.details[reportSection]?.plan}
                   </ReactMarkdown>
+                  {banners[reportSection].plan && (
+                    <img
+                      src={banners[reportSection].plan}
+                      className={styles.bannerImg}
+                    />
+                  )}
                 </section>
+                {reportSection === "targetCustomer" && (
+                  <section className={styles.questions} ref={askQuestionsRef}>
+                    <ReactMarkdown
+                      className={styles.md}
+                      components={{
+                        strong(props) {
+                          return (
+                            <span
+                              className={styles.seeMore}
+                              onClick={() => handleSeeMoreClick("decides")}
+                            >
+                              ...{props.children}
+                            </span>
+                          );
+                        },
+                      }}
+                    >
+                      {!reportSectionCollapsables[reportSection]?.decides
+                        ? `${formatStringToShort(
+                            response?.details[reportSection]?.humanDecides ??
+                              response?.details[reportSection]?.aiDecides,
+                            160
+                          )}\n**See more**`
+                        : response?.details[reportSection]?.humanDecides ??
+                          response?.details[reportSection]?.aiDecides}
+                    </ReactMarkdown>
+                    <img
+                      src={banners[reportSection].decides}
+                      className={styles.bannerImg}
+                    />
+                  </section>
+                )}
                 {reportSection === "mvp" && (
                   <section className={styles.questions} ref={askQuestionsRef}>
                     <ReactMarkdown
