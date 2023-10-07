@@ -71,5 +71,5 @@ export const toolsIcons = {
   "Facebook Ads Library": facebookadslibraryIcon,
   ManyChats: manychatsIcon,
   "Facebook Shops": facebookshopIcon,
-  "Linkedin Sales Navigator": linkedinsalesIcon,
+  "LinkedIn Sales Navigator": linkedinsalesIcon,
 };

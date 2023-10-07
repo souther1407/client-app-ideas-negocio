@@ -17,7 +17,6 @@ import { useReportUrl } from "../../states/reportUrl";
 import { getById } from "../../services/userPrompts/getPrompts";
 import { addShare, addView } from "../../services/userPrompts/userPromts";
 import HoverEffect from "../../components/atoms/HoverEffect/HoverEffect";
-import { toolsIcons } from "../../utils/constants/toolsIcons";
 import createProductImg from "../../assets/crear seccion icono1.svg";
 import createMarketingPlanImg from "../../assets/crear seccion icono 2.svg";
 import { generateReportSection } from "../../services/userPrompts/generateReportSection";
@@ -26,6 +25,16 @@ import Icon from "../../components/atoms/Icon/Icon";
 import { formatStringToShort } from "../../utils/format/formatStringToShort";
 import customerPlanImg from "../../assets/customerPlan.svg";
 import customerDecidesImg from "../../assets/customerDecides.svg";
+import facebookBanner from "../../assets/Facebook.svg";
+import facebookContentBanner from "../../assets/Facebook Content.svg";
+import facebookGrowthBanner from "../../assets/Facebook Growth.svg";
+import instagramBanner from "../../assets/Instagram.svg";
+import instagramContentBanner from "../../assets/Instagram Content.svg";
+import instagramGrowthBanner from "../../assets/Instagram Growth.svg";
+import linkedinBanner from "../../assets/Linkedin.svg";
+import linkedinContentBanner from "../../assets/Linkedin Content.svg";
+import linkedinGrowthBanner from "../../assets/Linkedin Growth.svg";
+
 const banners = {
   targetCustomer: {
     overview: TargetcustomerImage,
@@ -37,8 +46,21 @@ const banners = {
     plan: "",
   },
   marketingPlan: {
-    overview: MarketingImage,
-    plan: "",
+    overview: {
+      Facebook: facebookBanner,
+      Instagram: instagramBanner,
+      LinkedIn: linkedinBanner,
+    },
+    plan: {
+      Facebook: facebookGrowthBanner,
+      Instagram: instagramGrowthBanner,
+      LinkedIn: linkedinGrowthBanner,
+    },
+    objetives: {
+      Facebook: facebookContentBanner,
+      Instagram: instagramContentBanner,
+      LinkedIn: linkedinContentBanner,
+    },
   },
 };
 const createSectionBtnData = {
@@ -71,6 +93,7 @@ const PromptSectionDetail = () => {
     marketingPlan: {
       overview: false,
       plan: false,
+      socialMedia: false,
     },
   });
 
@@ -171,6 +194,7 @@ const PromptSectionDetail = () => {
     const newShare = response.shares ?? 0;
     addShare({ reportId: id, userId: user, shares: newShare + 1 });
   };
+
   const handleChangeSection = (section) => {
     setReportSection(section);
     setCurrentSection("detail");
@@ -228,6 +252,9 @@ const PromptSectionDetail = () => {
         description: response.details.description,
         title: response.details.title,
         input: response.input,
+        customerProfile: JSON.parse(
+          response.details.targetCustomer.customerProfile
+        ),
       });
       setResponse(updateResponse);
     } catch (error) {
@@ -241,6 +268,20 @@ const PromptSectionDetail = () => {
       ...prev,
       [reportSection]: { ...prev[reportSection], [section]: true },
     }));
+  };
+
+  const selectBanners = (section) => {
+    if (reportSection === "targetCustomer" || reportSection === "mvp") {
+      return banners[reportSection][section];
+    }
+
+    try {
+      const chosenSocialMedia = JSON.parse(
+        response.details.marketingPlan.chosenSocialMedia
+      );
+
+      return banners[reportSection][section][chosenSocialMedia.platform];
+    } catch (error) {}
   };
   return (
     <div className={styles.promptSectionDetail}>
@@ -384,7 +425,7 @@ const PromptSectionDetail = () => {
                     </HoverEffect>
                   </div>
                 )}
-                {reportSection === "mvp" && (
+                {reportSection === "marketingPlan" && (
                   <div
                     ref={menuQuestionRef}
                     onClick={() =>
@@ -403,7 +444,7 @@ const PromptSectionDetail = () => {
                           bold
                           color={currentSection !== "ask" ? "soft" : ""}
                         >
-                          Plan 2
+                          Social Media
                         </Text>
                       </div>
                     </HoverEffect>
@@ -543,7 +584,7 @@ const PromptSectionDetail = () => {
                       : response?.details[reportSection]?.overview}
                   </ReactMarkdown>
                   <img
-                    src={banners[reportSection].overview}
+                    src={selectBanners("overview")}
                     className={styles.bannerImg}
                   />
                 </section>
@@ -577,7 +618,7 @@ const PromptSectionDetail = () => {
                   </ReactMarkdown>
                   {banners[reportSection].plan && (
                     <img
-                      src={banners[reportSection].plan}
+                      src={selectBanners("plan")}
                       className={styles.bannerImg}
                     />
                   )}
@@ -614,7 +655,7 @@ const PromptSectionDetail = () => {
                     />
                   </section>
                 )}
-                {reportSection === "mvp" && (
+                {reportSection == "marketingPlan" && (
                   <section className={styles.questions} ref={askQuestionsRef}>
                     <ReactMarkdown
                       className={styles.md}
@@ -623,7 +664,7 @@ const PromptSectionDetail = () => {
                           return (
                             <span
                               className={styles.seeMore}
-                              onClick={() => handleSeeMoreClick("plan2")}
+                              onClick={() => handleSeeMoreClick("socialMedia")}
                             >
                               ...{props.children}
                             </span>
@@ -631,13 +672,17 @@ const PromptSectionDetail = () => {
                         },
                       }}
                     >
-                      {!reportSectionCollapsables[reportSection].plan2
+                      {!reportSectionCollapsables[reportSection]?.socialMedia
                         ? `${formatStringToShort(
-                            response?.details[reportSection]?.plan2,
+                            response?.details[reportSection]?.objetives,
                             160
                           )}\n**See more**`
-                        : response?.details[reportSection]?.plan2}
+                        : response?.details[reportSection]?.objetives}
                     </ReactMarkdown>
+                    <img
+                      src={selectBanners("objetives")}
+                      className={styles.bannerImg}
+                    />
                   </section>
                 )}
               </div>
