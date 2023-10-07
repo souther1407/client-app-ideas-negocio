@@ -250,7 +250,7 @@ const imgLinks = {
     tutorial: facebookshopsImg,
     cost: "Free",
   },
-  "Linkedin Sales Navigator": {
+  "LinkedIn Sales Navigator": {
     link: linkedinsalesImg,
     tutorial: linkedinsalesImg,
     cost: "Pay-as-you-go",
