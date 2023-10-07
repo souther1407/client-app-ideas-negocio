@@ -26,11 +26,6 @@
 .questions {
   margin-bottom: var(--base-margin);
 }
-.questions > :first-child,
-.askQuestions > :first-child,
-.detail > :first-child {
-  margin-bottom: 32px;
-}
 
 .questions,
 .detail,
@@ -253,9 +248,17 @@
   margin-right: var(--base-margin);
 }
 
+.detail img {
+  padding: 0 16px 16px 16px;
+}
+.questions img {
+  margin-top: 10px;
+}
+
 .bannerImg {
   width: 100%;
-  height: 240px;
+
+  object-fit: cover;
 }
 .details > :first-child {
   margin-bottom: 16px;
