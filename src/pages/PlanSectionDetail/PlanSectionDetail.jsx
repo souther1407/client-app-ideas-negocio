@@ -7,7 +7,7 @@ import IconButton from "../../components/molecules/IconButton/IconButton";
 import Avatar from "../../components/atoms/Avatar/Avatar";
 import MVPImage from "../../assets/MPV_Banner.svg";
 import MarketingImage from "../../assets/Marketing.svg";
-import TargetcustomerImage from "../../assets/Target Customer.svg";
+import TargetcustomerImage from "../../assets/Figures Paddawan.gif";
 import RobotImg from "../../assets/Padda Image.svg";
 import Logo from "../../components/atoms/Logo/Logo";
 import { DASHBOARD_IDEAS } from "../../utils/constants/routes";
@@ -442,7 +442,6 @@ const PromptSectionDetail = () => {
                       <Icon size={"16px"} type={"info"} />
                     </MoreInfo>
                   </div>
-                  {/* <Text>IA Marketing Expert</Text> */}
                 </section>
                 <section className={styles.stats}>
                   <div className={styles.stat}>
