@@ -5,8 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import GradientBg from "../../components/atoms/GradientBg/GradientBg";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import Avatar from "../../components/atoms/Avatar/Avatar";
-import MVPImage from "../../assets/MPV_Banner.svg";
-import MarketingImage from "../../assets/Marketing.svg";
+import MVPOverviewImage from "../../assets/overview.svg";
+import MVPPlanImage from "../../assets/plan.svg";
 import TargetcustomerImage from "../../assets/Figures Paddawan.gif";
 import RobotImg from "../../assets/Padda Image.svg";
 import Logo from "../../components/atoms/Logo/Logo";
@@ -53,8 +53,8 @@ const PromptSectionDetail = () => {
       decides: customerDecidesImg,
     },
     mvp: {
-      overview: MVPImage,
-      plan: "",
+      overview: MVPOverviewImage,
+      plan: MVPPlanImage,
     },
     marketingPlan: {
       overview: {
@@ -564,7 +564,7 @@ const PromptSectionDetail = () => {
                   <ReactMarkdown
                     className={styles.md}
                     components={{
-                      strong(props) {
+                      code(props) {
                         return (
                           <span
                             className={styles.seeMore}
@@ -580,7 +580,7 @@ const PromptSectionDetail = () => {
                       ? `${formatStringToShort(
                           response?.details[reportSection]?.overview,
                           120
-                        )}\n**See more**`
+                        )}\n\`See more\``
                       : response?.details[reportSection]?.overview}
                   </ReactMarkdown>
                   <img
@@ -597,7 +597,7 @@ const PromptSectionDetail = () => {
                   <ReactMarkdown
                     className={styles.md}
                     components={{
-                      strong(props) {
+                      code(props) {
                         return (
                           <span
                             className={styles.seeMore}
@@ -613,7 +613,7 @@ const PromptSectionDetail = () => {
                       ? `${formatStringToShort(
                           response?.details[reportSection]?.plan,
                           120
-                        )}\n**See more**`
+                        )}\n\`See more\``
                       : response?.details[reportSection]?.plan}
                   </ReactMarkdown>
                   {banners[reportSection].plan && (
@@ -628,7 +628,7 @@ const PromptSectionDetail = () => {
                     <ReactMarkdown
                       className={styles.md}
                       components={{
-                        strong(props) {
+                        code(props) {
                           return (
                             <span
                               className={styles.seeMore}
@@ -645,7 +645,7 @@ const PromptSectionDetail = () => {
                             response?.details[reportSection]?.humanDecides ??
                               response?.details[reportSection]?.aiDecides,
                             160
-                          )}\n**See more**`
+                          )}\n\`See more\``
                         : response?.details[reportSection]?.humanDecides ??
                           response?.details[reportSection]?.aiDecides}
                     </ReactMarkdown>
@@ -660,7 +660,7 @@ const PromptSectionDetail = () => {
                     <ReactMarkdown
                       className={styles.md}
                       components={{
-                        strong(props) {
+                        code(props) {
                           return (
                             <span
                               className={styles.seeMore}
@@ -676,7 +676,7 @@ const PromptSectionDetail = () => {
                         ? `${formatStringToShort(
                             response?.details[reportSection]?.objetives,
                             160
-                          )}\n**See more**`
+                          )}\n\`See more\``
                         : response?.details[reportSection]?.objetives}
                     </ReactMarkdown>
                     <img
