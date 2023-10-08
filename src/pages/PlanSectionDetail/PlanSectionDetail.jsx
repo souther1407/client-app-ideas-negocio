@@ -35,34 +35,6 @@ import linkedinBanner from "../../assets/Linkedin.svg";
 import linkedinContentBanner from "../../assets/Linkedin Content.svg";
 import linkedinGrowthBanner from "../../assets/Linkedin Growth.svg";
 
-const banners = {
-  targetCustomer: {
-    overview: TargetcustomerImage,
-    plan: customerPlanImg,
-    decides: customerDecidesImg,
-  },
-  mvp: {
-    overview: MVPImage,
-    plan: "",
-  },
-  marketingPlan: {
-    overview: {
-      Facebook: facebookBanner,
-      Instagram: instagramBanner,
-      LinkedIn: linkedinBanner,
-    },
-    plan: {
-      Facebook: facebookGrowthBanner,
-      Instagram: instagramGrowthBanner,
-      LinkedIn: linkedinGrowthBanner,
-    },
-    objetives: {
-      Facebook: facebookContentBanner,
-      Instagram: instagramContentBanner,
-      LinkedIn: linkedinContentBanner,
-    },
-  },
-};
 const createSectionBtnData = {
   mvp: {
     title: "Generate Product Strategy",
@@ -74,6 +46,34 @@ const createSectionBtnData = {
   },
 };
 const PromptSectionDetail = () => {
+  const banners = {
+    targetCustomer: {
+      overview: TargetcustomerImage,
+      plan: customerPlanImg,
+      decides: customerDecidesImg,
+    },
+    mvp: {
+      overview: MVPImage,
+      plan: "",
+    },
+    marketingPlan: {
+      overview: {
+        Facebook: facebookBanner,
+        Instagram: instagramBanner,
+        LinkedIn: linkedinBanner,
+      },
+      plan: {
+        Facebook: facebookGrowthBanner,
+        Instagram: instagramGrowthBanner,
+        LinkedIn: linkedinGrowthBanner,
+      },
+      objetives: {
+        Facebook: facebookContentBanner,
+        Instagram: instagramContentBanner,
+        LinkedIn: linkedinContentBanner,
+      },
+    },
+  };
   const { id, user } = useParams();
   const navigate = useNavigate();
   const url = useReportUrl((state) => state.url);
